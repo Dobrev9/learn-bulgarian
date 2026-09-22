@@ -104,16 +104,36 @@
   }
 
   .shevitsa{
-    height:14px;
+    height:26px;
     width:100%;
     background-image:
+      linear-gradient(var(--gold), var(--gold)),
+      linear-gradient(var(--sage), var(--sage)),
       linear-gradient(45deg, var(--madder) 25%, transparent 25%),
       linear-gradient(-45deg, var(--madder) 25%, transparent 25%),
       linear-gradient(45deg, transparent 75%, var(--madder) 75%),
       linear-gradient(-45deg, transparent 75%, var(--madder) 75%);
-    background-size:14px 14px;
-    background-position:0 0, 0 7px, 7px -7px, -7px 0px;
-    opacity:.85;
+    background-repeat:
+      no-repeat, no-repeat, repeat-x, repeat-x, repeat-x, repeat-x;
+    background-position:
+      top, bottom, center, center, center, center;
+    background-size:
+      100% 4px, 100% 4px, 18px 18px, 18px 18px, 18px 18px, 18px 18px;
+    box-shadow:0 1px 0 rgba(0,0,0,.15), 0 -1px 0 rgba(0,0,0,.15);
+    opacity:.95;
+  }
+  .flag-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:.6rem 0 .3rem;
+  }
+  .bg-flag{
+    width:56px;
+    height:auto;
+    display:block;
+    border:1px solid rgba(0,0,0,.2);
+    box-shadow:0 1px 4px rgba(0,0,0,.25);
   }
 
   header{
@@ -565,7 +585,7 @@
 (function(){
   var t = null;
   try{ t = localStorage.getItem('bg_theme'); }catch(e){}
-  if(!t){ t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }
+  if(!t){ t = 'light'; }
   document.documentElement.setAttribute('data-theme', t);
 })();
 </script>
@@ -585,6 +605,13 @@
   </div>
 </header>
 <div class="shevitsa"></div>
+<div class="flag-row">
+  <svg class="bg-flag" viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drapeau bulgare">
+    <rect width="3" height="2" fill="#fff"/>
+    <rect width="3" height="0.6667" y="0.6667" fill="#00966E"/>
+    <rect width="3" height="0.6667" y="1.3333" fill="#D62612"/>
+  </svg>
+</div>
 
 <nav id="nav">
   <button data-target="alphabet" class="active">Alphabet</button>

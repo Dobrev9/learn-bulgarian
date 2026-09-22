@@ -1,0 +1,4038 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇷🇴</text></svg>">
+<title>Început — Apprendre le roumain A1-A2</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;700&display=swap');
+  :root{
+    --cream:#F4EFE4; --cream-dark:#E3DAC6;
+    --blue:#1B3A6B; --blue-dark:#14294B;
+    --gold:#D29B1E; --red:#A4243B; --green:#5A7150;
+    --card:#fff; --text2:#5b5443; --muted:#a39c86; --muted2:#7a745f;
+    --hdr-text:#D8DDE6; --header-bg:#1B3A6B;
+    font-size:17px;
+    color-scheme:light;
+  }
+  /* ---- Thème sombre ---- */
+  :root[data-theme="dark"]{
+    --cream:#141a26; --cream-dark:#2b3447;
+    --blue:#E4E8F0; --blue-dark:#E4E8F0;
+    --gold:#E0AB3A; --red:#C4485A; --green:#8FA57F;
+    --card:#1e2433; --text2:#bdb9aa; --muted:#8a8a99; --muted2:#9c9aa8;
+    --hdr-text:#c5cad6; --header-bg:#0e131d;
+    color-scheme:dark;
+  }
+  :root[data-theme="dark"] header h1{color:#fff;}
+  :root[data-theme="dark"] .action.primary,
+  :root[data-theme="dark"] nav button.active{color:#fff;}
+  :root[data-theme="dark"] .chip.active,
+  :root[data-theme="dark"] .action.good,
+  :root[data-theme="dark"] .opt-btn.ok{background:#4f7a55;border-color:#4f7a55;color:#fff;}
+  :root[data-theme="dark"] .band{background:linear-gradient(90deg,#3A5FA0 33.3%,var(--gold) 33.3% 66.6%,var(--red) 66.6%);}
+  body,.card,.row,.face,.quiz-box,.story,.gram,.opt-btn,.tip{transition:background-color .25s,color .25s,border-color .25s;}
+  #themeToggle{position:absolute;top:0;right:0;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.08);border:1.5px solid var(--gold);border-radius:50%;color:var(--gold);cursor:pointer;padding:0;transition:background .2s,transform .2s;}
+  #themeToggle:hover{background:rgba(255,255,255,.18);transform:rotate(-12deg);}
+  #themeToggle:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+  #themeToggle svg{width:22px;height:22px;fill:currentColor;}
+  #themeToggle .icon-sun{display:none;}
+  :root[data-theme="dark"] #themeToggle .icon-moon{display:none;}
+  :root[data-theme="dark"] #themeToggle .icon-sun{display:block;}
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--blue-dark);font-family:'Source Sans 3',Arial,sans-serif;line-height:1.55;}
+  h1,h2,h3{font-family:'Playfair Display',Georgia,serif;margin:0 0 .4em;}
+  .band{height:12px;width:100%;background:linear-gradient(90deg,var(--blue) 33.3%,var(--gold) 33.3% 66.6%,var(--red) 66.6%);}
+  header{background:var(--header-bg);color:#fff;padding:2rem 1.5rem 1.6rem;}
+  header .inner{max-width:960px;margin:0 auto;position:relative;}
+  header h1{font-size:2.1rem;padding-right:56px;}
+  header .ro-title{color:var(--gold);font-style:italic;font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;}
+  header p{max-width:58ch;color:var(--hdr-text);margin-top:.6rem;}
+  nav{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.5rem;padding:1.2rem 1.5rem 0;}
+  nav button{font:inherit;font-size:.92rem;background:transparent;border:2px solid var(--blue);color:var(--blue);padding:.45rem .85rem;border-radius:2px;cursor:pointer;}
+  nav button:hover{background:var(--cream-dark);}
+  nav button.active{background:var(--red);border-color:var(--red);color:#fff;}
+  main{max-width:960px;margin:0 auto;padding:1.5rem 1.5rem 4rem;}
+  section{display:none;} section.active{display:block;}
+  .lead{max-width:65ch;color:var(--text2);margin-bottom:1.3rem;}
+  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem;}
+  .chip{border:1.5px solid var(--green);color:var(--green);background:transparent;padding:.35rem .85rem;border-radius:20px;font:inherit;font-size:.88rem;cursor:pointer;}
+  .chip.active{background:var(--green);color:#fff;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem;}
+  .card{background:var(--card);border:1px solid var(--cream-dark);border-left:5px solid var(--red);padding:.85rem 1rem;}
+  .card .glyph{font-family:'Playfair Display',Georgia,serif;font-size:1.9rem;color:var(--red);line-height:1;}
+  .card .sound{font-size:.9rem;color:var(--text2);margin-top:.25rem;}
+  .card .ex{font-size:.85rem;color:var(--green);font-style:italic;margin-top:.3rem;}
+  .row{background:var(--card);border:1px solid var(--cream-dark);border-left:4px solid var(--gold);padding:.55rem .85rem;margin-bottom:.45rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:baseline;}
+  .row .ro{font-family:'Playfair Display',Georgia,serif;font-size:1.1rem;color:var(--blue);min-width:11rem;}
+  .row .fr{color:var(--text2);}
+  .flashwrap{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+  .flashcard{width:100%;max-width:440px;height:230px;perspective:1200px;cursor:pointer;}
+  .fc-inner{position:relative;width:100%;height:100%;text-align:center;transition:transform .5s;transform-style:preserve-3d;}
+  .flashcard.flipped .fc-inner{transform:rotateY(180deg);}
+  .face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;border:1px solid var(--cream-dark);background:var(--card);padding:1.2rem;}
+  .face.front{border-top:6px solid var(--green);}
+  .face.back{transform:rotateY(180deg);border-top:6px solid var(--red);}
+  .face .word{font-family:'Playfair Display',Georgia,serif;font-size:1.6rem;}
+  .face .hint{position:absolute;bottom:.7rem;font-size:.78rem;color:var(--muted);}
+  .controls{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;}
+  .action{font:inherit;font-size:.9rem;padding:.5rem .9rem;border-radius:2px;cursor:pointer;border:2px solid var(--blue);background:transparent;color:var(--blue);}
+  .action.primary{background:var(--red);border-color:var(--red);color:#fff;}
+  .action.good{background:var(--green);border-color:var(--green);color:#fff;}
+  .action.bad{background:var(--red);border-color:var(--red);color:#fff;}
+  .prog-label{font-size:.9rem;color:var(--text2);}
+  .bar-track{background:var(--cream-dark);height:10px;border-radius:5px;overflow:hidden;flex:1;min-width:120px;}
+  .bar-fill{height:100%;background:var(--green);}
+  .prog-row{display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem;}
+  .prog-row .lbl{min-width:13rem;font-size:.92rem;}
+  .prog-row .num{font-size:.88rem;color:var(--text2);}
+  .quiz-box{background:var(--card);border:1px solid var(--cream-dark);padding:1.1rem;max-width:560px;}
+  .opt-btn{display:block;width:100%;text-align:left;margin-bottom:.5rem;padding:.6rem .8rem;border:1px solid var(--cream-dark);background:var(--cream);font:inherit;cursor:pointer;}
+  .opt-btn.ok{background:var(--green);color:#fff;} .opt-btn.ko{background:var(--red);color:#fff;}
+  .story, .gram{background:var(--card);border:1px solid var(--cream-dark);border-left:5px solid var(--gold);padding:1rem 1.15rem;margin-bottom:1.1rem;}
+  .gram{border-left-color:var(--green);}
+  .story-ro{font-family:'Playfair Display',Georgia,serif;font-size:1.05rem;line-height:1.85;}
+  details{margin-top:.8rem;border-top:1px dashed var(--cream-dark);padding-top:.6rem;}
+  summary{cursor:pointer;font-weight:700;color:var(--red);font-size:.92rem;}
+  .fr-text{color:var(--text2);margin-top:.5rem;}
+  .words{font-size:.9rem;color:var(--green);line-height:1.7;margin-top:.5rem;}
+  table.t{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.94rem;}
+  table.t td, table.t th{border:1px solid var(--cream-dark);padding:.35rem .55rem;text-align:left;}
+  table.t th{background:var(--cream-dark);}
+  td.ro-cell{font-family:'Playfair Display',Georgia,serif;color:var(--blue);}
+  .tip{background:var(--cream);border-left:3px solid var(--red);padding:.5rem .75rem;margin:.6rem 0;font-size:.93rem;}
+
+  .info-card{background:var(--card);border:1px solid var(--cream-dark);border-left:5px solid var(--gold);padding:.9rem 1.1rem;margin-bottom:1rem;}
+  .info-card h3{font-size:1.15rem;color:var(--blue);} .info-card p{margin:.35rem 0;}
+  .prayer-box{background:var(--cream);border-left:3px solid var(--red);padding:.7rem .9rem;margin:.6rem 0;white-space:pre-line;font-family:'Playfair Display',Georgia,serif;font-size:1rem;line-height:1.7;}
+  .culture-cta{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;margin:1rem 0;color:var(--text2);}
+  .face .sub{font-size:.9rem;color:var(--text2);margin-top:.5rem;padding:0 1rem;}
+  .face .word{padding:0 1rem;font-size:1.35rem;}
+  #cu-quiz-note{margin-top:.6rem;}
+  .quiz-question{font-weight:700;margin-bottom:.8rem;}
+</style>
+<script>
+(function(){
+  var t = null;
+  try{ t = localStorage.getItem('bg_theme'); }catch(e){}
+  if(!t){ t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }
+  document.documentElement.setAttribute('data-theme', t);
+})();
+</script>
+</head>
+<body>
+<header><div class="inner">
+  <button id="themeToggle" type="button" aria-label="Activer le thème sombre" title="Thème sombre">
+    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></g></svg>
+  </button>
+  <div class="ro-title">Să învățăm româna</div>
+  <h1>Apprendre le roumain — A1 / A2</h1>
+  <p>Alphabet et prononciation, vocabulaire thématique, flashcards (français ➔ roumain), quiz, histoires courtes et cours de grammaire.</p>
+</div></header>
+<div class="band"></div>
+
+<nav id="nav">
+  <button data-target="alpha" class="active">Alphabet</button>
+  <button data-target="vocab">Vocabulaire</button>
+  <button data-target="flash">Flashcards</button>
+  <button data-target="quiz">Quiz</button>
+  <button data-target="stories">Histoires A1</button>
+  <button data-target="grammar">Grammaire A1-A2</button>
+  <button data-target="verbs">Verbes</button>
+  <button data-target="prayers">Prières</button>
+  <button data-target="history">Histoire</button>
+  <button data-target="holidays">Fêtes</button>
+  <button data-target="pride">Fiertés 🇷🇴</button>
+  <button data-target="culture">Culture : cartes & quiz</button>
+  <button data-target="progress">Progression</button>
+</nav>
+
+<main>
+  <section id="sec-alpha" class="active">
+    <h2>Alphabet et prononciation</h2>
+    <p class="lead">Le roumain s'écrit en alphabet latin : 31 lettres, dont 5 avec signes diacritiques. La lecture est presque toujours régulière — chaque lettre se prononce.</p>
+    <div class="grid" id="alpha-grid"></div>
+    <div class="gram" style="margin-top:1.4rem">
+      <h3>Règles à retenir</h3>
+      <ul>
+        <li><b>ce, ci</b> = « tché, tchi » : <span class="ro-cell">centru</span> (tchèn-trou), <span class="ro-cell">cinci</span> (tchintch)</li>
+        <li><b>che, chi</b> = « ké, ki » : <span class="ro-cell">cheie</span> (ké-ié)</li>
+        <li><b>ge, gi</b> = « djé, dji » ; <b>ghe, ghi</b> = « gué, gui »</li>
+        <li><b>ș</b> = ch français, <b>ț</b> = ts</li>
+        <li><b>ă</b> = e muet (comme « le ») ; <b>â</b> et <b>î</b> = même son, entre « i » et « u », gorge serrée</li>
+        <li>L'accent tonique n'est pas écrit : il faut l'apprendre avec le mot.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="sec-vocab">
+    <h2>Vocabulaire par thème</h2>
+    <p class="lead">Choisis un thème pour revoir la liste complète.</p>
+    <div class="chips" id="vocab-chips"></div>
+    <div id="vocab-list"></div>
+  </section>
+
+  <section id="sec-flash">
+    <h2>Flashcards (français ➔ roumain)</h2>
+    <p class="lead">Le mot français apparaît d'abord. Clique sur la carte pour voir le roumain.</p>
+    <div class="chips" id="fc-chips"></div>
+    <div class="flashwrap">
+      <div class="flashcard" id="flashcard"><div class="fc-inner">
+        <div class="face front"><div class="word" id="fc-front">—</div><div class="hint">clique pour voir le roumain</div></div>
+        <div class="face back"><div class="word" id="fc-back">—</div><div class="hint">clique pour revenir</div></div>
+      </div></div>
+      <div class="controls">
+        <button class="action" id="fc-prev">← Précédent</button>
+        <button class="action bad" id="fc-no">Pas encore</button>
+        <button class="action good" id="fc-yes">Je connais</button>
+        <button class="action" id="fc-next">Suivant →</button>
+      </div>
+      <div class="prog-label" id="fc-prog"></div>
+    </div>
+  </section>
+
+  <section id="sec-quiz">
+    <h2>Quiz</h2>
+    <p class="lead">10 questions au hasard : retrouve le mot roumain.</p>
+    <div class="chips" id="quiz-chips"></div>
+    <div class="quiz-box" id="quiz-box"></div>
+  </section>
+
+  <section id="sec-stories">
+    <h2>5 histoires courtes (niveau A1)</h2>
+    <p class="lead">Lis d'abord le roumain à voix haute, puis ouvre la traduction pour vérifier.</p>
+    <div id="stories"></div>
+  </section>
+
+  <section id="sec-grammar">
+    <h2>Cours de grammaire A1 – A2</h2>
+    <p class="lead">Douze leçons courtes : l'essentiel du roumain de base.</p>
+    <div id="grammar"></div>
+  </section>
+
+  <section id="sec-progress">
+    <h2>Progression</h2>
+    <p class="lead">Mots marqués « je connais » et meilleurs scores de quiz, par thème.</p>
+    <div id="prog-list"></div>
+    <button class="action primary" id="reset-all" style="margin-top:1rem">Tout réinitialiser</button>
+  </section>
+
+  <section id="sec-verbs">
+    <h2>Verbes et tableaux de conjugaison</h2>
+    <p class="lead">Les verbes indispensables du roumain : présent, passé composé (« am / ai / a… » + participe) et futur (« voi / vei / va… » + infinitif). À l'oral, le futur se dit souvent <span class="ro-cell">o să</span> + subjonctif : <span class="ro-cell">o să merg</span>.</p>
+    <div id="verb-tables"></div>
+  </section>
+
+  <section id="sec-prayers">
+    <h2>Spiritualité : prières orthodoxes roumaines</h2>
+    <p class="lead">Le Notre Père et le Symbole de la foi (Credo) en roumain et en français.</p>
+<div class="info-card"><h3>1. Le Notre Père (« Tatăl nostru »)</h3><div class="prayer-box"><strong>En roumain :</strong>
+Doamne, miluiește.
+Tatăl nostru, Care ești în ceruri, sfințească-se numele Tău, vie Împărăția Ta, facă-se voia Ta, precum în cer așa și pe pământ.
+Pâinea noastră cea de toate zilele dă-ne-o nouă astăzi, și ne iartă nouă greșelile noastre, precum și noi iertăm greșiților noștri, și nu ne duce pe noi în ispită, ci ne izbăvește de cel rău. Amin.</div>
+<div class="prayer-box"><strong>En français :</strong>
+Seigneur, prends pitié.
+Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienne, que ta volonté soit faite sur la terre comme au ciel. Donne-nous aujourd'hui notre pain de ce jour. Pardonne-nous nos offenses, comme nous pardonnons aussi à ceux qui nous ont offensés. Et ne nous laisse pas entrer en tentation, mais délivre-nous du Mal. Amen.</div></div>
+<div class="info-card"><h3>2. Le Credo orthodoxe (« Simbolul credinței »)</h3><div class="prayer-box"><strong>En roumain :</strong>
+1. Cred întru unul Dumnezeu, Tatăl Atotțiitorul, Făcătorul cerului și al pământului, văzutelor tuturor și nevăzutelor.
+2. Și întru unul Domn Iisus Hristos, Fiul lui Dumnezeu, Unul-Născut, Cel ce din Tatăl S-a născut mai înainte de toți vecii; Lumină din Lumină, Dumnezeu adevărat din Dumnezeu adevărat, născut, iar nu făcut, Cel de o ființă cu Tatăl, prin Care toate s-au făcut.
+3. Care pentru noi oamenii și pentru a noastră mântuire S-a pogorât din ceruri și S-a întrupat de la Duhul Sfânt și din Fecioara Maria și S-a făcut om.
+4. Și S-a răstignit pentru noi în zilele lui Pontiu Pilat, și a pătimit și S-a îngropat.
+5. Și a înviat a treia zi, după Scripturi.
+6. Și S-a înălțat la ceruri și șade de-a dreapta Tatălui.
+7. Și iarăși va să vină cu slavă să judece viii și morții, a Cărui Împărăție nu va avea sfârșit.
+8. Și întru Duhul Sfânt, Domnul de viață Făcătorul, Care din Tatăl purcede, Cela ce împreună cu Tatăl și cu Fiul este închinat și slăvit, Care a grăit prin prooroci.
+9. Într-una, sfântă, sobornicească și apostolească Biserică.
+10. Mărturisesc un botez întru iertarea păcatelor.
+11. Aștept învierea morților.
+12. Și viața veacului ce va să fie. Amin.</div>
+<div class="prayer-box"><strong>En français :</strong>
+1. Je crois en un seul Dieu, le Père tout-puissant, créateur du ciel et de la terre, de toutes les choses visibles et invisibles.
+2. Et en un seul Seigneur, Jésus-Christ, le Fils unique de Dieu, né du Père avant tous les siècles : Lumière de Lumière, vrai Dieu de vrai Dieu, engendré, non créé, consubstantiel au Père, et par qui tout a été fait.
+3. Lequel pour nous les hommes, et pour notre salut, est descendu des cieux, s'est incarné du Saint-Esprit et de la Vierge Marie, et s'est fait homme.
+4. Il a été crucifié pour nous sous Ponce Pilate, a souffert et a été enseveli.
+5. Il est ressuscité le troisième jour, selon les Écritures.
+6. Il est monté aux cieux, et est assis à la droite du Père.
+7. Et il reviendra dans la gloire pour juger les vivants et les morts ; et son règne n'aura point de fin.
+8. Et en l'Esprit Saint, Seigneur, qui donne la vie, qui procède du Père, qui avec le Père et le Fils est adoré et glorifié, qui a parlé par les prophètes.
+9. En l'Église, une, sainte, catholique et apostolique.
+10. Je confesse un seul baptême pour la rémission des péchés.
+11. J'attends la résurrection des morts.
+12. Et la vie du siècle à venir. Amen.</div></div>
+  </section>
+
+  <section id="sec-history">
+    <h2>Histoire de la Roumanie : Daces, principautés, unions et liberté</h2>
+    <p class="lead">Des Daces et de la conquête romaine aux principautés médiévales, à l'Union de 1859, à la Grande Union de 1918, au communisme et à la Roumanie européenne.</p>
+<div class="info-card"><h3>1. Daces et Romains</h3><p>• <strong>Burebista</strong> (Ier s. av. J.-C.) unifie les Daces. <strong>Decebal</strong> résiste à Rome sous <strong>Décébale/Trajan</strong>.</p><p>• <strong>106 apr. J.-C. :</strong> après deux guerres (101-102, 105-106), Trajan conquiert la Dacie. <strong>Sarmizegetusa</strong> était la capitale dace ; la <strong>Colonne de Trajan</strong> (Rome) raconte ces guerres.</p><p>• De la fusion des Daces et des Romains naît le peuple roumain, dont la langue est romane (« daco-roumaine »).</p></div>
+<div class="info-card"><h3>2. Fondation des principautés (Moyen Âge)</h3><p>• <strong>Valachie (Țara Românească) :</strong> <strong>Basarab Ier</strong> bat le roi hongrois Charles Ier à <strong>Posada (1330)</strong>.</p><p>• <strong>Moldavie :</strong> fondée au XIVe siècle par <strong>Dragoș</strong> puis <strong>Bogdan Ier</strong>.</p><p>• <strong>Transylvanie :</strong> longtemps sous domination hongroise puis habsbourgeoise, avec une forte présence roumaine.</p></div>
+<div class="info-card"><h3>3. Grands princes</h3><p>• <strong>Mircea cel Bătrân (Mircea l'Ancien) :</strong> prince de Valachie ; victoire de <strong>Rovine (1394/1395)</strong> contre Bayezid Ier.</p><p>• <strong>Vlad Țepeș (Vlad l'Empaleur, Vlad III, 1456-1462) :</strong> défenseur de la Valachie contre les Ottomans ; inspiration lointaine du mythe de Dracula.</p><p>• <strong>Ștefan cel Mare (Étienne le Grand, 1457-1504) :</strong> prince de Moldavie, vainqueur à <strong>Vaslui (1475)</strong>, bâtisseur de dizaines d'églises et de monastères ; canonisé en 1992.</p><p>• <strong>Mihai Viteazul (Michel le Brave) :</strong> en <strong>1600</strong>, il réunit pour un court moment la Valachie, la Moldavie et la Transylvanie.</p></div>
+<div class="info-card"><h3>4. Domination ottomane et phanariotes</h3><p>Les principautés gardent leur autonomie mais paient tribut aux Ottomans. Au XVIIIe siècle, des princes grecs du quartier du Phanar (Constantinople) gouvernent (« régime phanariote »).</p><p>• <strong>Tudor Vladimirescu :</strong> chef du soulèvement de <strong>1821</strong>, qui met fin au régime phanariote.</p></div>
+<div class="info-card"><h3>5. 1848 et l'Union des Principautés</h3><p>• <strong>1848 :</strong> révolutions en Valachie, Moldavie et Transylvanie (Nicolae Bălcescu, Avram Iancu, Mihail Kogălniceanu…).</p><p>• <strong>24 janvier 1859 :</strong> <strong>Alexandru Ioan Cuza</strong> est élu prince de Moldavie puis de Valachie : c'est la <strong>Mica Unire (Petite Union)</strong>, base de la Roumanie moderne.</p></div>
+<div class="info-card"><h3>6. Indépendance et royaume</h3><p>• <strong>9 mai 1877 :</strong> proclamation de l'indépendance pendant la guerre russo-turque ; les Roumains combattent à <strong>Plevna</strong>. Elle est reconnue en 1878 (Congrès de Berlin).</p><p>• <strong>1866 :</strong> Carol Ier devient prince. <strong>1881 :</strong> il devient le premier roi de Roumanie.</p></div>
+<div class="info-card"><h3>7. La Grande Union (1918)</h3><p>Pendant la Première Guerre mondiale, l'armée roumaine résiste à <strong>Mărășești</strong> et <strong>Oituz (1917)</strong>. En <strong>1918</strong>, la Bessarabie (mars), la Bucovine (novembre) puis la Transylvanie s'unissent au Royaume.</p><p>• <strong>1er décembre 1918 :</strong> l'assemblée d'<strong>Alba Iulia</strong> proclame l'union de la Transylvanie avec la Roumanie : c'est la <strong>Marea Unire</strong>. Le roi <strong>Ferdinand Ier</strong> et la reine <strong>Marie</strong> en sont les figures.</p></div>
+<div class="info-card"><h3>8. Communisme et révolution</h3><p>• <strong>1947 :</strong> abdication forcée du roi Michel Ier ; la Roumanie devient une république populaire. <strong>Nicolae Ceaușescu</strong> dirige le pays de 1965 à 1989, avec un régime de plus en plus dur.</p><p>• <strong>Décembre 1989 :</strong> la révolte commence à <strong>Timișoara (16 décembre)</strong> et gagne Bucarest ; Ceaușescu est renversé et exécuté le <strong>25 décembre 1989</strong>.</p></div>
+<div class="info-card"><h3>9. Roumanie contemporaine</h3><p><strong>1991 :</strong> nouvelle Constitution. <strong>2004 :</strong> adhésion à l'OTAN. <strong>1er janvier 2007 :</strong> adhésion à l'Union européenne.</p></div>
+<div class="culture-cta"><span>Réviser l'histoire :</span><button class="action primary cu-jump" data-cat="hist" data-mode="cards">📇 Flashcards</button><button class="action cu-jump" data-cat="hist" data-mode="quiz">📝 Quiz</button></div>  </section>
+
+  <section id="sec-holidays">
+    <h2>Fêtes, saints et grandes dates roumaines</h2>
+    <p class="lead">Fêtes orthodoxes, traditions populaires, fêtes nationales et grandes dates de mémoire.</p>
+<div class="info-card"><h3>1. An Nou — Nouvel An (1er janvier)</h3><p>Sf. Vasile (saint Basile) le 1er janvier. Traditions : <em>Plugușorul</em> (chant de vœux de bonne récolte) et <em>Sorcova</em> (branche fleurie pour les vœux).</p></div>
+<div class="info-card"><h3>2. Boboteaza — Théophanie (6 janvier)</h3><p>Grande fête orthodoxe : bénédiction des eaux ; une croix est jetée dans l'eau (rivière ou lac) et des hommes plongent pour la récupérer. Le 7 janvier : Sf. Ioan Botezătorul.</p></div>
+<div class="info-card"><h3>3. Ziua Unirii Principatelor Române (24 janvier)</h3><p>Commémore la Petite Union de 1859 sous Cuza. Fête nationale non officielle mais célébrée avec la <em>Hora Unirii</em>.</p></div>
+<div class="info-card"><h3>4. Mărțișor (1er mars)</h3><p>On offre un <em>mărțișor</em> : petit objet attaché à un cordon rouge et blanc, porté du 1er au 9 mars, symbole du printemps, de la santé et de la chance (aussi 8 mars : Journée de la femme).</p></div>
+<div class="info-card"><h3>5. Florii — Dimanche des Rameaux</h3><p>Une semaine avant Pâques, on bénit des branches de saule.</p></div>
+<div class="info-card"><h3>6. Paștele — Pâques orthodoxes</h3><p>La plus grande fête chrétienne. Œufs rouges (on les tape en disant <strong>Hristos a înviat! — Adevărat a înviat!</strong>), <em>cozonac</em>, <em>drob de miel</em>, <em>pasca</em>, veillée pascale (<em>Lumina</em>, la lumière de la Résurrection).</p></div>
+<div class="info-card"><h3>7. Sfântul Gheorghe (23 avril)</h3><p>Fête de saint Georges : protecteur des bergers et du printemps.</p></div>
+<div class="info-card"><h3>8. 9 mai — Ziua Independenței și Ziua Europei</h3><p>Indépendance de 1877 et Journée de l'Europe.</p></div>
+<div class="info-card"><h3>9. Sf. Constantin și Elena (21 mai)</h3><p>Empereur Constantin et sa mère Hélène ; fête de nombreuses personnes prénommées Constantin, Elena, Costel, Ileana.</p></div>
+<div class="info-card"><h3>10. Rusaliile — Pentecôte</h3><p>Cinquante jours après Pâques, fête de l'Esprit Saint et de la Trinité ; lundi de Pentecôte férié.</p></div>
+<div class="info-card"><h3>11. Adormirea Maicii Domnului — Dormition (15 août)</h3><p>Grande fête mariale (Sfânta Maria Mare) : pèlerinages, notamment dans les monastères de Moldavie et de Transylvanie.</p></div>
+<div class="info-card"><h3>12. Sf. Andrei (30 novembre)</h3><p>Saint apôtre André, considéré comme « apôtre des Roumains ». Fête nationale avec traditions dont le basilic et l'ail pour la protection (folklore).</p></div>
+<div class="info-card"><h3>13. 1er décembre — Ziua Națională a României</h3><p><strong>Fête nationale officielle</strong> : Grande Union de 1918 (Alba Iulia).</p></div>
+<div class="info-card"><h3>14. Sfântul Nicolae (6 décembre)</h3><p>Saint Nicolas : les enfants reçoivent des cadeaux dans leurs chaussures cirées la veille.</p></div>
+<div class="info-card"><h3>15. Crăciunul — Noël (25-26 décembre)</h3><p><em>Colinde</em> (chants de Noël), <em>sarmale</em>, <em>cozonac</em>, sapin, <em>Moș Crăciun</em>. Le porc est traditionnellement tué à l'Ignat (20 décembre) ; visites et chants de porte en porte.</p></div>
+<div class="info-card"><h3>16. Dragobete (24 février)</h3><p>Fête de l'amour traditionnelle roumaine, parfois appelée « Saint-Valentin roumaine ».</p></div>
+<div class="info-card"><h3>17. 1er mai / 1er juin</h3><p>1er mai : fête du travail. 1er juin : Journée des enfants (Ziua Copilului).</p></div>
+<div class="info-card"><h3>18. 25 octobre — Ziua Armatei României</h3><p>Journée de l'Armée roumaine.</p></div>
+<div class="info-card"><h3>19. 22 décembre 1989 — Chute de Ceaușescu</h3><p>Grande date de mémoire ; fête nationale non officielle, jour de la victoire de la révolution.</p></div>
+<div class="culture-cta"><span>Réviser le calendrier :</span><button class="action primary cu-jump" data-cat="fetes" data-mode="cards">📇 Flashcards</button><button class="action cu-jump" data-cat="fetes" data-mode="quiz">📝 Quiz</button></div>  </section>
+
+  <section id="sec-pride">
+    <h2>🇷🇴 Fiertés roumaines : héros, victoires, patrimoine et symboles</h2>
+    <p class="lead">Ce que la mémoire nationale roumaine associe à son histoire, sa culture, sa spiritualité et ses réussites.</p>
+<div class="info-card"><h3>🏆 Grandes victoires</h3><p>• <strong>Posada (1330)</strong> — Basarab Ier · <strong>Rovine (1395)</strong> — Mircea cel Bătrân · <strong>Vaslui (1475)</strong> — Ștefan cel Mare · <strong>Călugăreni (1595)</strong> — Mihai Viteazul · <strong>Plevna (1877)</strong> · <strong>Mărășești et Oituz (1917)</strong>.</p></div>
+<div class="info-card"><h3>👑 Grands princes et rois</h3><p><strong>Burebista, Decebal</strong> — Daces · <strong>Mircea cel Bătrân</strong> · <strong>Vlad Țepeș</strong> · <strong>Ștefan cel Mare</strong> · <strong>Mihai Viteazul</strong> · <strong>Alexandru Ioan Cuza</strong> — Union de 1859 · <strong>Carol Ier</strong> — premier roi · <strong>Ferdinand Ier</strong> — Grande Union · <strong>Regina Maria</strong> — reine Marie.</p></div>
+<div class="info-card"><h3>✍️ Culture et arts</h3><p><strong>Mihai Eminescu</strong> — poète national · <strong>Ion Creangă</strong> · <strong>I. L. Caragiale</strong> — dramaturge · <strong>Constantin Brâncuși</strong> — sculpteur (<em>Coloana Infinitului</em>, <em>Masa Tăcerii</em>) · <strong>George Enescu</strong> — compositeur (<em>Rapsodiile Române</em>) · <strong>Mircea Eliade</strong> — historien des religions.</p></div>
+<div class="info-card"><h3>☦️ Spiritualité et monastères</h3><p>Les <strong>monastères peints de Bucovine</strong> (Voroneț, « chapelle Sixtine de l'Orient », avec son célèbre bleu ; Suceava, Moldovița, Humor, Arbore) sont au patrimoine de l'UNESCO. À connaître : <strong>Putna</strong> (tombeau de Ștefan cel Mare), <strong>Curtea de Argeș</strong>, <strong>Cozia</strong>, <strong>Horezu</strong>, <strong>Neamț</strong>. Saint patron : <strong>Sf. Andrei</strong> ; sainte <strong>Parascheva</strong> (Iași) attire de nombreux pèlerins.</p></div>
+<div class="info-card"><h3>🏛️ Lieux emblématiques</h3><p><strong>Sarmizegetusa Regia</strong> · <strong>Château de Bran</strong> · <strong>Château de Peleș</strong> (Sinaia) · <strong>Sighișoara</strong> · <strong>Palais du Parlement</strong> (Bucarest) · <strong>Delta du Danube</strong> · <strong>Églises en bois du Maramureș</strong> · <strong>Cimitirul Vesel de la Săpânța</strong> · <strong>Transfăgărășan</strong> · <strong>Cluj-Napoca</strong>, <strong>Brașov</strong>, <strong>Sibiu</strong>.</p></div>
+<div class="info-card"><h3>🤸 Sport</h3><p><strong>Nadia Comăneci</strong> — premier 10 parfait de l'histoire de la gymnastique, aux Jeux de Montréal 1976 · <strong>Gheorghe Hagi</strong> — « le Maradona des Carpates » · <strong>Ilie Năstase</strong> et <strong>Simona Halep</strong> — tennis · <strong>Ivan Patzaichin</strong> — canoë · aviron, gymnastique, handball.</p></div>
+<div class="info-card"><h3>🎶 Folklore et traditions</h3><p><strong>Hora</strong> (danse en cercle) · <strong>doina</strong> (chant lyrique) · <strong>căluș</strong> (danse rituelle) · <strong>ia</strong> (blouse brodée traditionnelle, avec sa Journée mondiale le 24 juin) · <strong>mămăligă</strong> · <strong>țuică</strong> · <strong>ceramica de Horezu</strong> · <strong>colinde</strong>.</p></div>
+<div class="info-card"><h3>🦅 Symboles nationaux</h3><p>Le drapeau est un <strong>tricolore vertical : bleu, jaune, rouge</strong> (bleu côté hampe). Les armoiries portent un <strong>aigle</strong> ; le loup dace (<em>dracul</em>) est un emblème ancien. L'hymne national est <strong>« Deșteaptă-te, române! »</strong>.</p></div>
+<div class="info-card"><h3>🇷🇴 Les trois dates clés</h3><p><strong>24 janvier 1859 — Petite Union</strong> → <strong>9 mai 1877 — Indépendance</strong> → <strong>1er décembre 1918 — Grande Union</strong>.</p></div>
+<div class="culture-cta"><span>Réviser les fiertés :</span><button class="action primary cu-jump" data-cat="fierte" data-mode="cards">📇 Flashcards</button><button class="action cu-jump" data-cat="fierte" data-mode="quiz">📝 Quiz</button></div>  </section>
+
+  <section id="sec-culture">
+    <h2>Culture roumaine : flashcards & quiz</h2>
+    <p class="lead">Révise l'histoire, les fêtes et les fiertés roumaines. Choisis un thème, puis entraîne-toi avec les cartes (question ➔ réponse) ou teste-toi avec le quiz.</p>
+    <div class="chips" id="cu-chips"></div>
+    <div class="controls" style="margin-bottom:1rem"><button class="action primary" id="cu-mode-cards">📇 Flashcards</button><button class="action" id="cu-mode-quiz">📝 Quiz</button></div>
+    <div id="cu-cards-wrap" class="flashwrap">
+      <div class="flashcard" id="cu-flashcard"><div class="fc-inner">
+        <div class="face front"><div class="word" id="cu-front-word">—</div><div class="hint">clique pour voir la réponse</div></div>
+        <div class="face back"><div class="word" id="cu-back-word">—</div><div class="sub" id="cu-back-sub"></div><div class="hint">clique pour revenir</div></div>
+      </div></div>
+      <div class="controls"><button class="action" id="cu-prev">← Précédent</button><button class="action bad" id="cu-dontknow">Pas encore</button><button class="action good" id="cu-know">Je connais</button><button class="action" id="cu-next">Suivant →</button></div>
+      <div class="controls"><button class="action" id="cu-shuffle">🔀 Mélanger les cartes</button></div>
+      <div class="prog-label" id="cu-progress"></div>
+    </div>
+    <div class="quiz-box" id="cu-quiz-box" style="display:none;"></div>
+  </section>
+</main>
+
+<script>
+const VOCAB = {
+ "base": {
+  "label": "Base : pronoms, gens & questions",
+  "items": [
+   {
+    "ro": "eu",
+    "fr": "je"
+   },
+   {
+    "ro": "tu",
+    "fr": "tu"
+   },
+   {
+    "ro": "el",
+    "fr": "il"
+   },
+   {
+    "ro": "ea",
+    "fr": "elle"
+   },
+   {
+    "ro": "noi",
+    "fr": "nous"
+   },
+   {
+    "ro": "voi",
+    "fr": "vous"
+   },
+   {
+    "ro": "ei",
+    "fr": "ils"
+   },
+   {
+    "ro": "ele",
+    "fr": "elles"
+   },
+   {
+    "ro": "om",
+    "fr": "homme / être humain"
+   },
+   {
+    "ro": "oameni",
+    "fr": "gens"
+   },
+   {
+    "ro": "bărbat",
+    "fr": "homme"
+   },
+   {
+    "ro": "femeie",
+    "fr": "femme"
+   },
+   {
+    "ro": "copil",
+    "fr": "enfant"
+   },
+   {
+    "ro": "băiat",
+    "fr": "garçon"
+   },
+   {
+    "ro": "fată",
+    "fr": "fille"
+   },
+   {
+    "ro": "prieten",
+    "fr": "ami"
+   },
+   {
+    "ro": "prietenă",
+    "fr": "amie"
+   },
+   {
+    "ro": "vecin",
+    "fr": "voisin"
+   },
+   {
+    "ro": "domn",
+    "fr": "monsieur"
+   },
+   {
+    "ro": "doamnă",
+    "fr": "madame"
+   },
+   {
+    "ro": "domnișoară",
+    "fr": "mademoiselle"
+   },
+   {
+    "ro": "nume",
+    "fr": "nom"
+   },
+   {
+    "ro": "prenume",
+    "fr": "prénom"
+   },
+   {
+    "ro": "adresă",
+    "fr": "adresse"
+   },
+   {
+    "ro": "telefon",
+    "fr": "téléphone"
+   },
+   {
+    "ro": "țară",
+    "fr": "pays"
+   },
+   {
+    "ro": "oraș",
+    "fr": "ville"
+   },
+   {
+    "ro": "sat",
+    "fr": "village"
+   },
+   {
+    "ro": "limbă",
+    "fr": "langue"
+   },
+   {
+    "ro": "cuvânt",
+    "fr": "mot"
+   },
+   {
+    "ro": "întrebare",
+    "fr": "question"
+   },
+   {
+    "ro": "răspuns",
+    "fr": "réponse"
+   },
+   {
+    "ro": "problemă",
+    "fr": "problème"
+   },
+   {
+    "ro": "ceva",
+    "fr": "quelque chose"
+   },
+   {
+    "ro": "nimic",
+    "fr": "rien"
+   },
+   {
+    "ro": "tot",
+    "fr": "tout"
+   },
+   {
+    "ro": "cineva",
+    "fr": "quelqu'un"
+   },
+   {
+    "ro": "nimeni",
+    "fr": "personne (ne… personne)"
+   },
+   {
+    "ro": "salut",
+    "fr": "salut"
+   },
+   {
+    "ro": "bună",
+    "fr": "bonjour / salut"
+   },
+   {
+    "ro": "bună ziua",
+    "fr": "bonjour"
+   },
+   {
+    "ro": "bună dimineața",
+    "fr": "bonjour (le matin)"
+   },
+   {
+    "ro": "bună seara",
+    "fr": "bonsoir"
+   },
+   {
+    "ro": "noapte bună",
+    "fr": "bonne nuit"
+   },
+   {
+    "ro": "la revedere",
+    "fr": "au revoir"
+   },
+   {
+    "ro": "pa",
+    "fr": "salut (au revoir)"
+   },
+   {
+    "ro": "mulțumesc",
+    "fr": "merci"
+   },
+   {
+    "ro": "cu plăcere",
+    "fr": "je vous en prie"
+   },
+   {
+    "ro": "te rog",
+    "fr": "s'il te plaît"
+   },
+   {
+    "ro": "vă rog",
+    "fr": "s'il vous plaît"
+   },
+   {
+    "ro": "scuze",
+    "fr": "excuse-moi"
+   },
+   {
+    "ro": "scuzați-mă",
+    "fr": "excusez-moi"
+   },
+   {
+    "ro": "îmi pare rău",
+    "fr": "je suis désolé"
+   },
+   {
+    "ro": "da",
+    "fr": "oui"
+   },
+   {
+    "ro": "nu",
+    "fr": "non / ne… pas"
+   },
+   {
+    "ro": "bine",
+    "fr": "bien"
+   },
+   {
+    "ro": "rău",
+    "fr": "mal"
+   },
+   {
+    "ro": "sigur",
+    "fr": "bien sûr"
+   },
+   {
+    "ro": "poate",
+    "fr": "peut-être"
+   },
+   {
+    "ro": "adevărat",
+    "fr": "vrai"
+   },
+   {
+    "ro": "greșit",
+    "fr": "faux / incorrect"
+   },
+   {
+    "ro": "cum",
+    "fr": "comment"
+   },
+   {
+    "ro": "ce",
+    "fr": "quoi / que"
+   },
+   {
+    "ro": "cine",
+    "fr": "qui"
+   },
+   {
+    "ro": "care",
+    "fr": "lequel / quel"
+   },
+   {
+    "ro": "unde",
+    "fr": "où"
+   },
+   {
+    "ro": "de unde",
+    "fr": "d'où"
+   },
+   {
+    "ro": "când",
+    "fr": "quand"
+   },
+   {
+    "ro": "de ce",
+    "fr": "pourquoi"
+   },
+   {
+    "ro": "cât",
+    "fr": "combien"
+   },
+   {
+    "ro": "al cui",
+    "fr": "à qui"
+   },
+   {
+    "ro": "acesta",
+    "fr": "celui-ci / ce"
+   },
+   {
+    "ro": "aceasta",
+    "fr": "celle-ci / cette"
+   },
+   {
+    "ro": "acela",
+    "fr": "celui-là"
+   },
+   {
+    "ro": "acolo",
+    "fr": "là-bas"
+   },
+   {
+    "ro": "aici",
+    "fr": "ici"
+   },
+   {
+    "ro": "acum",
+    "fr": "maintenant"
+   },
+   {
+    "ro": "mai târziu",
+    "fr": "plus tard"
+   },
+   {
+    "ro": "deja",
+    "fr": "déjà"
+   },
+   {
+    "ro": "încă",
+    "fr": "encore"
+   },
+   {
+    "ro": "mult",
+    "fr": "beaucoup"
+   },
+   {
+    "ro": "puțin",
+    "fr": "peu"
+   },
+   {
+    "ro": "foarte",
+    "fr": "très"
+   },
+   {
+    "ro": "meu",
+    "fr": "mon / mien"
+   },
+   {
+    "ro": "tău",
+    "fr": "ton / tien"
+   },
+   {
+    "ro": "său",
+    "fr": "son / sien"
+   },
+   {
+    "ro": "nostru",
+    "fr": "notre"
+   },
+   {
+    "ro": "vostru",
+    "fr": "votre"
+   },
+   {
+    "ro": "lor",
+    "fr": "leur"
+   }
+  ]
+ },
+ "family": {
+  "label": "Famille, maison & objets",
+  "items": [
+   {
+    "ro": "familie",
+    "fr": "famille"
+   },
+   {
+    "ro": "mamă",
+    "fr": "mère"
+   },
+   {
+    "ro": "tată",
+    "fr": "père"
+   },
+   {
+    "ro": "părinți",
+    "fr": "parents"
+   },
+   {
+    "ro": "fiu",
+    "fr": "fils"
+   },
+   {
+    "ro": "fiică",
+    "fr": "fille (de qqn)"
+   },
+   {
+    "ro": "frate",
+    "fr": "frère"
+   },
+   {
+    "ro": "soră",
+    "fr": "sœur"
+   },
+   {
+    "ro": "soț",
+    "fr": "mari"
+   },
+   {
+    "ro": "soție",
+    "fr": "épouse"
+   },
+   {
+    "ro": "bunică",
+    "fr": "grand-mère"
+   },
+   {
+    "ro": "bunic",
+    "fr": "grand-père"
+   },
+   {
+    "ro": "nepot",
+    "fr": "petit-fils / neveu"
+   },
+   {
+    "ro": "nepoată",
+    "fr": "petite-fille / nièce"
+   },
+   {
+    "ro": "unchi",
+    "fr": "oncle"
+   },
+   {
+    "ro": "mătușă",
+    "fr": "tante"
+   },
+   {
+    "ro": "văr",
+    "fr": "cousin"
+   },
+   {
+    "ro": "verișoară",
+    "fr": "cousine"
+   },
+   {
+    "ro": "rudă",
+    "fr": "parent (de la famille)"
+   },
+   {
+    "ro": "căsătorie",
+    "fr": "mariage"
+   },
+   {
+    "ro": "nuntă",
+    "fr": "noces"
+   },
+   {
+    "ro": "dragoste",
+    "fr": "amour"
+   },
+   {
+    "ro": "prietenie",
+    "fr": "amitié"
+   },
+   {
+    "ro": "adult",
+    "fr": "adulte"
+   },
+   {
+    "ro": "vârstă",
+    "fr": "âge"
+   },
+   {
+    "ro": "bebeluș",
+    "fr": "bébé"
+   },
+   {
+    "ro": "oaspete",
+    "fr": "invité"
+   },
+   {
+    "ro": "casă",
+    "fr": "maison"
+   },
+   {
+    "ro": "apartament",
+    "fr": "appartement"
+   },
+   {
+    "ro": "clădire",
+    "fr": "bâtiment"
+   },
+   {
+    "ro": "etaj",
+    "fr": "étage"
+   },
+   {
+    "ro": "cameră",
+    "fr": "pièce / chambre"
+   },
+   {
+    "ro": "dormitor",
+    "fr": "chambre à coucher"
+   },
+   {
+    "ro": "bucătărie",
+    "fr": "cuisine"
+   },
+   {
+    "ro": "baie",
+    "fr": "salle de bains"
+   },
+   {
+    "ro": "toaletă",
+    "fr": "toilettes"
+   },
+   {
+    "ro": "sufragerie",
+    "fr": "salon / salle à manger"
+   },
+   {
+    "ro": "hol",
+    "fr": "couloir"
+   },
+   {
+    "ro": "balcon",
+    "fr": "balcon"
+   },
+   {
+    "ro": "grădină",
+    "fr": "jardin"
+   },
+   {
+    "ro": "curte",
+    "fr": "cour"
+   },
+   {
+    "ro": "garaj",
+    "fr": "garage"
+   },
+   {
+    "ro": "ușă",
+    "fr": "porte"
+   },
+   {
+    "ro": "fereastră",
+    "fr": "fenêtre"
+   },
+   {
+    "ro": "perete",
+    "fr": "mur"
+   },
+   {
+    "ro": "podea",
+    "fr": "sol"
+   },
+   {
+    "ro": "tavan",
+    "fr": "plafond"
+   },
+   {
+    "ro": "acoperiș",
+    "fr": "toit"
+   },
+   {
+    "ro": "scară",
+    "fr": "escalier"
+   },
+   {
+    "ro": "lift",
+    "fr": "ascenseur"
+   },
+   {
+    "ro": "cheie",
+    "fr": "clé"
+   },
+   {
+    "ro": "masă",
+    "fr": "table"
+   },
+   {
+    "ro": "scaun",
+    "fr": "chaise"
+   },
+   {
+    "ro": "canapea",
+    "fr": "canapé"
+   },
+   {
+    "ro": "pat",
+    "fr": "lit"
+   },
+   {
+    "ro": "dulap",
+    "fr": "armoire"
+   },
+   {
+    "ro": "raft",
+    "fr": "étagère"
+   },
+   {
+    "ro": "oglindă",
+    "fr": "miroir"
+   },
+   {
+    "ro": "lampă",
+    "fr": "lampe"
+   },
+   {
+    "ro": "lumină",
+    "fr": "lumière"
+   },
+   {
+    "ro": "televizor",
+    "fr": "télévision"
+   },
+   {
+    "ro": "calculator",
+    "fr": "ordinateur"
+   },
+   {
+    "ro": "ceas",
+    "fr": "horloge / montre"
+   },
+   {
+    "ro": "tablou",
+    "fr": "tableau"
+   },
+   {
+    "ro": "fotografie",
+    "fr": "photo"
+   },
+   {
+    "ro": "carte",
+    "fr": "livre"
+   },
+   {
+    "ro": "caiet",
+    "fr": "cahier"
+   },
+   {
+    "ro": "pix",
+    "fr": "stylo"
+   },
+   {
+    "ro": "creion",
+    "fr": "crayon"
+   },
+   {
+    "ro": "hârtie",
+    "fr": "papier"
+   },
+   {
+    "ro": "geantă",
+    "fr": "sac"
+   },
+   {
+    "ro": "cutie",
+    "fr": "boîte"
+   },
+   {
+    "ro": "sticlă",
+    "fr": "bouteille"
+   },
+   {
+    "ro": "pahar",
+    "fr": "verre"
+   },
+   {
+    "ro": "cană",
+    "fr": "tasse"
+   },
+   {
+    "ro": "farfurie",
+    "fr": "assiette"
+   },
+   {
+    "ro": "lingură",
+    "fr": "cuillère"
+   },
+   {
+    "ro": "furculiță",
+    "fr": "fourchette"
+   },
+   {
+    "ro": "cuțit",
+    "fr": "couteau"
+   },
+   {
+    "ro": "oală",
+    "fr": "casserole"
+   },
+   {
+    "ro": "tigaie",
+    "fr": "poêle"
+   },
+   {
+    "ro": "prosop",
+    "fr": "serviette"
+   },
+   {
+    "ro": "săpun",
+    "fr": "savon"
+   },
+   {
+    "ro": "periuță",
+    "fr": "brosse (à dents)"
+   }
+  ]
+ },
+ "food": {
+  "label": "Nourriture, boissons & restaurant",
+  "items": [
+   {
+    "ro": "mâncare",
+    "fr": "nourriture"
+   },
+   {
+    "ro": "fel de mâncare",
+    "fr": "plat"
+   },
+   {
+    "ro": "mic dejun",
+    "fr": "petit-déjeuner"
+   },
+   {
+    "ro": "prânz",
+    "fr": "déjeuner"
+   },
+   {
+    "ro": "cină",
+    "fr": "dîner"
+   },
+   {
+    "ro": "pâine",
+    "fr": "pain"
+   },
+   {
+    "ro": "unt",
+    "fr": "beurre"
+   },
+   {
+    "ro": "brânză",
+    "fr": "fromage"
+   },
+   {
+    "ro": "lapte",
+    "fr": "lait"
+   },
+   {
+    "ro": "iaurt",
+    "fr": "yaourt"
+   },
+   {
+    "ro": "smântână",
+    "fr": "crème"
+   },
+   {
+    "ro": "ou",
+    "fr": "œuf"
+   },
+   {
+    "ro": "carne",
+    "fr": "viande"
+   },
+   {
+    "ro": "porc",
+    "fr": "porc"
+   },
+   {
+    "ro": "vită",
+    "fr": "bœuf"
+   },
+   {
+    "ro": "pui",
+    "fr": "poulet"
+   },
+   {
+    "ro": "miel",
+    "fr": "agneau"
+   },
+   {
+    "ro": "pește",
+    "fr": "poisson"
+   },
+   {
+    "ro": "somon",
+    "fr": "saumon"
+   },
+   {
+    "ro": "șuncă",
+    "fr": "jambon"
+   },
+   {
+    "ro": "cârnat",
+    "fr": "saucisse"
+   },
+   {
+    "ro": "supă",
+    "fr": "soupe"
+   },
+   {
+    "ro": "ciorbă",
+    "fr": "soupe aigre"
+   },
+   {
+    "ro": "salată",
+    "fr": "salade"
+   },
+   {
+    "ro": "orez",
+    "fr": "riz"
+   },
+   {
+    "ro": "cartof",
+    "fr": "pomme de terre"
+   },
+   {
+    "ro": "roșie",
+    "fr": "tomate"
+   },
+   {
+    "ro": "castravete",
+    "fr": "concombre"
+   },
+   {
+    "ro": "ceapă",
+    "fr": "oignon"
+   },
+   {
+    "ro": "usturoi",
+    "fr": "ail"
+   },
+   {
+    "ro": "morcov",
+    "fr": "carotte"
+   },
+   {
+    "ro": "varză",
+    "fr": "chou"
+   },
+   {
+    "ro": "ardei",
+    "fr": "poivron"
+   },
+   {
+    "ro": "mazăre",
+    "fr": "petits pois"
+   },
+   {
+    "ro": "fasole",
+    "fr": "haricot"
+   },
+   {
+    "ro": "porumb",
+    "fr": "maïs"
+   },
+   {
+    "ro": "ciupercă",
+    "fr": "champignon"
+   },
+   {
+    "ro": "fruct",
+    "fr": "fruit"
+   },
+   {
+    "ro": "măr",
+    "fr": "pomme"
+   },
+   {
+    "ro": "pară",
+    "fr": "poire"
+   },
+   {
+    "ro": "banană",
+    "fr": "banane"
+   },
+   {
+    "ro": "portocală",
+    "fr": "orange"
+   },
+   {
+    "ro": "lămâie",
+    "fr": "citron"
+   },
+   {
+    "ro": "struguri",
+    "fr": "raisin"
+   },
+   {
+    "ro": "căpșună",
+    "fr": "fraise"
+   },
+   {
+    "ro": "cireașă",
+    "fr": "cerise"
+   },
+   {
+    "ro": "piersică",
+    "fr": "pêche"
+   },
+   {
+    "ro": "caisă",
+    "fr": "abricot"
+   },
+   {
+    "ro": "pepene",
+    "fr": "melon / pastèque"
+   },
+   {
+    "ro": "nucă",
+    "fr": "noix"
+   },
+   {
+    "ro": "zahăr",
+    "fr": "sucre"
+   },
+   {
+    "ro": "sare",
+    "fr": "sel"
+   },
+   {
+    "ro": "piper",
+    "fr": "poivre"
+   },
+   {
+    "ro": "condiment",
+    "fr": "épice"
+   },
+   {
+    "ro": "oțet",
+    "fr": "vinaigre"
+   },
+   {
+    "ro": "ulei",
+    "fr": "huile"
+   },
+   {
+    "ro": "miere",
+    "fr": "miel"
+   },
+   {
+    "ro": "dulceață",
+    "fr": "confiture"
+   },
+   {
+    "ro": "ciocolată",
+    "fr": "chocolat"
+   },
+   {
+    "ro": "bomboană",
+    "fr": "bonbon"
+   },
+   {
+    "ro": "tort",
+    "fr": "gâteau"
+   },
+   {
+    "ro": "prăjitură",
+    "fr": "pâtisserie"
+   },
+   {
+    "ro": "înghețată",
+    "fr": "glace"
+   },
+   {
+    "ro": "biscuit",
+    "fr": "biscuit"
+   },
+   {
+    "ro": "cafea",
+    "fr": "café"
+   },
+   {
+    "ro": "ceai",
+    "fr": "thé"
+   },
+   {
+    "ro": "apă",
+    "fr": "eau"
+   },
+   {
+    "ro": "suc",
+    "fr": "jus"
+   },
+   {
+    "ro": "limonadă",
+    "fr": "limonade"
+   },
+   {
+    "ro": "băutură",
+    "fr": "boisson"
+   },
+   {
+    "ro": "bere",
+    "fr": "bière"
+   },
+   {
+    "ro": "vin",
+    "fr": "vin"
+   },
+   {
+    "ro": "vin roșu",
+    "fr": "vin rouge"
+   },
+   {
+    "ro": "vin alb",
+    "fr": "vin blanc"
+   },
+   {
+    "ro": "restaurant",
+    "fr": "restaurant"
+   },
+   {
+    "ro": "cafenea",
+    "fr": "café (lieu)"
+   },
+   {
+    "ro": "meniu",
+    "fr": "menu"
+   },
+   {
+    "ro": "chelner",
+    "fr": "serveur"
+   },
+   {
+    "ro": "client",
+    "fr": "client"
+   },
+   {
+    "ro": "nota",
+    "fr": "l'addition"
+   },
+   {
+    "ro": "preț",
+    "fr": "prix"
+   },
+   {
+    "ro": "porție",
+    "fr": "portion"
+   },
+   {
+    "ro": "gust",
+    "fr": "goût"
+   },
+   {
+    "ro": "miros",
+    "fr": "odeur"
+   },
+   {
+    "ro": "foame",
+    "fr": "faim"
+   },
+   {
+    "ro": "sete",
+    "fr": "soif"
+   },
+   {
+    "ro": "a mânca",
+    "fr": "manger"
+   },
+   {
+    "ro": "a bea",
+    "fr": "boire"
+   },
+   {
+    "ro": "a găti",
+    "fr": "cuisiner"
+   }
+  ]
+ },
+ "verbs1": {
+  "label": "Verbes essentiels (1)",
+  "items": [
+   {
+    "ro": "a fi",
+    "fr": "être"
+   },
+   {
+    "ro": "a avea",
+    "fr": "avoir"
+   },
+   {
+    "ro": "a deveni",
+    "fr": "devenir"
+   },
+   {
+    "ro": "a locui",
+    "fr": "habiter"
+   },
+   {
+    "ro": "a trăi",
+    "fr": "vivre"
+   },
+   {
+    "ro": "a munci",
+    "fr": "travailler"
+   },
+   {
+    "ro": "a lucra",
+    "fr": "travailler"
+   },
+   {
+    "ro": "a învăța",
+    "fr": "apprendre / étudier"
+   },
+   {
+    "ro": "a preda",
+    "fr": "enseigner"
+   },
+   {
+    "ro": "a vorbi",
+    "fr": "parler"
+   },
+   {
+    "ro": "a spune",
+    "fr": "dire"
+   },
+   {
+    "ro": "a zice",
+    "fr": "dire"
+   },
+   {
+    "ro": "a întreba",
+    "fr": "demander"
+   },
+   {
+    "ro": "a răspunde",
+    "fr": "répondre"
+   },
+   {
+    "ro": "a asculta",
+    "fr": "écouter"
+   },
+   {
+    "ro": "a auzi",
+    "fr": "entendre"
+   },
+   {
+    "ro": "a înțelege",
+    "fr": "comprendre"
+   },
+   {
+    "ro": "a ști",
+    "fr": "savoir"
+   },
+   {
+    "ro": "a cunoaște",
+    "fr": "connaître"
+   },
+   {
+    "ro": "a-și aminti",
+    "fr": "se souvenir"
+   },
+   {
+    "ro": "a uita",
+    "fr": "oublier"
+   },
+   {
+    "ro": "a gândi",
+    "fr": "penser"
+   },
+   {
+    "ro": "a crede",
+    "fr": "croire"
+   },
+   {
+    "ro": "a vrea",
+    "fr": "vouloir"
+   },
+   {
+    "ro": "a dori",
+    "fr": "désirer"
+   },
+   {
+    "ro": "a putea",
+    "fr": "pouvoir"
+   },
+   {
+    "ro": "a trebui",
+    "fr": "devoir / falloir"
+   },
+   {
+    "ro": "a iubi",
+    "fr": "aimer (d'amour)"
+   },
+   {
+    "ro": "a plăcea",
+    "fr": "plaire / aimer"
+   },
+   {
+    "ro": "a urî",
+    "fr": "détester"
+   },
+   {
+    "ro": "a prefera",
+    "fr": "préférer"
+   },
+   {
+    "ro": "a căuta",
+    "fr": "chercher"
+   },
+   {
+    "ro": "a găsi",
+    "fr": "trouver"
+   },
+   {
+    "ro": "a vedea",
+    "fr": "voir"
+   },
+   {
+    "ro": "a privi",
+    "fr": "regarder"
+   },
+   {
+    "ro": "a arăta",
+    "fr": "montrer"
+   },
+   {
+    "ro": "a citi",
+    "fr": "lire"
+   },
+   {
+    "ro": "a scrie",
+    "fr": "écrire"
+   },
+   {
+    "ro": "a desena",
+    "fr": "dessiner"
+   },
+   {
+    "ro": "a folosi",
+    "fr": "utiliser"
+   },
+   {
+    "ro": "a face",
+    "fr": "faire"
+   },
+   {
+    "ro": "a da",
+    "fr": "donner"
+   },
+   {
+    "ro": "a lua",
+    "fr": "prendre"
+   },
+   {
+    "ro": "a purta",
+    "fr": "porter"
+   },
+   {
+    "ro": "a pune",
+    "fr": "mettre"
+   },
+   {
+    "ro": "a deschide",
+    "fr": "ouvrir"
+   },
+   {
+    "ro": "a închide",
+    "fr": "fermer"
+   },
+   {
+    "ro": "a aprinde",
+    "fr": "allumer"
+   },
+   {
+    "ro": "a stinge",
+    "fr": "éteindre"
+   },
+   {
+    "ro": "a începe",
+    "fr": "commencer"
+   },
+   {
+    "ro": "a termina",
+    "fr": "finir"
+   },
+   {
+    "ro": "a continua",
+    "fr": "continuer"
+   },
+   {
+    "ro": "a opri",
+    "fr": "arrêter"
+   },
+   {
+    "ro": "a aștepta",
+    "fr": "attendre"
+   },
+   {
+    "ro": "a ajuta",
+    "fr": "aider"
+   },
+   {
+    "ro": "a încerca",
+    "fr": "essayer"
+   },
+   {
+    "ro": "a reuși",
+    "fr": "réussir"
+   },
+   {
+    "ro": "a decide",
+    "fr": "décider"
+   },
+   {
+    "ro": "a alege",
+    "fr": "choisir"
+   },
+   {
+    "ro": "a cumpăra",
+    "fr": "acheter"
+   },
+   {
+    "ro": "a vinde",
+    "fr": "vendre"
+   },
+   {
+    "ro": "a plăti",
+    "fr": "payer"
+   },
+   {
+    "ro": "a costa",
+    "fr": "coûter"
+   },
+   {
+    "ro": "a primi",
+    "fr": "recevoir"
+   },
+   {
+    "ro": "a trimite",
+    "fr": "envoyer"
+   },
+   {
+    "ro": "a schimba",
+    "fr": "changer"
+   },
+   {
+    "ro": "a lăsa",
+    "fr": "laisser"
+   },
+   {
+    "ro": "a întâlni",
+    "fr": "rencontrer"
+   },
+   {
+    "ro": "a invita",
+    "fr": "inviter"
+   },
+   {
+    "ro": "a vizita",
+    "fr": "visiter"
+   },
+   {
+    "ro": "a călători",
+    "fr": "voyager"
+   },
+   {
+    "ro": "a merge",
+    "fr": "aller"
+   },
+   {
+    "ro": "a veni",
+    "fr": "venir"
+   },
+   {
+    "ro": "a pleca",
+    "fr": "partir"
+   },
+   {
+    "ro": "a ajunge",
+    "fr": "arriver"
+   },
+   {
+    "ro": "a se întoarce",
+    "fr": "revenir"
+   },
+   {
+    "ro": "a intra",
+    "fr": "entrer"
+   },
+   {
+    "ro": "a ieși",
+    "fr": "sortir"
+   },
+   {
+    "ro": "a urca",
+    "fr": "monter"
+   },
+   {
+    "ro": "a coborî",
+    "fr": "descendre"
+   },
+   {
+    "ro": "a alerga",
+    "fr": "courir"
+   },
+   {
+    "ro": "a conduce",
+    "fr": "conduire"
+   },
+   {
+    "ro": "a zbura",
+    "fr": "voler"
+   },
+   {
+    "ro": "a înota",
+    "fr": "nager"
+   },
+   {
+    "ro": "a sta",
+    "fr": "rester / être assis"
+   },
+   {
+    "ro": "a se așeza",
+    "fr": "s'asseoir"
+   },
+   {
+    "ro": "a dormi",
+    "fr": "dormir"
+   },
+   {
+    "ro": "a se trezi",
+    "fr": "se réveiller"
+   },
+   {
+    "ro": "a se scula",
+    "fr": "se lever"
+   },
+   {
+    "ro": "a se spăla",
+    "fr": "se laver"
+   },
+   {
+    "ro": "a se îmbrăca",
+    "fr": "s'habiller"
+   },
+   {
+    "ro": "a zâmbi",
+    "fr": "sourire"
+   }
+  ]
+ },
+ "verbs2": {
+  "label": "Verbes essentiels (2)",
+  "items": [
+   {
+    "ro": "a râde",
+    "fr": "rire"
+   },
+   {
+    "ro": "a plânge",
+    "fr": "pleurer"
+   },
+   {
+    "ro": "a simți",
+    "fr": "sentir / ressentir"
+   },
+   {
+    "ro": "a se simți",
+    "fr": "se sentir"
+   },
+   {
+    "ro": "a se teme",
+    "fr": "avoir peur"
+   },
+   {
+    "ro": "a spera",
+    "fr": "espérer"
+   },
+   {
+    "ro": "a fi de acord",
+    "fr": "être d'accord"
+   },
+   {
+    "ro": "a refuza",
+    "fr": "refuser"
+   },
+   {
+    "ro": "a promite",
+    "fr": "promettre"
+   },
+   {
+    "ro": "a minți",
+    "fr": "mentir"
+   },
+   {
+    "ro": "a explica",
+    "fr": "expliquer"
+   },
+   {
+    "ro": "a repeta",
+    "fr": "répéter"
+   },
+   {
+    "ro": "a traduce",
+    "fr": "traduire"
+   },
+   {
+    "ro": "a pronunța",
+    "fr": "prononcer"
+   },
+   {
+    "ro": "a exersa",
+    "fr": "s'exercer"
+   },
+   {
+    "ro": "a observa",
+    "fr": "remarquer"
+   },
+   {
+    "ro": "a interzice",
+    "fr": "interdire"
+   },
+   {
+    "ro": "a permite",
+    "fr": "permettre"
+   },
+   {
+    "ro": "a păstra",
+    "fr": "garder"
+   },
+   {
+    "ro": "a pierde",
+    "fr": "perdre"
+   },
+   {
+    "ro": "a câștiga",
+    "fr": "gagner"
+   },
+   {
+    "ro": "a se juca",
+    "fr": "jouer"
+   },
+   {
+    "ro": "a dansa",
+    "fr": "danser"
+   },
+   {
+    "ro": "a cânta",
+    "fr": "chanter"
+   },
+   {
+    "ro": "a fotografia",
+    "fr": "photographier"
+   },
+   {
+    "ro": "a curăța",
+    "fr": "nettoyer"
+   },
+   {
+    "ro": "a spăla rufe",
+    "fr": "laver le linge"
+   },
+   {
+    "ro": "a usca",
+    "fr": "sécher"
+   },
+   {
+    "ro": "a călca",
+    "fr": "repasser"
+   },
+   {
+    "ro": "a ordona",
+    "fr": "ranger"
+   },
+   {
+    "ro": "a repara",
+    "fr": "réparer"
+   },
+   {
+    "ro": "a construi",
+    "fr": "construire"
+   },
+   {
+    "ro": "a tăia",
+    "fr": "couper"
+   },
+   {
+    "ro": "a sparge",
+    "fr": "casser"
+   },
+   {
+    "ro": "a coace",
+    "fr": "cuire au four"
+   },
+   {
+    "ro": "a fierbe",
+    "fr": "faire bouillir"
+   },
+   {
+    "ro": "a prăji",
+    "fr": "frire"
+   },
+   {
+    "ro": "a adăuga",
+    "fr": "ajouter"
+   },
+   {
+    "ro": "a amesteca",
+    "fr": "mélanger"
+   },
+   {
+    "ro": "a servi",
+    "fr": "servir"
+   },
+   {
+    "ro": "a comanda",
+    "fr": "commander"
+   },
+   {
+    "ro": "a rezerva",
+    "fr": "réserver"
+   },
+   {
+    "ro": "a întârzia",
+    "fr": "être en retard"
+   },
+   {
+    "ro": "a se grăbi",
+    "fr": "se dépêcher"
+   },
+   {
+    "ro": "a se odihni",
+    "fr": "se reposer"
+   },
+   {
+    "ro": "a suna",
+    "fr": "téléphoner / sonner"
+   },
+   {
+    "ro": "a verifica",
+    "fr": "vérifier"
+   },
+   {
+    "ro": "a ține",
+    "fr": "tenir"
+   },
+   {
+    "ro": "a prinde",
+    "fr": "attraper"
+   },
+   {
+    "ro": "a arunca",
+    "fr": "jeter"
+   },
+   {
+    "ro": "a număra",
+    "fr": "compter"
+   },
+   {
+    "ro": "a măsura",
+    "fr": "mesurer"
+   },
+   {
+    "ro": "a încuia",
+    "fr": "verrouiller"
+   },
+   {
+    "ro": "a descuia",
+    "fr": "déverrouiller"
+   },
+   {
+    "ro": "a încărca",
+    "fr": "charger"
+   },
+   {
+    "ro": "a funcționa",
+    "fr": "fonctionner"
+   },
+   {
+    "ro": "a gusta",
+    "fr": "goûter"
+   },
+   {
+    "ro": "a atinge",
+    "fr": "toucher"
+   },
+   {
+    "ro": "a părea",
+    "fr": "avoir l'air / sembler"
+   }
+  ]
+ },
+ "adj": {
+  "label": "Adjectifs & qualités",
+  "items": [
+   {
+    "ro": "bun",
+    "fr": "bon"
+   },
+   {
+    "ro": "rău",
+    "fr": "mauvais"
+   },
+   {
+    "ro": "mare",
+    "fr": "grand"
+   },
+   {
+    "ro": "mic",
+    "fr": "petit"
+   },
+   {
+    "ro": "lung",
+    "fr": "long"
+   },
+   {
+    "ro": "scurt",
+    "fr": "court"
+   },
+   {
+    "ro": "înalt",
+    "fr": "haut / grand"
+   },
+   {
+    "ro": "jos",
+    "fr": "bas"
+   },
+   {
+    "ro": "larg",
+    "fr": "large"
+   },
+   {
+    "ro": "îngust",
+    "fr": "étroit"
+   },
+   {
+    "ro": "gros",
+    "fr": "gros / épais"
+   },
+   {
+    "ro": "subțire",
+    "fr": "mince"
+   },
+   {
+    "ro": "greu",
+    "fr": "lourd / difficile"
+   },
+   {
+    "ro": "ușor",
+    "fr": "léger / facile"
+   },
+   {
+    "ro": "rapid",
+    "fr": "rapide"
+   },
+   {
+    "ro": "lent",
+    "fr": "lent"
+   },
+   {
+    "ro": "nou",
+    "fr": "nouveau"
+   },
+   {
+    "ro": "vechi",
+    "fr": "vieux / ancien"
+   },
+   {
+    "ro": "tânăr",
+    "fr": "jeune"
+   },
+   {
+    "ro": "bătrân",
+    "fr": "âgé"
+   },
+   {
+    "ro": "frumos",
+    "fr": "beau"
+   },
+   {
+    "ro": "urât",
+    "fr": "laid"
+   },
+   {
+    "ro": "curat",
+    "fr": "propre"
+   },
+   {
+    "ro": "murdar",
+    "fr": "sale"
+   },
+   {
+    "ro": "cald",
+    "fr": "chaud"
+   },
+   {
+    "ro": "rece",
+    "fr": "froid"
+   },
+   {
+    "ro": "fierbinte",
+    "fr": "très chaud"
+   },
+   {
+    "ro": "răcoros",
+    "fr": "frais"
+   },
+   {
+    "ro": "dulce",
+    "fr": "sucré / doux"
+   },
+   {
+    "ro": "sărat",
+    "fr": "salé"
+   },
+   {
+    "ro": "acru",
+    "fr": "acide"
+   },
+   {
+    "ro": "amar",
+    "fr": "amer"
+   },
+   {
+    "ro": "delicios",
+    "fr": "délicieux"
+   },
+   {
+    "ro": "proaspăt",
+    "fr": "frais (produit)"
+   },
+   {
+    "ro": "uscat",
+    "fr": "sec"
+   },
+   {
+    "ro": "ud",
+    "fr": "mouillé"
+   },
+   {
+    "ro": "plin",
+    "fr": "plein"
+   },
+   {
+    "ro": "gol",
+    "fr": "vide"
+   },
+   {
+    "ro": "deschis",
+    "fr": "ouvert"
+   },
+   {
+    "ro": "închis",
+    "fr": "fermé"
+   },
+   {
+    "ro": "liber",
+    "fr": "libre"
+   },
+   {
+    "ro": "ocupat",
+    "fr": "occupé"
+   },
+   {
+    "ro": "gata",
+    "fr": "prêt"
+   },
+   {
+    "ro": "important",
+    "fr": "important"
+   },
+   {
+    "ro": "interesant",
+    "fr": "intéressant"
+   },
+   {
+    "ro": "plictisitor",
+    "fr": "ennuyeux"
+   },
+   {
+    "ro": "diferit",
+    "fr": "différent"
+   },
+   {
+    "ro": "la fel",
+    "fr": "pareil"
+   },
+   {
+    "ro": "posibil",
+    "fr": "possible"
+   },
+   {
+    "ro": "imposibil",
+    "fr": "impossible"
+   },
+   {
+    "ro": "necesar",
+    "fr": "nécessaire"
+   },
+   {
+    "ro": "periculos",
+    "fr": "dangereux"
+   },
+   {
+    "ro": "corect",
+    "fr": "correct"
+   },
+   {
+    "ro": "sănătos",
+    "fr": "en bonne santé"
+   },
+   {
+    "ro": "bolnav",
+    "fr": "malade"
+   },
+   {
+    "ro": "fericit",
+    "fr": "heureux"
+   },
+   {
+    "ro": "trist",
+    "fr": "triste"
+   },
+   {
+    "ro": "vesel",
+    "fr": "joyeux"
+   },
+   {
+    "ro": "supărat",
+    "fr": "fâché"
+   },
+   {
+    "ro": "obosit",
+    "fr": "fatigué"
+   },
+   {
+    "ro": "flămând",
+    "fr": "affamé"
+   },
+   {
+    "ro": "însetat",
+    "fr": "assoiffé"
+   },
+   {
+    "ro": "speriat",
+    "fr": "effrayé"
+   },
+   {
+    "ro": "calm",
+    "fr": "calme"
+   },
+   {
+    "ro": "nervos",
+    "fr": "nerveux"
+   },
+   {
+    "ro": "bogat",
+    "fr": "riche"
+   },
+   {
+    "ro": "sărac",
+    "fr": "pauvre"
+   },
+   {
+    "ro": "scump",
+    "fr": "cher"
+   },
+   {
+    "ro": "ieftin",
+    "fr": "bon marché"
+   },
+   {
+    "ro": "minunat",
+    "fr": "magnifique"
+   },
+   {
+    "ro": "groaznic",
+    "fr": "horrible"
+   },
+   {
+    "ro": "normal",
+    "fr": "normal"
+   },
+   {
+    "ro": "ciudat",
+    "fr": "étrange"
+   },
+   {
+    "ro": "celebru",
+    "fr": "célèbre"
+   },
+   {
+    "ro": "special",
+    "fr": "spécial"
+   },
+   {
+    "ro": "obișnuit",
+    "fr": "ordinaire"
+   },
+   {
+    "ro": "primul",
+    "fr": "premier"
+   },
+   {
+    "ro": "ultimul",
+    "fr": "dernier"
+   },
+   {
+    "ro": "următorul",
+    "fr": "suivant"
+   },
+   {
+    "ro": "singur",
+    "fr": "seul"
+   },
+   {
+    "ro": "întreg",
+    "fr": "entier"
+   },
+   {
+    "ro": "jumătate",
+    "fr": "moitié"
+   },
+   {
+    "ro": "alt",
+    "fr": "autre"
+   }
+  ]
+ },
+ "numtime": {
+  "label": "Nombres, jours & temps",
+  "items": [
+   {
+    "ro": "zero",
+    "fr": "zéro"
+   },
+   {
+    "ro": "unu",
+    "fr": "un"
+   },
+   {
+    "ro": "doi",
+    "fr": "deux"
+   },
+   {
+    "ro": "trei",
+    "fr": "trois"
+   },
+   {
+    "ro": "patru",
+    "fr": "quatre"
+   },
+   {
+    "ro": "cinci",
+    "fr": "cinq"
+   },
+   {
+    "ro": "șase",
+    "fr": "six"
+   },
+   {
+    "ro": "șapte",
+    "fr": "sept"
+   },
+   {
+    "ro": "opt",
+    "fr": "huit"
+   },
+   {
+    "ro": "nouă",
+    "fr": "neuf"
+   },
+   {
+    "ro": "zece",
+    "fr": "dix"
+   },
+   {
+    "ro": "unsprezece",
+    "fr": "onze"
+   },
+   {
+    "ro": "doisprezece",
+    "fr": "douze"
+   },
+   {
+    "ro": "treisprezece",
+    "fr": "treize"
+   },
+   {
+    "ro": "paisprezece",
+    "fr": "quatorze"
+   },
+   {
+    "ro": "cincisprezece",
+    "fr": "quinze"
+   },
+   {
+    "ro": "șaisprezece",
+    "fr": "seize"
+   },
+   {
+    "ro": "șaptesprezece",
+    "fr": "dix-sept"
+   },
+   {
+    "ro": "optsprezece",
+    "fr": "dix-huit"
+   },
+   {
+    "ro": "nouăsprezece",
+    "fr": "dix-neuf"
+   },
+   {
+    "ro": "douăzeci",
+    "fr": "vingt"
+   },
+   {
+    "ro": "treizeci",
+    "fr": "trente"
+   },
+   {
+    "ro": "patruzeci",
+    "fr": "quarante"
+   },
+   {
+    "ro": "cincizeci",
+    "fr": "cinquante"
+   },
+   {
+    "ro": "șaizeci",
+    "fr": "soixante"
+   },
+   {
+    "ro": "șaptezeci",
+    "fr": "soixante-dix"
+   },
+   {
+    "ro": "optzeci",
+    "fr": "quatre-vingts"
+   },
+   {
+    "ro": "nouăzeci",
+    "fr": "quatre-vingt-dix"
+   },
+   {
+    "ro": "o sută",
+    "fr": "cent"
+   },
+   {
+    "ro": "o mie",
+    "fr": "mille"
+   },
+   {
+    "ro": "un milion",
+    "fr": "un million"
+   },
+   {
+    "ro": "luni",
+    "fr": "lundi"
+   },
+   {
+    "ro": "marți",
+    "fr": "mardi"
+   },
+   {
+    "ro": "miercuri",
+    "fr": "mercredi"
+   },
+   {
+    "ro": "joi",
+    "fr": "jeudi"
+   },
+   {
+    "ro": "vineri",
+    "fr": "vendredi"
+   },
+   {
+    "ro": "sâmbătă",
+    "fr": "samedi"
+   },
+   {
+    "ro": "duminică",
+    "fr": "dimanche"
+   },
+   {
+    "ro": "zi",
+    "fr": "jour"
+   },
+   {
+    "ro": "săptămână",
+    "fr": "semaine"
+   },
+   {
+    "ro": "lună",
+    "fr": "mois / lune"
+   },
+   {
+    "ro": "an",
+    "fr": "année"
+   },
+   {
+    "ro": "oră",
+    "fr": "heure"
+   },
+   {
+    "ro": "minut",
+    "fr": "minute"
+   },
+   {
+    "ro": "secundă",
+    "fr": "seconde"
+   },
+   {
+    "ro": "dimineață",
+    "fr": "matin"
+   },
+   {
+    "ro": "amiază",
+    "fr": "midi"
+   },
+   {
+    "ro": "după-amiază",
+    "fr": "après-midi"
+   },
+   {
+    "ro": "seară",
+    "fr": "soir"
+   },
+   {
+    "ro": "noapte",
+    "fr": "nuit"
+   },
+   {
+    "ro": "uneori",
+    "fr": "parfois"
+   },
+   {
+    "ro": "întotdeauna",
+    "fr": "toujours"
+   },
+   {
+    "ro": "niciodată",
+    "fr": "jamais"
+   },
+   {
+    "ro": "des",
+    "fr": "souvent"
+   },
+   {
+    "ro": "rar",
+    "fr": "rarement"
+   },
+   {
+    "ro": "de obicei",
+    "fr": "habituellement"
+   },
+   {
+    "ro": "azi",
+    "fr": "aujourd'hui"
+   },
+   {
+    "ro": "mâine",
+    "fr": "demain"
+   },
+   {
+    "ro": "poimâine",
+    "fr": "après-demain"
+   },
+   {
+    "ro": "ieri",
+    "fr": "hier"
+   },
+   {
+    "ro": "alaltăieri",
+    "fr": "avant-hier"
+   },
+   {
+    "ro": "curând",
+    "fr": "bientôt"
+   },
+   {
+    "ro": "târziu",
+    "fr": "tard"
+   },
+   {
+    "ro": "devreme",
+    "fr": "tôt"
+   },
+   {
+    "ro": "imediat",
+    "fr": "immédiatement"
+   },
+   {
+    "ro": "înainte",
+    "fr": "avant"
+   },
+   {
+    "ro": "după",
+    "fr": "après"
+   },
+   {
+    "ro": "ianuarie",
+    "fr": "janvier"
+   },
+   {
+    "ro": "februarie",
+    "fr": "février"
+   },
+   {
+    "ro": "martie",
+    "fr": "mars"
+   },
+   {
+    "ro": "aprilie",
+    "fr": "avril"
+   },
+   {
+    "ro": "mai",
+    "fr": "mai"
+   },
+   {
+    "ro": "iunie",
+    "fr": "juin"
+   },
+   {
+    "ro": "iulie",
+    "fr": "juillet"
+   },
+   {
+    "ro": "august",
+    "fr": "août"
+   },
+   {
+    "ro": "septembrie",
+    "fr": "septembre"
+   },
+   {
+    "ro": "octombrie",
+    "fr": "octobre"
+   },
+   {
+    "ro": "noiembrie",
+    "fr": "novembre"
+   },
+   {
+    "ro": "decembrie",
+    "fr": "décembre"
+   },
+   {
+    "ro": "primăvară",
+    "fr": "printemps"
+   },
+   {
+    "ro": "vară",
+    "fr": "été"
+   },
+   {
+    "ro": "toamnă",
+    "fr": "automne"
+   },
+   {
+    "ro": "iarnă",
+    "fr": "hiver"
+   },
+   {
+    "ro": "dată",
+    "fr": "date"
+   },
+   {
+    "ro": "zi de naștere",
+    "fr": "anniversaire"
+   },
+   {
+    "ro": "sărbătoare",
+    "fr": "fête"
+   },
+   {
+    "ro": "vacanță",
+    "fr": "vacances"
+   },
+   {
+    "ro": "odihnă",
+    "fr": "repos"
+   },
+   {
+    "ro": "început",
+    "fr": "début"
+   },
+   {
+    "ro": "sfârșit",
+    "fr": "fin"
+   },
+   {
+    "ro": "trecut",
+    "fr": "passé"
+   },
+   {
+    "ro": "prezent",
+    "fr": "présent"
+   },
+   {
+    "ro": "viitor",
+    "fr": "futur"
+   },
+   {
+    "ro": "moment",
+    "fr": "moment"
+   },
+   {
+    "ro": "timp",
+    "fr": "temps"
+   }
+  ]
+ },
+ "city": {
+  "label": "Ville, transports & travail",
+  "items": [
+   {
+    "ro": "stradă",
+    "fr": "rue"
+   },
+   {
+    "ro": "drum",
+    "fr": "route / chemin"
+   },
+   {
+    "ro": "piață",
+    "fr": "place / marché"
+   },
+   {
+    "ro": "centru",
+    "fr": "centre"
+   },
+   {
+    "ro": "cartier",
+    "fr": "quartier"
+   },
+   {
+    "ro": "parc",
+    "fr": "parc"
+   },
+   {
+    "ro": "magazin",
+    "fr": "magasin"
+   },
+   {
+    "ro": "supermarket",
+    "fr": "supermarché"
+   },
+   {
+    "ro": "farmacie",
+    "fr": "pharmacie"
+   },
+   {
+    "ro": "spital",
+    "fr": "hôpital"
+   },
+   {
+    "ro": "bancă",
+    "fr": "banque"
+   },
+   {
+    "ro": "poștă",
+    "fr": "poste"
+   },
+   {
+    "ro": "poliție",
+    "fr": "police"
+   },
+   {
+    "ro": "școală",
+    "fr": "école"
+   },
+   {
+    "ro": "universitate",
+    "fr": "université"
+   },
+   {
+    "ro": "bibliotecă",
+    "fr": "bibliothèque"
+   },
+   {
+    "ro": "muzeu",
+    "fr": "musée"
+   },
+   {
+    "ro": "cinema",
+    "fr": "cinéma"
+   },
+   {
+    "ro": "teatru",
+    "fr": "théâtre"
+   },
+   {
+    "ro": "biserică",
+    "fr": "église"
+   },
+   {
+    "ro": "hotel",
+    "fr": "hôtel"
+   },
+   {
+    "ro": "gară",
+    "fr": "gare"
+   },
+   {
+    "ro": "aeroport",
+    "fr": "aéroport"
+   },
+   {
+    "ro": "stație",
+    "fr": "arrêt / station"
+   },
+   {
+    "ro": "bar",
+    "fr": "bar"
+   },
+   {
+    "ro": "bilet",
+    "fr": "billet"
+   },
+   {
+    "ro": "hartă",
+    "fr": "carte (plan)"
+   },
+   {
+    "ro": "bani",
+    "fr": "argent"
+   },
+   {
+    "ro": "portofel",
+    "fr": "portefeuille"
+   },
+   {
+    "ro": "pașaport",
+    "fr": "passeport"
+   },
+   {
+    "ro": "document",
+    "fr": "document"
+   },
+   {
+    "ro": "valiză",
+    "fr": "valise"
+   },
+   {
+    "ro": "bagaj",
+    "fr": "bagages"
+   },
+   {
+    "ro": "mașină",
+    "fr": "voiture"
+   },
+   {
+    "ro": "autobuz",
+    "fr": "bus"
+   },
+   {
+    "ro": "tren",
+    "fr": "train"
+   },
+   {
+    "ro": "metrou",
+    "fr": "métro"
+   },
+   {
+    "ro": "tramvai",
+    "fr": "tramway"
+   },
+   {
+    "ro": "taxi",
+    "fr": "taxi"
+   },
+   {
+    "ro": "bicicletă",
+    "fr": "vélo"
+   },
+   {
+    "ro": "motocicletă",
+    "fr": "moto"
+   },
+   {
+    "ro": "avion",
+    "fr": "avion"
+   },
+   {
+    "ro": "vapor",
+    "fr": "bateau"
+   },
+   {
+    "ro": "șofer",
+    "fr": "chauffeur"
+   },
+   {
+    "ro": "pasager",
+    "fr": "passager"
+   },
+   {
+    "ro": "direcție",
+    "fr": "direction"
+   },
+   {
+    "ro": "stânga",
+    "fr": "gauche"
+   },
+   {
+    "ro": "dreapta",
+    "fr": "droite"
+   },
+   {
+    "ro": "drept înainte",
+    "fr": "tout droit"
+   },
+   {
+    "ro": "aproape",
+    "fr": "près"
+   },
+   {
+    "ro": "departe",
+    "fr": "loin"
+   },
+   {
+    "ro": "muncă",
+    "fr": "travail"
+   },
+   {
+    "ro": "serviciu",
+    "fr": "emploi / service"
+   },
+   {
+    "ro": "profesie",
+    "fr": "profession"
+   },
+   {
+    "ro": "birou",
+    "fr": "bureau"
+   },
+   {
+    "ro": "firmă",
+    "fr": "entreprise"
+   },
+   {
+    "ro": "companie",
+    "fr": "société"
+   },
+   {
+    "ro": "șef",
+    "fr": "patron"
+   },
+   {
+    "ro": "coleg",
+    "fr": "collègue"
+   },
+   {
+    "ro": "angajat",
+    "fr": "employé"
+   },
+   {
+    "ro": "muncitor",
+    "fr": "ouvrier"
+   },
+   {
+    "ro": "medic",
+    "fr": "médecin"
+   },
+   {
+    "ro": "profesor",
+    "fr": "professeur / enseignant"
+   },
+   {
+    "ro": "student",
+    "fr": "étudiant"
+   },
+   {
+    "ro": "elev",
+    "fr": "élève"
+   },
+   {
+    "ro": "inginer",
+    "fr": "ingénieur"
+   },
+   {
+    "ro": "avocat",
+    "fr": "avocat"
+   },
+   {
+    "ro": "vânzător",
+    "fr": "vendeur"
+   },
+   {
+    "ro": "bucătar",
+    "fr": "cuisinier"
+   },
+   {
+    "ro": "director",
+    "fr": "directeur"
+   },
+   {
+    "ro": "întâlnire",
+    "fr": "rendez-vous / réunion"
+   },
+   {
+    "ro": "pauză",
+    "fr": "pause"
+   },
+   {
+    "ro": "salariu",
+    "fr": "salaire"
+   },
+   {
+    "ro": "contract",
+    "fr": "contrat"
+   },
+   {
+    "ro": "sarcină",
+    "fr": "tâche"
+   },
+   {
+    "ro": "lecție",
+    "fr": "leçon"
+   },
+   {
+    "ro": "clasă",
+    "fr": "classe"
+   },
+   {
+    "ro": "curs",
+    "fr": "cours"
+   },
+   {
+    "ro": "examen",
+    "fr": "examen"
+   },
+   {
+    "ro": "notă",
+    "fr": "note"
+   },
+   {
+    "ro": "greșeală",
+    "fr": "erreur"
+   }
+  ]
+ },
+ "body": {
+  "label": "Corps, santé & vêtements",
+  "items": [
+   {
+    "ro": "corp",
+    "fr": "corps"
+   },
+   {
+    "ro": "cap",
+    "fr": "tête"
+   },
+   {
+    "ro": "față",
+    "fr": "visage"
+   },
+   {
+    "ro": "păr",
+    "fr": "cheveux"
+   },
+   {
+    "ro": "ochi",
+    "fr": "œil / yeux"
+   },
+   {
+    "ro": "ureche",
+    "fr": "oreille"
+   },
+   {
+    "ro": "nas",
+    "fr": "nez"
+   },
+   {
+    "ro": "gură",
+    "fr": "bouche"
+   },
+   {
+    "ro": "dinte",
+    "fr": "dent"
+   },
+   {
+    "ro": "gât",
+    "fr": "cou / gorge"
+   },
+   {
+    "ro": "umăr",
+    "fr": "épaule"
+   },
+   {
+    "ro": "mână",
+    "fr": "main / bras"
+   },
+   {
+    "ro": "deget",
+    "fr": "doigt"
+   },
+   {
+    "ro": "picior",
+    "fr": "jambe / pied"
+   },
+   {
+    "ro": "genunchi",
+    "fr": "genou"
+   },
+   {
+    "ro": "spate",
+    "fr": "dos"
+   },
+   {
+    "ro": "burtă",
+    "fr": "ventre"
+   },
+   {
+    "ro": "inimă",
+    "fr": "cœur"
+   },
+   {
+    "ro": "sânge",
+    "fr": "sang"
+   },
+   {
+    "ro": "piele",
+    "fr": "peau"
+   },
+   {
+    "ro": "durere",
+    "fr": "douleur"
+   },
+   {
+    "ro": "sănătate",
+    "fr": "santé"
+   },
+   {
+    "ro": "medicament",
+    "fr": "médicament"
+   },
+   {
+    "ro": "asistentă",
+    "fr": "infirmière"
+   },
+   {
+    "ro": "febră",
+    "fr": "fièvre"
+   },
+   {
+    "ro": "tuse",
+    "fr": "toux"
+   },
+   {
+    "ro": "răceală",
+    "fr": "rhume"
+   },
+   {
+    "ro": "gripă",
+    "fr": "grippe"
+   },
+   {
+    "ro": "boală",
+    "fr": "maladie"
+   },
+   {
+    "ro": "rană",
+    "fr": "blessure"
+   },
+   {
+    "ro": "ajutor",
+    "fr": "aide"
+   },
+   {
+    "ro": "urgență",
+    "fr": "urgence"
+   },
+   {
+    "ro": "haină",
+    "fr": "vêtement"
+   },
+   {
+    "ro": "cămașă",
+    "fr": "chemise"
+   },
+   {
+    "ro": "tricou",
+    "fr": "T-shirt"
+   },
+   {
+    "ro": "pantaloni",
+    "fr": "pantalon"
+   },
+   {
+    "ro": "blugi",
+    "fr": "jean"
+   },
+   {
+    "ro": "fustă",
+    "fr": "jupe"
+   },
+   {
+    "ro": "rochie",
+    "fr": "robe"
+   },
+   {
+    "ro": "jachetă",
+    "fr": "veste"
+   },
+   {
+    "ro": "palton",
+    "fr": "manteau"
+   },
+   {
+    "ro": "pulover",
+    "fr": "pull"
+   },
+   {
+    "ro": "pantof",
+    "fr": "chaussure"
+   },
+   {
+    "ro": "șosetă",
+    "fr": "chaussette"
+   },
+   {
+    "ro": "pălărie",
+    "fr": "chapeau"
+   }
+  ]
+ },
+ "nature": {
+  "label": "Nature, animaux & mots de liaison",
+  "items": [
+   {
+    "ro": "vreme",
+    "fr": "temps (météo)"
+   },
+   {
+    "ro": "soare",
+    "fr": "soleil"
+   },
+   {
+    "ro": "lună",
+    "fr": "lune"
+   },
+   {
+    "ro": "stea",
+    "fr": "étoile"
+   },
+   {
+    "ro": "cer",
+    "fr": "ciel"
+   },
+   {
+    "ro": "nor",
+    "fr": "nuage"
+   },
+   {
+    "ro": "ploaie",
+    "fr": "pluie"
+   },
+   {
+    "ro": "zăpadă",
+    "fr": "neige"
+   },
+   {
+    "ro": "vânt",
+    "fr": "vent"
+   },
+   {
+    "ro": "furtună",
+    "fr": "tempête"
+   },
+   {
+    "ro": "ceață",
+    "fr": "brouillard"
+   },
+   {
+    "ro": "râu",
+    "fr": "rivière"
+   },
+   {
+    "ro": "mare",
+    "fr": "mer"
+   },
+   {
+    "ro": "lac",
+    "fr": "lac"
+   },
+   {
+    "ro": "munte",
+    "fr": "montagne"
+   },
+   {
+    "ro": "pădure",
+    "fr": "forêt"
+   },
+   {
+    "ro": "copac",
+    "fr": "arbre"
+   },
+   {
+    "ro": "floare",
+    "fr": "fleur"
+   },
+   {
+    "ro": "iarbă",
+    "fr": "herbe"
+   },
+   {
+    "ro": "pământ",
+    "fr": "terre"
+   },
+   {
+    "ro": "piatră",
+    "fr": "pierre"
+   },
+   {
+    "ro": "plajă",
+    "fr": "plage"
+   },
+   {
+    "ro": "insulă",
+    "fr": "île"
+   },
+   {
+    "ro": "natură",
+    "fr": "nature"
+   },
+   {
+    "ro": "animal",
+    "fr": "animal"
+   },
+   {
+    "ro": "câine",
+    "fr": "chien"
+   },
+   {
+    "ro": "pisică",
+    "fr": "chat"
+   },
+   {
+    "ro": "pasăre",
+    "fr": "oiseau"
+   },
+   {
+    "ro": "cal",
+    "fr": "cheval"
+   },
+   {
+    "ro": "vacă",
+    "fr": "vache"
+   },
+   {
+    "ro": "oaie",
+    "fr": "mouton"
+   },
+   {
+    "ro": "și",
+    "fr": "et"
+   },
+   {
+    "ro": "sau",
+    "fr": "ou"
+   },
+   {
+    "ro": "dar",
+    "fr": "mais"
+   },
+   {
+    "ro": "pentru că",
+    "fr": "parce que"
+   },
+   {
+    "ro": "dacă",
+    "fr": "si"
+   },
+   {
+    "ro": "că",
+    "fr": "que"
+   },
+   {
+    "ro": "când",
+    "fr": "quand"
+   },
+   {
+    "ro": "înainte de",
+    "fr": "avant de"
+   },
+   {
+    "ro": "după",
+    "fr": "après"
+   },
+   {
+    "ro": "pentru",
+    "fr": "pour"
+   },
+   {
+    "ro": "de la",
+    "fr": "de / depuis"
+   },
+   {
+    "ro": "până la",
+    "fr": "jusqu'à"
+   },
+   {
+    "ro": "cu",
+    "fr": "avec"
+   },
+   {
+    "ro": "fără",
+    "fr": "sans"
+   },
+   {
+    "ro": "în",
+    "fr": "dans / à"
+   },
+   {
+    "ro": "pe",
+    "fr": "sur"
+   },
+   {
+    "ro": "la",
+    "fr": "à / chez"
+   },
+   {
+    "ro": "între",
+    "fr": "entre"
+   }
+  ]
+ }
+};
+
+const ALPHABET = [
+ ["A a","a","apă (eau)"],["Ă ă","e muet","măr (pomme)"],["Â â","i guttural","când (quand)"],
+ ["B b","b","bun (bon)"],["C c","k / tch (ce,ci)","casă, cinci"],["D d","d","doi (deux)"],
+ ["E e","é","elev (élève)"],["F f","f","față (visage)"],["G g","g / dj (ge,gi)","gară, ger"],
+ ["H h","h aspiré","harta (la carte)"],["I i","i","inimă (cœur)"],["Î î","i guttural","început (début)"],
+ ["J j","j français","joi (jeudi)"],["K k","k (mots étrangers)","kilogram"],["L l","l","lapte (lait)"],
+ ["M m","m","mamă (mère)"],["N n","n","nou (nouveau)"],["O o","o","om (homme)"],
+ ["P p","p","pâine (pain)"],["Q q","rare","quasar"],["R r","r roulé","roșu (rouge)"],
+ ["S s","s","sare (sel)"],["Ș ș","ch","școală (école)"],["T t","t","timp (temps)"],
+ ["Ț ț","ts","țară (pays)"],["U u","ou","unu (un)"],["V v","v","vin (vin)"],
+ ["W w","v / w","week-end"],["X x","ks","exemplu"],["Y y","i","yoga"],["Z z","z","zi (jour)"]
+];
+
+const STORIES = [
+ ["Dimineața lui Andrei","La matinée d'Andrei",
+  ["Andrei locuiește în București. Are treizeci de ani.",
+   "În fiecare dimineață se trezește la ora șapte.",
+   "Mai întâi bea o cafea și mănâncă pâine cu brânză.",
+   "Apoi se spală și se îmbracă.",
+   "La ora opt Andrei iese din casă.",
+   "El așteaptă autobuzul în stație.",
+   "Autobuzul vine târziu, pentru că sunt multe mașini.",
+   "Andrei lucrează într-un birou mare, în centru.",
+   "Lucrează de la nouă până la șase.",
+   "Seara se întoarce acasă, gătește cina și se uită la televizor.",
+   "La ora unsprezece Andrei doarme."],
+  ["Andrei habite à Bucarest. Il a trente ans.",
+   "Chaque matin, il se réveille à sept heures.",
+   "D'abord il boit un café et mange du pain avec du fromage.",
+   "Ensuite il se lave et s'habille.",
+   "À huit heures, Andrei sort de la maison.",
+   "Il attend le bus à l'arrêt.",
+   "Le bus arrive tard, parce qu'il y a beaucoup de voitures.",
+   "Andrei travaille dans un grand bureau, au centre.",
+   "Il travaille de neuf heures à six heures.",
+   "Le soir il rentre à la maison, prépare le dîner et regarde la télévision.",
+   "À onze heures, Andrei dort."],
+  "a se trezi (se réveiller) • în fiecare dimineață (chaque matin) • a ieși (sortir) • a aștepta (attendre) • pentru că (parce que) • acasă (à la maison)"],
+
+ ["La piață","Au marché",
+  ["Maria merge la piață sâmbătă.",
+   "Vrea să cumpere fructe și legume.",
+   "— Bună ziua! Cât costă roșiile? întreabă Maria.",
+   "— Opt lei kilogramul, răspunde vânzătorul.",
+   "— Bine. Vreau un kilogram de roșii și doi castraveți, vă rog.",
+   "Maria cumpără și mere, pâine și lapte.",
+   "— Asta e tot? întreabă vânzătorul.",
+   "— Da, mulțumesc. Cât costă în total?",
+   "— Douăzeci și cinci de lei.",
+   "Maria plătește și spune: — La revedere!",
+   "— O zi bună! spune vânzătorul."],
+  ["Maria va au marché le samedi.",
+   "Elle veut acheter des fruits et des légumes.",
+   "— Bonjour ! Combien coûtent les tomates ? demande Maria.",
+   "— Huit lei le kilo, répond le vendeur.",
+   "— Bien. Je veux un kilo de tomates et deux concombres, s'il vous plaît.",
+   "Maria achète aussi des pommes, du pain et du lait.",
+   "— C'est tout ? demande le vendeur.",
+   "— Oui, merci. Combien ça fait en tout ?",
+   "— Vingt-cinq lei.",
+   "Maria paie et dit : — Au revoir !",
+   "— Bonne journée ! dit le vendeur."],
+  "a merge la piață (aller au marché) • vreau să cumpăr (je veux acheter) • cât costă? (combien ça coûte ?) • a plăti (payer) • în total (en tout)"],
+
+ ["Familia mea","Ma famille",
+  ["Mă numesc Elena și locuiesc în Cluj.",
+   "Am o familie mare.",
+   "Tatăl meu este medic, iar mama mea este profesoară.",
+   "Am un frate și o soră.",
+   "Fratele meu este student la București. Are douăzeci de ani.",
+   "Sora mea este mică — are opt ani și merge la școală.",
+   "Bunicii mei locuiesc într-un sat aproape de oraș.",
+   "Duminica mâncăm toți împreună.",
+   "Bunica gătește ciorbă și sarmale. Este foarte bun!",
+   "Îmi iubesc familia."],
+  ["Je m'appelle Elena et j'habite à Cluj.",
+   "J'ai une grande famille.",
+   "Mon père est médecin, et ma mère est professeure.",
+   "J'ai un frère et une sœur.",
+   "Mon frère est étudiant à Bucarest. Il a vingt ans.",
+   "Ma sœur est petite — elle a huit ans et va à l'école.",
+   "Mes grands-parents habitent dans un village près de la ville.",
+   "Le dimanche, nous mangeons tous ensemble.",
+   "Grand-mère fait de la ciorbă et des sarmale. C'est très bon !",
+   "J'aime ma famille."],
+  "mă numesc (je m'appelle) • tatăl meu (mon père) • are douăzeci de ani (il a 20 ans) • împreună (ensemble) • aproape de (près de) • sarmale (feuilles de chou farcies)"],
+
+ ["O zi la Constanța","Une journée à Constanța",
+  ["Vara trecută am fost la mare cu familia mea.",
+   "Am călătorit cu mașina de la București la Constanța.",
+   "Hotelul era mic, dar curat și aproape de plajă.",
+   "Dimineața am înotat în mare. Apa era caldă.",
+   "La prânz am mâncat pește într-un restaurant lângă apă.",
+   "După-amiaza ne-am plimbat prin orașul vechi.",
+   "Seara am privit apusul. Cerul era roșu.",
+   "A fost o zi minunată.",
+   "Anul viitor o să mergem din nou acolo."],
+  ["L'été dernier, je suis allé à la mer avec ma famille.",
+   "Nous avons voyagé en voiture de Bucarest à Constanța.",
+   "L'hôtel était petit, mais propre et près de la plage.",
+   "Le matin, nous avons nagé dans la mer. L'eau était chaude.",
+   "À midi, nous avons mangé du poisson dans un restaurant au bord de l'eau.",
+   "L'après-midi, nous nous sommes promenés dans la vieille ville.",
+   "Le soir, nous avons regardé le coucher du soleil. Le ciel était rouge.",
+   "Ce fut une journée magnifique.",
+   "L'année prochaine, nous y retournerons."],
+  "vara trecută (l'été dernier) • am fost (j'ai été) • era (c'était) • ne-am plimbat (nous nous sommes promenés) • apus (coucher de soleil) • o să mergem (nous irons)"],
+
+ ["La doctor","Chez le médecin",
+  ["Ana nu se simte bine.",
+   "Are febră și tuse.",
+   "Dimineața merge la doctor.",
+   "— Bună ziua. Care este problema? întreabă doctorul.",
+   "— Mă doare capul și sunt foarte obosită.",
+   "— De când?",
+   "— De trei zile.",
+   "Doctorul o consultă și spune:",
+   "— Nu aveți gripă, doar o răceală ușoară. Trebuie să vă odihniți și să beți multă apă.",
+   "— Am nevoie de medicamente?",
+   "— Da, poftiți rețeta. Farmacia este aproape, la dreapta.",
+   "— Mulțumesc mult, domnule doctor!"],
+  ["Ana ne se sent pas bien.",
+   "Elle a de la fièvre et de la toux.",
+   "Le matin, elle va chez le médecin.",
+   "— Bonjour. Quel est le problème ? demande le médecin.",
+   "— J'ai mal à la tête et je suis très fatiguée.",
+   "— Depuis quand ?",
+   "— Depuis trois jours.",
+   "Le médecin l'examine et dit :",
+   "— Vous n'avez pas la grippe, seulement un petit rhume. Vous devez vous reposer et boire beaucoup d'eau.",
+   "— Ai-je besoin de médicaments ?",
+   "— Oui, voici l'ordonnance. La pharmacie est tout près, à droite.",
+   "— Merci beaucoup, docteur !"],
+  "a se simți (se sentir) • mă doare capul (j'ai mal à la tête) • de când? (depuis quand ?) • trebuie să (il faut que) • am nevoie de (j'ai besoin de) • rețetă (ordonnance)"]
+];
+
+const GRAMMAR = [
+["1. Le genre des noms",`<p>Trois genres : masculin, féminin et neutre (masculin au singulier, féminin au pluriel).</p>
+<table class="t"><tr><th>Genre</th><th>Singulier</th><th>Pluriel</th></tr>
+<tr><td>Masculin</td><td class="ro-cell">un băiat</td><td class="ro-cell">doi băieți</td></tr>
+<tr><td>Féminin</td><td class="ro-cell">o casă</td><td class="ro-cell">două case</td></tr>
+<tr><td>Neutre</td><td class="ro-cell">un scaun</td><td class="ro-cell">două scaune</td></tr></table>
+<div class="tip">Astuce : testez avec <b>un / doi</b> (masc.), <b>o / două</b> (fém. et neutre au pluriel).</div>`],
+["2. L'article indéfini et défini",`<p>L'article défini se colle à la fin du mot, comme en roumain seul parmi les langues latines :</p>
+<table class="t"><tr><th>Indéfini</th><th>Défini</th><th>Sens</th></tr>
+<tr><td class="ro-cell">un băiat</td><td class="ro-cell">băiatul</td><td>le garçon</td></tr>
+<tr><td class="ro-cell">o casă</td><td class="ro-cell">casa</td><td>la maison</td></tr>
+<tr><td class="ro-cell">un scaun</td><td class="ro-cell">scaunul</td><td>la chaise</td></tr>
+<tr><td class="ro-cell">niște cărți</td><td class="ro-cell">cărțile</td><td>les livres</td></tr></table>
+<div class="tip">Masculin/neutre : <b>-ul</b> (ou <b>-le</b> après -e : <span class="ro-cell">nume → numele</span>). Féminin : <b>-a</b>.</div>`],
+["3. Le pluriel",`<table class="t"><tr><th>Genre</th><th>Règle</th><th>Exemple</th></tr>
+<tr><td>Masculin</td><td>+ i</td><td class="ro-cell">prieten → prieteni</td></tr>
+<tr><td>Féminin -ă</td><td>→ -e</td><td class="ro-cell">casă → case</td></tr>
+<tr><td>Féminin -e</td><td>→ -i</td><td class="ro-cell">carte → cărți</td></tr>
+<tr><td>Neutre</td><td>+ e / uri</td><td class="ro-cell">scaun → scaune ; timp → timpuri</td></tr></table>
+<div class="tip">Le pluriel modifie souvent la voyelle du radical : <span class="ro-cell">fată → fete</span>, <span class="ro-cell">masă → mese</span>.</div>`],
+["4. Les verbes « être » et « avoir »",`<table class="t"><tr><th></th><th>a fi (être)</th><th>a avea (avoir)</th></tr>
+<tr><td>eu</td><td class="ro-cell">sunt</td><td class="ro-cell">am</td></tr>
+<tr><td>tu</td><td class="ro-cell">ești</td><td class="ro-cell">ai</td></tr>
+<tr><td>el / ea</td><td class="ro-cell">este (e)</td><td class="ro-cell">are</td></tr>
+<tr><td>noi</td><td class="ro-cell">suntem</td><td class="ro-cell">avem</td></tr>
+<tr><td>voi</td><td class="ro-cell">sunteți</td><td class="ro-cell">aveți</td></tr>
+<tr><td>ei / ele</td><td class="ro-cell">sunt</td><td class="ro-cell">au</td></tr></table>
+<p>Négation : <span class="ro-cell">nu</span> devant le verbe — <span class="ro-cell">Nu sunt francez.</span> (Je ne suis pas français.)</p>
+<div class="tip">L'âge se dit avec « avoir » : <span class="ro-cell">Am treizeci de ani.</span></div>`],
+["5. Le présent : les quatre groupes",`<table class="t"><tr><th></th><th>-a (a lucra)</th><th>-ea (a vedea)</th><th>-e (a merge)</th><th>-i (a citi)</th></tr>
+<tr><td>eu</td><td class="ro-cell">lucrez</td><td class="ro-cell">văd</td><td class="ro-cell">merg</td><td class="ro-cell">citesc</td></tr>
+<tr><td>tu</td><td class="ro-cell">lucrezi</td><td class="ro-cell">vezi</td><td class="ro-cell">mergi</td><td class="ro-cell">citești</td></tr>
+<tr><td>el/ea</td><td class="ro-cell">lucrează</td><td class="ro-cell">vede</td><td class="ro-cell">merge</td><td class="ro-cell">citește</td></tr>
+<tr><td>noi</td><td class="ro-cell">lucrăm</td><td class="ro-cell">vedem</td><td class="ro-cell">mergem</td><td class="ro-cell">citim</td></tr>
+<tr><td>voi</td><td class="ro-cell">lucrați</td><td class="ro-cell">vedeți</td><td class="ro-cell">mergeți</td><td class="ro-cell">citiți</td></tr>
+<tr><td>ei/ele</td><td class="ro-cell">lucrează</td><td class="ro-cell">văd</td><td class="ro-cell">merg</td><td class="ro-cell">citesc</td></tr></table>
+<div class="tip">Le pronom sujet est facultatif : <span class="ro-cell">Vorbesc franceză.</span> = Je parle français.</div>`],
+["6. Poser une question",`<p>Pas d'inversion ni de « est-ce que » : seule l'intonation change.</p>
+<ul><li><span class="ro-cell">Vorbiți franceză?</span> — Parlez-vous français ?</li>
+<li><span class="ro-cell">Unde este gara?</span> — Où est la gare ?</li>
+<li><span class="ro-cell">Cât costă?</span> — Combien ça coûte ?</li>
+<li><span class="ro-cell">De ce nu vii?</span> — Pourquoi ne viens-tu pas ?</li></ul>
+<div class="tip">Mots utiles : cine, ce, unde, când, cum, de ce, cât, care.</div>`],
+["7. La construction « să » (notre infinitif)",`<p>Après vouloir, pouvoir, devoir, on emploie souvent <span class="ro-cell">să</span> + verbe conjugué :</p>
+<ul><li><span class="ro-cell">Vreau să mănânc.</span> — Je veux manger.</li>
+<li><span class="ro-cell">Pot să plătesc cu cardul?</span> — Puis-je payer par carte ?</li>
+<li><span class="ro-cell">Trebuie să lucrez.</span> — Je dois travailler.</li></ul>
+<div class="tip">À la 3<sup>e</sup> personne, le verbe change : <span class="ro-cell">el merge</span> mais <span class="ro-cell">el trebuie să meargă</span>.</div>`],
+["8. Le futur",`<p>Deux formes courantes à l'oral :</p>
+<table class="t"><tr><td class="ro-cell">o să merg / o să mergi / o să meargă</td><td>je vais aller… (familier, le plus fréquent)</td></tr>
+<tr><td class="ro-cell">voi merge / vei merge / va merge</td><td>j'irai… (soutenu, écrit)</td></tr></table>
+<p><span class="ro-cell">Mâine o să călătoresc la Iași.</span> — Demain je voyagerai à Iași.</p>`],
+["9. Le passé composé",`<p>Toujours avec l'auxiliaire <b>a avea</b> (jamais « être ») + participe passé invariable.</p>
+<table class="t"><tr><td class="ro-cell">am lucrat</td><td>j'ai travaillé</td><td class="ro-cell">am mers</td><td>je suis allé</td></tr>
+<tr><td class="ro-cell">ai lucrat</td><td>tu as travaillé</td><td class="ro-cell">ai mers</td><td>tu es allé</td></tr>
+<tr><td class="ro-cell">a lucrat</td><td>il a travaillé</td><td class="ro-cell">a mers</td><td>il est allé</td></tr>
+<tr><td class="ro-cell">am lucrat (noi)</td><td>nous avons travaillé</td><td class="ro-cell">ați mers</td><td>vous êtes allés</td></tr>
+<tr><td class="ro-cell">au lucrat</td><td>ils ont travaillé</td><td class="ro-cell">au mers</td><td>ils sont allés</td></tr></table>
+<p>Imparfait (A2) : <span class="ro-cell">eram, aveam, lucram, mergeam</span> — pour les descriptions et les habitudes.</p>`],
+["10. Les pronoms compléments",`<table class="t"><tr><th>Personne</th><th>COD</th><th>COI</th></tr>
+<tr><td>me / à moi</td><td class="ro-cell">mă</td><td class="ro-cell">îmi</td></tr>
+<tr><td>te / à toi</td><td class="ro-cell">te</td><td class="ro-cell">îți</td></tr>
+<tr><td>le / lui</td><td class="ro-cell">îl</td><td class="ro-cell">îi</td></tr>
+<tr><td>la / lui (f.)</td><td class="ro-cell">o</td><td class="ro-cell">îi</td></tr>
+<tr><td>nous</td><td class="ro-cell">ne</td><td class="ro-cell">ne</td></tr>
+<tr><td>vous</td><td class="ro-cell">vă</td><td class="ro-cell">vă</td></tr>
+<tr><td>les / leur</td><td class="ro-cell">îi / le</td><td class="ro-cell">le</td></tr></table>
+<p>Avec une personne complément d'objet, on ajoute <span class="ro-cell">pe</span> : <span class="ro-cell">Îl văd pe Andrei.</span></p>
+<div class="tip">Pour la douleur : <span class="ro-cell">Mă doare capul.</span> — J'ai mal à la tête.</div>`],
+["11. Comparatif et superlatif",`<ul><li><span class="ro-cell">mai</span> = plus : <span class="ro-cell">mai mare</span> (plus grand)</li>
+<li><span class="ro-cell">mai puțin</span> = moins : <span class="ro-cell">mai puțin scump</span></li>
+<li><span class="ro-cell">cel mai / cea mai</span> = le/la plus : <span class="ro-cell">cel mai bun</span> (le meilleur)</li></ul>
+<p>« que » se dit <span class="ro-cell">decât</span> : <span class="ro-cell">București este mai mare decât Cluj.</span></p>`],
+["12. Verbes réfléchis et impératif",`<p>Réfléchis avec <span class="ro-cell">mă, te, se, ne, vă, se</span> : <span class="ro-cell">mă numesc</span> (je m'appelle), <span class="ro-cell">mă simt bine</span> (je me sens bien), <span class="ro-cell">ne odihnim</span> (nous nous reposons).</p>
+<table class="t"><tr><td class="ro-cell">Vorbește mai rar!</td><td>Parle plus lentement !</td></tr>
+<tr><td class="ro-cell">Scuzați-mă!</td><td>Excusez-moi !</td></tr>
+<tr><td class="ro-cell">Vino aici!</td><td>Viens ici !</td></tr>
+<tr><td class="ro-cell">Nu pleca!</td><td>Ne pars pas !</td></tr></table>
+<div class="tip">Impératif négatif (tu) = <b>nu</b> + infinitif sans « a » : <span class="ro-cell">Nu vorbi!</span></div>`]
+];
+
+/* ---------- STORAGE ---------- */
+const KEY="ro_a1_progress_v1";
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{known:{},quiz:{}}; }catch(e){ return {known:{},quiz:{}}; } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(P)); }catch(e){} }
+let P = load();
+
+/* ---------- NAV ---------- */
+document.querySelectorAll("#nav button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("#nav button").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    document.querySelectorAll("main section").forEach(s=>s.classList.remove("active"));
+    document.getElementById("sec-"+b.dataset.target).classList.add("active");
+    if(b.dataset.target==="progress") renderProgress();
+  });
+});
+
+/* ---------- ALPHABET ---------- */
+const ag=document.getElementById("alpha-grid");
+ALPHABET.forEach(([g,s,e])=>{
+  const d=document.createElement("div"); d.className="card";
+  d.innerHTML=`<div class="glyph">${g}</div><div class="sound">${s}</div><div class="ex">${e}</div>`;
+  ag.appendChild(d);
+});
+
+/* ---------- VOCAB ---------- */
+const keys=Object.keys(VOCAB);
+let vCat=keys[0];
+function chips(host,cur,cb){
+  host.innerHTML="";
+  keys.forEach(k=>{
+    const c=document.createElement("button");
+    c.className="chip"+(k===cur()?" active":""); c.textContent=VOCAB[k].label;
+    c.addEventListener("click",()=>{cb(k); chips(host,cur,cb);});
+    host.appendChild(c);
+  });
+}
+const vList=document.getElementById("vocab-list");
+function renderVocab(){
+  vList.innerHTML="";
+  VOCAB[vCat].items.forEach(it=>{
+    const d=document.createElement("div"); d.className="row";
+    d.innerHTML=`<div class="ro">${it.ro}</div><div class="fr">${it.fr}</div>`;
+    vList.appendChild(d);
+  });
+}
+chips(document.getElementById("vocab-chips"),()=>vCat,k=>{vCat=k;renderVocab();});
+renderVocab();
+
+/* ---------- FLASHCARDS ---------- */
+let fCat=keys[0], fi=0;
+const fcEl=document.getElementById("flashcard");
+function kkey(c,i){return c+":"+i;}
+function renderFc(){
+  const items=VOCAB[fCat].items, it=items[fi];
+  fcEl.classList.remove("flipped");
+  document.getElementById("fc-front").textContent=it.fr;
+  document.getElementById("fc-back").textContent=it.ro;
+  const known=items.filter((_,i)=>P.known[kkey(fCat,i)]).length;
+  document.getElementById("fc-prog").textContent=`Carte ${fi+1} / ${items.length} — connus : ${known}`;
+}
+fcEl.addEventListener("click",()=>fcEl.classList.toggle("flipped"));
+document.getElementById("fc-next").onclick=()=>{fi=(fi+1)%VOCAB[fCat].items.length;renderFc();};
+document.getElementById("fc-prev").onclick=()=>{const n=VOCAB[fCat].items.length;fi=(fi-1+n)%n;renderFc();};
+document.getElementById("fc-yes").onclick=()=>{P.known[kkey(fCat,fi)]=true;save();document.getElementById("fc-next").onclick();};
+document.getElementById("fc-no").onclick=()=>{delete P.known[kkey(fCat,fi)];save();document.getElementById("fc-next").onclick();};
+chips(document.getElementById("fc-chips"),()=>fCat,k=>{fCat=k;fi=0;renderFc();});
+renderFc();
+
+/* ---------- QUIZ ---------- */
+let qCat=keys[0], qs=[], qi=0, qScore=0;
+const qBox=document.getElementById("quiz-box");
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function startQuiz(){
+  const items=VOCAB[qCat].items;
+  qs=shuffle(items).slice(0,Math.min(10,items.length)).map(c=>({
+    c, opts: shuffle([c,...shuffle(items.filter(x=>x!==c)).slice(0,3)])
+  }));
+  qi=0;qScore=0;renderQ();
+}
+function renderQ(){
+  if(qi>=qs.length){
+    const best=P.quiz[qCat]||0;
+    if(qScore>best){P.quiz[qCat]=qScore;save();}
+    qBox.innerHTML=`<h3>Résultat : ${qScore} / ${qs.length}</h3><p>Meilleur score : ${P.quiz[qCat]||0}</p>`;
+    const b=document.createElement("button");b.className="action primary";b.textContent="Recommencer";b.onclick=startQuiz;qBox.appendChild(b);
+    return;
+  }
+  const q=qs[qi];
+  qBox.innerHTML=`<div class="prog-label">Question ${qi+1} / ${qs.length}</div><h3>« ${q.c.fr} » en roumain ?</h3><div id="opts"></div>`;
+  const host=qBox.querySelector("#opts");
+  q.opts.forEach(o=>{
+    const b=document.createElement("button");b.className="opt-btn";b.textContent=o.ro;
+    b.onclick=()=>{
+      host.querySelectorAll(".opt-btn").forEach(x=>x.disabled=true);
+      if(o===q.c){b.classList.add("ok");qScore++;}
+      else{b.classList.add("ko");host.querySelectorAll(".opt-btn").forEach(x=>{if(x.textContent===q.c.ro)x.classList.add("ok");});}
+      setTimeout(()=>{qi++;renderQ();},900);
+    };
+    host.appendChild(b);
+  });
+}
+chips(document.getElementById("quiz-chips"),()=>qCat,k=>{qCat=k;startQuiz();});
+startQuiz();
+
+/* ---------- STORIES ---------- */
+const sHost=document.getElementById("stories");
+STORIES.forEach(([tro,tfr,ro,fr,words],i)=>{
+  const d=document.createElement("div");d.className="story";
+  d.innerHTML=`<h3>${i+1}. ${tro} <span style="font-weight:400;font-size:.9rem;color:var(--muted2)">— ${tfr}</span></h3>
+  <div class="story-ro">${ro.join("<br>")}</div>
+  <details><summary>▸ Voir la traduction française</summary><div class="fr-text">${fr.join("<br>")}</div></details>
+  <details><summary>▸ Mots utiles</summary><div class="words">${words}</div></details>`;
+  sHost.appendChild(d);
+});
+
+/* ---------- GRAMMAR ---------- */
+const gHost=document.getElementById("grammar");
+GRAMMAR.forEach(([t,html])=>{
+  const d=document.createElement("div");d.className="gram";
+  d.innerHTML=`<h3>${t}</h3>${html}`;
+  gHost.appendChild(d);
+});
+
+/* ---------- PROGRESS ---------- */
+function renderProgress(){ setTimeout(()=>{if(window.renderCultureProgress)renderCultureProgress();},0);
+  const host=document.getElementById("prog-list");host.innerHTML="";
+  keys.forEach(k=>{
+    const items=VOCAB[k].items, total=items.length;
+    const known=items.filter((_,i)=>P.known[kkey(k,i)]).length;
+    const pct=Math.round(known/total*100);
+    const qt=Math.min(10,total), qsx=P.quiz[k]||0;
+    const r=document.createElement("div");r.className="prog-row";
+    r.innerHTML=`<div class="lbl">${VOCAB[k].label}</div><div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div><div class="num">${known}/${total}</div>`;
+    host.appendChild(r);
+    const r2=document.createElement("div");r2.className="prog-row";
+    r2.innerHTML=`<div class="lbl">${VOCAB[k].label} — quiz</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(qsx/qt*100)}%;background:var(--gold)"></div></div><div class="num">${qsx}/${qt}</div>`;
+    host.appendChild(r2);
+  });
+}
+document.getElementById("reset-all").onclick=()=>{
+  if(confirm("Effacer toute la progression ?")){P={known:{},quiz:{}};save();renderProgress();renderFc();cuRenderCard();}
+};
+
+
+/* ---------- VERBES : TABLEAUX ---------- */
+const VERB_TABLES=[
+["a fi (être)","fost","fi",["sunt","ești","este","suntem","sunteți","sunt"]],
+["a avea (avoir)","avut","avea",["am","ai","are","avem","aveți","au"]],
+["a face (faire)","făcut","face",["fac","faci","face","facem","faceți","fac"]],
+["a putea (pouvoir)","putut","putea",["pot","poți","poate","putem","puteți","pot"]],
+["a vrea (vouloir)","vrut","vrea",["vreau","vrei","vrea","vrem","vreți","vor"]],
+["a ști (savoir)","știut","ști",["știu","știi","știe","știm","știți","știu"]],
+["a merge (aller / marcher)","mers","merge",["merg","mergi","merge","mergem","mergeți","merg"]],
+["a locui (habiter)","locuit","locui",["locuiesc","locuiești","locuiește","locuim","locuiți","locuiesc"]],
+["a lucra (travailler)","lucrat","lucra",["lucrez","lucrezi","lucrează","lucrăm","lucrați","lucrează"]],
+["a spune (dire)","spus","spune",["spun","spui","spune","spunem","spuneți","spun"]],
+["a da (donner)","dat","da",["dau","dai","dă","dăm","dați","dau"]],
+["a învăța (apprendre)","învățat","învăța",["învăț","înveți","învață","învățăm","învățați","învață"]],
+["a mânca (manger)","mâncat","mânca",["mănânc","mănânci","mănâncă","mâncăm","mâncați","mănâncă"]],
+["a bea (boire)","băut","bea",["beau","bei","bea","bem","beți","beau"]]
+];
+(function(){
+  const host=document.getElementById("verb-tables");
+  const pr=["eu","tu","el / ea","noi","voi","ei / ele"];
+  const aux=["am","ai","a","am","ați","au"], fut=["voi","vei","va","vom","veți","vor"];
+  VERB_TABLES.forEach(([t,part,inf,pres])=>{
+    const rows=pr.map((p,i)=>`<tr><td>${p}</td><td class="ro-cell">${pres[i]}</td><td class="ro-cell">${aux[i]} ${part}</td><td class="ro-cell">${fut[i]} ${inf}</td></tr>`).join("");
+    const d=document.createElement("div");d.className="gram";
+    d.innerHTML=`<h3>${t}</h3><table class="t"><tr><th></th><th>Présent</th><th>Passé composé</th><th>Futur</th></tr>${rows}</table>`;
+    host.appendChild(d);
+  });
+  const e=document.createElement("div");e.className="gram";
+  e.innerHTML=`<h3>Imparfait et conditionnel</h3><table class="t"><tr><th></th><th>a fi — imparfait</th><th>a vrea — conditionnel</th></tr>`+
+  pr.map((p,i)=>`<tr><td>${p}</td><td class="ro-cell">${["eram","erai","era","eram","erați","erau"][i]}</td><td class="ro-cell">${["aș vrea","ai vrea","ar vrea","am vrea","ați vrea","ar vrea"][i]}</td></tr>`).join("")+`</table><div class="tip">Subjonctif : <span class="ro-cell">să dau, să dai, să dea, să dăm, să dați, să dea</span> (a da).</div>`;
+  host.appendChild(e);
+})();
+
+/* ================= CULTURE : HISTOIRE / FÊTES / FIERTÉS ================= */
+const CULTURE={
+hist:{label:"Histoire",items:[
+["Quel roi dace unifie les Daces au Ier siècle av. J.-C. ?","Burebista","Puissant roi dace avant la conquête romaine."],
+["Quel roi dace affronte Trajan ?","Decebal","Dernier roi de la Dacie indépendante."],
+["En quelle année Trajan conquiert-il la Dacie ?","106 apr. J.-C.","Après les guerres de 101-102 et 105-106."],
+["Quelle était la capitale dace ?","Sarmizegetusa","Sarmizegetusa Regia, dans les monts Orăștie."],
+["Quel prince bat Charles Ier de Hongrie en 1330 ?","Basarab Ier","Bataille de Posada, naissance de la Valachie indépendante."],
+["Quelle bataille de 1330 assure l'indépendance de la Valachie ?","Posada","Victoire de Basarab Ier."],
+["Quel prince de Valachie bat Bayezid Ier à Rovine ?","Mircea cel Bătrân","Mircea l'Ancien, fin du XIVe siècle."],
+["Qui est surnommé « l'Empaleur » ?","Vlad Țepeș","Vlad III, prince de Valachie (1456-1462)."],
+["Quel prince de Moldavie règne de 1457 à 1504 ?","Ștefan cel Mare","Étienne le Grand, canonisé en 1992."],
+["Quelle victoire Étienne le Grand remporte-t-il en 1475 ?","Vaslui","Contre l'armée ottomane."],
+["Quel prince réunit brièvement les trois principautés en 1600 ?","Mihai Viteazul","Michel le Brave : Valachie, Moldavie, Transylvanie."],
+["Qui dirige le soulèvement de 1821 ?","Tudor Vladimirescu","Fin du régime phanariote."],
+["Qui est élu prince des deux principautés en 1859 ?","Alexandru Ioan Cuza","Petite Union (Mica Unire)."],
+["Quelle date correspond à la Petite Union ?","24 janvier 1859","Union de la Moldavie et de la Valachie."],
+["Quelle date correspond à l'indépendance de la Roumanie ?","9 mai 1877","Proclamée pendant la guerre russo-turque."],
+["Qui devient le premier roi de Roumanie en 1881 ?","Carol Ier","Prince depuis 1866."],
+["Quelles batailles de 1917 marquent la Première Guerre mondiale ?","Mărășești et Oituz","Résistance de l'armée roumaine."],
+["Quelle date correspond à la Grande Union ?","1er décembre 1918","Assemblée d'Alba Iulia."],
+["Dans quelle ville la Transylvanie proclame-t-elle son union ?","Alba Iulia","Marea Unire, 1918."],
+["Quel roi règne lors de la Grande Union ?","Ferdinand Ier","Avec la reine Marie."],
+["Qui dirige la Roumanie communiste de 1965 à 1989 ?","Nicolae Ceaușescu","Régime de plus en plus autoritaire."],
+["Dans quelle ville la révolution commence-t-elle en 1989 ?","Timișoara","Le 16 décembre 1989."],
+["Quelle date marque l'exécution de Ceaușescu ?","25 décembre 1989","Fin du régime communiste."],
+["En quelle année la Roumanie rejoint-elle l'OTAN ?","2004","Intégration euro-atlantique."],
+["En quelle année la Roumanie rejoint-elle l'UE ?","2007","Le 1er janvier 2007."]]},
+fetes:{label:"Fêtes & calendrier",items:[
+["Que fait-on le 1er mars ?","Mărțișor : on offre un cordon rouge et blanc","Symbole du printemps et de la santé."],
+["Quelle fête de l'amour tombe le 24 février ?","Dragobete","Saint-Valentin roumaine."],
+["Quelle grande fête orthodoxe tombe le 6 janvier ?","Boboteaza (Théophanie)","Bénédiction des eaux, croix jetée dans l'eau."],
+["Quelle est la plus grande fête chrétienne ?","Paștele (Pâques orthodoxes)","Œufs rouges, cozonac, drob, pasca."],
+["Quel est le salut pascal roumain ?","Hristos a înviat! — Adevărat a înviat!","Christ est ressuscité ! — En vérité !"],
+["Quelle brioche traditionnelle prépare-t-on ?","Le cozonac","Pâques et Noël."],
+["Quel plat d'agneau est traditionnel à Pâques ?","Drob de miel","Sorte de terrine d'abats."],
+["Quelle fête a lieu une semaine avant Pâques ?","Florii (Rameaux)","Bénédiction de branches de saule."],
+["Quelle fête tombe le 23 avril ?","Sfântul Gheorghe","Protecteur des bergers."],
+["Que célèbre-t-on le 9 mai ?","Indépendance et Journée de l'Europe","Depuis 1877."],
+["Que célèbre-t-on le 15 août ?","Adormirea Maicii Domnului","Sfânta Maria Mare, pèlerinages."],
+["Quel saint est l'« apôtre des Roumains » ?","Sf. Andrei (30 novembre)","Apôtre André."],
+["Quelle est la fête nationale officielle ?","1er décembre — Grande Union (1918)","Ziua Națională."],
+["Quelle fête tombe le 6 décembre ?","Sfântul Nicolae","Cadeaux dans les chaussures."],
+["Comment appelle-t-on les chants de Noël ?","Colinde","Chants de porte en porte."],
+["Quel plat est typique de Noël ?","Les sarmale","Feuilles de chou farcies."],
+["Que fait-on au Nouvel An avec des vœux chantés ?","Plugușorul","Vœux de bonne récolte, avec Sorcova."],
+["Qu'est-ce que la Sorcova ?","Une branche fleurie de vœux","Portée le 1er janvier par les enfants."],
+["Quelle fête tombe le 21 mai ?","Sf. Constantin și Elena","Empereur Constantin et sa mère."],
+["Que célèbre-t-on le 25 octobre ?","Ziua Armatei României","Journée de l'Armée."],
+["Quelle fête tombe le 1er juin ?","Ziua Copilului","Journée des enfants."]]},
+fierte:{label:"Fiertés 🇷🇴",items:[
+["Quel est le poète national roumain ?","Mihai Eminescu","Auteur de « Luceafărul »."],
+["Quel sculpteur roumain a fait la Colonne sans fin ?","Constantin Brâncuși","Coloana Infinitului, à Târgu Jiu."],
+["Quel compositeur a écrit les Rhapsodies roumaines ?","George Enescu","Compositeur et violoniste."],
+["Quel dramaturge roumain est célèbre pour ses comédies ?","I. L. Caragiale","Auteur de « O scrisoare pierdută »."],
+["Qui a obtenu le premier 10 parfait en gymnastique ?","Nadia Comăneci","Jeux de Montréal, 1976."],
+["Quel footballeur est surnommé le « Maradona des Carpates » ?","Gheorghe Hagi","Légende du football roumain."],
+["Quelle danse traditionnelle se danse en cercle ?","La hora","Danse collective."],
+["Comment appelle-t-on la blouse brodée traditionnelle ?","La ia","Journée mondiale de la ia le 24 juin."],
+["Comment appelle-t-on le chant lyrique traditionnel ?","La doina","Chant mélancolique."],
+["Quel plat traditionnel est fait de semoule de maïs ?","La mămăligă","Souvent servie avec du fromage."],
+["Quelles sont les couleurs du drapeau roumain ?","Bleu, jaune, rouge","Tricolore vertical."],
+["Quel est l'hymne national ?","Deșteaptă-te, române!","Hymne de 1848."],
+["Quel château est lié au mythe de Dracula ?","Le château de Bran","En Transylvanie, près de Brașov."],
+["Quel château royal se trouve à Sinaia ?","Peleș","Résidence du roi Carol Ier."],
+["Quel est le plus grand bâtiment administratif du pays ?","Le Palais du Parlement","À Bucarest."],
+["Quel monastère peint est célèbre pour son bleu ?","Voroneț","Chapelle Sixtine de l'Orient."],
+["Où se trouve le tombeau de Ștefan cel Mare ?","Au monastère de Putna","En Bucovine."],
+["Quel delta est classé à l'UNESCO ?","Le delta du Danube","Réserve de biosphère."],
+["Quel cimetière est célèbre pour ses croix colorées ?","Le Cimitirul Vesel de la Săpânța","Dans le Maramureș."],
+["Quelle route de montagne est célèbre ?","Le Transfăgărășan","Traverse les Carpates."],
+["Quelle sainte est vénérée à Iași ?","Sainte Parascheva","Pèlerinage en octobre."],
+["Quel est le triptyque des dates clés ?","1859 · 1877 · 1918","Petite Union, Indépendance, Grande Union."]]}
+};
+
+/* ---- stockage ---- */
+function cuKnownStore(){ if(!P.cultureKnown)P.cultureKnown={}; return P.cultureKnown; }
+function cuQuizStore(){ if(!P.cultureQuiz)P.cultureQuiz={}; return P.cultureQuiz; }
+function cuKey(c,i){return c+"#"+i;}
+const cuChipsEl=document.getElementById("cu-chips"), cuCardsWrap=document.getElementById("cu-cards-wrap"),
+  cuQuizBox=document.getElementById("cu-quiz-box"), cuFlashEl=document.getElementById("cu-flashcard");
+let cuCat=Object.keys(CULTURE)[0], cuOrder=null, cuPos=0, cuMode="cards", cuQs=[], cuQi=0, cuScore=0;
+function cuItems(){return CULTURE[cuCat].items;}
+function cuBuildOrder(sh){const b=cuItems().map((_,i)=>i);cuOrder=sh?shuffle(b):b;cuPos=0;}
+function cuRenderChips(){
+  cuChipsEl.innerHTML="";
+  Object.entries(CULTURE).forEach(([k,c])=>{
+    const b=document.createElement("button");b.className="chip"+(k===cuCat?" active":"");b.textContent=c.label;
+    b.onclick=()=>{cuCat=k;cuBuildOrder(false);cuRenderChips();cuMode==="cards"?cuRenderCard():cuStartQuiz();};
+    cuChipsEl.appendChild(b);
+  });
+}
+cuFlashEl.addEventListener("click",()=>cuFlashEl.classList.toggle("flipped"));
+function cuRenderCard(){
+  const items=cuItems(); if(!cuOrder||cuOrder.length!==items.length)cuBuildOrder(false);
+  const it=items[cuOrder[cuPos]];
+  document.getElementById("cu-front-word").textContent=it[0];
+  document.getElementById("cu-back-word").textContent=it[1];
+  document.getElementById("cu-back-sub").textContent=it[2]||"";
+  cuFlashEl.classList.remove("flipped");
+  const kn=cuKnownStore(), n=items.filter((_,i)=>kn[cuKey(cuCat,i)]).length;
+  document.getElementById("cu-progress").textContent=`Carte ${cuPos+1} / ${items.length} — ${n}/${items.length} maîtrisées dans ce thème`;
+}
+function cuMove(s){const n=cuOrder.length;cuPos=(cuPos+s+n)%n;cuRenderCard();}
+document.getElementById("cu-next").onclick=()=>cuMove(1);
+document.getElementById("cu-prev").onclick=()=>cuMove(-1);
+document.getElementById("cu-shuffle").onclick=()=>{cuBuildOrder(true);cuRenderCard();};
+document.getElementById("cu-know").onclick=()=>{cuKnownStore()[cuKey(cuCat,cuOrder[cuPos])]=true;save();cuMove(1);};
+document.getElementById("cu-dontknow").onclick=()=>{delete cuKnownStore()[cuKey(cuCat,cuOrder[cuPos])];save();cuMove(1);};
+
+function cuStartQuiz(){
+  const items=cuItems();
+  cuQs=shuffle(items).slice(0,Math.min(10,items.length)).map(c=>({
+    q:c[0],correct:c[1],note:c[2]||"",
+    options:shuffle([c,...shuffle(items.filter(i=>i!==c&&i[1]!==c[1])).slice(0,3)]).map(o=>o[1])
+  }));
+  cuQi=0;cuScore=0;cuRenderQ();
+}
+function cuRenderQ(){
+  if(cuQi>=cuQs.length){
+    const st=cuQuizStore(), best=st[cuCat]||0;
+    if(cuScore>best){st[cuCat]=cuScore;save();}
+    cuQuizBox.innerHTML=`<h3>Résultat : ${cuScore} / ${cuQs.length}</h3><p>Meilleur score : ${Math.max(cuScore,best)}</p>`;
+    const b=document.createElement("button");b.className="action primary";b.textContent="Recommencer ce thème";b.onclick=cuStartQuiz;cuQuizBox.appendChild(b);
+    return;
+  }
+  const q=cuQs[cuQi];
+  cuQuizBox.innerHTML=`<div class="prog-label">Question ${cuQi+1} / ${cuQs.length} — ${CULTURE[cuCat].label}</div><div class="quiz-question"></div><div id="cu-opts"></div><div class="prog-label" id="cu-quiz-note"></div>`;
+  cuQuizBox.querySelector(".quiz-question").textContent=q.q;
+  const host=cuQuizBox.querySelector("#cu-opts");
+  q.options.forEach(o=>{
+    const b=document.createElement("button");b.className="opt-btn";b.textContent=o;
+    b.onclick=()=>{
+      host.querySelectorAll(".opt-btn").forEach(x=>x.disabled=true);
+      if(o===q.correct){b.classList.add("ok");cuScore++;}
+      else{b.classList.add("ko");host.querySelectorAll(".opt-btn").forEach(x=>{if(x.textContent===q.correct)x.classList.add("ok");});}
+      if(q.note)document.getElementById("cu-quiz-note").textContent="💡 "+q.note;
+      setTimeout(()=>{cuQi++;cuRenderQ();},q.note?1600:800);
+    };
+    host.appendChild(b);
+  });
+}
+function cuSetMode(m){
+  cuMode=m;const c=m==="cards";
+  document.getElementById("cu-mode-cards").className="action"+(c?" primary":"");
+  document.getElementById("cu-mode-quiz").className="action"+(c?"":" primary");
+  cuCardsWrap.style.display=c?"flex":"none";
+  cuQuizBox.style.display=c?"none":"block";
+  c?cuRenderCard():cuStartQuiz();
+}
+document.getElementById("cu-mode-cards").onclick=()=>cuSetMode("cards");
+document.getElementById("cu-mode-quiz").onclick=()=>cuSetMode("quiz");
+document.querySelectorAll(".cu-jump").forEach(b=>b.addEventListener("click",()=>{
+  cuCat=b.dataset.cat;cuBuildOrder(false);cuRenderChips();cuSetMode(b.dataset.mode);
+  document.querySelector('#nav button[data-target="culture"]').click();
+}));
+cuRenderChips();cuBuildOrder(false);cuSetMode("cards");
+
+function renderCultureProgress(){
+  const host=document.getElementById("prog-list"); if(!host)return;
+  const kn=cuKnownStore(), qz=cuQuizStore();
+  Object.entries(CULTURE).forEach(([k,c])=>{
+    const t=c.items.length, n=c.items.filter((_,i)=>kn[cuKey(k,i)]).length, qt=Math.min(10,t), qs2=qz[k]||0;
+    [[c.label,Math.round(n/t*100),`${n}/${t}`,""],[c.label+" — quiz",Math.round(qs2/qt*100),`${qs2}/${qt}`,"background:var(--gold)"]].forEach(([l,p,num,sty])=>{
+      const r=document.createElement("div");r.className="prog-row";
+      r.innerHTML=`<div class="lbl">${l}</div><div class="bar-track"><div class="bar-fill" style="width:${p}%;${sty}"></div></div><div class="num">${num}</div>`;
+      host.appendChild(r);
+    });
+  });
+}
+
+/* ---------------- THÈME SOMBRE ---------------- */
+(function(){
+  const root = document.documentElement;
+  const btn = document.getElementById('themeToggle');
+  function apply(t){
+    root.setAttribute('data-theme', t);
+    btn.setAttribute('aria-label', t === 'dark' ? 'Activer le thème clair' : 'Activer le thème sombre');
+    btn.title = t === 'dark' ? 'Thème clair' : 'Thème sombre';
+  }
+  apply(root.getAttribute('data-theme') || 'light');
+  btn.addEventListener('click', function(){
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+    try{ localStorage.setItem('bg_theme', next); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

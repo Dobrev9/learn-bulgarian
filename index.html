@@ -59,7 +59,7 @@
     --bad-bg:#3a2028;
     color-scheme: dark;
   }
-  :root[data-theme="dark"] header h1{ color:#fff; }
+  :root[data-theme="light"] header h1{ color:#fff; }
 
   body, .letter-card, .face, .info-card, .phrase, .story-card, .gram-card,
   .quiz-box, .mini-table-wrap, .lucy-review, .culture-cta, .prayer-box, .opt-btn{
@@ -103,37 +103,24 @@
     margin:0 0 .4em 0;
   }
 
+  /* Шевица : frise en points de croix (broderie traditionnelle) */
   .shevitsa{
-    height:26px;
+    height:45px;
     width:100%;
-    background-image:
-      linear-gradient(var(--gold), var(--gold)),
-      linear-gradient(var(--sage), var(--sage)),
-      linear-gradient(45deg, var(--madder) 25%, transparent 25%),
-      linear-gradient(-45deg, var(--madder) 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, var(--madder) 75%),
-      linear-gradient(-45deg, transparent 75%, var(--madder) 75%);
-    background-repeat:
-      no-repeat, no-repeat, repeat-x, repeat-x, repeat-x, repeat-x;
-    background-position:
-      top, bottom, center, center, center, center;
-    background-size:
-      100% 4px, 100% 4px, 18px 18px, 18px 18px, 18px 18px, 18px 18px;
-    box-shadow:0 1px 0 rgba(0,0,0,.15), 0 -1px 0 rgba(0,0,0,.15);
-    opacity:.95;
+    background-color:var(--paper);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 28 15%22 shape-rendering=%22crispEdges%22%3E%3Crect x=%220%22 y=%220%22 width=%2228%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%220%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%222%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%224%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%226%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%227%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%228%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2210%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2212%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2214%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2216%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2218%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2220%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2222%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2224%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2226%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%227%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2216%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2221%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%2226%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%222%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%234C7A4C%22/%3E%3Crect x=%226%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%227%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%228%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2214%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%232C7FA6%22/%3E%3Crect x=%2215%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2216%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2217%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2221%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2225%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2226%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2227%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%225%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%226%22 y=%224%22 width=%223%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%229%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2216%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2221%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2226%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%224%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%225%22 y=%225%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%227%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%228%22 y=%225%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2210%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2220%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2221%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2222%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%223%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%224%22 y=%226%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%226%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%227%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%228%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%229%22 y=%226%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2211%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2219%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2220%22 y=%226%22 width=%223%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2223%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%220%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%221%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%222%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%223%22 y=%227%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%225%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%226%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%228%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%229%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2210%22 y=%227%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2212%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2213%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%2214%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2216%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%232C7FA6%22/%3E%3Crect x=%2218%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2220%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2222%22 y=%227%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2224%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2226%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%234C7A4C%22/%3E%3Crect x=%223%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%224%22 y=%228%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%226%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%227%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%228%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%229%22 y=%228%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2211%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2219%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2220%22 y=%228%22 width=%223%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2223%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%224%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%225%22 y=%229%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%227%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%228%22 y=%229%22 width=%222%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2210%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2220%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2221%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2222%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%225%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%226%22 y=%2210%22 width=%223%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%229%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2216%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2221%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2226%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%222%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%232C7FA6%22/%3E%3Crect x=%226%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%227%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%228%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2214%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%234C7A4C%22/%3E%3Crect x=%2215%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2216%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2217%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2221%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2225%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2226%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2227%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%227%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%235E1520%22/%3E%3Crect x=%2216%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2221%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%2226%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%220%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%222%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%224%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%226%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%227%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23C08A2E%22/%3E%3Crect x=%228%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2210%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2212%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2214%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2216%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2218%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2220%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2222%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2224%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%2226%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23A22C3B%22/%3E%3Crect x=%220%22 y=%2214%22 width=%2228%22 height=%221%22 fill=%22%235E1520%22/%3E%3C/svg%3E");
+    background-repeat:repeat-x;
+    background-position:center top;
+    background-size:auto 45px;
+    image-rendering:pixelated;
+    image-rendering:crisp-edges;
+    border-bottom:1px solid var(--linen-dark);
   }
-  .flag-row{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:.6rem 0 .3rem;
+  :root[data-theme="dark"] .shevitsa{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 28 15%22 shape-rendering=%22crispEdges%22%3E%3Crect x=%220%22 y=%220%22 width=%2228%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%220%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%222%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%224%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%226%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%227%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%228%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2210%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2212%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2214%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2216%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2218%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2220%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2222%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2224%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2226%22 y=%221%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%227%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2216%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2221%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%2226%22 y=%222%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%222%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%236FA36F%22/%3E%3Crect x=%226%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%227%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%228%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2214%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%234FA3C7%22/%3E%3Crect x=%2215%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2216%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2217%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2221%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2225%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2226%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2227%22 y=%223%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%225%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%226%22 y=%224%22 width=%223%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%229%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2216%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2221%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2226%22 y=%224%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%224%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%225%22 y=%225%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%227%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%228%22 y=%225%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2210%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2220%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2221%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2222%22 y=%225%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%223%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%224%22 y=%226%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%226%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%227%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%228%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%229%22 y=%226%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2211%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2219%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2220%22 y=%226%22 width=%223%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2223%22 y=%226%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%220%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%221%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%222%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%223%22 y=%227%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%225%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%226%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%228%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%229%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2210%22 y=%227%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2212%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2213%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%2214%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2216%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%234FA3C7%22/%3E%3Crect x=%2218%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2220%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2222%22 y=%227%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2224%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2226%22 y=%227%22 width=%221%22 height=%221%22 fill=%22%236FA36F%22/%3E%3Crect x=%223%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%224%22 y=%228%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%226%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%227%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%228%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%229%22 y=%228%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2211%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2219%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2220%22 y=%228%22 width=%223%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2223%22 y=%228%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%224%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%225%22 y=%229%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%227%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%228%22 y=%229%22 width=%222%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2210%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2220%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2221%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2222%22 y=%229%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%225%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%226%22 y=%2210%22 width=%223%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%229%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2216%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2221%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2226%22 y=%2210%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%222%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%234FA3C7%22/%3E%3Crect x=%226%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%227%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%228%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2214%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%236FA36F%22/%3E%3Crect x=%2215%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2216%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2217%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2221%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2225%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2226%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2227%22 y=%2211%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%227%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3Crect x=%2216%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2221%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%2226%22 y=%2212%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%220%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%222%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%224%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%226%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%227%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D8A445%22/%3E%3Crect x=%228%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2210%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2212%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2214%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2216%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2218%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2220%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2222%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2224%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%2226%22 y=%2213%22 width=%221%22 height=%221%22 fill=%22%23D45C6E%22/%3E%3Crect x=%220%22 y=%2214%22 width=%2228%22 height=%221%22 fill=%22%239B2A3E%22/%3E%3C/svg%3E");
   }
-  .bg-flag{
-    width:56px;
-    height:auto;
-    display:block;
-    border:1px solid rgba(0,0,0,.2);
-    box-shadow:0 1px 4px rgba(0,0,0,.25);
+  @media (max-width:480px){
+    .shevitsa{ height:36px; background-size:auto 36px; }
   }
 
   header{
@@ -580,12 +567,151 @@
   .gtable td.bg-cell{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); }
   .tip{ background:var(--linen); border-left:3px solid var(--madder); padding:.5rem .75rem; margin:.6rem 0; font-size:.93rem; }
   .wordbox{ font-size:.9rem; color:var(--sage); margin-top:.6rem; line-height:1.7; }
+
+  /* ---- Prononciation ---- */
+  .tbl-scroll{ overflow-x:auto; max-width:100%; }
+  .ipa{ font-family:'Noto Sans','Segoe UI','DejaVu Sans',Arial,sans-serif; color:var(--sage); white-space:nowrap; }
+  .st{ text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px; text-decoration-color:var(--madder); font-weight:700; }
+  .say{
+    display:inline-block; cursor:pointer; user-select:none;
+    font-family:'PT Serif', Georgia, serif; color:var(--madder-dark);
+    border:1px solid var(--linen-dark); background:var(--linen);
+    border-radius:14px; padding:0 .55rem; margin:.15rem .1rem; line-height:1.6;
+    transition:background .15s, border-color .15s;
+  }
+  .say::after{ content:" 🔊"; font-size:.8em; }
+  .say:hover, .say:focus-visible{ border-color:var(--gold); background:var(--linen-dark); outline:none; }
+  .say.playing{ border-color:var(--madder); }
+  td > .say:empty{ padding:0 .4rem; }
+  td > .say:empty::after{ content:"🔊"; }
+  #sec-pronunciation ol, #sec-pronunciation ul{ padding-left:1.3rem; margin:.4rem 0; }
+  #sec-pronunciation li{ margin:.2rem 0; }
+
+  /* ---- Conjugaison (fiches + entraînement) ---- */
+  .cj-tabs{ display:flex; gap:.3rem; margin:0 0 1.3rem; border-bottom:2px solid var(--linen-dark); }
+  .cj-tab{
+    font-family:'PT Sans', Arial, sans-serif; font-size:1rem; background:transparent; border:none;
+    padding:.6rem 1.1rem; cursor:pointer; color:var(--text2);
+    border-bottom:3px solid transparent; margin-bottom:-2px;
+  }
+  .cj-tab:hover{ color:var(--madder-dark); }
+  .cj-tab.active{ color:var(--madder-dark); font-weight:700; border-bottom-color:var(--madder); }
+  .cj-card{ background:var(--card); border:1px solid var(--linen-dark); border-left:5px solid var(--sage); padding:1rem 1.15rem; margin-bottom:1.1rem; }
+  .cj-card h3{ margin-bottom:.5rem; }
+  .cj-label{ font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted2); font-weight:700; margin:1.1rem 0 .45rem; }
+  .cj-label:first-child{ margin-top:0; }
+  .cj-group-title{ font-size:.82rem; color:var(--muted2); margin:.7rem 0 .3rem; }
+  .cj-toolbar{ display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; align-items:center; justify-content:space-between; margin-bottom:.8rem; }
+  .cj-check{ font-size:.9rem; color:var(--text2); display:inline-flex; gap:.4rem; align-items:center; cursor:pointer; }
+
+  .cj-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1rem; margin-bottom:.4rem; }
+  .cj-head .big{ font-family:'PT Serif', Georgia, serif; font-size:2rem; color:var(--madder-dark); line-height:1.1; }
+  .cj-head .fr{ font-size:1.1rem; color:var(--text2); }
+  .cj-badge{ display:inline-block; font-size:.76rem; border:1px solid var(--sage); color:var(--sage); border-radius:12px; padding:.05rem .6rem; }
+  .cj-badge.gold{ border-color:var(--gold); color:var(--gold); }
+  .cj-tr{ display:block; font-size:.78rem; color:var(--muted2); font-style:italic; font-family:'PT Sans', Arial, sans-serif; }
+  .cj-noTr .cj-tr{ display:none; }
+  table.cj-table td.f{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); font-size:1.02rem; }
+  table.cj-table td.p{ color:var(--text2); white-space:nowrap; }
+  table.cj-table td.p small{ color:var(--muted2); }
+  .cj-cta{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:.8rem; }
+
+  /* Entraînement : réglages */
+  .cj-modes{ display:grid; grid-template-columns:repeat(auto-fill, minmax(215px,1fr)); gap:.7rem; }
+  .cj-mode{
+    text-align:left; background:var(--paper); border:1.5px solid var(--linen-dark); padding:.75rem .9rem;
+    cursor:pointer; font-family:'PT Sans', Arial, sans-serif; color:var(--indigo); border-radius:2px;
+  }
+  .cj-mode b{ display:block; font-size:1rem; margin-bottom:.15rem; }
+  .cj-mode span{ font-size:.82rem; color:var(--text3); line-height:1.35; display:block; }
+  .cj-mode:hover{ border-color:var(--sage); }
+  .cj-mode.active{ border-color:var(--madder); background:var(--card); box-shadow:inset 4px 0 0 var(--madder); }
+  .cj-seg{ display:inline-flex; border:1.5px solid var(--indigo); border-radius:2px; overflow:hidden; }
+  .cj-seg button{ font-family:'PT Sans', Arial, sans-serif; font-size:.92rem; background:transparent; color:var(--indigo); border:none; padding:.4rem .9rem; cursor:pointer; }
+  .cj-seg button + button{ border-left:1.5px solid var(--indigo); }
+  .cj-seg button.active{ background:var(--indigo); color:var(--linen); }
+  .cj-chipline{ display:flex; flex-wrap:wrap; gap:.45rem; }
+  .cj-chipline .chip{ font-family:'PT Sans', Arial, sans-serif; }
+  .cj-chipline .chip.q{ border-color:var(--gold); color:var(--gold); }
+  .cj-chipline .chip.q:hover{ background:var(--gold); color:#fff; }
+  .cj-start{ margin-top:1.3rem; display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; }
+  .cj-start button.action{ font-size:1.02rem; padding:.75rem 1.6rem; }
+  .cj-hint{ font-size:.85rem; color:var(--muted2); }
+
+  /* Entraînement : question */
+  .cj-stage{ max-width:680px; }
+  .cj-top{ display:flex; align-items:center; gap:.9rem; margin-bottom:.9rem; font-size:.85rem; color:var(--text3); }
+  .cj-top .bar-track{ height:8px; }
+  .cj-top .bar-fill{ background:var(--gold); transition:width .3s; }
+  .cj-streak{ white-space:nowrap; font-weight:700; color:var(--madder-dark); min-width:3.2rem; text-align:right; }
+  .cj-quit{ background:none; border:none; color:var(--muted2); text-decoration:underline; cursor:pointer; font-size:.82rem; font-family:inherit; }
+  .cj-qbox{ background:var(--card); border:1px solid var(--linen-dark); padding:1.3rem 1.4rem; }
+  .cj-kind{ font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted2); margin-bottom:.5rem; }
+  .cj-q{ font-family:'PT Serif', Georgia, serif; font-size:1.3rem; line-height:1.5; margin-bottom:1.1rem; }
+  .cj-q .v{ color:var(--madder-dark); font-weight:700; }
+  .cj-q .pill{ display:inline-block; font-family:'PT Sans', Arial, sans-serif; font-size:.82rem; border-radius:12px; padding:.05rem .65rem; background:var(--linen); border:1px solid var(--linen-dark); color:var(--text2); vertical-align:middle; }
+  .cj-q .pill.t{ background:var(--sage); border-color:var(--sage); color:#fff; }
+  .cj-q .pill.p{ background:var(--gold); border-color:var(--gold); color:#fff; }
+  .cj-form{ font-family:'PT Serif', Georgia, serif; font-size:2rem; color:var(--madder-dark); margin:.2rem 0 .1rem; display:block; }
+  .cj-blank{ display:inline-block; min-width:5.5rem; border-bottom:3px solid var(--gold); text-align:center; color:var(--madder-dark); font-weight:700; margin:0 .2rem; }
+  .cj-sent-fr{ font-family:'PT Sans', Arial, sans-serif; font-size:.9rem; color:var(--text3); font-style:italic; margin-top:.3rem; }
+  .cj-opts{ display:grid; grid-template-columns:1fr 1fr; gap:.6rem; }
+  @media (max-width:560px){ .cj-opts{ grid-template-columns:1fr; } }
+  .cj-opts .opt-btn{ font-family:'PT Serif', Georgia, serif; font-size:1.08rem; }
+  .cj-opts .opt-btn .n{ display:inline-block; width:1.4rem; color:var(--muted2); font-family:'PT Sans', Arial, sans-serif; font-size:.8rem; }
+  .cj-input{
+    width:100%; font-family:'PT Serif', Georgia, serif; font-size:1.3rem; padding:.6rem .8rem;
+    border:1.5px solid var(--linen-dark); background:var(--paper); color:var(--indigo); border-radius:2px;
+  }
+  .cj-input:focus{ outline:none; border-color:var(--gold); }
+  .cj-input.correct{ background:var(--ok-bg); border-color:var(--ok); }
+  .cj-input.incorrect{ background:var(--bad-bg); border-color:var(--bad); }
+  .cj-kbd{ margin-top:.8rem; }
+  .cj-kbd summary{ cursor:pointer; font-size:.85rem; color:var(--muted2); }
+  .cj-keys{ display:flex; flex-wrap:wrap; gap:.3rem; margin-top:.5rem; }
+  .cj-key{
+    font-family:'PT Serif', Georgia, serif; font-size:1.05rem; min-width:2.15rem; height:2.3rem; padding:0 .4rem;
+    background:var(--paper); border:1px solid var(--linen-dark); color:var(--indigo); cursor:pointer; border-radius:3px;
+  }
+  .cj-key:hover{ border-color:var(--gold); }
+  .cj-key.wide{ min-width:5rem; font-family:'PT Sans', Arial, sans-serif; font-size:.85rem; }
+  .cj-actions{ display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1rem; align-items:center; }
+  .cj-fill{ display:grid; grid-template-columns:auto 1fr; gap:.45rem .8rem; align-items:center; margin-bottom:.3rem; }
+  .cj-fill label{ color:var(--text2); font-size:.95rem; white-space:nowrap; }
+  .cj-fill .cj-input{ font-size:1.1rem; padding:.4rem .65rem; }
+  .cj-fill .cell-fb{ grid-column:2; font-size:.85rem; margin-top:-.25rem; color:var(--bad); font-family:'PT Serif', Georgia, serif; }
+
+  .cj-fb{ margin-top:1rem; padding:.8rem 1rem; border-left:5px solid var(--ok); background:var(--ok-bg); }
+  .cj-fb.ko{ border-left-color:var(--bad); background:var(--bad-bg); }
+  .cj-fb .verdict{ font-weight:700; margin-bottom:.15rem; }
+  .cj-fb .ans{ font-family:'PT Serif', Georgia, serif; font-size:1.25rem; color:var(--madder-dark); }
+  .cj-fb .why{ font-size:.88rem; color:var(--text2); margin-top:.4rem; }
+  .cj-para{ display:grid; grid-template-columns:repeat(3, 1fr); gap:.35rem; margin-top:.6rem; }
+  @media (max-width:520px){ .cj-para{ grid-template-columns:repeat(2, 1fr); } }
+  .cj-para div{ background:var(--card); border:1px solid var(--linen-dark); padding:.3rem .5rem; font-family:'PT Serif', Georgia, serif; font-size:1rem; color:var(--madder-dark); }
+  .cj-para div small{ display:block; font-family:'PT Sans', Arial, sans-serif; font-size:.72rem; color:var(--muted2); }
+  .cj-para div.hi{ border-color:var(--gold); box-shadow:inset 0 0 0 1px var(--gold); font-weight:700; }
+
+  /* Résultats */
+  .cj-result{ background:var(--card); border:1px solid var(--linen-dark); padding:1.4rem; text-align:center; }
+  .cj-result .score{ font-family:'PT Serif', Georgia, serif; font-size:3rem; color:var(--madder-dark); line-height:1.1; }
+  .cj-result .pct{ font-size:1.1rem; color:var(--text2); }
+  .cj-result .msg{ margin:.6rem 0 1rem; font-family:'PT Serif', Georgia, serif; font-size:1.15rem; }
+  .cj-result .new{ display:inline-block; background:var(--gold); color:#fff; font-size:.8rem; padding:.05rem .6rem; border-radius:12px; margin-left:.4rem; vertical-align:middle; }
+  .cj-brk{ text-align:left; margin:1rem 0; }
+  .cj-brk .prog-row{ margin-bottom:.5rem; }
+  .cj-brk .prog-row .lbl{ width:110px; font-weight:400; }
+  .cj-errs{ text-align:left; margin-top:1.2rem; }
+  .cj-err{ border-left:4px solid var(--bad); background:var(--paper); padding:.5rem .8rem; margin-bottom:.5rem; font-size:.92rem; }
+  .cj-err .bgf{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); font-size:1.02rem; }
+  .cj-err .was{ color:var(--bad); text-decoration:line-through; font-family:'PT Serif', Georgia, serif; }
+  .cj-callout{ background:var(--card); border:1px solid var(--linen-dark); border-left:5px solid var(--madder); padding:.8rem 1rem; margin-bottom:1.2rem; display:flex; flex-wrap:wrap; gap:.6rem 1rem; align-items:center; justify-content:space-between; font-size:.95rem; color:var(--text2); }
 </style>
 <script>
 (function(){
   var t = null;
   try{ t = localStorage.getItem('bg_theme'); }catch(e){}
-  if(!t){ t = 'light'; }
+  if(!t){ t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }
   document.documentElement.setAttribute('data-theme', t);
 })();
 </script>
@@ -601,22 +727,17 @@
     <div class="bg-title">Български език, история и духовност</div>
     <h1>Apprendre le bulgare — Intégrale A1 & Culture</h1>
     <p class="byline">by Dobrev Mathis</p>
-    <p>Alphabet, vocabulaire complet, verbes et conjugaisons, flashcards (Français ➔ Bulgare), notes, prières orthodoxes, histoire, fêtes, grandes victoires et fiertés bulgares.</p>
+    <p>Alphabet, prononciation, vocabulaire complet, verbes et conjugaisons, flashcards (Français ➔ Bulgare), notes, prières orthodoxes, histoire, fêtes, grandes victoires et fiertés bulgares.</p>
   </div>
 </header>
 <div class="shevitsa"></div>
-<div class="flag-row">
-  <svg class="bg-flag" viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Drapeau bulgare">
-    <rect width="3" height="2" fill="#fff"/>
-    <rect width="3" height="0.6667" y="0.6667" fill="#00966E"/>
-    <rect width="3" height="0.6667" y="1.3333" fill="#D62612"/>
-  </svg>
-</div>
 
 <nav id="nav">
   <button data-target="alphabet" class="active">Alphabet</button>
+  <button data-target="pronunciation">Prononciation</button>
   <button data-target="vocab">Vocabulaire</button>
   <button data-target="verbs">Verbes & Conjugaisons</button>
+  <button data-target="conjugation">Conjugaison ✍️</button>
   <button data-target="lucy">Notes</button>
   <button data-target="flashcards">Flashcards</button>
   <button data-target="prayers">Prières</button>
@@ -639,6 +760,209 @@
     <div class="letters-grid" id="letters-grid"></div>
   </section>
 
+  <!-- PRONONCIATION -->
+  <section id="sec-pronunciation">
+    <h2>Prononciation : avoir un vrai accent bulgare</h2>
+    <p class="lead">Connaître l'alphabet ne suffit pas : il faut apprendre les sons réels, l'accent tonique, la réduction des voyelles et l'enchaînement des consonnes. Clique sur 🔊 pour écouter (voix bulgare de ton système si elle existe, sinon voix en ligne : connexion internet requise).</p>
+
+    <div class="tip">Convention : la voyelle <span class="st">soulignée</span> est la voyelle accentuée. Les transcriptions [API/IPA] sont volontairement approximatives ; le but est de t'orienter, pas de remplacer l'écoute de vrais locuteurs.</div>
+
+    <div class="gram-card">
+      <h3>1. Le principe : écrit ≠ prononcé</h3>
+      <p>Le bulgare est assez phonétique, mais pas « une lettre = un son ». Ne lis jamais une romanisation (<i>molya, shte, zhiveya</i>) comme si c'était de l'anglais ou du français : elle crée de mauvaises habitudes. Travaille avec le <b>cyrillique + l'accent + l'API</b>.</p>
+      <p><b>Ordre de priorité pour un francophone :</b></p>
+      <ol>
+        <li>р : arrêter le /ʁ/ français, faire un r de la pointe de la langue</li>
+        <li>ъ /ɤ/ : apprendre la voyelle bulgare</li>
+        <li>я / ю / й : comprendre leur vraie fonction</li>
+        <li>accent tonique : toujours apprendre le mot <i>avec</i> son accent</li>
+        <li>réduction des voyelles non accentuées</li>
+        <li>palatalisation (н, л…)</li>
+        <li>dévoisement final et assimilation</li>
+      </ol>
+    </div>
+
+    <div class="gram-card">
+      <h3>2. L'accent tonique : le plus important</h3>
+      <p>L'accent est <b>libre</b> (il peut tomber sur n'importe quelle syllabe), <b>mobile</b> (il change selon les formes : <span class="bg-cell">вода́ → во́ди</span>) et <b>jamais écrit</b> dans l'orthographe courante.</p>
+      <p>La voyelle accentuée est plus longue, plus forte et plus nette ; les autres sont plus faibles. Ne pense pas « syllabe égale, syllabe égale », mais : <b>FORTE – faible – faible – FORTE – faible</b>.</p>
+      <div class="tip">Erreur française typique : prononcer chaque syllabe avec la même précision et la même énergie. Le mot est compris, mais « sonne étranger ».</div>
+    </div>
+
+    <div class="gram-card">
+      <h3>3. Les voyelles</h3>
+      <div class="tbl-scroll"><table class="gtable">
+        <tr><th>Lettre</th><th>API</th><th>Approximation</th><th>Piège</th></tr>
+        <tr><td class="bg-cell">а</td><td class="ipa">/a/</td><td>a français</td><td>Non accentué : moins net, plutôt [ɐ]</td></tr>
+        <tr><td class="bg-cell">е</td><td class="ipa">/ɛ/</td><td>è (« père »)</td><td>Pas un é fermé</td></tr>
+        <tr><td class="bg-cell">и</td><td class="ipa">/i/</td><td>i (« si »)</td><td>Pas trop tendu ni fermé</td></tr>
+        <tr><td class="bg-cell">о</td><td class="ipa">/ɔ/</td><td>o ouvert (« porte »)</td><td>Non accentué : tend vers [o]/[u]</td></tr>
+        <tr><td class="bg-cell">у</td><td class="ipa">/u/</td><td>ou (« tout »)</td><td>Lèvres arrondies (≠ ъ)</td></tr>
+        <tr><td class="bg-cell">ъ</td><td class="ipa">/ɤ/</td><td>voir ci-dessous</td><td>Ni « ou », ni « eu » français</td></tr>
+      </table></div>
+    </div>
+
+    <div class="gram-card">
+      <h3>4. Le fameux ъ /ɤ/</h3>
+      <p>Voyelle postérieure, bouche assez ouverte, langue reculée et <b>lèvres non arrondies</b>. C'est le son le plus caractéristique du bulgare.</p>
+      <p><b>Exercice :</b> dis « ou » (lèvres rondes), puis « eu », puis relâche les lèvres en gardant la langue en arrière : <span class="ipa">u → ø → ɤ</span>.</p>
+      <p>À écouter et répéter :
+        <span class="say" data-say="път">път</span>
+        <span class="say" data-say="къща">къща</span>
+        <span class="say" data-say="ръка">ръка</span>
+        <span class="say" data-say="сърце">сърце</span>
+        <span class="say" data-say="дъжд">дъжд</span>
+        <span class="say" data-say="българин">българин</span>
+      </p>
+      <div class="tip">Les francophones le remplacent souvent par /u/, /o/, /ø/ ou /ə/ : cela donne immédiatement un accent étranger. Dans la terminaison de l'article <b>-ът</b> ou dans <b>-ят</b>, on entend surtout [ɐt] / [ʲɐt].</div>
+    </div>
+
+    <div class="gram-card">
+      <h3>5. я, ю, ьо, й : et pourquoi <i>моля</i> ≠ « molya »</h3>
+      <div class="tbl-scroll"><table class="gtable">
+        <tr><th>Graphie</th><th>Début de mot / après voyelle</th><th>Après consonne</th></tr>
+        <tr><td class="bg-cell">я</td><td class="ipa">[ja]</td><td class="ipa">[ʲa]</td></tr>
+        <tr><td class="bg-cell">ю</td><td class="ipa">[ju]</td><td class="ipa">[ʲu]</td></tr>
+        <tr><td class="bg-cell">ьо</td><td>(rare)</td><td class="ipa">[ʲo]</td></tr>
+        <tr><td class="bg-cell">й</td><td class="ipa">/j/ (y de « yeux »)</td><td>toujours consonne</td></tr>
+      </table></div>
+      <p><b>Après une consonne, я/ю ne sont pas « y + voyelle » :</b> elles <i>palatalisent</i> la consonne précédente (la langue monte vers le palais) et donnent la voyelle. Donc <span class="bg-cell">мо́ля</span> = [ˈmɔlʲɐ] : <b>2 syllabes</b> (мо-ля), pas <i>mo-li-ya</i>. Ton oreille entend « mola » parce que le я non accentué est une voyelle faible [ɐ] portée par un л « mouillé ». Tu avais donc raison : lire « ya » ne marche pas.</p>
+      <p>Exemples : <span class="say" data-say="моля">мо́ля</span> <span class="say" data-say="любов">любо́в</span> <span class="say" data-say="бял">бя́л</span> <span class="say" data-say="юг">ю́г</span> <span class="say" data-say="приятел">прия́тел</span></p>
+      <div class="tip">Le <b>ь</b> n'existe en bulgare que dans la séquence <b>ьо</b> (ex. <span class="bg-cell">синьо</span>). Ce n'est pas un son autonome.</div>
+      <div class="tip">Alternance utile : <span class="bg-cell">бял → бели</span>, <span class="bg-cell">хляб → хлябове/хлебове</span> : я devient е quand l'accent change de place.</div>
+    </div>
+
+    <div class="gram-card">
+      <h3>6. Les consonnes</h3>
+      <div class="tbl-scroll"><table class="gtable">
+        <tr><th>Lettre</th><th>API</th><th>Comme…</th><th>Piège</th></tr>
+        <tr><td class="bg-cell">г</td><td class="ipa">/ɡ/</td><td>« gare »</td><td>Toujours dur, même devant е/и</td></tr>
+        <tr><td class="bg-cell">ж</td><td class="ipa">/ʒ/</td><td>« jour »</td><td>Pas le j anglais de <i>job</i> (= дж)</td></tr>
+        <tr><td class="bg-cell">ш</td><td class="ipa">/ʃ/</td><td>« chat »</td><td>—</td></tr>
+        <tr><td class="bg-cell">ч</td><td class="ipa">/tʃ/</td><td>« tchèque »</td><td>Il y a un /t/ avant le ch</td></tr>
+        <tr><td class="bg-cell">щ</td><td class="ipa">/ʃt/</td><td>ш + т</td><td>Deux consonnes, pas un « ch » spécial</td></tr>
+        <tr><td class="bg-cell">ц</td><td class="ipa">/ts/</td><td>« pizza »</td><td>—</td></tr>
+        <tr><td class="bg-cell">х</td><td class="ipa">/x/</td><td>j espagnol, ch allemand (Bach)</td><td>Ni /k/, ni /ʁ/ : friction au fond de la gorge</td></tr>
+        <tr><td class="bg-cell">в</td><td class="ipa">/v/</td><td>v français</td><td>Jamais le w anglais</td></tr>
+        <tr><td class="bg-cell">к, п, т</td><td class="ipa">/k p t/</td><td>comme en français</td><td>Pas d'aspiration à l'anglaise</td></tr>
+        <tr><td class="bg-cell">дж</td><td class="ipa">/dʒ/</td><td>« job » (anglais)</td><td>Se note avec deux lettres</td></tr>
+      </table></div>
+    </div>
+
+    <div class="gram-card">
+      <h3>7. Р et Л</h3>
+      <p><b>р</b> = /r/ battu ou roulé, <b>pointe de la langue contre les alvéoles</b> (derrière les dents du haut). Jamais le /ʁ/ de la gorge comme en français. Exercice : <span class="say" data-say="тра">тра</span> <span class="say" data-say="дра">дра</span> <span class="say" data-say="кра">кра</span> <span class="say" data-say="ра">ра</span> <span class="say" data-say="ре">ре</span> <span class="say" data-say="ри">ри</span> <span class="say" data-say="ро">ро</span> <span class="say" data-say="ру">ру</span> <span class="say" data-say="ръ">ръ</span></p>
+      <p><b>л</b> : la pointe de la langue touche les alvéoles. Devant les voyelles postérieures (а, о, у, ъ) il est « épais » [ɫ] ; devant я, ю, ьо, е, и il est « mouillé » [lʲ]. Ne le transforme jamais en <i>w</i>. Exemples : <span class="say" data-say="влак">влак</span> <span class="say" data-say="любов">любов</span> <span class="say" data-say="лято">лято</span></p>
+    </div>
+
+    <div class="gram-card">
+      <h3>8. La palatalisation (consonnes « mouillées »)</h3>
+      <p>Une consonne palatalisée n'est <b>pas</b> « consonne + y » : c'est une seule consonne articulée avec le milieu de la langue relevé vers le palais. <span class="ipa">н /n/ → нʲ /nʲ/</span>, <span class="ipa">л /ɫ/ → лʲ /lʲ/</span>, <span class="ipa">т /t/ → тʲ</span>…</p>
+      <p>Elle est <b>nette</b> devant я, ю, ьо et <b>légère</b> devant е et и. Compare : <span class="say" data-say="бал">бал</span> [bal] (bal) / <span class="say" data-say="бял">бял</span> [bʲal] (blanc).</p>
+      <div class="tip">Ce n'est pas l'oreille qu'il faut entraîner d'abord, mais la <b>sensation de la langue</b> : sens-la monter vers le palais.</div>
+    </div>
+
+    <div class="gram-card">
+      <h3>9. Voyelles non accentuées : réduction</h3>
+      <p>C'est le deuxième grand chantier après l'accent. Hors accent :</p>
+      <ul>
+        <li><b>а</b> et <b>ъ</b> tendent à se rapprocher de [ɐ]</li>
+        <li><b>о</b> se ferme vers [o], voire [u] (« о » non accentué peut ressembler à « у »)</li>
+        <li><b>е</b> et <b>я</b> deviennent plus faibles (е tend vers [ɪ])</li>
+      </ul>
+      <p>Le degré varie selon les locuteurs et les régions : ne retiens donc pas « о devient toujours у », ce serait faux. Retiens plutôt : <b>voyelle accentuée claire, voyelle non accentuée relâchée</b>.</p>
+      <div class="tip">Exemple : <span class="bg-cell">хо́ра</span> [ˈxɔrɐ] : le о est net, le а final est faible. Un Français dit « HO-RA » avec deux voyelles pleines.</div>
+    </div>
+
+    <div class="gram-card">
+      <h3>10. Dévoisement final et assimilation</h3>
+      <p><b>En fin de mot</b>, une consonne voisée se prononce sourde :</p>
+      <div class="tbl-scroll"><table class="gtable">
+        <tr><th>Écrit</th><th>Prononcé</th><th>Exemple</th></tr>
+        <tr><td class="bg-cell">б</td><td class="ipa">[p]</td><td class="bg-cell">зъб → [zɐp]</td></tr>
+        <tr><td class="bg-cell">д</td><td class="ipa">[t]</td><td class="bg-cell">град → [ɡrat]</td></tr>
+        <tr><td class="bg-cell">г</td><td class="ipa">[k]</td><td class="bg-cell">бряг → [brʲak]</td></tr>
+        <tr><td class="bg-cell">в</td><td class="ipa">[f]</td><td class="bg-cell">кръв → [krɐf]</td></tr>
+        <tr><td class="bg-cell">з</td><td class="ipa">[s]</td><td class="bg-cell">бриз → [bris]</td></tr>
+        <tr><td class="bg-cell">ж</td><td class="ipa">[ʃ]</td><td class="bg-cell">нож → [nɔʃ]</td></tr>
+      </table></div>
+      <p><b>À l'intérieur d'un groupe de consonnes</b>, le voisement s'aligne sur la <i>dernière</i> consonne (assimilation régressive) :</p>
+      <div class="tbl-scroll"><table class="gtable">
+        <tr><td class="bg-cell">втори</td><td class="ipa">[ˈftɔri]</td><td>в → ф devant т</td></tr>
+        <tr><td class="bg-cell">отговор</td><td class="ipa">[ˈɔdɡovor]</td><td>т → д devant г</td></tr>
+        <tr><td class="bg-cell">сбогом</td><td class="ipa">[ˈzbɔɡɔm]</td><td>с → з devant б</td></tr>
+      </table></div>
+      <div class="tip">Si tu entends un son sourd là où tu lis une lettre « sonore », ce n'est pas une faute : c'est la règle. Écris <span class="bg-cell">град</span> comme tu l'as appris, dis [ɡrat].</div>
+    </div>
+
+    <div class="gram-card">
+      <h3>11. Rythme et enchaînement</h3>
+      <ul>
+        <li>Pas de <i>e</i> muet français entre les consonnes : <span class="say" data-say="България">Бълга́рия</span> se dit d'un trait, sans « bou-l-ga-ri-ya ».</li>
+        <li>Les groupes de consonnes sont normaux : <span class="say" data-say="здравей">здраве́й</span>, <span class="say" data-say="влак">вла́к</span>, <span class="say" data-say="взимам">взи́мам</span>.</li>
+        <li>Ne sur-articule pas : un Français lit trop « propre ». À l'oral, on réduit, on assimile, on enchaîne.</li>
+        <li>La position de la langue pour une consonne influence déjà la voyelle suivante (coarticulation), surtout avec я, ю, и, е.</li>
+      </ul>
+    </div>
+
+    <div class="gram-card">
+      <h3>12. Paires minimales à s'entraîner à distinguer</h3>
+      <div class="tbl-scroll"><table class="gtable">
+        <tr><th>Contraste</th><th>Paire</th><th>Sens</th></tr>
+        <tr><td>у / ъ</td><td class="bg-cell"><span class="say" data-say="лук">лук</span> / <span class="say" data-say="лък">лък</span></td><td>oignon / arc</td></tr>
+        <tr><td>х / к</td><td class="bg-cell"><span class="say" data-say="хора">хора</span> / <span class="say" data-say="кора">кора</span></td><td>gens / écorce</td></tr>
+        <tr><td>ц / ч</td><td class="bg-cell"><span class="say" data-say="цар">цар</span> / <span class="say" data-say="чар">чар</span></td><td>tsar / charme</td></tr>
+        <tr><td>ж / ш</td><td class="bg-cell"><span class="say" data-say="жар">жар</span> / <span class="say" data-say="шар">шар</span></td><td>braise / boule</td></tr>
+        <tr><td>р / л</td><td class="bg-cell"><span class="say" data-say="рак">рак</span> / <span class="say" data-say="лак">лак</span></td><td>cancer / vernis</td></tr>
+        <tr><td>а / я (palatalisation)</td><td class="bg-cell"><span class="say" data-say="бал">бал</span> / <span class="say" data-say="бял">бял</span></td><td>bal / blanc</td></tr>
+      </table></div>
+    </div>
+
+    <div class="gram-card">
+      <h3>13. 26 mots fréquents avec accent et prononciation</h3>
+      <div class="tbl-scroll"><table class="gtable">
+        <tr><th></th><th>Mot</th><th>API</th><th>Sens</th><th>À surveiller</th></tr>
+        <tr><td><span class="say" data-say="моля"></span></td><td class="bg-cell">м<span class="st">о</span>ля</td><td class="ipa">[ˈmɔlʲɐ]</td><td>s'il vous plaît</td><td>2 syllabes, л mouillé</td></tr>
+        <tr><td><span class="say" data-say="здравей"></span></td><td class="bg-cell">здрав<span class="st">е</span>й</td><td class="ipa">[zdraˈvɛj]</td><td>salut</td><td>groupe здр- d'un trait</td></tr>
+        <tr><td><span class="say" data-say="благодаря"></span></td><td class="bg-cell">благодар<span class="st">я</span></td><td class="ipa">[blaɡodaˈrʲa]</td><td>merci</td><td>accent final, р battu</td></tr>
+        <tr><td><span class="say" data-say="добър ден"></span></td><td class="bg-cell">д<span class="st">о</span>бър д<span class="st">е</span>н</td><td class="ipa">[ˈdɔbɐr ˈdɛn]</td><td>bonjour</td><td>ъ ≠ ou</td></tr>
+        <tr><td><span class="say" data-say="довиждане"></span></td><td class="bg-cell">дов<span class="st">и</span>ждане</td><td class="ipa">[doˈviʒdanɛ]</td><td>au revoir</td><td>ж = j français</td></tr>
+        <tr><td><span class="say" data-say="извинете"></span></td><td class="bg-cell">извин<span class="st">е</span>те</td><td class="ipa">[izviˈnɛtɛ]</td><td>excusez-moi</td><td>accent sur -не-</td></tr>
+        <tr><td><span class="say" data-say="България"></span></td><td class="bg-cell">Бълг<span class="st">а</span>рия</td><td class="ipa">[bɐɫˈɡarijɐ]</td><td>Bulgarie</td><td>г dur, ъ, pas de schwa</td></tr>
+        <tr><td><span class="say" data-say="български"></span></td><td class="bg-cell">б<span class="st">ъ</span>лгарски</td><td class="ipa">[ˈbɐɫɡarski]</td><td>bulgare (langue)</td><td>accent sur la 1re syllabe</td></tr>
+        <tr><td><span class="say" data-say="къща"></span></td><td class="bg-cell">к<span class="st">ъ</span>ща</td><td class="ipa">[ˈkɐʃtɐ]</td><td>maison</td><td>щ = ш + т</td></tr>
+        <tr><td><span class="say" data-say="път"></span></td><td class="bg-cell">п<span class="st">ъ</span>т</td><td class="ipa">[pɐt]</td><td>chemin</td><td>ъ pur</td></tr>
+        <tr><td><span class="say" data-say="ръка"></span></td><td class="bg-cell">рък<span class="st">а</span></td><td class="ipa">[rɐˈka]</td><td>main / bras</td><td>р + ъ</td></tr>
+        <tr><td><span class="say" data-say="сърце"></span></td><td class="bg-cell">сърц<span class="st">е</span></td><td class="ipa">[sɐrˈtsɛ]</td><td>cœur</td><td>ц = ts</td></tr>
+        <tr><td><span class="say" data-say="хляб"></span></td><td class="bg-cell">хл<span class="st">я</span>б</td><td class="ipa">[ˈxlʲap]</td><td>pain</td><td>х, л mouillé, б → п</td></tr>
+        <tr><td><span class="say" data-say="хора"></span></td><td class="bg-cell">х<span class="st">о</span>ра</td><td class="ipa">[ˈxɔrɐ]</td><td>les gens</td><td>х ≠ k</td></tr>
+        <tr><td><span class="say" data-say="приятел"></span></td><td class="bg-cell">при<span class="st">я</span>тел</td><td class="ipa">[priˈjatɛɫ]</td><td>ami</td><td>accent sur -я-</td></tr>
+        <tr><td><span class="say" data-say="говоря"></span></td><td class="bg-cell">гов<span class="st">о</span>ря</td><td class="ipa">[ɡoˈvɔrʲɐ]</td><td>je parle</td><td>г dur, р battu</td></tr>
+        <tr><td><span class="say" data-say="ще"></span></td><td class="bg-cell">щ<span class="st">е</span></td><td class="ipa">[ʃtɛ]</td><td>futur (« je vais »)</td><td>щ = шт</td></tr>
+        <tr><td><span class="say" data-say="нощ"></span></td><td class="bg-cell">н<span class="st">о</span>щ</td><td class="ipa">[nɔʃt]</td><td>nuit</td><td>щ final</td></tr>
+        <tr><td><span class="say" data-say="дъжд"></span></td><td class="bg-cell">д<span class="st">ъ</span>жд</td><td class="ipa">[dɐʃt]</td><td>pluie</td><td>жд → шт</td></tr>
+        <tr><td><span class="say" data-say="вода"></span></td><td class="bg-cell">вод<span class="st">а</span></td><td class="ipa">[voˈda]</td><td>eau</td><td>в = v, jamais w</td></tr>
+        <tr><td><span class="say" data-say="хубаво"></span></td><td class="bg-cell">х<span class="st">у</span>баво</td><td class="ipa">[ˈxubɐvo]</td><td>bien / beau</td><td>х, voyelles finales faibles</td></tr>
+        <tr><td><span class="say" data-say="кръв"></span></td><td class="bg-cell">кр<span class="st">ъ</span>в</td><td class="ipa">[krɐf]</td><td>sang</td><td>в → ф final</td></tr>
+        <tr><td><span class="say" data-say="любов"></span></td><td class="bg-cell">люб<span class="st">о</span>в</td><td class="ipa">[lʲuˈbɔf]</td><td>amour</td><td>лю = [lʲu], в → ф</td></tr>
+        <tr><td><span class="say" data-say="юг"></span></td><td class="bg-cell"><span class="st">ю</span>г</td><td class="ipa">[juk]</td><td>sud</td><td>г → к final</td></tr>
+        <tr><td><span class="say" data-say="влак"></span></td><td class="bg-cell">вл<span class="st">а</span>к</td><td class="ipa">[vɫak]</td><td>train</td><td>groupe вл-, л épais</td></tr>
+        <tr><td><span class="say" data-say="сбогом"></span></td><td class="bg-cell">сб<span class="st">о</span>гом</td><td class="ipa">[ˈzbɔɡɔm]</td><td>adieu</td><td>с → з devant б</td></tr>
+      </table></div>
+    </div>
+
+    <div class="gram-card">
+      <h3>14. Méthode d'entraînement en 4 passes</h3>
+      <ol>
+        <li><b>Lecture lente</b> : chaque phonème bien contrôlé.</li>
+        <li><b>Vitesse normale</b> : tu gardes l'accent tonique.</li>
+        <li><b>Parole naturelle</b> : tu laisses les voyelles non accentuées se réduire et les consonnes s'assimiler.</li>
+        <li><b>Imitation</b> : tu écoutes un natif et tu copies le rythme et la mélodie, pas seulement les sons. C'est l'étape qui manque le plus souvent.</li>
+      </ol>
+      <div class="tip">Astuce : enregistre-toi, réécoute, compare avec la voix d'un locuteur natif, une phrase à la fois.</div>
+    </div>
+  </section>
+
   <!-- VOCAB -->
   <section id="sec-vocab">
     <h2>Vocabulaire complet par thème</h2>
@@ -651,12 +975,13 @@
   <section id="sec-verbs">
     <h2>Verbes et tableaux de conjugaison</h2>
     <p class="lead">Les verbes indispensables du bulgare et leurs déclinaisons essentielles (présent, passé, conditionnel).</p>
+    <div class="cj-callout"><span>Envie de t'entraîner à conjuguer ? Fiches complètes et exercices variés.</span><span><button type="button" class="action ghost" data-go-conj="fiches">📖 Fiches</button> <button type="button" class="action primary" data-go-conj="train">📝 Quiz de conjugaison</button></span></div>
     <div class="phrase-list" id="verb-list"></div>
   </section>
 
   <!-- NOTES & LUCY CONTEXT -->
   <section id="sec-lucy">
-    <h2>Notes de cours & Expressions du quotidien (avec Lucy)</h2>
+    <h2>Notes de cours & Expressions du quotidien</h2>
     <p class="lead">Toutes les tournures, phrases pratiques, conjonctions et expressions utiles relevées dans vos leçons.</p>
 
     <div class="lucy-review">
@@ -1120,10 +1445,61 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
     </div>
   </section>
 
+  <!-- CONJUGAISON : FICHES + ENTRAÎNEMENT -->
+  <section id="sec-conjugation">
+    <h2>Conjugaison</h2>
+    <p class="lead">Consulte les fiches de 14 verbes essentiels (présent, passé, futur, impératif), puis entraîne-toi avec des exercices variés : choix, saisie, reconnaissance, phrases à trous et tableaux à remplir.</p>
+    <div class="cj-tabs" role="tablist">
+      <button type="button" class="cj-tab active" data-cj="fiches" role="tab">📖 Fiches</button>
+      <button type="button" class="cj-tab" data-cj="train" role="tab">📝 Entraînement</button>
+    </div>
+
+    <div id="cj-pane-fiches">
+      <div class="cj-toolbar">
+        <div id="cj-vchips"></div>
+        <label class="cj-check"><input type="checkbox" id="cj-tr-toggle" checked> Afficher la prononciation</label>
+      </div>
+      <div class="cj-card" id="cj-fiche"></div>
+
+      <div class="cj-card">
+        <h3>Les terminaisons du présent</h3>
+        <div class="tbl-scroll">
+        <table class="gtable">
+          <tr><th></th><th>1<sup>re</sup> (-е)</th><th>2<sup>e</sup> (-и)</th><th>3<sup>e</sup> (-а)</th></tr>
+          <tr><td>аз</td><td class="bg-cell">-а / -я</td><td class="bg-cell">-я / -а</td><td class="bg-cell">-ам / -ям</td></tr>
+          <tr><td>ти</td><td class="bg-cell">-еш</td><td class="bg-cell">-иш</td><td class="bg-cell">-аш</td></tr>
+          <tr><td>той / тя / то</td><td class="bg-cell">-е</td><td class="bg-cell">-и</td><td class="bg-cell">-а</td></tr>
+          <tr><td>ние</td><td class="bg-cell">-ем</td><td class="bg-cell">-им</td><td class="bg-cell">-аме</td></tr>
+          <tr><td>вие</td><td class="bg-cell">-ете</td><td class="bg-cell">-ите</td><td class="bg-cell">-ате</td></tr>
+          <tr><td>те</td><td class="bg-cell">-ат / -ят</td><td class="bg-cell">-ят / -ат</td><td class="bg-cell">-ат</td></tr>
+          <tr><td><i>Exemple</i></td><td class="bg-cell">чета</td><td class="bg-cell">говоря</td><td class="bg-cell">искам</td></tr>
+        </table>
+        </div>
+        <div class="tip">Le passé (aoriste) se forme sur le même radical : <b>-х</b>, <b>—</b>, <b>—</b>, <b>-хме</b>, <b>-хте</b>, <b>-ха</b> (ex. <span class="bg-cell">работих, работи, работи, работихме, работихте, работиха</span>).</div>
+      </div>
+
+      <div class="cj-card">
+        <h3>Construire les autres temps</h3>
+        <table class="gtable">
+          <tr><td><b>Futur</b></td><td class="bg-cell">ще + présent</td><td class="bg-cell">Ще работя утре.</td></tr>
+          <tr><td><b>Futur négatif</b></td><td class="bg-cell">няма да + présent</td><td class="bg-cell">Няма да работя утре.</td></tr>
+          <tr><td><b>Négation</b></td><td class="bg-cell">не + verbe</td><td class="bg-cell">Не говоря френски.</td></tr>
+          <tr><td><b>« Infinitif »</b></td><td class="bg-cell">да + présent</td><td class="bg-cell">Искам да пия вода.</td></tr>
+          <tr><td><b>Impératif</b></td><td class="bg-cell">-и / -ете (ou -й / -йте)</td><td class="bg-cell">Говори по-бавно!</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="cj-pane-train" style="display:none;">
+      <div class="cj-stage" id="cj-stage"></div>
+    </div>
+  </section>
+
   <!-- QUIZ -->
   <section id="sec-quiz">
     <h2>Quiz</h2>
     <p class="lead" id="quiz-lead">Teste tes connaissances (Français ➔ Bulgare).</p>
+    <div class="cj-callout"><span>Ce quiz teste le <b>vocabulaire</b>. Pour t'entraîner à <b>conjuguer</b> (formes, phrases à trous, tableaux…), utilise le quiz dédié.</span><button type="button" class="action primary" data-go-conj="train">📝 Quiz de conjugaison</button></div>
     <div class="chips" id="quiz-chips"></div>
     <div class="quiz-box" id="quiz-box"></div>
   </section>
@@ -1135,6 +1511,8 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
     <div id="progress-flashcards"></div>
     <h3 style="margin-top:1.6rem;">Meilleurs scores aux quiz</h3>
     <div id="progress-quiz"></div>
+    <h3 style="margin-top:1.6rem;">Conjugaison</h3>
+    <div id="progress-conj"></div>
     <h3 style="margin-top:1.6rem;">Culture : histoire, fêtes et fiertés</h3>
     <div id="progress-culture"></div>
     <button class="reset-link" id="reset-all">Réinitialiser toute la progression</button>
@@ -1232,7 +1610,7 @@ const VOCAB = {
     {bg:"ям", tr:"yam", fr:"manger"},
     {bg:"пия", tr:"piya", fr:"boire"},
   ]},
-  lucy: {label:"Notes & Expressions (Lucy)", items:[
+  lucy: {label:"Notes & Expressions", items:[
     {bg:"Това е за мен.", tr:"", fr:"C'est pour moi."},
     {bg:"Как да кажа…?", tr:"kak da kazha", fr:"Comment dire… ? (littéralement : как « comment » + да + кажа « je dis »)"},
     {bg:"говоря", tr:"govorya", fr:"parler"},
@@ -3037,6 +3415,824 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     try{ localStorage.setItem('bg_theme', next); }catch(e){}
   });
 })();
+
+/* ---------------- PRONONCIATION : lecture audio ---------------- */
+(function(){
+  const synth = window.speechSynthesis;
+  let bgVoice = null;
+  function pickVoice(){
+    if(!synth) return;
+    bgVoice = synth.getVoices().find(x=>/^bg/i.test(x.lang)) || null;
+  }
+  if(synth){ pickVoice(); synth.onvoiceschanged = pickVoice; }
+  const sec = document.getElementById("sec-pronunciation");
+  if(!sec) return;
+
+  let toast = document.createElement("div");
+  toast.style.cssText = "position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#232B3D;color:#fff;padding:.6rem 1rem;border-radius:8px;font-size:.9rem;z-index:9999;display:none;max-width:90%;text-align:center";
+  document.body.appendChild(toast);
+  let toastT;
+  function say(msg){ toast.textContent = msg; toast.style.display="block"; clearTimeout(toastT); toastT=setTimeout(()=>toast.style.display="none",4000); }
+
+  let audio = null;
+  function playOnline(text, el){
+    // Repli : voix bulgare en ligne (nécessite une connexion internet)
+    if(audio){ audio.pause(); }
+    audio = new Audio("https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=bg&q=" + encodeURIComponent(text));
+    el.classList.add("playing");
+    audio.onended = ()=>el.classList.remove("playing");
+    audio.onerror = ()=>{ el.classList.remove("playing"); say("Audio indisponible : installe une voix bulgare dans ton système ou vérifie ta connexion."); };
+    audio.play().catch(()=>{ el.classList.remove("playing"); say("Audio bloqué ou indisponible (connexion ?)."); });
+  }
+
+  function speak(el){
+    const text = el.dataset.say;
+    if(!text) return;
+    if(!bgVoice) pickVoice();
+    if(synth && bgVoice){
+      synth.cancel();
+      setTimeout(()=>{
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = bgVoice.lang; u.voice = bgVoice; u.rate = 0.8;
+        u.onstart = ()=>el.classList.add("playing");
+        u.onend = u.onerror = ()=>el.classList.remove("playing");
+        synth.speak(u);
+      }, 60);
+    } else {
+      playOnline(text, el);
+    }
+  }
+  sec.addEventListener("click", e=>{
+    const el = e.target.closest(".say");
+    if(el) speak(el);
+  });
+  sec.addEventListener("keydown", e=>{
+    if((e.key==="Enter"||e.key===" ") && e.target.classList.contains("say")){ e.preventDefault(); speak(e.target); }
+  });
+  sec.querySelectorAll(".say").forEach(el=>{
+    el.setAttribute("role","button"); el.setAttribute("tabindex","0");
+    el.setAttribute("aria-label","Écouter : "+(el.dataset.say||""));
+  });
+})();
+</script>
+<script>
+/* ================= CONJUGAISON : données + fiches + entraînement ================= */
+(function(){
+  "use strict";
+
+  /* ---------- Données ---------- */
+  const PERS = [
+    {bg:"аз", fr:"je", short:"аз"},
+    {bg:"ти", fr:"tu", short:"ти"},
+    {bg:"той / тя / то", fr:"il / elle", short:"той/тя/то"},
+    {bg:"ние", fr:"nous", short:"ние"},
+    {bg:"вие", fr:"vous", short:"вие"},
+    {bg:"те", fr:"ils / elles", short:"те"}
+  ];
+  const PERS_IMP = [
+    {bg:"ти", fr:"tu", short:"ти"},
+    {bg:"вие", fr:"vous", short:"вие"}
+  ];
+  const TENSES = {
+    pres:{label:"Présent", low:"présent"},
+    past:{label:"Passé", low:"passé"},
+    fut :{label:"Futur", low:"futur"},
+    imp :{label:"Impératif", low:"impératif"}
+  };
+  const T_ORDER = ["pres","past","fut","imp"];
+  const GROUPS = {
+    e:{label:"1re conjugaison (-е)"},
+    i:{label:"2e conjugaison (-и)"},
+    a:{label:"3e conjugaison (-а)"},
+    irr:{label:"Irréguliers"}
+  };
+
+  const VERBS = [
+    {id:"sam", bg:"съм", fr:"être", grp:"irr",
+      pres:["съм","си","е","сме","сте","са"],
+      past:["бях","беше","беше","бяхме","бяхте","бяха"],
+      fut:["ще бъда","ще бъдеш","ще бъде","ще бъдем","ще бъдете","ще бъдат"],
+      imp:["бъди","бъдете"],
+      pastKind:"imparfait / aoriste (formes identiques)",
+      tip:"« съм » ne commence jamais une phrase (Уморен съм). Au futur, on utilise бъда."},
+    {id:"imam", bg:"имам", fr:"avoir", grp:"a",
+      pres:["имам","имаш","има","имаме","имате","имат"],
+      past:["имах","имаше","имаше","имахме","имахте","имаха"],
+      imp:["имай","имайте"],
+      pastKind:"imparfait",
+      tip:"Négation irrégulière : нямам, нямаш, няма, нямаме, нямате, нямат."},
+    {id:"cheta", bg:"чета", fr:"lire", grp:"e",
+      pres:["чета","четеш","чете","четем","четете","четат"],
+      past:["четох","чете","чете","четохме","четохте","четоха"],
+      imp:["чети","четете"],
+      pastKind:"aoriste",
+      tip:"1re conjugaison : radical + -а, -еш, -е, -ем, -ете, -ат. Attention : « чете » = il lit ET tu/il as/a lu."},
+    {id:"govorya", bg:"говоря", fr:"parler", grp:"i",
+      pres:["говоря","говориш","говори","говорим","говорите","говорят"],
+      past:["говорих","говори","говори","говорихме","говорихте","говориха"],
+      imp:["говори","говорете"],
+      pastKind:"aoriste",
+      tip:"2e conjugaison : -я, -иш, -и, -им, -ите, -ят. Impératif pluriel en -ете : говорете."},
+    {id:"iskam", bg:"искам", fr:"vouloir", grp:"a",
+      pres:["искам","искаш","иска","искаме","искате","искат"],
+      past:["исках","искаше","искаше","искахме","искахте","искаха"],
+      pastKind:"imparfait",
+      tip:"3e conjugaison. Souvent suivi de да + présent : Искам да чета. (L'aoriste иска remplace искаше aux 2e/3e pers. du singulier.)"},
+    {id:"rabotya", bg:"работя", fr:"travailler", grp:"i",
+      pres:["работя","работиш","работи","работим","работите","работят"],
+      past:["работих","работи","работи","работихме","работихте","работиха"],
+      imp:["работи","работете"],
+      pastKind:"aoriste",
+      tip:"Modèle du passé en -их : работих, работи, работи, работихме, работихте, работиха."},
+    {id:"zhiveya", bg:"живея", fr:"habiter, vivre", grp:"e",
+      pres:["живея","живееш","живее","живеем","живеете","живеят"],
+      past:["живях","живя","живя","живяхме","живяхте","живяха"],
+      imp:["живей","живейте"],
+      pastKind:"aoriste",
+      tip:"Le -е- du radical se double : живееш, живее. Au passé, е devient я : живях."},
+    {id:"piya", bg:"пия", fr:"boire", grp:"e",
+      pres:["пия","пиеш","пие","пием","пиете","пият"],
+      past:["пих","пи","пи","пихме","пихте","пиха"],
+      imp:["пий","пийте"],
+      pastKind:"aoriste",
+      tip:"Verbe court : passé très réduit (пих, пи, пи…) et impératif пий / пийте."},
+    {id:"yam", bg:"ям", fr:"manger", grp:"irr",
+      pres:["ям","ядеш","яде","ядем","ядете","ядат"],
+      past:["ядох","яде","яде","ядохме","ядохте","ядоха"],
+      imp:["яж","яжте"],
+      pastKind:"aoriste",
+      tip:"Irrégulier : le radical devient яд- sauf à la 1re personne (ям). Impératif : яж / яжте."},
+    {id:"znam", bg:"знам", fr:"savoir, connaître", grp:"irr",
+      pres:["знам","знаеш","знае","знаем","знаете","знаят"],
+      past:["знаех","знаеше","знаеше","знаехме","знаехте","знаеха"],
+      imp:["знай","знайте"],
+      pastKind:"imparfait",
+      tip:"Seule la 1re personne finit en -ам ; ensuite : знаеш, знае, знаем, знаете, знаят."},
+    {id:"moga", bg:"мога", fr:"pouvoir", grp:"irr",
+      pres:["мога","можеш","може","можем","можете","могат"],
+      past:["можах","можа","можа","можахме","можахте","можаха"],
+      pastKind:"aoriste",
+      tip:"Alternance г → ж : мога, можеш, може, можем, можете, mais могат. Toujours suivi de да + présent."},
+    {id:"otivam", bg:"отивам", fr:"aller", grp:"a",
+      pres:["отивам","отиваш","отива","отиваме","отивате","отиват"],
+      past:["отидох","отиде","отиде","отидохме","отидохте","отидоха"],
+      imp:["отивай","отивайте"],
+      pastKind:"aoriste de отида (aller, une fois)",
+      tip:"Pour une action terminée, on emploie отида : отидох, отиде… L'habitude se dit ходя."},
+    {id:"ucha", bg:"уча", fr:"apprendre, étudier", grp:"i",
+      pres:["уча","учиш","учи","учим","учите","учат"],
+      past:["учих","учи","учи","учихме","учихте","учиха"],
+      imp:["учи","учете"],
+      pastKind:"aoriste",
+      tip:"« Apprendre à » se dit уча се да : Уча се да говоря български."},
+    {id:"pravya", bg:"правя", fr:"faire", grp:"i",
+      pres:["правя","правиш","прави","правим","правите","правят"],
+      past:["правих","прави","прави","правихме","правихте","правиха"],
+      imp:["прави","правете"],
+      pastKind:"aoriste",
+      tip:"Question de base : Какво правиш ? (Que fais-tu ?) / Какво правите ? (vous)."}
+  ];
+  VERBS.forEach(v=>{
+    if(!v.fut) v.fut = v.pres.map(f=>"ще "+f);
+  });
+  const VBY = {}; VERBS.forEach(v=>VBY[v.id]=v);
+
+  /* Phrases à trous : [verbe, temps, index personne, phrase avec ___, traduction] */
+  const SENT = [
+    ["govorya","pres",0,"Аз ___ български.","Je parle bulgare."],
+    ["govorya","pres",4,"Вие ___ френски.","Vous parlez français."],
+    ["govorya","imp",0,"___ по-бавно!","Parle plus lentement !"],
+    ["rabotya","pres",3,"Ние ___ в Париж.","Nous travaillons à Paris."],
+    ["rabotya","past",0,"Вчера аз ___ цял ден.","Hier, j'ai travaillé toute la journée."],
+    ["rabotya","fut",2,"Утре той ___ в офиса.","Demain, il travaillera au bureau."],
+    ["cheta","pres",1,"Ти ___ книга.","Tu lis un livre."],
+    ["cheta","past",0,"Вчера аз ___ книга.","Hier, j'ai lu un livre."],
+    ["cheta","fut",5,"Утре те ___ вестник.","Demain, ils liront le journal."],
+    ["cheta","imp",1,"___ внимателно!","Lisez attentivement !"],
+    ["iskam","pres",0,"Аз ___ кафе.","Je veux un café."],
+    ["iskam","pres",5,"Те ___ вода.","Ils veulent de l'eau."],
+    ["iskam","past",0,"Вчера аз ___ да говоря с теб.","Hier, je voulais te parler."],
+    ["piya","pres",3,"Ние ___ чай.","Nous buvons du thé."],
+    ["piya","past",0,"Вчера аз ___ кафе.","Hier, j'ai bu un café."],
+    ["piya","fut",4,"Утре вие ___ вино.","Demain, vous boirez du vin."],
+    ["piya","imp",0,"___ вода!","Bois de l'eau !"],
+    ["yam","pres",2,"Той ___ хляб.","Il mange du pain."],
+    ["yam","past",0,"Вчера аз ___ пица.","Hier, j'ai mangé une pizza."],
+    ["yam","fut",3,"Довечера ние ___ у дома.","Ce soir, nous mangerons à la maison."],
+    ["sam","pres",2,"Той ___ французин.","Il est français."],
+    ["sam","pres",3,"Ние ___ приятели.","Nous sommes amis."],
+    ["sam","pres",4,"Вие ___ от Франция.","Vous êtes de France."],
+    ["sam","past",0,"Вчера аз ___ на работа.","Hier, j'étais au travail."],
+    ["sam","past",5,"Те ___ в София миналата седмица.","Ils étaient à Sofia la semaine dernière."],
+    ["sam","fut",0,"Утре аз ___ в Пловдив.","Demain, je serai à Plovdiv."],
+    ["imam","pres",0,"Аз ___ брат.","J'ai un frère."],
+    ["imam","pres",1,"Ти ___ кола.","Tu as une voiture."],
+    ["imam","past",3,"Миналата година ние ___ куче.","L'année dernière, nous avions un chien."],
+    ["znam","pres",0,"Аз ___ отговора.","Je connais la réponse."],
+    ["znam","pres",5,"Те ___ български.","Ils savent le bulgare."],
+    ["moga","pres",0,"Аз ___ да плувам.","Je sais nager."],
+    ["moga","pres",3,"Ние ___ да дойдем утре.","Nous pouvons venir demain."],
+    ["zhiveya","pres",0,"Аз ___ във Франция.","J'habite en France."],
+    ["zhiveya","pres",5,"Те ___ в София.","Ils habitent à Sofia."],
+    ["zhiveya","past",0,"Преди аз ___ в Лион.","Avant, j'habitais à Lyon."],
+    ["otivam","pres",0,"Аз ___ на работа.","Je vais au travail."],
+    ["otivam","pres",3,"Ние ___ на пазар.","Nous allons au marché."],
+    ["otivam","past",0,"Вчера аз ___ на кино.","Hier, je suis allé au cinéma."],
+    ["ucha","pres",0,"Аз ___ български.","J'apprends le bulgare."],
+    ["ucha","past",0,"Вчера аз ___ цял час.","Hier, j'ai étudié une heure entière."],
+    ["pravya","pres",4,"Какво ___ вие?","Que faites-vous ?"],
+    ["pravya","pres",1,"Какво ___ ти?","Que fais-tu ?"],
+    ["pravya","past",0,"Вчера аз ___ торта.","Hier, j'ai fait un gâteau."]
+  ].map(s=>({v:s[0], t:s[1], pi:s[2], text:s[3], fr:s[4]}));
+
+  const MODES = {
+    choice:{icon:"🔘", name:"Choisir la forme", desc:"Une personne, un temps : trouve la bonne forme parmi 4."},
+    type  :{icon:"⌨️", name:"Écrire la forme", desc:"Tape la forme conjuguée (clavier cyrillique fourni)."},
+    id    :{icon:"🔍", name:"Reconnaître", desc:"On te donne une forme : retrouve le verbe, le temps et la personne."},
+    gap   :{icon:"📝", name:"Phrases à trous", desc:"Complète des phrases en contexte, avec la traduction."},
+    table :{icon:"🧮", name:"Tableau à remplir", desc:"Conjugue toutes les personnes d'un verbe d'un coup."},
+    mix   :{icon:"🎲", name:"Défi mixte", desc:"Un mélange de tous les exercices (hors tableaux)."}
+  };
+  const MODE_ORDER = ["choice","type","id","gap","table","mix"];
+
+  /* ---------- Utilitaires ---------- */
+  const $ = id => document.getElementById(id);
+  const rnd = n => Math.floor(Math.random()*n);
+  function sh(a){ const b=a.slice(); for(let i=b.length-1;i>0;i--){ const j=rnd(i+1); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+  function uniq(a){ return Array.from(new Set(a)); }
+  const TR = {а:"a",б:"b",в:"v",г:"g",д:"d",е:"e",ж:"zh",з:"z",и:"i",й:"y",к:"k",л:"l",м:"m",н:"n",о:"o",п:"p",р:"r",с:"s",т:"t",у:"u",ф:"f",х:"h",ц:"ts",ч:"ch",ш:"sh",щ:"sht",ъ:"a",ь:"y",ю:"yu",я:"ya"};
+  function tr(s){ return s.toLowerCase().split("").map(c=>TR[c]!==undefined?TR[c]:c).join(""); }
+  function norm(s){
+    return String(s||"").normalize("NFD").replace(/[\u0300\u0301]/g,"").normalize("NFC")
+      .toLowerCase().replace(/[.,!?;:«»"]/g,"").replace(/\s+/g," ").trim();
+  }
+  function persOf(tense){ return tense==="imp" ? PERS_IMP : PERS; }
+  function forms(v,t){ return v[t]; }
+  function hasT(v,t){ return !!v[t]; }
+  function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+  function store(){
+    if(!progress.conj) progress.conj = {};
+    const c = progress.conj;
+    if(!c.best) c.best = {};
+    if(!c.tense) c.tense = {};
+    if(!c.verb) c.verb = {};
+    return c;
+  }
+  function record(vid, tense, ok, ko){
+    const c = store();
+    (c.tense[tense] = c.tense[tense] || {ok:0,ko:0});
+    (c.verb[vid] = c.verb[vid] || {ok:0,ko:0});
+    c.tense[tense].ok += ok; c.tense[tense].ko += ko;
+    c.verb[vid].ok += ok; c.verb[vid].ko += ko;
+  }
+  function weakVerbs(){
+    const c = store();
+    return VERBS.filter(v=>{
+      const s = c.verb[v.id];
+      if(!s || (s.ok+s.ko)<1) return false;
+      return s.ko>0 && s.ok/(s.ok+s.ko) < 0.8;
+    }).map(v=>v.id);
+  }
+
+  /* ---------- Onglets ---------- */
+  const paneF = $("cj-pane-fiches"), paneT = $("cj-pane-train");
+  function showTab(name){
+    document.querySelectorAll(".cj-tab").forEach(b=>b.classList.toggle("active", b.dataset.cj===name));
+    paneF.style.display = name==="fiches" ? "block" : "none";
+    paneT.style.display = name==="train" ? "block" : "none";
+    if(name==="train" && !sess) renderSetup();
+  }
+  document.querySelectorAll(".cj-tab").forEach(b=>b.addEventListener("click", ()=>showTab(b.dataset.cj)));
+
+  /* ---------- Fiches ---------- */
+  let ficheId = VERBS[3].id;
+  const vchips = $("cj-vchips");
+  function renderVChips(){
+    let html = "";
+    Object.keys(GROUPS).forEach(g=>{
+      const list = VERBS.filter(v=>v.grp===g);
+      if(!list.length) return;
+      html += `<div class="cj-group-title">${GROUPS[g].label}</div><div class="cj-chipline">` +
+        list.map(v=>`<button type="button" class="chip${v.id===ficheId?" active":""}" data-v="${v.id}">${v.bg} <small style="opacity:.75">· ${v.fr.split(",")[0]}</small></button>`).join("") + `</div>`;
+    });
+    vchips.innerHTML = html;
+    vchips.querySelectorAll("[data-v]").forEach(b=>b.addEventListener("click", ()=>{ ficheId=b.dataset.v; renderVChips(); renderFiche(); }));
+  }
+  function cell(f){ return `${f}<span class="cj-tr">${tr(f)}</span>`; }
+  function renderFiche(){
+    const v = VBY[ficheId];
+    let rows = "";
+    for(let i=0;i<6;i++){
+      rows += `<tr><td class="p">${PERS[i].bg} <small>${PERS[i].fr}</small></td><td class="f">${cell(v.pres[i])}</td><td class="f">${cell(v.past[i])}</td><td class="f">${cell(v.fut[i])}</td></tr>`;
+    }
+    const imp = v.imp ? `<div class="tip"><b>Impératif</b> — ти : <span class="bg-cell">${v.imp[0]}</span> <span class="cj-tr" style="display:inline">(${tr(v.imp[0])})</span> · вие : <span class="bg-cell">${v.imp[1]}</span> <span class="cj-tr" style="display:inline">(${tr(v.imp[1])})</span></div>` : "";
+    $("cj-fiche").innerHTML = `
+      <div class="cj-head">
+        <span class="big">${v.bg}</span><span class="fr">${v.fr}</span>
+        <span class="cj-badge">${GROUPS[v.grp].label}</span>
+        <span class="cj-badge gold">passé : ${v.pastKind}</span>
+      </div>
+      <div class="tbl-scroll"><table class="gtable cj-table">
+        <tr><th></th><th>Présent</th><th>Passé</th><th>Futur</th></tr>${rows}
+      </table></div>
+      ${imp}
+      <div class="tip">💡 ${v.tip}</div>
+      <div class="cj-cta">
+        <button type="button" class="action primary" id="cj-train-this">📝 S'entraîner sur ce verbe</button>
+      </div>`;
+    $("cj-train-this").addEventListener("click", ()=>{
+      cfg.verbs = new Set([v.id]);
+      showTab("train"); sess = null; renderSetup();
+    });
+  }
+  $("cj-tr-toggle").addEventListener("change", e=>{
+    $("sec-conjugation").classList.toggle("cj-noTr", !e.target.checked);
+  });
+
+  /* ---------- Réglages d'entraînement ---------- */
+  const cfg = { mode:"choice", tenses:new Set(["pres","past"]), verbs:new Set(VERBS.map(v=>v.id)), len:12, weak:false };
+  let sess = null;   // session en cours
+  let lastInput = null;
+  const stage = $("cj-stage");
+
+  function setupPoolCount(){
+    const ids = cfg.weak ? weakVerbs() : Array.from(cfg.verbs);
+    return VERBS.filter(v=>ids.includes(v.id) && Array.from(cfg.tenses).some(t=>hasT(v,t))).length;
+  }
+
+  function renderSetup(){
+    sess = null;
+    const weak = weakVerbs();
+    const vchipHTML = VERBS.map(v=>`<button type="button" class="chip${cfg.verbs.has(v.id)?" active":""}" data-vsel="${v.id}">${v.bg}</button>`).join("");
+    stage.innerHTML = `
+      <div class="cj-card">
+        <div class="cj-label">1 · Type d'exercice</div>
+        <div class="cj-modes">${MODE_ORDER.map(m=>`<button type="button" class="cj-mode${cfg.mode===m?" active":""}" data-mode="${m}"><b>${MODES[m].icon} ${MODES[m].name}</b><span>${MODES[m].desc}</span></button>`).join("")}</div>
+
+        <div class="cj-label">2 · Temps</div>
+        <div class="cj-chipline" id="cj-tsel">${T_ORDER.map(t=>`<button type="button" class="chip${cfg.tenses.has(t)?" active":""}" data-tsel="${t}">${TENSES[t].label}</button>`).join("")}</div>
+
+        <div class="cj-label">3 · Verbes</div>
+        <div class="cj-chipline" style="margin-bottom:.5rem;">
+          <button type="button" class="chip q" data-quick="all">Tous</button>
+          <button type="button" class="chip q" data-quick="e">1re conj.</button>
+          <button type="button" class="chip q" data-quick="i">2e conj.</button>
+          <button type="button" class="chip q" data-quick="a">3e conj.</button>
+          <button type="button" class="chip q" data-quick="irr">Irréguliers</button>
+        </div>
+        <div class="cj-chipline" id="cj-vsel">${vchipHTML}</div>
+        <label class="cj-check" style="margin-top:.7rem;${weak.length?"":"opacity:.55;"}">
+          <input type="checkbox" id="cj-weak" ${cfg.weak?"checked":""} ${weak.length?"":"disabled"}>
+          🎯 Cibler mes points faibles ${weak.length?`(${weak.map(id=>VBY[id].bg).join(", ")})`:"(disponible après quelques exercices)"}
+        </label>
+
+        <div class="cj-label">4 · Nombre de questions</div>
+        <div class="cj-seg" id="cj-len">${[8,12,20].map(n=>`<button type="button" class="${cfg.len===n?"active":""}" data-len="${n}">${n}</button>`).join("")}</div>
+
+        <div class="cj-start">
+          <button type="button" class="action primary" id="cj-go">▶ Commencer</button>
+          <span class="cj-hint" id="cj-hint"></span>
+        </div>
+      </div>`;
+
+    stage.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click", ()=>{ cfg.mode=b.dataset.mode; renderSetup(); }));
+    stage.querySelectorAll("[data-tsel]").forEach(b=>b.addEventListener("click", ()=>{
+      const t=b.dataset.tsel;
+      if(cfg.tenses.has(t)){ if(cfg.tenses.size>1) cfg.tenses.delete(t); } else cfg.tenses.add(t);
+      renderSetup();
+    }));
+    stage.querySelectorAll("[data-vsel]").forEach(b=>b.addEventListener("click", ()=>{
+      const id=b.dataset.vsel;
+      if(cfg.verbs.has(id)){ if(cfg.verbs.size>1) cfg.verbs.delete(id); } else cfg.verbs.add(id);
+      cfg.weak=false; renderSetup();
+    }));
+    stage.querySelectorAll("[data-quick]").forEach(b=>b.addEventListener("click", ()=>{
+      const q=b.dataset.quick;
+      cfg.verbs = new Set(VERBS.filter(v=>q==="all"||v.grp===q).map(v=>v.id));
+      cfg.weak=false; renderSetup();
+    }));
+    stage.querySelectorAll("[data-len]").forEach(b=>b.addEventListener("click", ()=>{ cfg.len=+b.dataset.len; renderSetup(); }));
+    const w = $("cj-weak"); if(w) w.addEventListener("change", e=>{ cfg.weak=e.target.checked; renderSetup(); });
+    $("cj-go").addEventListener("click", startFromSetup);
+    const hint = $("cj-hint");
+    const n = setupPoolCount();
+    hint.textContent = n ? `${n} verbe${n>1?"s":""} · ${cfg.tenses.size} temps` : "Aucun verbe ne correspond à ce temps.";
+    if(!n) $("cj-go").disabled = true;
+  }
+
+  /* ---------- Fabrication des questions ---------- */
+  function candidates(){
+    const ids = cfg.weak ? weakVerbs() : Array.from(cfg.verbs);
+    const out = [];
+    VERBS.forEach(v=>{
+      if(!ids.includes(v.id)) return;
+      cfg.tenses.forEach(t=>{
+        if(!hasT(v,t)) return;
+        v[t].forEach((f,pi)=>out.push({v,t,pi,f}));
+      });
+    });
+    return out;
+  }
+  function ambiguous(v, f){
+    let c = 0;
+    T_ORDER.forEach(t=>{ if(v[t]) v[t].forEach(x=>{ if(x===f) c++; }); });
+    return c>1;
+  }
+  function formOptions(v,t,pi,correct){
+    const same = uniq(v[t].filter((f,i)=>i!==pi && f!==correct));
+    const other = uniq(T_ORDER.filter(x=>x!==t && v[x] && !(x==="imp")).map(x=>v[x][Math.min(pi, v[x].length-1)]).filter(f=>f!==correct && !same.includes(f)));
+    const otherAll = uniq(T_ORDER.filter(x=>x!==t && x!=="imp" && v[x]).flatMap(x=>v[x]).filter(f=>f!==correct && !same.includes(f)));
+    let picks = sh(same).slice(0,2);
+    sh(other).forEach(f=>{ if(picks.length<3 && !picks.includes(f)) picks.push(f); });
+    sh(same).forEach(f=>{ if(picks.length<3 && !picks.includes(f)) picks.push(f); });
+    sh(otherAll).forEach(f=>{ if(picks.length<3 && !picks.includes(f)) picks.push(f); });
+    if(picks.length<3){
+      sh(VERBS.filter(x=>x!==v && x[t])).forEach(x=>{ const f=x[t][Math.min(pi,x[t].length-1)]; if(picks.length<3 && f!==correct && !picks.includes(f)) picks.push(f); });
+    }
+    return sh([correct, ...picks]);
+  }
+  function idLabel(v,t,pi){ return `${v.bg} · ${TENSES[t].low} · ${persOf(t)[pi].short}`; }
+  function idOptions(v,t,pi,f){
+    const correct = idLabel(v,t,pi);
+    const set = new Set([correct]);
+    const pick = [];
+    function add(lbl){ if(!set.has(lbl) && pick.length<3){ set.add(lbl); pick.push(lbl); } }
+    // même verbe, même temps, autre personne
+    sh(persOf(t).map((_,i)=>i).filter(i=>i!==pi && v[t][i]!==f)).slice(0,1).forEach(i=>add(idLabel(v,t,i)));
+    // même verbe, autre temps, même personne
+    sh(T_ORDER.filter(x=>x!==t && v[x] && x!=="imp")).forEach(x=>{ const i=Math.min(pi,v[x].length-1); if(v[x][i]!==f) add(idLabel(v,x,i)); });
+    // autre verbe, même temps/personne
+    sh(VERBS.filter(x=>x!==v && x[t])).forEach(x=>{ if(x[t][Math.min(pi,x[t].length-1)]!==f) add(idLabel(x,t,Math.min(pi,x[t].length-1))); });
+    return sh([correct, ...pick]);
+  }
+
+  function makeQuestion(type, c){
+    if(type==="choice" || type==="type"){
+      return {type, v:c.v, t:c.t, pi:c.pi, answer:c.f, options: type==="choice" ? formOptions(c.v,c.t,c.pi,c.f) : null};
+    }
+    if(type==="id"){
+      return {type, v:c.v, t:c.t, pi:c.pi, form:c.f, answer:idLabel(c.v,c.t,c.pi), options:idOptions(c.v,c.t,c.pi,c.f)};
+    }
+    return null;
+  }
+  function makeGap(s){
+    const v=VBY[s.v], ans=v[s.t][s.pi];
+    return {type:"gap", v, t:s.t, pi:s.pi, s, answer:ans, options:formOptions(v,s.t,s.pi,ans)};
+  }
+  function gapPool(){
+    const ids = cfg.weak ? weakVerbs() : Array.from(cfg.verbs);
+    return SENT.filter(s=>ids.includes(s.v) && cfg.tenses.has(s.t));
+  }
+
+  function buildQuestions(){
+    const cands = candidates();
+    const N = cfg.len;
+    let qs = [];
+    const m = cfg.mode;
+    if(m==="choice" || m==="type"){
+      qs = sh(cands).slice(0,N).map(c=>makeQuestion(m,c));
+    } else if(m==="id"){
+      const ok = cands.filter(c=>!ambiguous(c.v,c.f));
+      qs = sh(ok).slice(0,N).map(c=>makeQuestion("id",c));
+    } else if(m==="gap"){
+      qs = sh(gapPool()).slice(0,N).map(makeGap);
+    } else if(m==="table"){
+      const combos = [];
+      VERBS.forEach(v=>{
+        const ids = cfg.weak ? weakVerbs() : Array.from(cfg.verbs);
+        if(!ids.includes(v.id)) return;
+        cfg.tenses.forEach(t=>{ if(hasT(v,t)) combos.push({type:"table", v, t}); });
+      });
+      qs = sh(combos).slice(0, Math.max(3, Math.ceil(N/3)));
+    } else if(m==="mix"){
+      const gaps = sh(gapPool());
+      const idc = sh(cands.filter(c=>!ambiguous(c.v,c.f)));
+      const pool = sh(cands);
+      const kinds = ["choice","type","id","gap"];
+      let gi=0, ii=0, pi=0;
+      for(let k=0;k<N;k++){
+        const kind = kinds[k%kinds.length];
+        if(kind==="gap" && gi<gaps.length) qs.push(makeGap(gaps[gi++]));
+        else if(kind==="id" && ii<idc.length) qs.push(makeQuestion("id", idc[ii++]));
+        else if(pi<pool.length) qs.push(makeQuestion(kind==="type"?"type":"choice", pool[pi++]));
+      }
+      qs = sh(qs);
+    }
+    return qs.filter(Boolean);
+  }
+
+  function startFromSetup(){
+    const qs = buildQuestions();
+    if(!qs.length){
+      $("cj-hint").textContent = "Pas assez de contenu pour cette sélection : ajoute des verbes ou des temps.";
+      return;
+    }
+    beginSession(qs);
+  }
+  function beginSession(qs){
+    sess = { qs, i:0, res:[], streak:0, bestStreak:0, answered:false };
+    renderQuestion();
+  }
+
+  /* ---------- Affichage d'une question ---------- */
+  const KIND = {choice:"Choisis la forme", type:"Écris la forme", id:"Reconnais la forme", gap:"Complète la phrase", table:"Remplis le tableau"};
+  function promptHTML(q){
+    const P = persOf(q.t)[q.pi];
+    if(q.type==="choice" || q.type==="type"){
+      return `Conjugue <span class="v">${q.v.bg}</span> <small style="font-family:'PT Sans';color:var(--muted2)">(${q.v.fr})</small><br>
+        <span class="pill t">${TENSES[q.t].label}</span> <span class="pill p">${P.bg}</span> <small style="font-family:'PT Sans';color:var(--muted2)">${P.fr}</small>`;
+    }
+    if(q.type==="id"){
+      return `Quelle est cette forme ?<span class="cj-form">${q.form}</span><span class="cj-tr" style="display:block;font-size:.78rem;color:var(--muted2);font-style:italic;font-family:'PT Sans'">${tr(q.form)}</span>`;
+    }
+    if(q.type==="gap"){
+      const parts = q.s.text.split("___");
+      return `${esc(parts[0])}<span class="cj-blank" id="cj-blank">&nbsp;</span>${esc(parts[1]||"")}
+        <div class="cj-sent-fr">${esc(q.s.fr)}</div>
+        <div style="margin-top:.5rem"><span class="pill">${q.v.bg}</span> <span class="pill t">${TENSES[q.t].label}</span></div>`;
+    }
+    if(q.type==="table"){
+      return `Conjugue <span class="v">${q.v.bg}</span> <small style="font-family:'PT Sans';color:var(--muted2)">(${q.v.fr})</small> au <span class="pill t">${TENSES[q.t].low}</span>`;
+    }
+    return "";
+  }
+  function keyboardHTML(){
+    const L = "абвгдежзийклмнопрстуфхцчшщъьюя".split("");
+    return `<details class="cj-kbd" open><summary>⌨️ Clavier cyrillique</summary><div class="cj-keys">${
+      L.map(c=>`<button type="button" class="cj-key" data-k="${c}">${c}</button>`).join("")
+    }<button type="button" class="cj-key wide" data-k=" ">espace</button><button type="button" class="cj-key wide" data-k="⌫">⌫ effacer</button></div></details>`;
+  }
+  function bindKeyboard(){
+    stage.querySelectorAll(".cj-key").forEach(b=>{
+      b.addEventListener("mousedown", e=>e.preventDefault());
+      b.addEventListener("click", ()=>{
+        const inp = (lastInput && document.body.contains(lastInput) && !lastInput.disabled) ? lastInput : stage.querySelector(".cj-input:not([disabled])");
+        if(!inp) return;
+        const k = b.dataset.k;
+        const s = inp.selectionStart==null ? inp.value.length : inp.selectionStart;
+        const e = inp.selectionEnd==null ? s : inp.selectionEnd;
+        if(k==="⌫"){
+          if(s!==e){ inp.value = inp.value.slice(0,s)+inp.value.slice(e); inp.setSelectionRange(s,s); }
+          else if(s>0){ inp.value = inp.value.slice(0,s-1)+inp.value.slice(s); inp.setSelectionRange(s-1,s-1); }
+        } else {
+          inp.value = inp.value.slice(0,s)+k+inp.value.slice(e);
+          inp.setSelectionRange(s+1,s+1);
+        }
+        inp.focus();
+      });
+    });
+  }
+  stage.addEventListener("focusin", e=>{ if(e.target.classList && e.target.classList.contains("cj-input")) lastInput = e.target; });
+
+  function topBar(){
+    const n = sess.qs.length;
+    const pct = Math.round((sess.i/n)*100);
+    return `<div class="cj-top">
+      <span>${Math.min(sess.i+1,n)} / ${n}</span>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%"></div></div>
+      <span class="cj-streak">${sess.streak>=3?"🔥 "+sess.streak:(sess.streak>0?"✔ "+sess.streak:"")}</span>
+      <button type="button" class="cj-quit" id="cj-quit">Quitter</button>
+    </div>`;
+  }
+
+  function renderQuestion(){
+    if(sess.i >= sess.qs.length){ renderResult(); return; }
+    const q = sess.qs[sess.i];
+    sess.answered = false;
+    let body = "";
+    if(q.type==="choice" || q.type==="id" || q.type==="gap"){
+      body = `<div class="cj-opts">${q.options.map((o,k)=>`<button type="button" class="opt-btn" data-opt="${esc(o)}"><span class="n">${k+1}</span>${esc(o)}</button>`).join("")}</div>`;
+    } else if(q.type==="type"){
+      body = `<input class="cj-input" id="cj-in" type="text" lang="bg" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Écris ta réponse…">
+        ${keyboardHTML()}
+        <div class="cj-actions"><button type="button" class="action primary" id="cj-submit">Valider</button></div>`;
+    } else if(q.type==="table"){
+      const P = persOf(q.t);
+      body = `<div class="cj-fill">${P.map((p,i)=>`<label for="cj-c${i}">${p.bg} <small style="color:var(--muted2)">${p.fr}</small></label><input class="cj-input" id="cj-c${i}" type="text" lang="bg" autocomplete="off" autocapitalize="off" spellcheck="false">`).join("")}</div>
+        ${keyboardHTML()}
+        <div class="cj-actions"><button type="button" class="action primary" id="cj-submit">Vérifier</button></div>`;
+    }
+    stage.innerHTML = topBar() + `<div class="cj-qbox"><div class="cj-kind">${KIND[q.type]}</div><div class="cj-q">${promptHTML(q)}</div>${body}<div id="cj-fb"></div></div>`;
+    $("cj-quit").addEventListener("click", ()=>{ if(confirm("Quitter cet exercice ?")) renderSetup(); });
+
+    if(q.type==="choice" || q.type==="id" || q.type==="gap"){
+      stage.querySelectorAll(".opt-btn").forEach(b=>b.addEventListener("click", ()=>answerChoice(b)));
+    } else {
+      bindKeyboard();
+      const first = stage.querySelector(".cj-input"); if(first){ lastInput = first; first.focus(); }
+      $("cj-submit").addEventListener("click", ()=> q.type==="table" ? answerTable() : answerType());
+    }
+  }
+
+  /* ---------- Correction ---------- */
+  function paraHTML(v,t,hi){
+    const P = persOf(t);
+    return `<div class="cj-para">${v[t].map((f,i)=>`<div class="${i===hi?"hi":""}"><small>${P[i].short}</small>${f}</div>`).join("")}</div>`;
+  }
+  function feedback(q, ok, given){
+    const fbEl = $("cj-fb");
+    let ansTxt = q.type==="id" ? q.answer : q.answer;
+    const trLine = (q.type==="id") ? "" : `<span class="cj-tr" style="display:block;font-size:.8rem;color:var(--muted2);font-style:italic;font-family:'PT Sans'">${tr(q.answer)}</span>`;
+    const notes = [];
+    if(q.t==="past") notes.push(`Passé de <b>${q.v.bg}</b> : ${q.v.pastKind}.`);
+    if(!ok && q.type!=="id") notes.push(q.v.tip);
+    fbEl.innerHTML = `<div class="cj-fb ${ok?"":"ko"}">
+        <div class="verdict">${ok?"✅ Correct !":"❌ Pas tout à fait"}</div>
+        ${ok && q.type!=="id" ? "" : `<div>Réponse : <span class="ans">${esc(ansTxt)}</span>${trLine}</div>`}
+        ${ (!ok && given) ? `<div class="why">Ta réponse : <s>${esc(given)}</s></div>` : ""}
+        ${q.type==="id" ? "" : paraHTML(q.v,q.t,q.pi)}
+        ${notes.length?`<div class="why">💡 ${notes.join(" ")}</div>`:""}
+      </div>
+      <div class="cj-actions"><button type="button" class="action primary" id="cj-next">${sess.i+1>=sess.qs.length?"Voir le résultat":"Question suivante"} →</button></div>`;
+    $("cj-next").addEventListener("click", nextQ);
+    $("cj-next").focus();
+  }
+  function finishAnswer(q, ok, given, pts, max){
+    sess.answered = true;
+    sess.res[sess.i] = {ok, given, pts, max};
+    sess.streak = ok ? sess.streak+1 : 0;
+    sess.bestStreak = Math.max(sess.bestStreak, sess.streak);
+    if(q.type!=="table") record(q.v.id, q.t, ok?1:0, ok?0:1);
+    saveProgress(progress);
+    // met à jour le compteur de série
+    const st = stage.querySelector(".cj-streak");
+    if(st) st.textContent = sess.streak>=3 ? "🔥 "+sess.streak : (sess.streak>0 ? "✔ "+sess.streak : "");
+  }
+  function answerChoice(btn){
+    if(sess.answered) return;
+    const q = sess.qs[sess.i];
+    const val = btn.dataset.opt;
+    const ok = val===q.answer;
+    stage.querySelectorAll(".opt-btn").forEach(b=>{
+      b.disabled = true;
+      if(b.dataset.opt===q.answer) b.classList.add("correct");
+    });
+    if(!ok) btn.classList.add("incorrect");
+    if(q.type==="gap"){ const bl=$("cj-blank"); if(bl) bl.textContent = q.answer; }
+    finishAnswer(q, ok, val, ok?1:0, 1);
+    feedback(q, ok, ok?"":val);
+  }
+  function answerType(){
+    if(sess.answered) return;
+    const q = sess.qs[sess.i];
+    const inp = $("cj-in");
+    const given = inp.value.trim();
+    if(!given){ inp.focus(); return; }
+    const ok = norm(given)===norm(q.answer);
+    inp.disabled = true; inp.classList.add(ok?"correct":"incorrect");
+    const kb = stage.querySelector(".cj-kbd"); if(kb) kb.style.display="none";
+    $("cj-submit").style.display="none";
+    finishAnswer(q, ok, given, ok?1:0, 1);
+    feedback(q, ok, ok?"":given);
+  }
+  function answerTable(){
+    if(sess.answered) return;
+    const q = sess.qs[sess.i];
+    const P = persOf(q.t);
+    let good = 0; const bad = [];
+    P.forEach((p,i)=>{
+      const inp = $("cj-c"+i);
+      const okc = norm(inp.value)===norm(q.v[q.t][i]);
+      inp.disabled = true; inp.classList.add(okc?"correct":"incorrect");
+      if(okc) good++; else {
+        bad.push({p:p.short, given:inp.value.trim(), ans:q.v[q.t][i]});
+        const fb = document.createElement("div"); fb.className="cell-fb"; fb.textContent = "→ "+q.v[q.t][i];
+        inp.insertAdjacentElement("afterend", fb);
+      }
+    });
+    const kb = stage.querySelector(".cj-kbd"); if(kb) kb.style.display="none";
+    $("cj-submit").style.display="none";
+    const all = good===P.length;
+    record(q.v.id, q.t, good, P.length-good);
+    finishAnswer(q, all, "", good, P.length);
+    sess.res[sess.i].bad = bad;
+    const fbEl = $("cj-fb");
+    fbEl.innerHTML = `<div class="cj-fb ${all?"":"ko"}"><div class="verdict">${all?"✅ Tableau parfait !":`${good} / ${P.length} formes justes`}</div>${all?"":`<div class="why">💡 ${q.v.tip}</div>`}</div>
+      <div class="cj-actions"><button type="button" class="action primary" id="cj-next">${sess.i+1>=sess.qs.length?"Voir le résultat":"Question suivante"} →</button></div>`;
+    $("cj-next").addEventListener("click", nextQ);
+    $("cj-next").focus();
+  }
+  function nextQ(){ sess.i++; renderQuestion(); }
+
+  /* Raccourcis clavier : 1-4 pour les choix, Entrée pour valider / continuer */
+  document.addEventListener("keydown", e=>{
+    if(!sess || !$("sec-conjugation").classList.contains("active") || paneT.style.display==="none") return;
+    const q = sess.qs[sess.i]; if(!q) return;
+    if(e.key==="Enter"){
+      const next = $("cj-next");
+      if(next){ if(document.activeElement!==next){ e.preventDefault(); nextQ(); } return; }
+      if(!sess.answered && (q.type==="type" || q.type==="table")){
+        if(q.type==="table"){
+          const inputs = Array.from(stage.querySelectorAll(".cj-input"));
+          const idx = inputs.indexOf(document.activeElement);
+          if(idx>=0 && idx<inputs.length-1){ e.preventDefault(); inputs[idx+1].focus(); return; }
+          e.preventDefault(); answerTable();
+        } else { e.preventDefault(); answerType(); }
+      }
+    } else if(!sess.answered && /^[1-4]$/.test(e.key) && (q.type==="choice"||q.type==="id"||q.type==="gap")){
+      const b = stage.querySelectorAll(".opt-btn")[+e.key-1]; if(b) b.click();
+    }
+  });
+
+  /* ---------- Résultats ---------- */
+  function renderResult(){
+    const pts = sess.res.reduce((a,r)=>a+r.pts,0);
+    const max = sess.res.reduce((a,r)=>a+r.max,0);
+    const pct = max ? Math.round(pts/max*100) : 0;
+    const c = store();
+    const prev = c.best[cfg.mode];
+    const isNew = !prev || pct>prev.pct;
+    if(isNew) c.best[cfg.mode] = {pct, pts, max};
+    c.sessions = (c.sessions||0)+1;
+    saveProgress(progress);
+
+    const msg = pct>=90 ? "Отлично ! Excellent !" : pct>=70 ? "Много добре ! Très bien !" : pct>=50 ? "Добре ! Pas mal, continue." : "Не се отчайвай — relis la fiche et retente !";
+
+    // détail par temps
+    const by = {};
+    sess.qs.forEach((q,i)=>{ const r=sess.res[i]; if(!r) return; const t=q.t; by[t]=by[t]||{p:0,m:0}; by[t].p+=r.pts; by[t].m+=r.max; });
+    const brk = T_ORDER.filter(t=>by[t]).map(t=>{
+      const p = Math.round(by[t].p/by[t].m*100);
+      return `<div class="prog-row"><div class="lbl">${TENSES[t].label}</div><div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${p>=70?"var(--sage)":"var(--gold)"}"></div></div><div class="num">${by[t].p}/${by[t].m}</div></div>`;
+    }).join("");
+
+    // erreurs
+    const errs = [];
+    sess.qs.forEach((q,i)=>{
+      const r = sess.res[i]; if(!r || r.pts===r.max) return;
+      if(q.type==="table"){
+        errs.push(`<div class="cj-err"><span class="bgf">${q.v.bg}</span> · ${TENSES[q.t].low} — ${(r.bad||[]).map(b=>`${b.p} : ${b.given?`<span class="was">${esc(b.given)}</span> → `:""}<span class="bgf">${b.ans}</span>`).join(" · ")}</div>`);
+      } else if(q.type==="id"){
+        errs.push(`<div class="cj-err"><span class="bgf">${q.form}</span> = <span class="bgf">${q.answer}</span> ${r.given?`<br><span class="was">${esc(r.given)}</span>`:""}</div>`);
+      } else if(q.type==="gap"){
+        errs.push(`<div class="cj-err">${esc(q.s.text.replace("___", "…"))} → <span class="bgf">${q.answer}</span> ${r.given?`<span class="was">${esc(r.given)}</span>`:""}</div>`);
+      } else {
+        errs.push(`<div class="cj-err"><span class="bgf">${q.v.bg}</span> · ${TENSES[q.t].low} · ${persOf(q.t)[q.pi].short} → <span class="bgf">${q.answer}</span> ${r.given?`<span class="was">${esc(r.given)}</span>`:""}</div>`);
+      }
+    });
+
+    stage.innerHTML = `<div class="cj-result">
+        <div class="score">${pts} / ${max}</div>
+        <div class="pct">${pct} %${isNew ? ' <span class="new">Nouveau record</span>' : ` · record : ${prev.pct} %`}</div>
+        <div class="msg">${msg}</div>
+        <div class="pct">Meilleure série : ${sess.bestStreak} 🔥</div>
+        <div class="cj-brk">${brk}</div>
+        <div class="cj-cta" style="justify-content:center">
+          ${errs.length?`<button type="button" class="action primary" id="cj-retry">🔁 Rejouer mes erreurs (${errs.length})</button>`:""}
+          <button type="button" class="action ${errs.length?"ghost":"primary"}" id="cj-again">↻ Nouvelle série</button>
+          <button type="button" class="action ghost" id="cj-settings">⚙ Réglages</button>
+        </div>
+        ${errs.length?`<div class="cj-errs"><div class="cj-label">À retenir</div>${errs.join("")}</div>`:`<p style="margin-top:1rem">Aucune erreur, bravo ! 🎉</p>`}
+      </div>`;
+    $("cj-again").addEventListener("click", ()=>{ const qs=buildQuestions(); if(qs.length) beginSession(qs); else renderSetup(); });
+    $("cj-settings").addEventListener("click", renderSetup);
+    const rt = $("cj-retry");
+    if(rt) rt.addEventListener("click", ()=>{
+      const failed = sess.qs.filter((q,i)=>sess.res[i] && sess.res[i].pts<sess.res[i].max).map(q=>{
+        if(q.type==="choice") return {...q, options:formOptions(q.v,q.t,q.pi,q.answer)};
+        if(q.type==="gap") return {...q, options:formOptions(q.v,q.t,q.pi,q.answer)};
+        return q;
+      });
+      beginSession(sh(failed));
+    });
+    if(typeof renderConjProgress==="function") renderConjProgress();
+  }
+
+  /* ---------- Page Progression ---------- */
+  function renderConjProgress(){
+    const host = $("progress-conj"); if(!host) return;
+    const c = store();
+    let html = "";
+    html += `<div class="cj-label" style="margin-top:.2rem">Meilleur score par exercice</div>`;
+    html += MODE_ORDER.map(m=>{
+      const b = c.best[m]; const p = b ? b.pct : 0;
+      return `<div class="prog-row"><div class="lbl">${MODES[m].icon} ${MODES[m].name}</div><div class="bar-track"><div class="bar-fill" style="width:${p}%;background:var(--gold)"></div></div><div class="num">${b?p+" %":"—"}</div></div>`;
+    }).join("");
+    html += `<div class="cj-label">Réussite par temps</div>`;
+    html += T_ORDER.map(t=>{
+      const s = c.tense[t]; const tot = s ? s.ok+s.ko : 0; const p = tot ? Math.round(s.ok/tot*100) : 0;
+      return `<div class="prog-row"><div class="lbl">${TENSES[t].label}</div><div class="bar-track"><div class="bar-fill" style="width:${p}%"></div></div><div class="num">${tot?p+" %":"—"}</div></div>`;
+    }).join("");
+    const weak = weakVerbs();
+    html += `<div class="cj-label">Verbes à retravailler</div><p class="cj-hint">${weak.length ? weak.map(id=>`<b class="bg-cell" style="font-family:'PT Serif';color:var(--madder-dark)">${VBY[id].bg}</b>`).join(" · ") : "Rien à signaler pour l'instant."}</p>`;
+    host.innerHTML = html;
+  }
+  window.renderConjProgress = renderConjProgress;
+  const progBtn = document.querySelector('#nav button[data-target="progress"]');
+  if(progBtn) progBtn.addEventListener("click", renderConjProgress);
+
+  /* ---------- Liens depuis les autres onglets ---------- */
+  document.querySelectorAll("[data-go-conj]").forEach(b=>b.addEventListener("click", ()=>{
+    switchNavTo("conjugation");
+    showTab(b.dataset.goConj);
+  }));
+
+  /* ---------- Init ---------- */
+  renderVChips();
+  renderFiche();
+})();
+
 </script>
 </body>
 </html>

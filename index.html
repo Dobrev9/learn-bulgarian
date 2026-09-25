@@ -492,6 +492,47 @@
     color:var(--madder-dark);
   }
 
+  .quiz-settings{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.4rem .8rem;
+    margin-bottom:.7rem;
+  }
+  .quiz-settings .field-label{
+    font-size:.82rem;
+    color:var(--text3);
+    margin-right:.15rem;
+  }
+  .count-chip{
+    border:1.5px solid var(--muted);
+    color:var(--text3);
+    background:transparent;
+    padding:.25rem .7rem;
+    border-radius:20px;
+    font-size:.82rem;
+    cursor:pointer;
+  }
+  .count-chip.active{
+    background:var(--indigo);
+    border-color:var(--indigo);
+    color:#fff;
+  }
+  .chip.weak{
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+  .chip.weak.active{
+    background:var(--gold);
+    color:#fff;
+  }
+  .quiz-weak-note{
+    font-size:.85rem;
+    color:var(--text3);
+    font-style:italic;
+    margin:-.3rem 0 1rem;
+  }
+
   /* Progress page */
   .prog-row{
     display:flex;
@@ -1500,7 +1541,12 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
     <h2>Quiz</h2>
     <p class="lead" id="quiz-lead">Teste tes connaissances (Français ➔ Bulgare).</p>
     <div class="cj-callout"><span>Ce quiz teste le <b>vocabulaire</b>. Pour t'entraîner à <b>conjuguer</b> (formes, phrases à trous, tableaux…), utilise le quiz dédié.</span><button type="button" class="action primary" data-go-conj="train">📝 Quiz de conjugaison</button></div>
+    <div class="quiz-settings">
+      <span class="field-label">Nombre de questions :</span>
+      <div class="chips" id="quiz-count-chips" style="margin-bottom:0;"></div>
+    </div>
     <div class="chips" id="quiz-chips"></div>
+    <p class="quiz-weak-note" id="quiz-weak-note" style="display:none;">🎯 Priorité aux mots que tu maîtrises le moins bien, toutes catégories confondues.</p>
     <div class="quiz-box" id="quiz-box"></div>
   </section>
 
@@ -2899,21 +2945,68 @@ renderFlashcard();
 
 /* ---------------- QUIZ ---------------- */
 const quizChips = document.getElementById("quiz-chips");
+const quizCountChipsEl = document.getElementById("quiz-count-chips");
+const quizWeakNoteEl = document.getElementById("quiz-weak-note");
 const quizBox = document.getElementById("quiz-box");
+const WEAK_KEY = "__weak__";
+const QUIZ_COUNTS = [5,10,15,20,"all"];
+
+if(!progress.quizSettings) progress.quizSettings = {count:10};
+if(!progress.quizStats) progress.quizStats = {};
+
 let quizCat = Object.keys(VOCAB)[0];
+let quizCount = QUIZ_COUNTS.includes(progress.quizSettings.count) ? progress.quizSettings.count : 10;
 let quizQuestions = [];
 let quizIndex = 0;
 let quizScore = 0;
+let lastShownFr = null; // évite qu'une même question ne retombe juste après elle-même
+
+const THEME_WEAK_KEY = "__theme_weak__";
+let quizSessionWrong = []; // mots ratés pendant la série de thème en cours (dédupliqués par fr)
+let lastThemeWeakItems = []; // dernière liste utilisée pour une série "points faibles de ce thème"
+
+function quizCatLabel(catKey){
+  return catKey===WEAK_KEY ? "Points faibles" : VOCAB[catKey].label;
+}
+
+function renderQuizCountChips(){
+  quizCountChipsEl.innerHTML = "";
+  QUIZ_COUNTS.forEach(c=>{
+    const chip = document.createElement("button");
+    chip.type = "button";
+    chip.className = "count-chip" + (quizCount===c ? " active":"");
+    chip.textContent = c==="all" ? "Toutes" : String(c);
+    chip.addEventListener("click", ()=>{
+      quizCount = c;
+      progress.quizSettings.count = c;
+      saveProgress(progress);
+      renderQuizCountChips();
+      startQuiz();
+    });
+    quizCountChipsEl.appendChild(chip);
+  });
+}
 
 function renderQuizChips(){
   quizChips.innerHTML = "";
+
+  const weakChip = document.createElement("button");
+  weakChip.type = "button";
+  weakChip.className = "chip weak" + (quizCat===WEAK_KEY ? " active":"");
+  weakChip.textContent = "🎯 Points faibles";
+  weakChip.addEventListener("click", ()=>{ quizCat = WEAK_KEY; renderQuizChips(); startQuiz(); });
+  quizChips.appendChild(weakChip);
+
   Object.entries(VOCAB).forEach(([key, cat])=>{
     const chip = document.createElement("button");
+    chip.type = "button";
     chip.className = "chip" + (key===quizCat ? " active":"");
     chip.textContent = cat.label;
     chip.addEventListener("click", ()=>{ quizCat = key; renderQuizChips(); startQuiz(); });
     quizChips.appendChild(chip);
   });
+
+  quizWeakNoteEl.style.display = quizCat===WEAK_KEY ? "block" : "none";
 }
 
 function shuffle(arr){
@@ -2925,20 +3018,119 @@ function shuffle(arr){
   return a;
 }
 
-function buildQuestions(catKey){
-  const items = getWordItems(catKey);
-  const pool = shuffle(items).slice(0, Math.min(10, items.length));
-  return pool.map(correct=>{
-    const distractors = shuffle(items.filter(i=>i!==correct)).slice(0,3);
-    const options = shuffle([correct, ...distractors]);
-    return { fr: correct.fr, correctBg: correct.bg, options: options.map(o=>o.bg) };
-  });
+/* --- Statistiques par mot (pour détecter les points faibles) --- */
+function statKey(catKey, item){ return catKey + "||" + item.fr; }
+
+function weakScore(catKey, item){
+  const st = progress.quizStats[statKey(catKey, item)];
+  if(!st) return 0;
+  // plus le score est haut, plus le mot est "faible" (fautes récentes comptent double)
+  return (st.wrong||0)*2 - (st.right||0);
+}
+
+function recordAnswer(catKey, item, correct){
+  const k = statKey(catKey, item);
+  const st = progress.quizStats[k] || {right:0, wrong:0};
+  if(correct) st.right++; else st.wrong++;
+  progress.quizStats[k] = st;
+  saveProgress(progress);
+}
+
+function getAllVocabItems(){
+  return Object.entries(VOCAB).flatMap(([key,cat])=>
+    getWordItems(key).map(it=>({...it, __cat:key}))
+  );
+}
+
+/* Sélectionne les mots les plus faibles, tous thèmes confondus (avec un peu
+   d'aléatoire pour départager les mots jamais ratés / jamais vus) */
+function buildWeakPool(){
+  return getAllVocabItems()
+    .map(it=>({ it, score: weakScore(it.__cat, it) + Math.random()*0.5 }))
+    .sort((a,b)=> b.score - a.score)
+    .map(x=>x.it);
+}
+
+/* Réordonne la sélection pour qu'un même mot ne tombe jamais deux fois de
+   suite, ni juste après la dernière question du quiz précédent */
+function avoidAdjacentRepeats(pool){
+  if(pool.length<2) return pool;
+  const a = pool.slice();
+  if(a[0].fr===lastShownFr){
+    const idx = a.findIndex((it,i)=> i>0 && it.fr!==lastShownFr && it.fr!==a[1].fr);
+    if(idx>0){ [a[0],a[idx]] = [a[idx],a[0]]; }
+  }
+  for(let i=1;i<a.length;i++){
+    if(a[i].fr===a[i-1].fr){
+      let swapped = false;
+      for(let j=i+1;j<a.length;j++){
+        if(a[j].fr!==a[i-1].fr){
+          [a[i],a[j]] = [a[j],a[i]];
+          swapped = true;
+          break;
+        }
+      }
+      if(!swapped){
+        for(let j=i-2;j>=0;j--){
+          if(a[j].fr!==a[i-1].fr && a[j].fr!==a[i].fr){
+            [a[i],a[j]] = [a[j],a[i]];
+            break;
+          }
+        }
+      }
+    }
+  }
+  return a;
+}
+
+function makeQuestion(correct){
+  const cat = correct.__cat;
+  let distractors = shuffle(getWordItems(cat).filter(i=>i.fr!==correct.fr)).slice(0,3);
+  if(distractors.length<3){
+    const extra = shuffle(
+      getAllVocabItems().filter(i=> i.fr!==correct.fr && !distractors.some(d=>d.fr===i.fr))
+    ).slice(0, 3-distractors.length);
+    distractors = distractors.concat(extra);
+  }
+  const options = shuffle([correct, ...distractors]);
+  return { fr: correct.fr, correctBg: correct.bg, cat, options: options.map(o=>o.bg) };
+}
+
+function buildQuestions(catKey, count){
+  let selected;
+  if(catKey===WEAK_KEY){
+    const pool = buildWeakPool();
+    const n = count==="all" ? pool.length : Math.min(count, pool.length);
+    selected = shuffle(pool.slice(0, n));
+  } else {
+    const items = getWordItems(catKey).map(it=>({...it, __cat:catKey}));
+    const n = count==="all" ? items.length : Math.min(count, items.length);
+    selected = shuffle(items).slice(0, n);
+  }
+  selected = avoidAdjacentRepeats(selected);
+
+  return selected.map(makeQuestion);
 }
 
 function startQuiz(){
-  quizQuestions = buildQuestions(quizCat);
+  quizQuestions = buildQuestions(quizCat, quizCount);
   quizIndex = 0;
   quizScore = 0;
+  quizSessionWrong = [];
+  renderQuizQuestion();
+}
+
+/* Relance une série ciblée sur une liste précise de mots (ex : les erreurs
+   de la série de thème qui vient de se terminer) */
+function startThemeWeakQuiz(items){
+  if(!items || !items.length) return;
+  lastThemeWeakItems = items.slice();
+  quizCat = THEME_WEAK_KEY;
+  const pool = avoidAdjacentRepeats(shuffle(items));
+  quizQuestions = pool.map(makeQuestion);
+  quizIndex = 0;
+  quizScore = 0;
+  quizSessionWrong = [];
   renderQuizQuestion();
 }
 
@@ -2949,7 +3141,7 @@ function renderQuizQuestion(){
   }
   const q = quizQuestions[quizIndex];
   quizBox.innerHTML = `
-    <div class="quiz-progress">Question ${quizIndex+1} / ${quizQuestions.length} — ${VOCAB[quizCat].label}</div>
+    <div class="quiz-progress">Question ${quizIndex+1} / ${quizQuestions.length} — ${VOCAB[q.cat].label}</div>
     <div class="quiz-question">Quel est le bulgare pour : "${q.fr}" ?</div>
     <div class="quiz-options" id="quiz-options"></div>
   `;
@@ -2961,13 +3153,19 @@ function renderQuizQuestion(){
     b.addEventListener("click", ()=>{
       const buttons = optionsEl.querySelectorAll(".opt-btn");
       buttons.forEach(bb=>bb.disabled = true);
-      if(opt === q.correctBg){
+      const isCorrect = opt === q.correctBg;
+      if(isCorrect){
         b.classList.add("correct");
         quizScore++;
       } else {
         b.classList.add("incorrect");
         buttons.forEach(bb=>{ if(bb.textContent===q.correctBg) bb.classList.add("correct"); });
+        if(!quizSessionWrong.some(it=>it.fr===q.fr)){
+          quizSessionWrong.push({fr:q.fr, bg:q.correctBg, __cat:q.cat});
+        }
       }
+      recordAnswer(q.cat, {fr:q.fr, bg:q.correctBg}, isCorrect);
+      lastShownFr = q.fr;
       setTimeout(()=>{ quizIndex++; renderQuizQuestion(); }, 700);
     });
     optionsEl.appendChild(b);
@@ -2976,22 +3174,51 @@ function renderQuizQuestion(){
 
 function renderQuizResult(){
   const total = quizQuestions.length;
-  const best = progress.quizScores[quizCat] || 0;
-  if(quizScore > best){
-    progress.quizScores[quizCat] = quizScore;
-    saveProgress(progress);
+  const isThemeWeak = quizCat===THEME_WEAK_KEY;
+
+  let bestLineHtml = "";
+  if(!isThemeWeak){
+    const best = progress.quizScores[quizCat] || 0;
+    if(quizScore > best){
+      progress.quizScores[quizCat] = quizScore;
+      saveProgress(progress);
+    }
+    const scopeLabel = quizCat===WEAK_KEY ? "sur cette sélection de points faibles" : "dans ce thème";
+    bestLineHtml = `<p>Meilleur score ${scopeLabel} : ${Math.max(quizScore,best)} / ${total}</p>`;
   }
   renderLucyMiniProgress();
+
+  const nbWrong = quizSessionWrong.length;
+  let weakBtnHtml = "";
+  if(!isThemeWeak && nbWrong>0){
+    weakBtnHtml = `<button class="action ghost" id="quiz-weak-theme-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Travailler ${nbWrong===1 ? "le mot raté" : "les "+nbWrong+" mots ratés"} de ce thème</button>`;
+  } else if(isThemeWeak){
+    weakBtnHtml = `<button class="action ghost" id="quiz-weak-theme-again-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Retenter ces mots</button>`;
+  }
+
   quizBox.innerHTML = `
     <div class="quiz-result">
       <div class="score">${quizScore} / ${total}</div>
-      <p>Meilleur score dans ce thème : ${Math.max(quizScore,best)} / ${total}</p>
-      <button class="action primary" id="quiz-restart">Recommencer ce thème</button>
+      ${isThemeWeak ? '<p>Série ciblée sur tes erreurs de ce thème.</p>' : bestLineHtml}
+      <button class="action primary" id="quiz-restart">Recommencer</button>
+      ${weakBtnHtml}
     </div>
   `;
-  document.getElementById("quiz-restart").addEventListener("click", startQuiz);
+  document.getElementById("quiz-restart").addEventListener("click", ()=>{
+    if(isThemeWeak){ startThemeWeakQuiz(lastThemeWeakItems); }
+    else { startQuiz(); }
+  });
+  const weakBtn = document.getElementById("quiz-weak-theme-btn");
+  if(weakBtn){
+    weakBtn.addEventListener("click", ()=> startThemeWeakQuiz(quizSessionWrong));
+  }
+  const weakAgainBtn = document.getElementById("quiz-weak-theme-again-btn");
+  if(weakAgainBtn){
+    weakAgainBtn.addEventListener("click", ()=> startThemeWeakQuiz(lastThemeWeakItems));
+  }
 }
 
+renderQuizCountChips();
 renderQuizChips();
 startQuiz();
 

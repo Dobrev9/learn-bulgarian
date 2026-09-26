@@ -25,7 +25,6 @@
     --text2:#4a4536;
     --text3:#6b654f;
     --text4:#3a3528;
-    --hdr-text:#D9D2C0;
     --header-bg:#232B3D;
     --btn-primary:#232B3D;
     --ok-bg:#E4EFE1;
@@ -164,19 +163,37 @@
     margin:0 auto;
     display:flex;
     flex-wrap:wrap;
-    gap:.5rem;
-    padding:1.2rem 1.5rem 0;
+    gap:.85rem 1.5rem;
+    padding:1rem 1.5rem 0;
+  }
+  .nav-group{
+    display:flex;
+    flex-direction:column;
+    gap:.3rem;
+  }
+  .nav-group .nav-label{
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.07em;
+    font-weight:700;
+    color:var(--hdr-text);
+  }
+  .nav-group .nav-btns{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.35rem;
   }
   nav button{
     font-family:'PT Sans', Arial, sans-serif;
-    font-size:.92rem;
+    font-size:.78rem;
     background:transparent;
-    border:2px solid var(--indigo);
+    border:1.5px solid var(--indigo);
     color:var(--indigo);
-    padding:.45rem .85rem;
+    padding:.32rem .6rem;
     border-radius:2px;
     cursor:pointer;
     transition:background .15s, color .15s;
+    line-height:1.2;
   }
   nav button:hover{ background:var(--linen-dark); }
   nav button.active{
@@ -184,6 +201,58 @@
     border-color:var(--madder);
     color:#fff;
   }
+  :root[data-theme="dark"] .nav-group .nav-label{ opacity:.75; }
+
+  /* ---- Cartes repliables (info-card en <details>) ---- */
+  details.info-card{ padding:0; }
+  details.info-card > summary{
+    color:var(--madder-dark);
+    font-size:1.15rem;
+    font-weight:700;
+    cursor:pointer;
+    list-style:none;
+    padding:.95rem 1.3rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:.6rem;
+  }
+  details.info-card > summary::-webkit-details-marker{ display:none; }
+  details.info-card > summary::after{
+    content:"▸";
+    font-size:.85rem;
+    color:var(--muted2);
+    transition:transform .18s;
+    flex-shrink:0;
+  }
+  details.info-card[open] > summary::after{ transform:rotate(90deg); }
+  details.info-card > summary:hover{ background:var(--linen); }
+  details.info-card > *:not(summary){
+    padding-left:1.3rem;
+    padding-right:1.3rem;
+  }
+  details.info-card > p:last-child,
+  details.info-card > .culture-cta{ margin-bottom:1.1rem; }
+  details.info-card > p:first-of-type{ margin-top:0; }
+
+  .section-toolbar{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:.6rem;
+    margin:-.4rem 0 1.1rem;
+  }
+  .section-toolbar .mini-btn{
+    font-family:'PT Sans', Arial, sans-serif;
+    font-size:.8rem;
+    background:transparent;
+    border:1.5px solid var(--sage);
+    color:var(--sage);
+    padding:.28rem .7rem;
+    border-radius:20px;
+    cursor:pointer;
+  }
+  .section-toolbar .mini-btn:hover{ background:var(--sage); color:#fff; }
 
   main{
     max-width:960px;
@@ -774,22 +843,45 @@
 <div class="shevitsa"></div>
 
 <nav id="nav">
-  <button data-target="alphabet" class="active">Alphabet</button>
-  <button data-target="pronunciation">Prononciation</button>
-  <button data-target="vocab">Vocabulaire</button>
-  <button data-target="verbs">Verbes & Conjugaisons</button>
-  <button data-target="conjugation">Conjugaison ✍️</button>
-  <button data-target="lucy">Notes</button>
-  <button data-target="flashcards">Flashcards</button>
-  <button data-target="prayers">Prières</button>
-  <button data-target="history">Histoire</button>
-  <button data-target="holidays">Fêtes</button>
-  <button data-target="pride">Fiertés 🇧🇬</button>
-  <button data-target="culture">Culture : cartes & quiz</button>
-  <button data-target="stories">Histoires A1</button>
-  <button data-target="grammar-course">Grammaire A1-A2</button>
-  <button data-target="quiz">Quiz</button>
-  <button data-target="progress">Progression</button>
+  <div class="nav-group">
+    <span class="nav-label">📖 Langue</span>
+    <div class="nav-btns">
+      <button data-target="alphabet" class="active">Alphabet</button>
+      <button data-target="pronunciation">Prononciation</button>
+      <button data-target="vocab">Vocabulaire</button>
+      <button data-target="verbs">Verbes & Conjugaisons</button>
+      <button data-target="conjugation">Conjugaison ✍️</button>
+      <button data-target="grammar-course">Grammaire A1-A2</button>
+    </div>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">🎯 Entraînement</span>
+    <div class="nav-btns">
+      <button data-target="flashcards">Flashcards</button>
+      <button data-target="quiz">Quiz</button>
+      <button data-target="culture">Culture : cartes & quiz</button>
+      <button data-target="stories">Histoires A1</button>
+      <button data-target="progress">Progression</button>
+    </div>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">🇧🇬 Culture & histoire</span>
+    <div class="nav-btns">
+      <button data-target="history">Histoire</button>
+      <button data-target="holidays">Fêtes</button>
+      <button data-target="pride">Fiertés 🇧🇬</button>
+      <button data-target="cuisine">Cuisine 🍽️</button>
+      <button data-target="monuments">Monuments 🏛️</button>
+      <button data-target="nosiya">Носии régionales 👗</button>
+    </div>
+  </div>
+  <div class="nav-group">
+    <span class="nav-label">🙏 Spiritualité & notes</span>
+    <div class="nav-btns">
+      <button data-target="prayers">Prières</button>
+      <button data-target="lucy">Notes</button>
+    </div>
+  </div>
 </nav>
 
 <main>
@@ -1254,6 +1346,349 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
     <div class="info-card"><h3>🇧🇬 Le triptyque de la Bulgarie moderne</h3><p><strong>3 mars 1878 — Libération</strong> → <strong>6 septembre 1885 — Unification</strong> → <strong>22 septembre 1908 — Indépendance</strong>. Trois dates fondamentales à connaître pour comprendre la construction de la Bulgarie moderne.</p></div>
     <div class="culture-cta"><span>Réviser les fiertés :</span><button class="action primary cu-jump" data-cat="fierte" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="fierte" data-mode="quiz">📝 Quiz</button></div>
   </section>
+
+  <!-- CUISINE -->
+  <section id="sec-cuisine">
+    <h2>🍽️ La cuisine bulgare</h2>
+    <p class="lead">Une cuisine paysanne et méditerranéo-balkanique, marquée par les légumes grillés ou mijotés, le yaourt (кисело мляко), le fromage <em>sirene</em> et le poivron rouge — et tout un art de la conservation pour passer l'hiver. Panorama complet : salades, produits laitiers, pains et boulangerie, soupes, grillades, plats mijotés, conserves, douceurs et boissons. Cliquez sur une catégorie pour la déplier.</p>
+
+    <div class="section-toolbar">
+      <button type="button" class="mini-btn" data-expand="all">Tout déplier</button>
+      <button type="button" class="mini-btn" data-expand="none">Tout replier</button>
+    </div>
+
+    <details class="info-card" open><summary>⭐ Les incontournables (les plus répandus, présents presque partout)</summary>
+      <p>• <strong>Шопска салата — Shopska salata</strong> : tomates, concombres, poivrons, oignon, et <em>sirene</em> râpé dessus. LE plat le plus emblématique du pays, en entrée à presque tous les repas.</p>
+      <p>• <strong>Баница — Banitsa</strong> : feuilleté à la pâte filo, fourré au <em>sirene</em> et aux œufs battus. Petit-déjeuner traditionnel, incontournable des fêtes (Noël, Nouvel An).</p>
+      <p>• <strong>Кебапче — Kebapche</strong> et <strong>Кюфте — Kyufte</strong> : rouleau et boulette de viande hachée épicée grillée au charbon. Le duo le plus commandé dans tous les restaurants du pays.</p>
+      <p>• <strong>Таратор — Tarator</strong> : soupe froide au yaourt, concombre, ail, aneth et noix. LE plat d'été par excellence, très largement répandu.</p>
+      <p>• <strong>Лютеница — Lyutenitsa</strong> : tartinade de poivrons rouges et tomates, faite maison à l'automne dans presque toutes les familles pour l'hiver.</p>
+      <p>• <strong>Кисело мляко — Kiselo mlyako</strong> : le yaourt bulgare traditionnel, fermenté notamment au <em>Lactobacillus bulgaricus</em> ; un produit culturel à part entière, pas un simple ingrédient.</p>
+      <p>• <strong>Ракия — Rakia</strong> : eau-de-vie (prune ou raisin), apéritif national servi avant presque tous les repas, souvent accompagné de <em>Shopska salata</em>.</p>
+    </details>
+
+    <details class="info-card"><summary>🥗 Salades, entrées & mezze</summary>
+      <p>• <strong>Туршия — Tourchia</strong> : légumes lacto-fermentés/marinés (chou, poivrons, carottes), préparés en bocaux pour l'hiver.</p>
+      <p>• <strong>Люти чушки / Lyutika</strong> : petits poivrons piquants marinés ou une variante relevée de la lyutenitsa.</p>
+      <p>• <strong>Лозови сарми — Lozovi sarmi</strong> : feuilles de vigne farcies au riz (et parfois à la viande).</p>
+      <p>• <strong>Зелеви сарми — Zelevi sarmi</strong> : feuilles de chou farcies au riz, souvent avec de la viande ; particulièrement importantes en hiver et autour des fêtes.</p>
+    </details>
+
+    <details class="info-card"><summary>🍆 Préparations de légumes grillés & mijotés</summary>
+      <p>• <strong>Кьопоолу — Kyopoolu</strong> : aubergines et poivrons grillés, écrasés avec ail et huile ; tartinade/entrée très classique.</p>
+      <p>• <strong>Печени чушки — Pecheni chushki</strong> : poivrons grillés, servis avec ail, vinaigre et huile.</p>
+      <p>• <strong>Имамбаялдъ — Imambayaldu</strong> : aubergines farcies et mijotées, héritage ottoman partagé avec les autres cuisines balkaniques.</p>
+    </details>
+
+    <details class="info-card"><summary>🧀 Fromages & produits laitiers</summary>
+      <p>• <strong>Сирене — Sirene</strong> : fromage blanc bulgare (lait de vache ou de brebis), l'équivalent local de la feta, présent à presque tous les repas.</p>
+      <p>• <strong>Кашкавал — Kashkaval</strong> : fromage jaune traditionnel, à distinguer du sirene, souvent servi pané (кашкавал пане).</p>
+      <p>• <strong>Извара — Izvara</strong> : fromage frais proche de la ricotta ou du cottage cheese.</p>
+      <p>• <strong>Кисело мляко — Kiselo mlyako</strong> : le yaourt traditionnel bulgare, à la base de nombreux plats (tarator, sauces, mousaka).</p>
+    </details>
+
+    <details class="info-card"><summary>🍞 Pains, feuilletés & boulangerie</summary>
+      <p>• <strong>Питка — Pitka</strong> : pain rond, souvent festif, très important dans les traditions familiales et religieuses.</p>
+      <p>• <strong>Погача — Pogacha</strong> : pain rond ou décoré, généralement enrichi, particulièrement associé aux fêtes, mariages, baptêmes et autres occasions familiales.</p>
+      <p>• <strong>Баница — Banitsa</strong> : feuilleté à la pâte filo, traditionnellement au sirene et aux œufs (voir aussi « Les incontournables »).</p>
+      <p>• <strong>Милинки — Milinki</strong> : petits pains très moelleux au fromage et au beurre.</p>
+      <p>• <strong>Тутманик — Tutmanik</strong> : pain/feuilleté à pâte levée, généralement garni de sirene, à mi-chemin avec la banitsa.</p>
+      <p>• <strong>Зелник — Zelnik</strong> : feuilleté traditionnel à base de pâte fine, garni selon les régions d'épinards, poireaux, chou, herbes ou autres légumes verts ; une famille de feuilletés salés distincte de la banitsa au fromage.</p>
+      <p>• <strong>Луковник — Lukovnik</strong> : pain ou feuilleté garni d'oignons, préparation paysanne traditionnelle.</p>
+      <p>• <strong>Пърленка — Parlenka</strong> : pain plat grillé, souvent servi avec ail, beurre ou fromage ; très courant dans les restaurants et la cuisine contemporaine bulgare.</p>
+      <p>• <strong>Катми — Katmi</strong> : crêpes/pancakes traditionnels, généralement plus épais que les crêpes françaises.</p>
+      <p>• <strong>Мекица — Mekitsa</strong> : pâte levée frite, servie au petit-déjeuner avec miel, confiture, sucre ou sirene — à mi-chemin entre boulangerie et beignet.</p>
+    </details>
+
+    <details class="info-card"><summary>🥐 Viennoiseries & petites boulangeries</summary>
+      <p>• <strong>Кифла — Kifla</strong> : petite viennoiserie roulée, généralement fourrée de confiture, chocolat, fromage ou autre garniture. Très courante dans les boulangeries bulgares.</p>
+      <p>• <strong>Кифлички — Kiflichki</strong> : petites viennoiseries/roulés, avec des versions sucrées et salées.</p>
+      <p>• <strong>Рогче — Rogche</strong> : petite viennoiserie en forme de croissant ou de corne, avec différentes garnitures.</p>
+    </details>
+
+    <details class="info-card"><summary>🍲 Soupes</summary>
+      <p>• <strong>Шкембе чорба — Shkembe chorba</strong> : soupe de tripes très relevée (ail, vinaigre, piment), réputée pour « réveiller » après une soirée arrosée.</p>
+      <p>• <strong>Боб чорба — Bob chorba</strong> : soupe de haricots, extrêmement traditionnelle et quotidienne.</p>
+      <p>• <strong>Леща чорба — Leshta chorba</strong> : soupe de lentilles, grand classique domestique au même titre que la bob chorba.</p>
+      <p>• <strong>Зеленчукова чорба — Zelenchukova chorba</strong> : nom générique des soupes de légumes paysannes, très variées selon la saison et la région.</p>
+      <p>• <strong>Таратор — Tarator</strong> : soupe froide au yaourt, concombre, ail, aneth et noix ; plat d'été par excellence.</p>
+    </details>
+
+    <details class="info-card"><summary>🥩 Charcuterie & grillades</summary>
+      <p>• <strong>Кебапче — Kebapche</strong> et <strong>Кюфте — Kyufte</strong> : rouleau et boulette de viande hachée épicée grillée au charbon.</p>
+      <p>• <strong>Луканка — Lukanka</strong> : saucisson sec plat et pressé, épicé, spécialité de Panagyurishte et de la région de Troyan.</p>
+      <p>• <strong>Суджук — Sudzhuk</strong> : saucisson sec fermenté, très important dans la tradition bulgare de charcuterie.</p>
+      <p>• <strong>Пастърма — Pastarma</strong> : viande séchée et épicée (bœuf, parfois porc), technique de conservation très ancienne.</p>
+      <p>• <strong>Бабек — Babek</strong> : charcuterie sèche traditionnelle.</p>
+      <p>• <strong>Еленски бут — Elenski but</strong> : jambon de porc séché, spécialité de la région d'Elena.</p>
+      <p>• <strong>Кайма — Kayma</strong> : viande hachée assaisonnée, base de nombreux plats et grillades.</p>
+    </details>
+
+    <details class="info-card"><summary>🍖 L'agneau, viande des grandes fêtes</summary>
+      <p>L'agneau occupe une place à part dans la cuisine festive bulgare, en particulier à Pâques et à la Saint-Georges.</p>
+      <p>• <strong>Агнешко печено — Agneshko pecheno</strong> : agneau rôti, plat central de la Saint-Georges (Гергьовден).</p>
+      <p>• <strong>Агнешко с дроб сарма — Agneshko s drob sarma</strong> : agneau accompagné de drob sarma (abats et riz), grand classique des repas de fête, notamment à Pâques.</p>
+    </details>
+
+    <details class="info-card"><summary>🥘 Plats mijotés & plats domestiques</summary>
+      <p>• <strong>Пълнени чушки — Palneni chushki</strong> : poivrons farcis à la viande hachée et au riz.</p>
+      <p>• <strong>Миш-маш — Mish-mash</strong> : œufs brouillés avec tomates, poivrons et sirene émietté ; plat rapide très populaire.</p>
+      <p>• <strong>Кавърма — Kavarma</strong> : ragoût mijoté de viande et légumes, souvent cuit et servi dans un petit plat en terre cuite (гювече).</p>
+      <p>• <strong>Гювеч — Gyuvech</strong> : ragoût de légumes (et parfois viande) mijoté au four dans le même plat en terre cuite qui lui donne son nom.</p>
+      <p>• <strong>Мусака — Musaka</strong> : pommes de terre et viande hachée en couches, nappées d'une sauce yaourt-œuf.</p>
+      <p>• <strong>Яхния — Yahnia</strong> : ragoût mijoté de légumes et/ou de viande, cuisiné longuement à feu doux.</p>
+      <p>• <strong>Чушки бюрек — Chushki burek</strong> : poivrons farcis au fromage, panés et frits.</p>
+      <p>• <strong>Кюфтета по чирпански — Kyufte po chirpanski</strong> : boulettes mijotées en sauce tomate avec légumes.</p>
+      <p>• <strong>Дроб сарма — Drob sarma</strong> : abats et riz d'agneau, plat rituel traditionnel de Pâques.</p>
+      <p>• <strong>Боб с наденица — Bob s nadenitsa</strong> : haricots mijotés avec de la saucisse, très populaire dans la cuisine familiale.</p>
+      <p>• <strong>Яйца по панагюрски — Yaytsa po panagyurski</strong> : œufs pochés sur lit de yaourt à l'ail, arrosés de beurre chaud au paprika ; plat très représentatif de la cuisine domestique.</p>
+      <p>• <strong>Сач — Sach</strong> : viandes et légumes cuits sur une plaque ou un plat en métal/terre cuite, servis brûlants.</p>
+    </details>
+
+    <details class="info-card"><summary>🫙 Conserves, pickles & préparations d'hiver</summary>
+      <p>La cuisine traditionnelle bulgare est fortement structurée par la nécessité de transformer et conserver la récolte estivale pour l'hiver.</p>
+      <p>• <strong>Лютеница — Lyutenitsa</strong> : tartinade de poivrons rouges et tomates, préparée en bocaux à l'automne.</p>
+      <p>• <strong>Туршия — Tourchia</strong> : légumes marinés/lacto-fermentés en bocaux.</p>
+      <p>• Confitures, compotes, poivrons grillés conservés, tomates et poivrons en bocaux, fruits séchés (voir <strong>ошав</strong> ci-dessous) complètent ce grand pan de la cuisine domestique bulgare.</p>
+    </details>
+
+    <details class="info-card"><summary>🍰 Desserts & pâtisseries</summary>
+      <p>• <strong>Торта Гараш — Garash</strong> : gâteau aux noix et au chocolat, né à Ruse ; l'un des gâteaux les plus emblématiques du pays.</p>
+      <p>• <strong>Козунак — Kozunak</strong> : brioche tressée sucrée, star incontournable de la table de Pâques.</p>
+      <p>• <strong>Тиквеник — Tikvenik</strong> : feuilleté à la pâte filo garni de courge et de noix, sucré-épicé ; apparenté à la famille des banitsa.</p>
+      <p>• <strong>Млечна баница — Mlechna banitsa</strong> : banitsa sucrée au lait, aux œufs et au sucre — la preuve que la famille banitsa ne se limite pas à la version salée.</p>
+      <p>• <strong>Ябълкова баница — Yabalkova banitsa</strong> : variante sucrée de la banitsa, garnie aux pommes.</p>
+      <p>• <strong>Бисквитена торта — Biscuit cake</strong> : gâteau froid sans cuisson à base de biscuits secs et de crème au chocolat (dont la variante moderne au <em>Biscoff</em>).</p>
+      <p>• <strong>Месеница — Mesenitsa</strong> : gâteau familial traditionnel, souvent préparé pour les grandes occasions.</p>
+      <p>• <strong>Тулумби — Tulumbi</strong> : pâtisserie frite, imbibée de sirop.</p>
+      <p>• <strong>Кадаиф — Kadaif</strong> : dessert à base de pâte très fine et de sirop, héritage ottoman partagé avec plusieurs pays des Balkans.</p>
+      <p>• <strong>Баклава — Baklava</strong> : pâtisserie feuilletée aux noix et au sirop, très présente en Bulgarie.</p>
+      <p>• <strong>Малеби — Malebi</strong> : dessert lacté/crémeux parfumé, souvent servi froid.</p>
+      <p>• <strong>Ошав — Oshav</strong> : compote de fruits secs cuits, traditionnelle notamment à Noël.</p>
+      <p>• <strong>Локум — Lokum</strong> : loukoum, très présent dans la tradition sucrée balkanique.</p>
+    </details>
+
+    <details class="info-card"><summary>🥛 Boissons non alcoolisées</summary>
+      <p>• <strong>Айрян — Ayran</strong> : boisson à base de yaourt dilué avec de l'eau et du sel, omniprésente, surtout en été.</p>
+      <p>• <strong>Боза — Boza</strong> : boisson fermentée à base de céréales, légèrement épaisse et peu ou pas alcoolisée, historiquement très présente dans les Balkans et particulièrement associée à la culture alimentaire bulgare.</p>
+    </details>
+
+    <details class="info-card"><summary>🍷 Vins bulgares</summary>
+      <p>La Bulgarie possède une très ancienne tradition viticole. Cépages locaux importants pour les rouges : <strong>Mavrud</strong>, <strong>Melnik</strong>, <strong>Rubin</strong>, <strong>Gamza</strong> ; pour les blancs : <strong>Dimyat</strong>, <strong>Misket</strong>.</p>
+    </details>
+
+    <details class="info-card"><summary>🥃 Spiritueux</summary>
+      <p>• <strong>Ракия — Rakia</strong> : eau-de-vie de fruits (raisin, prune — <em>сливова ракия</em>, abricot, poire...), probablement la boisson alcoolisée la plus emblématique du pays ; il existe tout un patrimoine de distillation familiale.</p>
+      <p>• <strong>Мастика — Mastika</strong> : spiritueux anisé bulgare, généralement consommé frais, souvent associé à la shopska ou au melon.</p>
+      <p>• <strong>Мента — Menta</strong> : liqueur de menthe, souvent consommée avec la mastika.</p>
+      <p>• <strong>Бира — Bira</strong> : la bière fait partie de la culture contemporaine, quoique moins « patrimoniale » que la rakia et le vin.</p>
+    </details>
+
+    <details class="info-card"><summary>🎄 Cuisine rituelle & fêtes</summary>
+      <p>La cuisine bulgare n'est pas seulement une collection de recettes : elle est intimement liée au calendrier rituel et familial.</p>
+      <p>• <strong>Бъдни вечер — Budni vecher</strong> (réveillon de Noël) : repas maigre traditionnel, composé d'un nombre impair de plats symboliques — haricots, sarmi, poivrons farcis, noix, fruits secs, oshav...</p>
+      <p>• <strong>Коледа — Koleda</strong> (Noël, 25-26 décembre) : repas carné après le jeûne du réveillon.</p>
+      <p>• <strong>Нова година — Nova godina</strong> (Nouvel An) : banitsa « à la fortune », garnie de <strong>късмети — kasmeti</strong>, petits messages/prophéties glissés dans la pâte.</p>
+      <p>• <strong>Великден — Velikden</strong> (Pâques) : kozunak, œufs peints, agneau et drob sarma.</p>
+      <p>• <strong>Гергьовден — Gergyovden</strong> (Saint-Georges) : fête particulièrement associée à l'agneau rôti.</p>
+      <p>• <strong>Баба Марта — Baba Marta</strong> : martenitsi et traditions alimentaires de saison.</p>
+      <p>• <strong>Трифон Зарезан — Trifon Zarezan</strong> : fête traditionnelle liée à la taille de la vigne et au vin.</p>
+      <p>• <strong>Сурва — Surva</strong> : traditions hivernales de la région de Pernik, liées au folklore des kukeri.</p>
+    </details>
+
+    <details class="info-card"><summary>🗺️ Spécialités régionales</summary>
+      <p>Comme pour les носии (voir la rubrique dédiée), chaque région folklorique a sa propre cuisine et ses propres produits phares.</p>
+      <p>• <strong>Rhodopes</strong> : <em>patatnik</em> (galette de pommes de terre), <em>klin</em> (pain fourré), <em>cheverme</em> (agneau ou cochon de lait rôti à la broche).</p>
+      <p>• <strong>Pirin / Bansko</strong> : <em>kapama</em> (plusieurs viandes et chou mijotés ensemble) et les vieux plats montagnards mijotés longuement.</p>
+      <p>• <strong>Choplouk / région de Sofia</strong> : cuisine de type « shopska » — salades et légumes grillés, sobriété paysanne.</p>
+      <p>• <strong>Thrace</strong> : grande richesse de préparations de légumes, de viandes grillées et de vins (Vallée des Roses).</p>
+      <p>• <strong>Strandja</strong> : traditions un peu différentes de conserves, de viandes et de légumes, influencées par la côte et la forêt.</p>
+      <p>• <strong>Côte de la mer Noire</strong> : poissons, moules et plats de la mer, absents des régions intérieures.</p>
+      <p>• <strong>Région de Ruse</strong> : patrie de la torta Garash.</p>
+      <p>• <strong>Elena</strong> : réputée pour l'elenski but (jambon séché).</p>
+      <p>• <strong>Panagyurishte</strong> : réputée pour la lukanka et d'autres préparations de viande séchée.</p>
+      <div class="culture-cta"><span>Réviser la cuisine :</span><button class="action primary cu-jump" data-cat="cuisine" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="cuisine" data-mode="quiz">📝 Quiz</button></div>
+    </details>
+  </section>
+
+
+  <!-- MONUMENTS -->
+  <section id="sec-monuments">
+    <h2>🏛️ Les monuments les plus célèbres de Bulgarie</h2>
+    <p class="lead">Des vestiges thraces aux chefs-d'œuvre communistes, en passant par les grands sanctuaires orthodoxes, les forteresses et les villes-musées de la Renaissance bulgare : un panorama du patrimoine bâti, de la Thrace antique à la Bulgarie contemporaine. Cliquez sur une catégorie pour la déplier.</p>
+
+    <div class="section-toolbar">
+      <button type="button" class="mini-btn" data-expand="all">Tout déplier</button>
+      <button type="button" class="mini-btn" data-expand="none">Tout replier</button>
+    </div>
+
+    <details class="info-card" open><summary>⭐ Icônes nationales</summary>
+      <p>• <strong>Храм-паметник „Свети Александър Невски" — Cathédrale Alexandre-Nevski (Sofia)</strong> : la plus grande cathédrale orthodoxe des Balkans, construite en hommage aux soldats russes tombés pour la libération de la Bulgarie.</p>
+      <p>• <strong>Рилски манастир — Monastère de Rila</strong> : fondé par Saint Jean de Rila au Xe siècle, le plus grand monastère orthodoxe bulgare, classé à l'UNESCO.</p>
+      <p>• <strong>Царевец — Forteresse de Tsarevets (Veliko Tarnovo)</strong> : citadelle qui fut le siège du pouvoir royal et patriarcal du Second Empire bulgare.</p>
+      <p>• <strong>Мадарски конник — Cavalier de Madara</strong> : bas-relief rupestre du haut Moyen Âge, classé à l'UNESCO, l'un des plus anciens symboles de l'État bulgare.</p>
+      <p>• <strong>Паметник на Свободата — Monument de la Liberté (col de Shipka)</strong> : érigé à la mémoire des combattants de la guerre de libération de 1877-1878.</p>
+      <p>• <strong>Боянска църква — Église de Boyana (Sofia)</strong> : petite église médiévale classée à l'UNESCO, célèbre pour ses fresques du XIIIe siècle.</p>
+      <p>• <strong>Старинен град Несебър — Vieille ville de Nessebar</strong> : cité antique sur une presqu'île de la mer Noire, occupée depuis 3000 ans, classée à l'UNESCO.</p>
+      <p>• <strong>Паметник на Бузлуджа — Monument de Buzludzha</strong> : édifice en forme de soucoupe (1974-1981), l'un des vestiges communistes les plus photographiés au monde.</p>
+    </details>
+
+    <details class="info-card"><summary>🏺 Bulgarie thrace et antique</summary>
+      <p>• <strong>Тракийска гробница в Казанлък — Tombeau thrace de Kazanlak</strong> : tombeau du IVe siècle av. J.-C., célèbre pour ses fresques exceptionnellement bien conservées.</p>
+      <p>• <strong>Свещарска гробница — Tombeau thrace de Sveshtari</strong> : tombeau du IIIe siècle av. J.-C. célèbre pour ses cariatides sculptées, classé à l'UNESCO depuis 1985.</p>
+      <p>• <strong>Перперикон — Perperikon</strong> : grand complexe archéologique rupestre de Thrace, dans les Rhodopes orientales.</p>
+      <p>• <strong>Старият Пловдив (антична част) — Plovdiv antique</strong> : théâtre romain, stade romain et forum, au cœur de la ville actuelle.</p>
+      <p>• <strong>Никополис ад Иструм — Nicopolis ad Istrum</strong> : grande cité romaine fondée sous l'empereur Trajan.</p>
+      <p>• <strong>Сердика — Serdica</strong> : complexe antique romain mis au jour sous le centre-ville de Sofia.</p>
+      <p>• <strong>Плиска — Pliska</strong> et <strong>Преслав — Preslav</strong> : première et deuxième capitales du Premier Empire bulgare, centre de l'Âge d'or culturel médiéval.</p>
+    </details>
+
+    <details class="info-card"><summary>☦️ Bulgarie médiévale et chrétienne orthodoxe</summary>
+      <p>• <strong>Ивановски скални църкви — Églises rupestres d'Ivanovo</strong> : ensemble d'églises et chapelles creusées dans les falaises de la vallée du Roussenski Lom, fresques du XIVe siècle, classé à l'UNESCO.</p>
+      <p>• <strong>Бачковски манастир — Monastère de Bachkovo</strong> : l'un des trois grands monastères historiques du pays avec Rila et Troyan.</p>
+      <p>• <strong>Троянски манастир — Monastère de Troyan</strong> : troisième grand monastère national, connu pour ses fresques et son architecture.</p>
+      <p>• <strong>Роженски манастир — Monastère de Rozhen</strong> : près de Melnik, célèbre pour son architecture en bois et pierre.</p>
+      <p>• <strong>Църква Св. 40 мъченици — Église des Quarante-Martyrs (Veliko Tarnovo)</strong> : église médiévale liée au couronnement des tsars du Second Empire.</p>
+      <p>• <strong>Църква Света София — Église Sainte-Sophie (Sofia)</strong> : l'une des plus anciennes églises de la ville, qui a donné son nom à la capitale.</p>
+      <p>• <strong>Ротонда Свети Георги — Rotonde Saint-Georges (Sofia)</strong> : l'un des plus vieux édifices de Sofia, encore en activité comme église.</p>
+      <p>Autres lieux notables : monastères de <strong>Dryanovo</strong>, <strong>Glozhene</strong> et <strong>Preobrazhenski</strong> ; à Veliko Tarnovo, l'église Saint-Dimitri ; à Sofia, l'église Sainte-Petka des Selliers et l'église russe Saint-Nicolas.</p>
+    </details>
+
+    <details class="info-card"><summary>🏰 Forteresses</summary>
+      <p>• <strong>Крепост Царевец — Tsarevets</strong> (voir ci-dessus) · <strong>Крепост Баба Вида — Baba Vida (Vidin)</strong>, la mieux conservée du pays.</p>
+      <p>• <strong>Крепост Овеч — Ovech</strong> (près de Provadia) · <strong>Крепост Цари Мали Град — Tsari Mali Grad</strong>.</p>
+      <p>• <strong>Крепост Шумен — Shumen</strong> · <strong>Крепост Червен — Cherven</strong> (région de Ruse) · <strong>Крепост Перистера — Peristera</strong> (près de Peshtera).</p>
+      <p>• <strong>Нос Калиакра — Cap et forteresse de Kaliakra</strong>, sur la côte de la mer Noire.</p>
+      <p>• <strong>Траянови врата — Porte de Trajan</strong>, col fortifié entre Sofia et Plovdiv.</p>
+    </details>
+
+    <details class="info-card"><summary>🏘️ Renaissance bulgare : villes et villages-musées</summary>
+      <p>• <strong>Копривщица — Koprivshtitsa</strong> : ville-musée réunissant des centaines de monuments architecturaux, historiques et ethnographiques.</p>
+      <p>• <strong>Старият Пловдив (Възрожденски квартал) — Vieille ville de Plovdiv</strong> : maisons de la Renaissance bulgare et porte Hisar Kapia.</p>
+      <p>• <strong>Трявна — Tryavna</strong> : maisons de marchands, artisanat et sculpture sur bois.</p>
+      <p>• <strong>Жеравна — Zheravna</strong> : village historique aux maisons traditionnelles en bois.</p>
+      <p>• <strong>Арбанаси — Arbanasi</strong> : village près de Veliko Tarnovo, grandes maisons fortifiées et églises.</p>
+      <p>• <strong>Боженци — Bozhentsi</strong> : village de montagne exceptionnellement bien conservé.</p>
+      <p>• <strong>Мелник — Melnik</strong> : maisons historiques et célèbres pyramides de grès.</p>
+      <p>• <strong>Широка Лъка — Shiroka Laka</strong> : architecture traditionnelle des Rhodopes.</p>
+    </details>
+
+    <details class="info-card"><summary>🏛️ Sofia, au-delà de Nevski et Levski</summary>
+      <p>• <strong>Сердика — Serdica</strong> (voir ci-dessus, patrimoine antique) · <strong>Ротонда Свети Георги</strong> (voir ci-dessus).</p>
+      <p>• <strong>Църква Света Петка Самарджийска — Église Sainte-Petka des Selliers</strong> et <strong>Руска църква — Église russe Saint-Nicolas</strong>.</p>
+      <p>• <strong>Народен театър „Иван Вазов" — Théâtre national Ivan Vazov</strong> et <strong>Народно събрание — Assemblée nationale</strong>.</p>
+      <p>• <strong>Царски дворец — Palais royal</strong> et <strong>Централна минерална баня — Bains minéraux centraux</strong>.</p>
+      <p>• <strong>Лъвов мост — Pont aux Lions</strong> et <strong>Орлов мост — Pont aux Aigles</strong>.</p>
+    </details>
+
+    <details class="info-card"><summary>🛸 XXe siècle et mémoire nationale</summary>
+      <p>• <strong>Паметник на Свободата — Monument de la Liberté (Shipka)</strong> : le complexe national comprend 26 monuments et positions historiques autour du col.</p>
+      <p>• <strong>Паметник на Бузлуджа — Buzludzha</strong> (voir ci-dessus).</p>
+      <p>• <strong>Паметник на Альоша — Monument Alyosha (Plovdiv)</strong> : statue de 11 m d'un soldat soviétique, domine la ville depuis la colline de Bounardjik.</p>
+      <p>• <strong>НДК — Национален дворец на културата (Sofia)</strong> : grand palais national de la culture, exemple majeur d'architecture de la fin de la période socialiste.</p>
+      <p>• <strong>Паметник на Васил Левски (Sofia)</strong> : monument élevé sur le lieu même de l'exécution du héros national en 1873.</p>
+      <p>• <strong>Дворецът в Балчик — Balchik</strong> : sur la côte de la mer Noire, le palais et le jardin botanique construits dans l'entre-deux-guerres pour la reine Marie de Roumanie (période où la ville appartenait à la Roumanie) sont aujourd'hui l'un des sites touristiques les plus visités du pays.</p>
+      <div class="culture-cta"><span>Réviser les monuments :</span><button class="action primary cu-jump" data-cat="monuments" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="monuments" data-mode="quiz">📝 Quiz</button></div>
+    </details>
+  </section>
+
+
+  <!-- NOSIYA : COSTUMES REGIONAUX -->
+  <section id="sec-nosiya">
+    <h2>👗 Носии — Les costumes traditionnels par région</h2>
+    <p class="lead">La Bulgarie compte 7 grandes aires folkloriques (фолклорни области), mais il n'existe pas un unique costume par région : les formes varient selon les villages, les périodes, le statut social et les occasions. Les principaux types féminins comprennent notamment les costumes à <strong>сукман</strong> (сукманска носия), à <strong>сая</strong> (саяна носия) et à <strong>deux tabliers</strong> (двупрестилчена носия) ; chez les hommes, on distingue notamment les traditions <strong>белодрешна</strong> (« vêtements blancs ») et <strong>чернодрешна</strong> (« vêtements noirs »). Cliquez sur une catégorie pour la déplier.</p>
+
+    <div class="section-toolbar">
+      <button type="button" class="mini-btn" data-expand="all">Tout déplier</button>
+      <button type="button" class="mini-btn" data-expand="none">Tout replier</button>
+    </div>
+
+    <details class="info-card" open><summary>🌾 Добруджанска носия — Région de Dobroudja (nord-est)</summary>
+      <p>Costume féminin très brodé : <strong>Добруджанска риза</strong> (longue chemise blanche en coton), <strong>Добруджански сукман</strong> (robe-tablier rouge brodée), <strong>Добруджанска престилка</strong> (tablier noir brodé) et <strong>Добруджанска кърпа</strong> (foulard jaune à franges de soie pour la tête), avec une ceinture (коланче). Dans plusieurs zones du Nord-Est, on trouve aussi une <strong>двупрестилчена носия</strong> (costume à deux tabliers), variante importante des traditions vestimentaires locales.</p>
+      <p>Chez les hommes : <strong>Добруджански потури</strong> (pantalon bouffant noir), <strong>Добруджанска риза</strong> brodée et un пояс (ceinture) rouge en laine. Les coiffures masculines (кърпа nouée ou calpak) varient en réalité selon les sous-régions et les périodes — il faut rester prudent avant de généraliser une caractéristique unique pour tout le Dobroudja.</p>
+      <p>L'ensemble porte l'influence des traditions vestimentaires rurales de la région danubienne.</p>
+    </details>
+
+    <details class="info-card"><summary>🏔️ Шопска носия — Région de Choplouk (Sofia et environs)</summary>
+      <p>Costume féminin de type « сукман » (robe-tablier) : <strong>Шопска риза</strong> (chemise en coton), <strong>Шопски сукман</strong> long en laine foncée, ceinture rouge et <strong>Шопски колан с пафти</strong> (ceinture à grandes boucles métalliques), très importantes dans le costume féminin. La <strong>шопска забрадка</strong> (coiffure/foulard féminin) complète la tenue.</p>
+      <p>Chez les hommes, la <strong>Шопска носия белодрешна</strong> (« habits blancs ») : <strong>Шопски елек</strong> et pantalon en laine claire, très différente des costumes « noirs » (чернодрешни) que l'on retrouve aussi dans certaines zones du Choplouk.</p>
+      <p>Les costumes des villages autour de Sofia peuvent être assez différents les uns des autres : le Choplouk ne se limite pas à la capitale, il couvre une aire culturelle beaucoup plus large, notamment vers l'ouest du pays.</p>
+    </details>
+
+    <details class="info-card"><summary>🌹 Тракийска носия — Région de Thrace (sud, Vallée des Roses)</summary>
+      <p>La Thrace est l'une des régions où la diversité locale est particulièrement importante — la description qui suit ne couvre donc qu'une partie des variantes. Costume féminin de type <strong>сукманска носия</strong>, souvent sans manches et richement brodé : <strong>Тракийска риза</strong>, <strong>Тракийски сукман</strong>, <strong>Тракийска престилка</strong>, tabliers souvent très décorés. Dans certaines zones méridionales, on trouve aussi une <strong>саена/саянска носия</strong>. Пафти et bijoux occupent une place importante dans la parure féminine.</p>
+      <p>Chez les hommes, costume généralement de type « чернодрешен » (habits noirs) : <strong>Тракийски потури</strong> noirs à galons, <strong>Тракийски елек</strong> rouge ou vert brodé et <strong>Тракийска риза</strong> blanche.</p>
+      <p>Attention : la Vallée des Roses n'est qu'une partie de la Thrace folklorique, une région bien plus vaste que cette seule vallée.</p>
+    </details>
+
+    <details class="info-card"><summary>⛰️ Родопска носия — Région des Rhodopes (sud)</summary>
+      <p>Costume féminin composé d'une <strong>Родопска риза</strong> (à l'origine en lin, puis en coton), d'un <strong>Родопски сукман</strong>, d'un <strong>вълнен пояс</strong> (ceinture de laine) et d'une <strong>Родопска престилка</strong> aux tissages particulièrement travaillés. La <strong>Родопска сая</strong> est également un élément important de plusieurs costumes féminins de la région, de même que la <strong>родопска шевица</strong> (broderies régionales) et, selon les localités, la <strong>капа</strong> ou d'autres pièces en laine.</p>
+      <p>Chez les hommes, costume « чернодрешен » également : chemise blanche sobre et <strong>Родопски елек</strong> foncé richement orné, adapté au climat montagnard de la région.</p>
+      <p>Plus largement, la laine, le tissage et les textiles domestiques occupent une place particulièrement forte dans la culture matérielle des Rhodopes.</p>
+    </details>
+
+    <details class="info-card"><summary>⚔️ Пиринска носия — Région du Pirin (sud-ouest)</summary>
+      <p>Costume féminin : <strong>Пиринска кошуля</strong> (chemise), <strong>Пиринска сая</strong> (robe superposée), престилка, пояс, пафти et елек ; chez les hommes, потури. Le style reste proche de celui de la région chopska voisine.</p>
+      <p>La région du Pirin appartient à l'aire culturelle macédonienne au sens ethnographique — une aire culturelle qu'il ne faut pas confondre avec l'État voisin actuel de Macédoine du Nord. Le terme « Пиринска носия » (costume du Pirin) est donc préféré ici à « Македонска носия », plus ambigu dans un inventaire consacré à la Bulgarie contemporaine.</p>
+      <p>Les instruments typiques de la région (tapan, tambura, gaïda « джура ») et les chants héroïques (юнашки песни) relèvent du folklore musical plutôt que du costume à proprement parler.</p>
+    </details>
+
+    <details class="info-card"><summary>🌊 Странджанска носия — Région de Strandja (sud-est)</summary>
+      <p>Costume féminin : <strong>Странджанска риза</strong> en coton brodé de motifs géométriques, <strong>Странджански сукман</strong> et <strong>Странджанска престилка</strong> aux couleurs plus sombres que celles de la Thrace voisine, complétés par une забрадка et des пафти. Les broderies et tissages varient sensiblement entre les villages de l'intérieur du Strandja et ceux du littoral.</p>
+      <p>Le <em>nestinarstvo</em> (danse rituelle sur les braises) est une tradition culturelle importante de Strandja, mais il s'agit d'une pratique rituelle distincte, qui ne définit pas directement la structure du costume lui-même.</p>
+    </details>
+
+    <details class="info-card"><summary>🌾 Северняшка носия — Région du Nord (Danube)</summary>
+      <p>Le Nord bulgare est une région vaste, qui comprend notamment les traditions de la plaine danubienne ; la section reste ici volontairement simplifiée. Costume féminin réputé pour sa sobriété, caractérisé par la <strong>двупрестилчена носия</strong> (costume à deux tabliers) dans plusieurs zones : une <strong>риза</strong> (chemise) portée avec deux <strong>престилки</strong> (l'une devant, l'autre derrière), un <strong>пояс</strong> (ceinture) et une <strong>забрадка</strong>, avec peu de superpositions par rapport aux autres régions — un bel équilibre entre confort et esthétique discrète. Bijoux et ornements complètent la tenue féminine.</p>
+      <p>Chez les hommes : chemise, pantalon, gilet et ceinture, dans une sobriété assez proche de celle du costume féminin.</p>
+    </details>
+
+    <details class="info-card"><summary>🧵 Основни части — Les pièces du costume</summary>
+      <p>• <strong>Риза / кошуля</strong> — chemise longue.</p>
+      <p>• <strong>Сукман</strong> — robe/tunique féminine en laine ou tissu épais.</p>
+      <p>• <strong>Сая</strong> — longue pièce ouverte portée par-dessus la chemise.</p>
+      <p>• <strong>Престилка</strong> — tablier décoratif.</p>
+      <p>• <strong>Пояс</strong> — ceinture textile.</p>
+      <p>• <strong>Колан / пафти</strong> — ceinture et grandes boucles métalliques ; les <strong>пафти</strong> sont l'un des éléments les plus immédiatement reconnaissables du costume féminin bulgare.</p>
+      <p>• <strong>Елек</strong> — gilet.</p>
+      <p>• <strong>Потури</strong> — pantalon masculin ample, surtout dans les costumes masculins méridionaux.</p>
+      <p>• <strong>Цървули</strong> — chaussures traditionnelles en cuir.</p>
+      <p>• <strong>Калпак</strong> — couvre-chef masculin, notamment en fourrure.</p>
+      <p>• <strong>Забрадка / кърпа</strong> — foulard féminin.</p>
+      <p>• <strong>Накити</strong> — bijoux et ornements traditionnels (voir la rubrique dédiée ci-dessous).</p>
+    </details>
+
+    <details class="info-card"><summary>💍 Накити — Bijoux et ornements</summary>
+      <p>• <strong>Пафти</strong> — grandes boucles métalliques de ceinture.</p>
+      <p>• <strong>Мъниста</strong> — perles.</p>
+      <p>• <strong>Гривни</strong> — bracelets.</p>
+      <p>• <strong>Гердани</strong> — colliers.</p>
+      <p>• <strong>Обеци</strong> — boucles d'oreilles.</p>
+      <p>• <strong>Монети</strong> — pièces de monnaie cousues ou portées comme ornements.</p>
+      <p>• <strong>Китки</strong> — bouquets/ornements floraux.</p>
+      <p>• <strong>Шевици</strong> — broderies décoratives (voir la rubrique dédiée ci-dessous).</p>
+      <p>Les broderies, bijoux, coiffes et tabliers permettent souvent d'identifier une communauté ou une localité aussi précisément que la forme générale du costume.</p>
+    </details>
+
+    <details class="info-card"><summary>🪡 Шевици — Les broderies traditionnelles</summary>
+      <p>La <strong>шевица</strong> (shevitsa) est la broderie traditionnelle bulgare. Elle apparaît sur les chemises, tabliers, manches, cols et autres pièces textiles, avec des motifs géométriques, végétaux, floraux ou symboliques, dans des compositions rouges, noires, jaunes, vertes ou multicolores selon les régions.</p>
+      <p>Les motifs diffèrent sensiblement d'une aire folklorique à l'autre, et leur technique se transmet traditionnellement en famille, de génération en génération.</p>
+      <p>De nombreuses interprétations symboliques précises circulent aujourd'hui à propos de tel ou tel motif, mais elles ne correspondent pas toutes nécessairement à une signification historiquement documentée — il convient donc de rester prudent avec ce type d'affirmation.</p>
+    </details>
+
+    <details class="info-card"><summary>🎉 Носията и празниците — Quand porte-t-on les costumes ?</summary>
+      <p>La носия n'a pas toujours été un habit de fête : elle a longtemps été portée bien plus largement, avant de devenir progressivement une tenue d'occasion.</p>
+      <p>• Quotidiennement autrefois, dans les communautés rurales.</p>
+      <p>• Les dimanches et lors des fêtes religieuses.</p>
+      <p>• Lors des mariages, fiançailles et baptêmes.</p>
+      <p>• Pour les fêtes calendaires comme <strong>Lazarovden</strong>, <strong>Gergyovden</strong> ou <strong>Koleda</strong>.</p>
+      <p>• Lors des travaux agricoles et des événements communautaires.</p>
+      <p>• Aujourd'hui, la носия est surtout portée lors des festivals folkloriques, spectacles, cérémonies et reconstitutions — les Bulgares ne portent plus ces costumes régionaux au quotidien.</p>
+    </details>
+
+    <div class="culture-cta"><span>Réviser les носии :</span><button class="action primary cu-jump" data-cat="nosiya" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="nosiya" data-mode="quiz">📝 Quiz</button></div>
+  </section>
+
 
   <!-- CULTURE : FLASHCARDS + QUIZ -->
   <section id="sec-culture">
@@ -2811,6 +3246,15 @@ navButtons.forEach(btn=>{
   });
 });
 
+/* ---------------- SECTION TOOLBAR (déplier / replier) ---------------- */
+document.querySelectorAll(".section-toolbar .mini-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    const section = btn.closest("section");
+    const open = btn.dataset.expand === "all";
+    section.querySelectorAll("details.info-card").forEach(d=>{ d.open = open; });
+  });
+});
+
 /* ---------------- ALPHABET ---------------- */
 const lettersGrid = document.getElementById("letters-grid");
 ALPHABET.forEach(a=>{
@@ -3397,6 +3841,106 @@ const CULTURE = {
     {q:"Quel idéologue révolutionnaire marque la Renaissance ?", a:"Georgi Rakovski", n:"Penseur du mouvement national."},
     {q:"Quelle figure incarne l'insurrection d'Avril avec Benkovski ?", a:"Todor Kableshkov", n:"Acteur du soulèvement de 1876."},
     {q:"Quel est le triptyque de la Bulgarie moderne ?", a:"1878 · 1885 · 1908", n:"Libération, Unification, Indépendance."},
+  ]},
+
+  cuisine: { label:"Cuisine 🍽️", items:[
+    {q:"Quelle salade est le plat le plus emblématique de Bulgarie ?", a:"La Shopska salata", n:"Tomates, concombres, poivrons, oignon et sirene râpé dessus."},
+    {q:"Qu'est-ce que le sirene ?", a:"Un fromage blanc bulgare", n:"Équivalent local de la feta, à base de lait de vache ou de brebis."},
+    {q:"Quel feuilleté au sirene et aux œufs est le petit-déjeuner traditionnel bulgare ?", a:"La banitsa", n:"Pâte filo garnie de sirene et d'œufs battus."},
+    {q:"Quelle soupe froide est le plat d'été emblématique de Bulgarie ?", a:"Le tarator", n:"Yaourt, concombre, ail, aneth et noix."},
+    {q:"Quelle tartinade de poivrons et tomates se prépare en automne pour l'hiver ?", a:"La lyutenitsa", n:"Faite maison dans presque toutes les familles bulgares."},
+    {q:"Quelle est l'eau-de-vie nationale bulgare ?", a:"La rakia", n:"À base de prune ou de raisin, apéritif traditionnel."},
+    {q:"Quel duo de viande hachée grillée est le plus commandé au restaurant ?", a:"Le kebapche et le kyufte", n:"Rouleau et boulette de viande épicée grillée au charbon."},
+    {q:"Quel saucisson sec plat est une spécialité de Panagyurishte et Troyan ?", a:"La lukanka", n:"Saucisson pressé et épicé."},
+    {q:"Quelle viande séchée est une très ancienne technique de conservation bulgare ?", a:"La pastarma", n:"Viande de bœuf (parfois porc), séchée et épicée."},
+    {q:"Quelle galette de pommes de terre est une spécialité des Rhodopes ?", a:"Le patatnik", n:"Plat paysan traditionnel de la montagne des Rhodopes."},
+    {q:"Quelle soupe de tripes très relevée est réputée pour « réveiller » ?", a:"La shkembe chorba", n:"Ail, vinaigre et piment."},
+    {q:"Quel ragoût mijoté se cuisine dans un petit plat en terre cuite appelé gyuvече ?", a:"La kavarma", n:"Viande et légumes mijotés lentement."},
+    {q:"En quoi la moussaka bulgare diffère-t-elle de la moussaka grecque ?", a:"Elle est nappée d'une sauce yaourt-œuf", n:"Pommes de terre et viande hachée en couches."},
+    {q:"Quel gâteau aux noix et au chocolat est né à Ruse ?", a:"La torta Garash", n:"L'un des gâteaux les plus emblématiques du pays."},
+    {q:"Quel beignet frit est un petit-déjeuner populaire du week-end ?", a:"La mekitsa", n:"Servie avec confiture, sirene ou miel."},
+    {q:"Quelle brioche tressée est la star de la table de Pâques ?", a:"Le kozunak", n:"Brioche pascale sucrée traditionnelle."},
+    {q:"Comment appelle-t-on les légumes marinés conservés en bocaux pour l'hiver ?", a:"La tourchia", n:"Chou, poivrons, carottes lacto-fermentés ou marinés."},
+    {q:"Quel plat rapide se compose d'œufs brouillés, tomates, poivrons et sirene ?", a:"Le mish-mash", n:"Plat maison très populaire."},
+    {q:"Quel fromage jaune se distingue du sirene et se sert souvent pané ?", a:"Le kashkaval", n:"Fromage jaune traditionnel bulgare."},
+    {q:"Quel fromage frais bulgare est proche de la ricotta/cottage cheese ?", a:"L'izvara", n:"Fromage frais léger."},
+    {q:"Quelle boisson au yaourt dilué avec eau et sel est omniprésente en été ?", a:"L'ayran", n:"Boisson rafraîchissante à base de kiselo mlyako."},
+    {q:"Quelle boisson fermentée à base de céréales, peu alcoolisée, est emblématique des Balkans ?", a:"La boza", n:"Boisson épaisse et céréalière typiquement bulgare."},
+    {q:"Quel pain rond et festif est important dans les traditions familiales et religieuses ?", a:"La pitka", n:"Pain traditionnel des grandes occasions."},
+    {q:"Quel pain/feuilleté levé au fromage est proche de la banitsa ?", a:"Le tutmanik", n:"Pain fourré au fromage."},
+    {q:"Comment appelle-t-on les crêpes traditionnelles bulgares ?", a:"Les katmi", n:"Sorte de pancakes traditionnels."},
+    {q:"Quelle soupe de haricots est un plat quotidien extrêmement traditionnel ?", a:"La bob chorba", n:"Soupe paysanne de tous les jours."},
+    {q:"Quel saucisson sec fermenté est très important dans la charcuterie bulgare ?", a:"Le sudzhuk", n:"Saucisson sec traditionnel."},
+    {q:"Quel jambon de porc séché est une spécialité de la région d'Elena ?", a:"L'elenski but", n:"Charcuterie régionale réputée."},
+    {q:"Quel plat emblématique de la région de Bansko mijote plusieurs viandes avec du chou ?", a:"La kapama", n:"Plat régional longuement mijoté."},
+    {q:"Comment appelle-t-on les viandes et légumes cuits sur une plaque en métal ou en terre cuite ?", a:"Le sach", n:"Servi brûlant, à même le plat de cuisson."},
+    {q:"Quel plat rituel d'abats et de riz d'agneau se prépare traditionnellement à Pâques ?", a:"Le drob sarma", n:"Plat pascal traditionnel."},
+    {q:"Quelle pâtisserie frite est imbibée de sirop après la friture ?", a:"Les tulumbi", n:"Douceur frite et sirupeuse."},
+    {q:"Quel dessert ottoman à base de pâte très fine et de sirop est partagé dans les Balkans ?", a:"Le kadaif", n:"Héritage culinaire ottoman."},
+    {q:"Quelle compote de fruits secs cuits est traditionnelle à Noël ?", a:"L'oshav", n:"Dessert/accompagnement des fêtes de fin d'année."},
+    {q:"Quels sont les principaux cépages rouges bulgares ?", a:"Mavrud, Melnik, Rubin, Gamza", n:"Cépages locaux pour les vins rouges."},
+    {q:"Quels sont les principaux cépages blancs bulgares ?", a:"Dimyat et Misket", n:"Cépages locaux pour les vins blancs."},
+    {q:"Quel spiritueux anisé bulgare est souvent associé à la shopska ou au melon ?", a:"La mastika", n:"Souvent accompagnée de menta (liqueur de menthe)."},
+    {q:"Quel plat d'agneau rôti est central pour la fête de la Saint-Georges ?", a:"L'agneshko pecheno", n:"Гергьовден, jour de la bravoure et de l'agneau rôti."},
+    {q:"Quelle soupe de lentilles est un grand classique domestique bulgare ?", a:"La leshta chorba", n:"Aux côtés de la bob chorba (haricots)."},
+    {q:"Comment appelle-t-on les feuilles de chou farcies de riz et de viande ?", a:"Les zelevi sarmi", n:"Particulièrement importantes en hiver et aux fêtes."},
+    {q:"Quelle tartinade d'aubergines et de poivrons grillés à l'ail est très classique ?", a:"Le kyopoolu", n:"Servi en entrée avec de l'huile."},
+    {q:"Comment appelle-t-on les poivrons simplement grillés, servis à l'ail et au vinaigre ?", a:"Pecheni chushki", n:"Préparation de légumes très répandue."},
+    {q:"Quel plat d'aubergines farcies et mijotées est un héritage ottoman partagé dans les Balkans ?", a:"L'imambayaldu", n:"Aubergines farcies, tradition ottomane."},
+    {q:"Quel plat mijote des haricots avec de la saucisse ?", a:"Le bob s nadenitsa", n:"Plat familial très populaire."},
+    {q:"Quel plat d'œufs pochés sur yaourt à l'ail, beurre chaud et paprika est très représentatif ?", a:"Les yaytsa po panagyurski", n:"Spécialité de Panagyurishte."},
+    {q:"Quel repas du réveillon de Noël compte traditionnellement un nombre impair de plats maigres ?", a:"Le Budni vecher", n:"Haricots, sarmi, poivrons farcis, noix, fruits secs..."},
+    {q:"Que trouve-t-on cachés dans la banitsa du Nouvel An ?", a:"Des kasmeti (късмети)", n:"Petits messages/prophéties glissés dans la pâte."},
+    {q:"Quelle fête traditionnelle est liée à la taille de la vigne et au vin ?", a:"Trifon Zarezan", n:"Fête viticole bulgare."},
+    {q:"Quelle galette de pommes de terre et quel pain fourré sont typiques des Rhodopes ?", a:"Le patatnik et le klin", n:"Spécialités paysannes des Rhodopes."},
+    {q:"Quel plat rôti à la broche est une spécialité des Rhodopes ?", a:"Le cheverme", n:"Agneau ou cochon de lait rôti à la broche."},
+    {q:"Quelle ville est réputée pour la torta Garash ?", a:"Ruse", n:"Ville d'origine de ce célèbre gâteau."},
+  ]},
+
+  monuments: { label:"Monuments 🏛️", items:[
+    {q:"Quelle est la plus grande cathédrale orthodoxe des Balkans ?", a:"La cathédrale Alexandre-Nevski (Sofia)", n:"Construite en hommage aux soldats russes de la Libération."},
+    {q:"Quel est le plus grand et le plus célèbre monastère orthodoxe bulgare ?", a:"Le monastère de Rila", n:"Fondé par Saint Jean de Rila, classé à l'UNESCO."},
+    {q:"Quelle forteresse fut le siège du pouvoir du Second Empire bulgare ?", a:"Tsarevets (Veliko Tarnovo)", n:"Citadelle royale et patriarcale."},
+    {q:"Quel bas-relief rupestre du haut Moyen Âge est classé à l'UNESCO ?", a:"Le Cavalier de Madara", n:"Sculpté à même une falaise."},
+    {q:"Quel monument commémore la guerre de libération de 1877-1878 au col de Shipka ?", a:"Le Monument de la Liberté (Shipka)", n:"Accompagné de la Shipka Memorial Church."},
+    {q:"Quel monument communiste en forme de soucoupe domine le pic de Buzludzha ?", a:"Le Monument de Buzludzha (1974-1981)", n:"Abandonné depuis les années 1990."},
+    {q:"Quelle petite église est célèbre pour ses fresques médiévales du XIIIe siècle ?", a:"L'église de Boyana (Sofia)", n:"Classée à l'UNESCO."},
+    {q:"Quelle vieille ville sur une presqu'île de la mer Noire est classée à l'UNESCO ?", a:"Nessebar", n:"Occupée depuis 3000 ans, nombreuses églises médiévales."},
+    {q:"Quel tombeau thrace du IVe siècle av. J.-C. est célèbre pour ses fresques ?", a:"Le tombeau thrace de Kazanlak", n:"Avec celui de Sveshtari, classé à l'UNESCO."},
+    {q:"Quelle statue de 11 m domine Plovdiv depuis la colline de Bounardjik ?", a:"Le monument Alyosha", n:"Soldat soviétique de la Seconde Guerre mondiale."},
+    {q:"Où se trouve le monument marquant le lieu d'exécution de Vasil Levski ?", a:"En plein centre de Sofia (1873)", n:"L'un des lieux de mémoire les plus visités du pays."},
+    {q:"Quel ensemble d'églises rupestres du XIVe siècle est classé à l'UNESCO près de Roussé ?", a:"Les églises rupestres d'Ivanovo", n:"Creusées dans les falaises de la vallée du Roussenski Lom."},
+    {q:"Quel tombeau thrace du IIIe siècle av. J.-C. est célèbre pour ses cariatides sculptées ?", a:"Le tombeau de Sveshtari", n:"Classé à l'UNESCO depuis 1985."},
+    {q:"Quel grand complexe archéologique rupestre se trouve dans les Rhodopes orientales ?", a:"Perperikon", n:"Site thrace majeur."},
+    {q:"Quels monuments antiques se trouvent au cœur de la ville actuelle de Plovdiv ?", a:"Le théâtre romain et le stade romain", n:"Vestiges de la Plovdiv antique."},
+    {q:"Quelle grande cité romaine fut fondée sous l'empereur Trajan en Bulgarie ?", a:"Nicopolis ad Istrum", n:"Cité romaine antique."},
+    {q:"Quel complexe antique romain se trouve sous le centre-ville de Sofia ?", a:"Serdica", n:"Vestiges romains mis au jour à Sofia."},
+    {q:"Quelles sont la première et la deuxième capitales du Premier Empire bulgare ?", a:"Pliska puis Preslav", n:"Centres du pouvoir et de l'Âge d'or médiéval."},
+    {q:"Quel monastère, avec Rila et Troyan, compte parmi les trois plus importants du pays ?", a:"Le monastère de Bachkovo", n:"Grand monastère historique bulgare."},
+    {q:"Quelle église médiévale de Veliko Tarnovo est liée au couronnement des tsars du Second Empire ?", a:"L'église des Quarante-Martyrs", n:"Église commémorative majeure."},
+    {q:"Quelle église a donné son nom à la capitale bulgare ?", a:"L'église Sainte-Sophie (Sofia)", n:"L'une des plus anciennes églises de la ville."},
+    {q:"Quelle est la forteresse la mieux conservée de Bulgarie, à Vidin ?", a:"Baba Vida", n:"Forteresse médiévale sur le Danube."},
+    {q:"Quelle forteresse se trouve sur la côte de la mer Noire, près de Kavarna ?", a:"Kaliakra", n:"Cap et forteresse emblématiques du littoral."},
+    {q:"Quelle ville-musée réunit des centaines de monuments de la Renaissance bulgare ?", a:"Koprivshtitsa", n:"Haut lieu de l'architecture du Възраждане."},
+    {q:"Quel village est célèbre pour ses maisons de marchands et sa sculpture sur bois ?", a:"Tryavna", n:"Artisanat traditionnel de la Renaissance bulgare."},
+    {q:"Quel village près de Veliko Tarnovo est connu pour ses grandes maisons fortifiées ?", a:"Arbanasi", n:"Village historique de la Renaissance bulgare."},
+    {q:"Quelle ville est célèbre pour ses maisons historiques et ses pyramides de grès ?", a:"Melnik", n:"Paysage naturel et architecture traditionnelle réunis."},
+    {q:"Quel grand palais culturel du XXe siècle se trouve à Sofia ?", a:"Le NDK (Palais national de la culture)", n:"Exemple majeur d'architecture de fin de période socialiste."},
+    {q:"Combien de monuments et positions historiques compte le complexe national de Shipka ?", a:"26", n:"Le Monument de la Liberté en est l'élément principal."},
+  ]},
+
+  nosiya: { label:"Носии régionales 👗", items:[
+    {q:"Combien de grandes aires folkloriques (носии) compte la Bulgarie ?", a:"7", n:"Добруджанска, Шопска, Тракийска, Родопска, Пиринска, Странджанска, Северняшка."},
+    {q:"Quelle région porte la носия rouge très brodée avec une кърпа jaune à franges de soie ?", a:"La Dobroudja (Добруджанска носия)", n:"Sukman rouge brodé, tablier noir, foulard jaune."},
+    {q:"Dans quelle région les hommes portent-ils une кърпа blanche à la place du calpak ?", a:"En Dobroudja", n:"Particularité régionale unique du costume masculin."},
+    {q:"Quelle носия féminine est du type « сукман » avec une ceinture à grandes boucles (пафти) ?", a:"La Шопска носия (région de Sofia)", n:"Costume de la région du Choplouk."},
+    {q:"Comment appelle-t-on le costume masculin « habits blancs » du Choplouk ?", a:"Белодрешна носия", n:"Par opposition aux costumes « noirs » du reste du pays."},
+    {q:"Quelle région a un costume masculin « чернодрешен » (habits noirs) avec elek rouge ou vert ?", a:"La Thrace (Тракийска носия)", n:"Potours noirs à galons, elek brodé, chemise blanche."},
+    {q:"Quelle носия féminine peut indiquer le statut marital d'une femme selon ses broderies ?", a:"La носия thrace", n:"Jeune fille, fiancée, mariée ou mère se distinguent par l'ornementation."},
+    {q:"Quelle région montagnarde du sud a une носия adaptée au climat, avec un elek foncé richement orné ?", a:"Les Rhodopes (Родопска носия)", n:"Chemise sobre, elek très décoré pour le froid."},
+    {q:"Quelle région porte une носия proche du style chopsko, avec kochoulya et saya ?", a:"Le Pirin / région macédonienne (Пиринска носия)", n:"Chants héroïques (юнашки песни) similaires au folklore chopsko."},
+    {q:"Quelle région est associée au rite du feu Nestinarstvo et à une носия aux couleurs sombres ?", a:"La Strandja (Странджанска носия)", n:"Danse rituelle sur les braises."},
+    {q:"Quelle носия du nord se distingue par sa sobriété, avec deux tabliers portés sur la chemise ?", a:"La носия du Nord (Северняшка носия)", n:"Peu de superpositions, esthétique discrète."},
   ]},
 };
 

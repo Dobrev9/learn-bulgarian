@@ -34,7 +34,7 @@
   }
 
   /* ---- Thème sombre ---- */
-  :root[data-theme="light"]{
+  :root[data-theme="dark"]{
     --linen:#161a24;
     --linen-dark:#2e3546;
     --madder:#C4485A;
@@ -833,7 +833,7 @@
 (function(){
   var t = null;
   try{ t = localStorage.getItem('bg_theme'); }catch(e){}
-  if(!t){ t = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'; }
+  if(!t){ t = 'light'; }
   document.documentElement.setAttribute('data-theme', t);
 })();
 </script>

@@ -260,6 +260,18 @@
     padding:1.5rem 1.5rem 4rem;
   }
 
+  .gram {
+  background-color: #f9f9f9; /* La couleur de fond (à adapter) */
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px; /* Bords arrondis */
+  border-left: 4px solid var(--sage); /* Liseré coloré sur la gauche, optionnel */
+}
+
+/* Si vous avez un mode sombre, n'oubliez pas d'adapter le fond : */
+:root[data-theme="dark"] .gram {
+  background-color: #2c2c2c;
+}
   section{ display:none; }
   section.active{ display:block; }
 
@@ -889,10 +901,135 @@
   <!-- ALPHABET -->
   <section id="sec-alphabet" class="active">
     <h2>L'alphabet cyrillique bulgare</h2>
-    <p class="lead">30 lettres. Deux tiers se prononcent presque comme en français.</p>
+    <p class="lead">L'alphabet compte 30 lettres. Il est globalement phonétique : on écrit comme on prononce, une lettre correspond généralement à un son.</p>
     <div class="letters-grid" id="letters-grid"></div>
-  </section>
 
+    <div class="gram" style="margin-top:1.4rem">
+      <h3>Prononcer comme un Bulgare : les règles essentielles</h3>
+
+      <ul>
+        <li>
+          <b>Ъ ъ (ер голям)</b> = voyelle <b>/ɤ/</b>, inexistante en français.
+          Elle ressemble approximativement au « eu » de <i>je</i>, mais elle est
+          plus profonde et plus postérieure. <b>Ne la remplace pas simplement par
+          « eu » français.</b>
+          <span class="bg-cell">България</span> → le <b>ъ</b> produit ce son central.
+        </li>
+
+        ```
+        <li>
+          <b>Х х</b> = consonne fricative forte, proche du <i>j</i> espagnol
+          de <i>José</i> ou du <i>ch</i> allemand de <i>Bach</i>.
+          Ce n'est pas le « h » anglais, qui est beaucoup plus faible.
+          <span class="bg-cell">хотел</span>
+        </li>
+
+        <li>
+          <b>Ц ц</b> = <b>ts</b>,
+          <b>Ч ч</b> = <b>tch</b>,
+          <b>Ш ш</b> = <b>ch</b> comme dans <i>chat</i>,
+          <b>Щ щ</b> = généralement <b>cht</b>.
+        </li>
+
+        <li>
+          <b>Й й</b> = /j/, comme le « y » de <i>yaourt</i> ou le « y » de
+          <i>yoyo</i>.
+        </li>
+
+        <li>
+          <b>Ю ю et Я я : attention au piège du « y » !</b><br>
+          Au <b>début d'un mot</b> ou après une voyelle, elles comportent bien
+          un son /j/ :
+          <span class="bg-cell">ябълка</span> commence par /j/.
+          <br><br>
+          <b>Après une consonne, en revanche, Я et Ю servent principalement à
+          indiquer que la consonne précédente est palatalisée (« mouillée »).</b>
+          <br>
+          Ainsi :
+          <ul>
+            <li><b>ля</b> = <b>l mouillé + a</b>, /lʲa/, et non deux sons séparés « l-ya » ;</li>
+            <li><b>лю</b> = <b>l mouillé + u</b>, /lʲu/ ;</li>
+            <li><b>ня</b> = <b>n mouillé + a</b>, /nʲa/ ;</li>
+            <li><b>тю</b> = <b>t mouillé + u</b>, /tʲu/.</li>
+          </ul>
+          <b>Règle pratique :</b> quand Я ou Ю suivent directement une consonne,
+          ne rajoute pas automatiquement un « y » audible entre la consonne et
+          la voyelle. Pense plutôt : <b>consonne adoucie + a/u</b>.
+        </li>
+
+        <li>
+          <b>Exemple crucial : Моля.</b><br>
+          Il ne faut pas apprendre <span class="bg-cell">моля</span> comme
+          « mo-lya » avec un véritable <i>y</i> séparé, ni comme « mo-la » avec
+          un <i>l</i> totalement dur.
+          La prononciation standard est approximativement <b>/molʲa/</b> :
+          le <b>l est légèrement mouillé</b>, puis vient <b>a</b>.
+          C'est précisément cette nuance qui donne le son bulgare naturel.
+        </li>
+
+        <li>
+          <b>Le Л л mérite une attention particulière.</b><br>
+          Le <b>л</b> bulgare possède notamment une réalisation « sombre »
+          lorsque sa position ne demande pas de palatalisation :
+          <span class="bg-cell">ла</span>, <span class="bg-cell">ло</span>,
+          <span class="bg-cell">лу</span>, <span class="bg-cell">лъ</span>.
+          Le dos de la langue se relève légèrement, ce qui donne un <b>l plus
+          profond</b> que le « l » français.
+          <br><br>
+          Dans la parole de nombreux Bulgares, ce <b>л sombre</b> peut être
+          encore davantage vocalisé et se rapprocher d'un <b>w</b>. C'est
+          pourquoi tu peux parfois entendre une forme ressemblant à
+          « maoko » pour <span class="bg-cell">малко</span>.
+          <b>Ce n'est cependant pas une règle d'orthographe :</b> apprends
+          d'abord le <b>л sombre</b>, puis habitue ton oreille à cette
+          vocalisation chez certains locuteurs.
+        </li>
+
+        <li>
+          <b>Donc : ЛЯ ≠ LA, mais ЛЯ ≠ LYA non plus.</b><br>
+          Pour apprendre correctement, pense à trois catégories :
+          <ul>
+            <li><b>ла</b> → <b>l dur/sombre + a</b></li>
+            <li><b>ля</b> → <b>l mouillé + a</b></li>
+            <li><b>ля</b> n'est pas à apprendre comme un « l » suivi d'un
+              <b>y</b> indépendant.</li>
+          </ul>
+          Cette distinction est particulièrement importante avec
+          <span class="bg-cell">ля</span>, <span class="bg-cell">ня</span>,
+          <span class="bg-cell">тю</span>, etc.
+        </li>
+
+        <li>
+          <b>Réduction des voyelles :</b> en parole naturelle, les voyelles
+          non accentuées peuvent changer de timbre. Le <b>о</b> non accentué
+          peut notamment se rapprocher de <b>у</b>. Il ne faut donc pas
+          prononcer chaque voyelle bulgare avec la même netteté qu'une voyelle
+          accentuée.
+        </li>
+
+        <li>
+          <b>L'accent tonique est mobile et généralement non écrit.</b>
+          Il faut donc apprendre le mot avec son accent :
+          une voyelle accentuée est généralement plus nette et plus saillante
+          que les voyelles non accentuées.
+        </li>
+        ```
+
+      </ul>
+
+      <div class="cj-callout" style="margin:1rem 0 0">
+        <span>
+          Pour aller plus loin : <b>Л dur vs Л mouillé</b>, Я/Ю après consonne,
+          réduction vocalique, accent tonique, paires minimales et exemples
+          audio 🔊.
+        </span>
+        <button type="button" class="action primary" data-go="pronunciation">
+          🔊 Prononciation détaillée
+        </button>
+      </div>
+    </div>
+
+  </section>
   <!-- PRONONCIATION -->
   <section id="sec-pronunciation">
     <h2>Prononciation : avoir un vrai accent bulgare</h2>
@@ -4998,6 +5135,11 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     switchNavTo("conjugation");
     showTab(b.dataset.goConj);
   }));
+  document.querySelectorAll("[data-go]").forEach(b => {
+  b.addEventListener("click", () => {
+    switchNavTo(b.dataset.go);
+  });
+});
 
   /* ---------- Init ---------- */
   renderVChips();

@@ -1741,6 +1741,15 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
       <p>• <strong>Лъвов мост — Pont aux Lions</strong> et <strong>Орлов мост — Pont aux Aigles</strong>.</p>
     </details>
 
+    <details class="info-card"><summary>⛪ Autres monastères de Bulgarie</summary>
+      <p>Autour de <strong>Veliko Tarnovo</strong> : <strong>Патриаршески манастир</strong> (monastère patriarcal de la Sainte-Trinité), <strong>Преображенски манастир</strong> (Transfiguration), <strong>Килифаревски</strong>, <strong>Капиновски</strong>, <strong>Плаковски</strong>, <strong>Дряновски</strong>, <strong>Мердански</strong>, <strong>Петропавловски</strong> et le monastère Saint-Nicolas de <strong>Gorna Oryahovitsa</strong>.</p>
+      <p>Région de <strong>Kazanlak / Stara Zagora</strong> : <strong>Шипченски манастир</strong> (Saint-Nicolas), <strong>Мъглижки манастир</strong>, <strong>Араповски манастир</strong> (Sainte-Nedelya) et le monastère <strong>Свети Йоан Предтеча</strong> des Rhodopes.</p>
+      <p>Balkan central et Gabrovo : <strong>Соколски манастир</strong> et <strong>Гложенски манастир</strong> (Saint-Georges), près de Teteven.</p>
+      <p>Autour de <strong>Sofia</strong> : <strong>Клисурски</strong>, <strong>Света Мина</strong>, <strong>Кремиковски</strong>, <strong>Германски</strong>, <strong>Кокалянски</strong>, <strong>Драгалевски</strong>, l'église Saint-Étienne et le couvent <strong>Покров Богородичен</strong> ; plus au nord-ouest, <strong>Етрополски манастир</strong>, <strong>Лопушански манастир</strong>, <strong>Черепишки манастир</strong> et le <strong>монастир Седемте престола</strong> (Sept-Trônes) dans les gorges de l'Iskar.</p>
+      <p>Le long de la mer Noire et dans le nord-est : <strong>Басарбовски скален манастир</strong> (près de Roussé), <strong>Аладжа манастир</strong> (près de Varna), l'église des <strong>Saints-Constantin-et-Hélène</strong>, le monastère <strong>Света Марина</strong> (entre Dobrich et Varna), <strong>Свети Пантелеймон</strong> (sous Choumen), <strong>Голямобуковски манастир</strong> et <strong>Горноезеровски манастир</strong> (près de Bourgas).</p>
+      <p class="mon-map-hint">Retrouvez tous ces monastères localisés sur la carte interactive ci-dessus (catégorie « Autres monastères de Bulgarie »).</p>
+    </details>
+
     <details class="info-card"><summary>🛸 XXe siècle et mémoire nationale</summary>
       <p>• <strong>Паметник на Свободата — Monument de la Liberté (Shipka)</strong> : le complexe national comprend 26 monuments et positions historiques autour du col.</p>
       <p>• <strong>Паметник на Бузлуджа — Buzludzha</strong> (voir ci-dessus).</p>
@@ -5181,7 +5190,8 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     fortress:    { label:"🏰 Forteresses",                       color:"#3A5A8C" },
     renaissance: { label:"🏘️ Renaissance : villes-musées",       color:"#8B5E3C" },
     sofia:       { label:"🏛️ Sofia (autres sites)",              color:"#6B4C9A" },
-    xxe:         { label:"🛸 XXe siècle et mémoire nationale",   color:"#4a4a4a" }
+    xxe:         { label:"🛸 XXe siècle et mémoire nationale",   color:"#4a4a4a" },
+    monasteries: { label:"⛪ Autres monastères de Bulgarie",     color:"#2F7A6B" }
   };
 
   const MONUMENTS = [
@@ -5239,7 +5249,42 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     { n:"Monument Alyosha", bg:"Паметник на Альоша", cat:"xxe", lat:42.1547, lng:24.7361, d:"Statue de 11 m d'un soldat soviétique dominant Plovdiv." },
     { n:"NDK — Palais national de la culture", bg:"Национален дворец на културата", cat:"xxe", lat:42.6829, lng:23.3186, d:"Grand palais national de la culture, à Sofia." },
     { n:"Monument Vasil Levski", bg:"Паметник на Васил Левски", cat:"xxe", lat:42.6944, lng:23.3244, d:"Élevé sur le lieu de l'exécution du héros national en 1873, à Sofia." },
-    { n:"Palais de Balchik", bg:"Дворецът в Балчик", cat:"xxe", lat:43.4083, lng:28.1519, d:"Palais et jardin botanique construits pour la reine Marie de Roumanie." }
+    { n:"Palais de Balchik", bg:"Дворецът в Балчик", cat:"xxe", lat:43.4083, lng:28.1519, d:"Palais et jardin botanique construits pour la reine Marie de Roumanie." },
+    // Autres monastères de Bulgarie
+    { n:"Monastère de Shipka (Saint-Nicolas)", bg:"Шипченски манастир „Свети Николай”", cat:"monasteries", lat:42.7000, lng:25.3800, d:"Petit monastère dans les contreforts du Balkan, près de Kazanlak." },
+    { n:"Monastère de Meglizh", bg:"Мъглижки манастир", cat:"monasteries", lat:42.6500, lng:25.4300, d:"Monastère médiéval de la région de Stara Zagora." },
+    { n:"Monastère d'Arapovo (Sainte-Nedelya)", bg:"Араповски манастир „Света Неделя”", cat:"monasteries", lat:42.0200, lng:24.9500, d:"À l'est d'Assénovgrad, sur la route de Parvomay." },
+    { n:"Monastère Saint-Jean-Baptiste", bg:"Манастир „Свети Йоан Предтеча”", cat:"monasteries", lat:41.9200, lng:24.8500, d:"Monastère rhodopéen dédié à saint Jean-Baptiste, près d'Assénovgrad." },
+    { n:"Monastère rupestre de Basarbovo", bg:"Басарбовски скален манастир", cat:"monasteries", lat:43.7670, lng:25.9830, d:"Seul monastère rupestre encore habité de Bulgarie, près de Roussé." },
+    { n:"Monastère patriarcal de la Sainte-Trinité", bg:"Патриаршески манастир „Света Троица”", cat:"monasteries", lat:43.0850, lng:25.6500, d:"Ancien siège du patriarcat bulgare, près de Veliko Tarnovo." },
+    { n:"Monastère Saint-Nicolas (Gorna Oryahovitsa)", bg:"Горнооряховски манастир „Свети Никола”", cat:"monasteries", lat:43.1300, lng:25.7000, d:"Monastère proche de Gorna Oryahovitsa, région de Veliko Tarnovo." },
+    { n:"Monastère de la Transfiguration", bg:"Преображенски манастир", cat:"monasteries", lat:43.1172, lng:25.6072, d:"L'un des cinq monastères stavropégiques de Bulgarie, près de Veliko Tarnovo." },
+    { n:"Monastère des Saints-Pierre-et-Paul", bg:"Петропавловски манастир", cat:"monasteries", lat:43.1000, lng:25.7200, d:"Près de Lyaskovets, région de Veliko Tarnovo." },
+    { n:"Monastère de Merdan", bg:"Мердански манастир", cat:"monasteries", lat:43.0000, lng:25.7500, d:"Petit monastère de la région de Veliko Tarnovo." },
+    { n:"Monastère de Kilifarevo", bg:"Килифаревски манастир", cat:"monasteries", lat:42.9830, lng:25.5830, d:"Grand centre spirituel médiéval fondé par saint Théodose de Tarnovo." },
+    { n:"Monastère de Kapinovo", bg:"Капиновски манастир", cat:"monasteries", lat:43.0330, lng:25.7170, d:"Monastère forestier près de Veliko Tarnovo." },
+    { n:"Monastère de Plakovo", bg:"Плаковски манастир", cat:"monasteries", lat:43.0170, lng:25.6330, d:"Petit monastère de la région de Veliko Tarnovo." },
+    { n:"Monastère de Dryanovo", bg:"Дряновски манастир „Свети Архангел Михаил”", cat:"monasteries", lat:42.9975, lng:25.4739, d:"Dans les gorges de Dryanovo, haut lieu de la lutte pour l'indépendance." },
+    { n:"Monastère de Sokolski", bg:"Соколски манастир", cat:"monasteries", lat:42.9500, lng:25.2800, d:"Près de Gabrovo, connu pour sa cour pavée de galets blancs et noirs." },
+    { n:"Monastère de Glojene", bg:"Гложенски манастир „Свети Георги”", cat:"monasteries", lat:43.0330, lng:24.2670, d:"Perché sur une colline près de Teteven." },
+    { n:"Monastère de Klisura", bg:"Клисурски манастир „Св. Кирил и Методий”", cat:"monasteries", lat:43.1822, lng:23.2044, d:"Quatrième plus grand monastère du pays, dans le nord-ouest." },
+    { n:"Monastère Sainte-Mina", bg:"Манастир „Света Мина”", cat:"monasteries", lat:42.5500, lng:23.2500, d:"Petit monastère au pied du Vitocha, près de Sofia." },
+    { n:"Monastère de Kremikovtsi", bg:"Кремиковски манастир", cat:"monasteries", lat:42.7670, lng:23.4830, d:"Aux portes de Sofia, célèbre pour ses fresques du XVe siècle." },
+    { n:"Monastère de German", bg:"Германски манастир", cat:"monasteries", lat:42.6500, lng:23.4500, d:"Près du village de German, à l'est de Sofia." },
+    { n:"Monastère de Kokalyane", bg:"Кокалянски манастир", cat:"monasteries", lat:42.6170, lng:23.4170, d:"Dans la vallée de l'Iskar, au sud-est de Sofia." },
+    { n:"Monastère de Dragalevtsi", bg:"Драгалевски манастир", cat:"monasteries", lat:42.6394, lng:23.3167, d:"Sur les pentes du Vitocha, aux portes de Sofia." },
+    { n:"Église Saint-Étienne (région de Sofia)", bg:"Църква „Свети Стефан”", cat:"monasteries", lat:42.7000, lng:23.3200, d:"Petit sanctuaire des environs de Sofia." },
+    { n:"Couvent Pokrov Bogorodichen", bg:"Манастир „Покров Богородичен”", cat:"monasteries", lat:42.6880, lng:23.3270, d:"Couvent orthodoxe situé en plein cœur de Sofia." },
+    { n:"Monastère d'Etropole", bg:"Етрополски манастир „Света Троица”", cat:"monasteries", lat:42.8600, lng:23.9800, d:"Ancien centre culturel de l'école d'Etropole, dans le Balkan." },
+    { n:"Monastère Sainte-Marina", bg:"Манастир „Света Марина”", cat:"monasteries", lat:43.4000, lng:27.7500, d:"Entre Dobrich et Varna, dans le nord-est du pays." },
+    { n:"Monastère d'Aladja", bg:"Аладжа манастир", cat:"monasteries", lat:43.2780, lng:28.0151, d:"Monastère rupestre médiéval près de Varna, dans le parc des Sables d'or." },
+    { n:"Église Saints-Constantin-et-Hélène", bg:"Църква „Св. св. Константин и Елена”", cat:"monasteries", lat:43.1670, lng:27.9670, d:"Dans la station balnéaire du même nom, au sud de Varna." },
+    { n:"Monastère Saint-Panteleimon", bg:"Манастир „Свети Пантелеймон”", cat:"monasteries", lat:43.2500, lng:26.9500, d:"Au pied du plateau de Choumen." },
+    { n:"Monastère de Golyam Bukovets", bg:"Голямобуковски манастир", cat:"monasteries", lat:43.1500, lng:26.8200, d:"Petit monastère de la région de Choumen." },
+    { n:"Monastère de Gorno Ezerovo", bg:"Горноезеровски манастир", cat:"monasteries", lat:42.5330, lng:27.4000, d:"Près de Bourgas, sur la côte de la mer Noire." },
+    { n:"Monastère de Lopushna", bg:"Лопушански манастир „Свети Иван Предтеча”", cat:"monasteries", lat:43.2830, lng:22.9670, d:"Dans les monts Berkovska, au nord-ouest du pays." },
+    { n:"Monastère de Cherepish", bg:"Черепишки манастир", cat:"monasteries", lat:43.1700, lng:23.6200, d:"Dans les gorges de l'Iskar, près de Mezdra." },
+    { n:"Monastère des Sept-Trônes", bg:"Манастир „Седемте престола”", cat:"monasteries", lat:43.0500, lng:23.5500, d:"Non loin de Cherepish, dans les gorges de l'Iskar." }
   ];
 
   let map = null, initedOnce = false;

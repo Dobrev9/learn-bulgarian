@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇧🇬</text></svg>">
 <title>Начало — Apprendre le bulgare A1 & Intégrale</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap');
 
@@ -828,6 +829,20 @@
   .cj-err .bgf{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); font-size:1.02rem; }
   .cj-err .was{ color:var(--bad); text-decoration:line-through; font-family:'PT Serif', Georgia, serif; }
   .cj-callout{ background:var(--card); border:1px solid var(--linen-dark); border-left:5px solid var(--madder); padding:.8rem 1rem; margin-bottom:1.2rem; display:flex; flex-wrap:wrap; gap:.6rem 1rem; align-items:center; justify-content:space-between; font-size:.95rem; color:var(--text2); }
+
+  /* ---------- Carte interactive des monuments ---------- */
+  .mon-map-card{ background:var(--card); border:1px solid var(--linen-dark); border-radius:10px; padding:1rem 1.1rem 1.2rem; margin-bottom:1.3rem; }
+  .mon-map-legend{ display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.8rem; }
+  .mon-chip{ display:inline-flex; align-items:center; gap:.4rem; border:1.5px solid var(--linen-dark); background:transparent; color:var(--text2); padding:.3rem .7rem; border-radius:20px; font-size:.82rem; cursor:pointer; font-family:'PT Sans', Arial, sans-serif; }
+  .mon-chip .dot{ width:10px; height:10px; border-radius:50%; flex:none; }
+  .mon-chip.off{ opacity:.4; }
+  .mon-map-wrap{ position:relative; }
+  #monuments-map{ height:440px; width:100%; border-radius:8px; border:1px solid var(--linen-dark); background:var(--paper); z-index:0; }
+  .mon-map-hint{ font-size:.82rem; color:var(--muted2); margin-top:.5rem; }
+  .leaflet-popup-content-wrapper{ background:var(--card); color:var(--indigo); border-radius:8px; }
+  .leaflet-popup-tip{ background:var(--card); }
+  .mon-pop b{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); }
+  .mon-pop p{ margin:.3rem 0 0; font-size:.85rem; color:var(--text2); }
 </style>
 <script>
 (function(){
@@ -839,6 +854,7 @@
 </script>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 
 <header>
   <div class="inner">
@@ -1657,6 +1673,13 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
     <div class="section-toolbar">
       <button type="button" class="mini-btn" data-expand="all">Tout déplier</button>
       <button type="button" class="mini-btn" data-expand="none">Tout replier</button>
+    </div>
+
+    <div class="mon-map-card">
+      <h3 style="margin-bottom:.6rem">🗺️ Carte des monuments</h3>
+      <div class="mon-map-legend" id="mon-legend"></div>
+      <div class="mon-map-wrap"><div id="monuments-map"></div></div>
+      <p class="mon-map-hint">Cliquez sur un repère pour voir le nom et la description du monument ; cliquez sur une catégorie ci-dessus pour l'afficher ou la masquer.</p>
     </div>
 
     <details class="info-card" open><summary>⭐ Icônes nationales</summary>
@@ -5146,6 +5169,145 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   renderFiche();
 })();
 
+</script>
+
+<script>
+/* ---------- Carte interactive des monuments ---------- */
+(function(){
+  const MON_CATS = {
+    national:    { label:"⭐ Icônes nationales",                 color:"#C08A2E" },
+    thrace:      { label:"🏺 Thrace et antique",                 color:"#A22C3B" },
+    medieval:    { label:"☦️ Médiévale et orthodoxe",            color:"#5F7052" },
+    fortress:    { label:"🏰 Forteresses",                       color:"#3A5A8C" },
+    renaissance: { label:"🏘️ Renaissance : villes-musées",       color:"#8B5E3C" },
+    sofia:       { label:"🏛️ Sofia (autres sites)",              color:"#6B4C9A" },
+    xxe:         { label:"🛸 XXe siècle et mémoire nationale",   color:"#4a4a4a" }
+  };
+
+  const MONUMENTS = [
+    // Icônes nationales
+    { n:"Cathédrale Alexandre-Nevski", bg:"Храм-паметник „Свети Александър Невски”", cat:"national", lat:42.6954, lng:23.3327, d:"La plus grande cathédrale orthodoxe des Balkans, à Sofia." },
+    { n:"Monastère de Rila", bg:"Рилски манастир", cat:"national", lat:42.1334, lng:23.3400, d:"Fondé au Xe siècle, le plus grand monastère orthodoxe bulgare (UNESCO)." },
+    { n:"Forteresse de Tsarevets", bg:"Царевец", cat:"national", lat:43.0757, lng:25.6415, d:"Siège du pouvoir royal et patriarcal du Second Empire bulgare, à Veliko Tarnovo." },
+    { n:"Cavalier de Madara", bg:"Мадарски конник", cat:"national", lat:43.2685, lng:27.1264, d:"Bas-relief rupestre du haut Moyen Âge (UNESCO)." },
+    { n:"Monument de la Liberté (Shipka)", bg:"Паметник на Свободата", cat:"national", lat:42.7415, lng:25.3298, d:"Mémoire des combattants de la guerre de libération de 1877-1878." },
+    { n:"Église de Boyana", bg:"Боянска църква", cat:"national", lat:42.6386, lng:23.2864, d:"Petite église médiévale, fresques du XIIIe siècle (UNESCO), à Sofia." },
+    { n:"Vieille ville de Nessebar", bg:"Старинен град Несебър", cat:"national", lat:42.6592, lng:27.7358, d:"Cité antique sur une presqu'île de la mer Noire (UNESCO)." },
+    { n:"Monument de Buzludzha", bg:"Паметник на Бузлуджа", cat:"national", lat:42.7383, lng:25.3831, d:"Édifice communiste en forme de soucoupe (1974-1981)." },
+    // Thrace et antique
+    { n:"Tombeau thrace de Kazanlak", bg:"Тракийска гробница в Казанлък", cat:"thrace", lat:42.6238, lng:25.3970, d:"IVe siècle av. J.-C., fresques exceptionnellement conservées." },
+    { n:"Tombeau thrace de Sveshtari", bg:"Свещарска гробница", cat:"thrace", lat:43.6284, lng:26.7180, d:"IIIe siècle av. J.-C., célèbre pour ses cariatides (UNESCO)." },
+    { n:"Perperikon", bg:"Перперикон", cat:"thrace", lat:41.5810, lng:25.4363, d:"Grand complexe archéologique rupestre des Rhodopes orientales." },
+    { n:"Plovdiv antique", bg:"Старият Пловдив (антична част)", cat:"thrace", lat:42.1494, lng:24.7535, d:"Théâtre romain, stade romain et forum au cœur de Plovdiv." },
+    { n:"Nicopolis ad Istrum", bg:"Никополис ад Иструм", cat:"thrace", lat:43.2306, lng:25.6265, d:"Grande cité romaine fondée sous l'empereur Trajan." },
+    { n:"Serdica", bg:"Сердика", cat:"thrace", lat:42.6975, lng:23.3219, d:"Complexe antique romain mis au jour sous le centre-ville de Sofia." },
+    { n:"Pliska", bg:"Плиска", cat:"thrace", lat:43.3808, lng:27.1258, d:"Première capitale du Premier Empire bulgare." },
+    { n:"Preslav", bg:"Преслав", cat:"thrace", lat:43.1667, lng:26.8167, d:"Deuxième capitale du Premier Empire, centre de l'Âge d'or culturel." },
+    // Médiévale et orthodoxe
+    { n:"Églises rupestres d'Ivanovo", bg:"Ивановски скални църкви", cat:"medieval", lat:43.5892, lng:25.9520, d:"Églises creusées dans la falaise, fresques du XIVe siècle (UNESCO)." },
+    { n:"Monastère de Bachkovo", bg:"Бачковски манастир", cat:"medieval", lat:41.9308, lng:24.8377, d:"L'un des trois grands monastères historiques du pays." },
+    { n:"Monastère de Troyan", bg:"Троянски манастир", cat:"medieval", lat:42.8898, lng:24.7167, d:"Troisième grand monastère national." },
+    { n:"Monastère de Rozhen", bg:"Роженски манастир", cat:"medieval", lat:41.5333, lng:23.3833, d:"Près de Melnik, architecture en bois et pierre." },
+    { n:"Église des Quarante-Martyrs", bg:"Църква Св. 40 мъченици", cat:"medieval", lat:43.0793, lng:25.6329, d:"Église liée au couronnement des tsars, à Veliko Tarnovo." },
+    { n:"Église Sainte-Sophie", bg:"Църква Света София", cat:"medieval", lat:42.6952, lng:23.3243, d:"L'une des plus anciennes églises de Sofia, qui a donné son nom à la ville." },
+    { n:"Rotonde Saint-Georges", bg:"Ротонда Свети Георги", cat:"medieval", lat:42.6967, lng:23.3219, d:"L'un des plus vieux édifices de Sofia, encore en activité." },
+    // Forteresses
+    { n:"Baba Vida", bg:"Крепост Баба Вида", cat:"fortress", lat:43.9973, lng:22.8770, d:"La forteresse la mieux conservée du pays, à Vidin." },
+    { n:"Ovech", bg:"Крепост Овеч", cat:"fortress", lat:43.1814, lng:27.4361, d:"Forteresse près de Provadia." },
+    { n:"Shumen", bg:"Крепост Шумен", cat:"fortress", lat:43.2712, lng:26.9515, d:"Forteresse médiévale surplombant la ville de Shumen." },
+    { n:"Cherven", bg:"Крепост Червен", cat:"fortress", lat:43.6725, lng:25.9436, d:"Forteresse de la région de Ruse." },
+    { n:"Peristera", bg:"Крепост Перистера", cat:"fortress", lat:41.9975, lng:24.2967, d:"Forteresse près de Peshtera." },
+    { n:"Cap et forteresse de Kaliakra", bg:"Нос Калиакра", cat:"fortress", lat:43.3711, lng:28.4653, d:"Promontoire fortifié sur la côte de la mer Noire." },
+    { n:"Porte de Trajan", bg:"Траянови врата", cat:"fortress", lat:42.2167, lng:23.9833, d:"Col fortifié entre Sofia et Plovdiv." },
+    // Renaissance : villes-musées
+    { n:"Koprivshtitsa", bg:"Копривщица", cat:"renaissance", lat:42.6167, lng:24.3500, d:"Ville-musée aux centaines de monuments de la Renaissance bulgare." },
+    { n:"Vieille ville de Plovdiv", bg:"Възрожденски квартал", cat:"renaissance", lat:42.1505, lng:24.7550, d:"Maisons de la Renaissance bulgare et porte Hisar Kapia." },
+    { n:"Tryavna", bg:"Трявна", cat:"renaissance", lat:42.8628, lng:25.4986, d:"Maisons de marchands, artisanat et sculpture sur bois." },
+    { n:"Zheravna", bg:"Жеравна", cat:"renaissance", lat:42.8333, lng:26.5500, d:"Village historique aux maisons traditionnelles en bois." },
+    { n:"Arbanasi", bg:"Арбанаси", cat:"renaissance", lat:43.0967, lng:25.6672, d:"Grandes maisons fortifiées et églises, près de Veliko Tarnovo." },
+    { n:"Bozhentsi", bg:"Боженци", cat:"renaissance", lat:42.8306, lng:25.3153, d:"Village de montagne exceptionnellement bien conservé." },
+    { n:"Melnik", bg:"Мелник", cat:"renaissance", lat:41.5230, lng:23.3890, d:"Maisons historiques et célèbres pyramides de grès." },
+    { n:"Shiroka Laka", bg:"Широка Лъка", cat:"renaissance", lat:41.6083, lng:24.7364, d:"Architecture traditionnelle des Rhodopes." },
+    // Sofia (autres sites)
+    { n:"Théâtre national Ivan Vazov", bg:"Народен театър „Иван Вазов”", cat:"sofia", lat:42.6939, lng:23.3286, d:"Grand théâtre national de Sofia." },
+    { n:"Assemblée nationale", bg:"Народно събрание", cat:"sofia", lat:42.6939, lng:23.3325, d:"Siège du parlement bulgare." },
+    { n:"Palais royal", bg:"Царски дворец", cat:"sofia", lat:42.6941, lng:23.3288, d:"Ancienne résidence royale, au centre de Sofia." },
+    { n:"Bains minéraux centraux", bg:"Централна минерална баня", cat:"sofia", lat:42.6971, lng:23.3219, d:"Bâtiment emblématique du centre de Sofia." },
+    { n:"Pont aux Lions", bg:"Лъвов мост", cat:"sofia", lat:42.7047, lng:23.3193, d:"Pont historique de Sofia." },
+    { n:"Pont aux Aigles", bg:"Орлов мост", cat:"sofia", lat:42.6789, lng:23.3411, d:"Pont historique de Sofia." },
+    // XXe siècle et mémoire nationale
+    { n:"Monument Alyosha", bg:"Паметник на Альоша", cat:"xxe", lat:42.1547, lng:24.7361, d:"Statue de 11 m d'un soldat soviétique dominant Plovdiv." },
+    { n:"NDK — Palais national de la culture", bg:"Национален дворец на културата", cat:"xxe", lat:42.6829, lng:23.3186, d:"Grand palais national de la culture, à Sofia." },
+    { n:"Monument Vasil Levski", bg:"Паметник на Васил Левски", cat:"xxe", lat:42.6944, lng:23.3244, d:"Élevé sur le lieu de l'exécution du héros national en 1873, à Sofia." },
+    { n:"Palais de Balchik", bg:"Дворецът в Балчик", cat:"xxe", lat:43.4083, lng:28.1519, d:"Palais et jardin botanique construits pour la reine Marie de Roumanie." }
+  ];
+
+  let map = null, initedOnce = false;
+  const catLayers = {};
+  const catVisible = {};
+
+  function buildLegend(){
+    const host = document.getElementById("mon-legend");
+    if(!host || host.childElementCount) return;
+    Object.keys(MON_CATS).forEach(key=>{
+      catVisible[key] = true;
+      const c = MON_CATS[key];
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "mon-chip";
+      btn.dataset.cat = key;
+      btn.innerHTML = `<span class="dot" style="background:${c.color}"></span>${c.label}`;
+      btn.addEventListener("click", ()=>{
+        catVisible[key] = !catVisible[key];
+        btn.classList.toggle("off", !catVisible[key]);
+        if(!map || !catLayers[key]) return;
+        if(catVisible[key]) map.addLayer(catLayers[key]);
+        else map.removeLayer(catLayers[key]);
+      });
+      host.appendChild(btn);
+    });
+  }
+
+  function initMonumentsMap(){
+    buildLegend();
+    if(initedOnce){
+      setTimeout(()=>{ if(map) map.invalidateSize(); }, 50);
+      return;
+    }
+    if(typeof L === "undefined") return; // Leaflet non chargé (pas de réseau)
+    initedOnce = true;
+    map = L.map("monuments-map", { scrollWheelZoom:false }).setView([42.75, 25.2], 7);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+    }).addTo(map);
+
+    Object.keys(MON_CATS).forEach(key=>{ catLayers[key] = L.layerGroup().addTo(map); });
+
+    MONUMENTS.forEach(m=>{
+      const color = MON_CATS[m.cat].color;
+      const marker = L.circleMarker([m.lat, m.lng], {
+        radius: 7, color: "#fff", weight: 1.5, fillColor: color, fillOpacity: .95
+      });
+      marker.bindPopup(`<div class="mon-pop"><b>${m.n}</b><br><span style="font-family:'PT Serif',Georgia,serif">${m.bg}</span><p>${m.d}</p></div>`);
+      marker.addTo(catLayers[m.cat]);
+    });
+
+    setTimeout(()=>{ map.invalidateSize(); }, 60);
+  }
+
+  window.initMonumentsMap = initMonumentsMap;
+  if(typeof navButtons !== "undefined"){
+    navButtons.forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        if(btn.dataset.target === "monuments") initMonumentsMap();
+      });
+    });
+  }
+  // Si l'onglet Monuments est déjà actif au chargement de la page
+  const monSection = document.getElementById("sec-monuments");
+  if(monSection && monSection.classList.contains("active")) initMonumentsMap();
+})();
 </script>
 </body>
 </html>

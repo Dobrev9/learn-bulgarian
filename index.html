@@ -497,6 +497,10 @@
   button.good{ background:var(--ok); color:#fff; }
   button.bad{ background:var(--bad); color:#fff; }
   button.action:hover{ opacity:.88; }
+  .retry-bar{ display:flex; justify-content:center; width:100%; margin-top:.9rem; }
+  button.retry-btn{ background:transparent; border:1.5px solid var(--bad); color:var(--bad); font-weight:700; }
+  button.retry-btn:disabled{ opacity:.4; cursor:not-allowed; }
+  button.retry-btn:disabled:hover{ opacity:.4; }
   .round-end{
     display:none;
     flex-direction:column;
@@ -1413,6 +1417,7 @@
         <button class="action good" id="fc-know">Je connais</button>
         <button class="action ghost" id="fc-next">Suivant →</button>
       </div>
+      <div class="retry-bar" id="fc-retry-bar"><button type="button" class="action retry-btn" id="fc-retry" disabled>🔁 Retravailler mes erreurs (0)</button></div>
       <div class="progress-label" id="fc-progress"></div>
     </div>
   </section>
@@ -2220,6 +2225,7 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
           <button class="action good" id="mk-fc-know">Je connais</button>
           <button class="action ghost" id="mk-fc-next">Suivant →</button>
         </div>
+        <div class="retry-bar" id="mk-fc-retry-bar"><button type="button" class="action retry-btn" id="mk-fc-retry" disabled>🔁 Retravailler mes erreurs (0)</button></div>
         <div class="card-controls">
           <button class="action ghost" id="mk-fc-shuffle">🔀 Mélanger les cartes</button>
         </div>
@@ -2236,6 +2242,7 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
         <div class="card-controls" style="justify-content:flex-start;margin-top:.8rem;">
           <button class="action primary" id="mk-quiz-next" disabled>Question suivante →</button>
           <button class="action ghost" id="mk-quiz-restart">↻ Recommencer</button>
+          <button class="action retry-btn" id="mk-quiz-retry" disabled>🔁 Retravailler mes erreurs (0)</button>
         </div>
       </div>
     </div>
@@ -2276,6 +2283,7 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
         <button class="action good" id="cu-know">Je connais</button>
         <button class="action ghost" id="cu-next">Suivant →</button>
       </div>
+      <div class="retry-bar" id="cu-retry-bar"><button type="button" class="action retry-btn" id="cu-retry" disabled>🔁 Retravailler mes erreurs (0)</button></div>
       <div class="card-controls" id="cu-shuffle-row">
         <button class="action ghost" id="cu-shuffle">🔀 Mélanger les cartes</button>
       </div>
@@ -4238,13 +4246,21 @@ function fcShowEnd(){
   );
   flashcardEl.style.display = "none";
   document.getElementById("fc-controls").style.display = "none";
+  document.getElementById("fc-retry-bar").style.display = "none";
   host.style.display = "flex";
   document.getElementById("fc-progress").textContent = "";
 }
 function fcHideEnd(){
   flashcardEl.style.display = "";
   document.getElementById("fc-controls").style.display = "";
+  document.getElementById("fc-retry-bar").style.display = "";
   document.getElementById("fc-end").style.display = "none";
+}
+function fcUpdateRetry(){
+  const b = document.getElementById("fc-retry");
+  const n = fcMissed.size;
+  b.disabled = n === 0;
+  b.textContent = `🔁 Retravailler mes erreurs (${n})`;
 }
 
 function renderFlashcard(){
@@ -4263,6 +4279,7 @@ function renderFlashcard(){
   const knownCount = items.filter((_, i)=>progress.known[knownKey(fcCat,i)]).length;
   document.getElementById("fc-progress").textContent =
     `Carte ${fcPos+1} / ${fcOrder.length}${fcRetry ? " (révision des « Pas encore »)" : ""} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
+  fcUpdateRetry();
 }
 
 function fcMove(step){
@@ -4272,6 +4289,12 @@ function fcMove(step){
   renderFlashcard();
 }
 
+document.getElementById("fc-retry").addEventListener("click", ()=>{
+  if(!fcMissed.size) return;
+  fcOrder = fcOrder.filter(i=>fcMissed.has(i));
+  fcPos = 0; fcMissed = new Set(); fcDone = false; fcRetry = true;
+  renderFlashcard();
+});
 document.getElementById("fc-next").addEventListener("click", ()=>fcMove(1));
 document.getElementById("fc-prev").addEventListener("click", ()=>fcMove(-1));
 document.getElementById("fc-know").addEventListener("click", ()=>{
@@ -4314,6 +4337,7 @@ let lastShownFr = null; // évite qu'une même question ne retombe juste après 
 
 const THEME_WEAK_KEY = "__theme_weak__";
 let quizSessionWrong = []; // mots ratés pendant la série de thème en cours (dédupliqués par fr)
+let quizTimer = null; // délai avant la question suivante (annulé si on relance une série)
 let lastThemeWeakItems = []; // dernière liste utilisée pour une série "points faibles de ce thème"
 
 function quizCatLabel(catKey){
@@ -4464,6 +4488,7 @@ function buildQuestions(catKey, count){
 }
 
 function startQuiz(){
+  clearTimeout(quizTimer);
   quizQuestions = buildQuestions(quizCat, quizCount);
   quizIndex = 0;
   quizScore = 0;
@@ -4475,6 +4500,7 @@ function startQuiz(){
    de la série de thème qui vient de se terminer) */
 function startThemeWeakQuiz(items){
   if(!items || !items.length) return;
+  clearTimeout(quizTimer);
   lastThemeWeakItems = items.slice();
   quizCat = THEME_WEAK_KEY;
   const pool = avoidAdjacentRepeats(shuffle(items));
@@ -4492,10 +4518,20 @@ function renderQuizQuestion(){
   }
   const q = quizQuestions[quizIndex];
   quizBox.innerHTML = `
-    <div class="quiz-progress">Question ${quizIndex+1} / ${quizQuestions.length} — ${VOCAB[q.cat].label}</div>
+    <div class="quiz-progress">Question ${quizIndex+1} / ${quizQuestions.length} — ${VOCAB[q.cat].label}${quizCat===THEME_WEAK_KEY ? " (révision des erreurs)" : ""}</div>
     <div class="quiz-question">Quel est le bulgare pour : "${q.fr}" ?</div>
     <div class="quiz-options" id="quiz-options"></div>
+    <div class="retry-bar"><button type="button" class="action retry-btn" id="quiz-retry-now"></button></div>
   `;
+  const retryNow = document.getElementById("quiz-retry-now");
+  const updRetryNow = ()=>{
+    retryNow.disabled = quizSessionWrong.length === 0;
+    retryNow.textContent = `🔁 Retravailler mes erreurs (${quizSessionWrong.length})`;
+  };
+  updRetryNow();
+  retryNow.addEventListener("click", ()=>{
+    if(quizSessionWrong.length) startThemeWeakQuiz(quizSessionWrong.slice());
+  });
   const optionsEl = document.getElementById("quiz-options");
   q.options.forEach(opt=>{
     const b = document.createElement("button");
@@ -4513,11 +4549,12 @@ function renderQuizQuestion(){
         buttons.forEach(bb=>{ if(bb.textContent===q.correctBg) bb.classList.add("correct"); });
         if(!quizSessionWrong.some(it=>it.fr===q.fr)){
           quizSessionWrong.push({fr:q.fr, bg:q.correctBg, __cat:q.cat});
+          updRetryNow();
         }
       }
       recordAnswer(q.cat, {fr:q.fr, bg:q.correctBg}, isCorrect);
       lastShownFr = q.fr;
-      setTimeout(()=>{ quizIndex++; renderQuizQuestion(); }, 700);
+      quizTimer = setTimeout(()=>{ quizIndex++; renderQuizQuestion(); }, 700);
     });
     optionsEl.appendChild(b);
   });
@@ -4541,10 +4578,11 @@ function renderQuizResult(){
 
   const nbWrong = quizSessionWrong.length;
   let weakBtnHtml = "";
-  if(!isThemeWeak && nbWrong>0){
-    weakBtnHtml = `<button class="action ghost" id="quiz-weak-theme-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Travailler ${nbWrong===1 ? "le mot raté" : "les "+nbWrong+" mots ratés"} de ce thème</button>`;
-  } else if(isThemeWeak){
-    weakBtnHtml = `<button class="action ghost" id="quiz-weak-theme-again-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Retenter ces mots</button>`;
+  if(nbWrong>0){
+    weakBtnHtml += `<button class="action ghost" id="quiz-weak-theme-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Travailler ${nbWrong===1 ? "le mot raté" : "les "+nbWrong+" mots ratés"}${isThemeWeak ? "" : " de ce thème"}</button>`;
+  }
+  if(isThemeWeak){
+    weakBtnHtml += `<button class="action ghost" id="quiz-weak-theme-again-btn" style="margin-top:.6rem;margin-left:.5rem;">🎯 Retenter tous ces mots</button>`;
   }
 
   quizBox.innerHTML = `
@@ -4880,6 +4918,9 @@ let cuMode = "cards";
 let cuQuestions = [];
 let cuQIndex = 0;
 let cuScore = 0;
+let cuWrong = [];       // items ratés pendant la série en cours
+let cuQRetry = false;   // série limitée aux erreurs
+let cuQTimer = null;
 
 function cuItems(){ return CULTURE[cuCat].items; }
 
@@ -4910,6 +4951,7 @@ function cuShowEnd(){
   );
   cuFlashcardEl.style.display = "none";
   document.getElementById("cu-controls").style.display = "none";
+  document.getElementById("cu-retry-bar").style.display = "none";
   document.getElementById("cu-shuffle-row").style.display = "none";
   host.style.display = "flex";
   document.getElementById("cu-progress").textContent = "";
@@ -4917,8 +4959,15 @@ function cuShowEnd(){
 function cuHideEnd(){
   cuFlashcardEl.style.display = "";
   document.getElementById("cu-controls").style.display = "";
+  document.getElementById("cu-retry-bar").style.display = "";
   document.getElementById("cu-shuffle-row").style.display = "";
   document.getElementById("cu-end").style.display = "none";
+}
+function cuUpdateRetry(){
+  const b = document.getElementById("cu-retry");
+  const n = cuMissed.size;
+  b.disabled = n === 0;
+  b.textContent = `🔁 Retravailler mes erreurs (${n})`;
 }
 
 function cuRenderChips(){
@@ -4958,6 +5007,7 @@ function cuRenderCard(){
   const knownCount = items.filter((_, i)=>known[cuKey(cuCat,i)]).length;
   document.getElementById("cu-progress").textContent =
     `Carte ${cuPos+1} / ${cuOrder.length}${cuRetry ? " (révision des « Pas encore »)" : ""} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
+  cuUpdateRetry();
 }
 
 function cuMove(step){
@@ -4967,6 +5017,12 @@ function cuMove(step){
   cuRenderCard();
 }
 
+document.getElementById("cu-retry").addEventListener("click", ()=>{
+  if(!cuMissed.size) return;
+  cuOrder = cuFullOrder.filter(i=>cuMissed.has(i));
+  cuPos = 0; cuMissed = new Set(); cuDone = false; cuRetry = true;
+  cuRenderCard();
+});
 document.getElementById("cu-next").addEventListener("click", ()=>cuMove(1));
 document.getElementById("cu-prev").addEventListener("click", ()=>cuMove(-1));
 document.getElementById("cu-shuffle").addEventListener("click", ()=>{
@@ -4987,20 +5043,36 @@ document.getElementById("cu-dontknow").addEventListener("click", ()=>{
 });
 
 /* ---- quiz culture ---- */
+function cuMakeQuestion(correct){
+  const items = cuItems();
+  const distractors = shuffle(items.filter(i=>i!==correct && i.a !== correct.a)).slice(0,3);
+  const options = shuffle([correct, ...distractors]);
+  return { item: correct, q: correct.q, correct: correct.a, note: correct.n || "", options: options.map(o=>o.a) };
+}
 function cuBuildQuestions(){
   const items = cuItems();
   const pool = shuffle(items).slice(0, Math.min(10, items.length));
-  return pool.map(correct=>{
-    const distractors = shuffle(items.filter(i=>i!==correct && i.a !== correct.a)).slice(0,3);
-    const options = shuffle([correct, ...distractors]);
-    return { q: correct.q, correct: correct.a, note: correct.n || "", options: options.map(o=>o.a) };
-  });
+  return pool.map(cuMakeQuestion);
 }
 
 function cuStartQuiz(){
+  clearTimeout(cuQTimer);
   cuQuestions = cuBuildQuestions();
   cuQIndex = 0;
   cuScore = 0;
+  cuWrong = [];
+  cuQRetry = false;
+  cuRenderQuestion();
+}
+/* Nouvelle série avec uniquement les questions ratées jusqu'ici */
+function cuStartRetryQuiz(){
+  if(!cuWrong.length) return;
+  clearTimeout(cuQTimer);
+  cuQuestions = shuffle(cuWrong).map(cuMakeQuestion);
+  cuQIndex = 0;
+  cuScore = 0;
+  cuWrong = [];
+  cuQRetry = true;
   cuRenderQuestion();
 }
 
@@ -5008,11 +5080,19 @@ function cuRenderQuestion(){
   if(cuQIndex >= cuQuestions.length){ cuRenderResult(); return; }
   const q = cuQuestions[cuQIndex];
   cuQuizBox.innerHTML = `
-    <div class="quiz-progress">Question ${cuQIndex+1} / ${cuQuestions.length} — ${CULTURE[cuCat].label}</div>
+    <div class="quiz-progress">Question ${cuQIndex+1} / ${cuQuestions.length} — ${CULTURE[cuCat].label}${cuQRetry ? " (révision des erreurs)" : ""}</div>
     <div class="quiz-question">${q.q}</div>
     <div class="quiz-options" id="cu-quiz-options"></div>
     <div class="progress-label" id="cu-quiz-note"></div>
+    <div class="retry-bar"><button type="button" class="action retry-btn" id="cu-quiz-retry-now"></button></div>
   `;
+  const cuRetryNow = document.getElementById("cu-quiz-retry-now");
+  const cuUpdRetryNow = ()=>{
+    cuRetryNow.disabled = cuWrong.length === 0;
+    cuRetryNow.textContent = `🔁 Retravailler mes erreurs (${cuWrong.length})`;
+  };
+  cuUpdRetryNow();
+  cuRetryNow.addEventListener("click", cuStartRetryQuiz);
   const optionsEl = document.getElementById("cu-quiz-options");
   q.options.forEach(opt=>{
     const b = document.createElement("button");
@@ -5027,9 +5107,11 @@ function cuRenderQuestion(){
       } else {
         b.classList.add("incorrect");
         buttons.forEach(bb=>{ if(bb.textContent===q.correct) bb.classList.add("correct"); });
+        if(!cuWrong.includes(q.item)) cuWrong.push(q.item);
+        cuUpdRetryNow();
       }
       if(q.note) document.getElementById("cu-quiz-note").textContent = "💡 " + q.note;
-      setTimeout(()=>{ cuQIndex++; cuRenderQuestion(); }, q.note ? 1600 : 800);
+      cuQTimer = setTimeout(()=>{ cuQIndex++; cuRenderQuestion(); }, q.note ? 1600 : 800);
     });
     optionsEl.appendChild(b);
   });
@@ -5039,15 +5121,18 @@ function cuRenderResult(){
   const total = cuQuestions.length;
   const store = cuQuizStore();
   const best = store[cuCat] || 0;
-  if(cuScore > best){ store[cuCat] = cuScore; saveProgress(progress); }
+  if(!cuQRetry && cuScore > best){ store[cuCat] = cuScore; saveProgress(progress); }
   cuQuizBox.innerHTML = `
     <div class="quiz-result">
       <div class="score">${cuScore} / ${total}</div>
-      <p>Meilleur score dans ce thème : ${Math.max(cuScore,best)} / ${total}</p>
+      ${cuQRetry ? "<p>Série ciblée sur tes erreurs.</p>" : `<p>Meilleur score dans ce thème : ${Math.max(cuScore,best)} / ${total}</p>`}
+      ${cuWrong.length ? `<button class="action retry-btn" id="cu-quiz-retry-end" style="margin-right:.5rem;">🔁 Retravailler mes erreurs (${cuWrong.length})</button>` : ""}
       <button class="action primary" id="cu-quiz-restart">Recommencer ce thème</button>
     </div>
   `;
   document.getElementById("cu-quiz-restart").addEventListener("click", cuStartQuiz);
+  const cuRetryEnd = document.getElementById("cu-quiz-retry-end");
+  if(cuRetryEnd) cuRetryEnd.addEventListener("click", cuStartRetryQuiz);
 }
 
 /* ---- modes ---- */
@@ -5649,6 +5734,23 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     }
     beginSession(qs);
   }
+  function cjFailedQs(){
+    return sess.qs.filter((q,i)=>sess.res[i] && sess.res[i].pts<sess.res[i].max).map(q=>{
+      if(q.type==="choice") return {...q, options:formOptions(q.v,q.t,q.pi,q.answer)};
+      if(q.type==="gap") return {...q, options:formOptions(q.v,q.t,q.pi,q.answer)};
+      return q;
+    });
+  }
+  function updErrBtn(){
+    const b = $("cj-err-now"); if(!b || !sess) return;
+    const n = cjFailedQs().length;
+    b.disabled = n===0;
+    b.textContent = `🔁 Retravailler mes erreurs (${n})`;
+  }
+  function retryErrors(){
+    const failed = cjFailedQs();
+    if(failed.length) beginSession(sh(failed));
+  }
   function beginSession(qs){
     sess = { qs, i:0, res:[], streak:0, bestStreak:0, answered:false };
     renderQuestion();
@@ -5732,7 +5834,10 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
         ${keyboardHTML()}
         <div class="cj-actions"><button type="button" class="action primary" id="cj-submit">Vérifier</button></div>`;
     }
-    stage.innerHTML = topBar() + `<div class="cj-qbox"><div class="cj-kind">${KIND[q.type]}</div><div class="cj-q">${promptHTML(q)}</div>${body}<div id="cj-fb"></div></div>`;
+    stage.innerHTML = topBar() + `<div class="cj-qbox"><div class="cj-kind">${KIND[q.type]}</div><div class="cj-q">${promptHTML(q)}</div>${body}<div id="cj-fb"></div></div>
+      <div class="retry-bar"><button type="button" class="action retry-btn" id="cj-err-now"></button></div>`;
+    updErrBtn();
+    $("cj-err-now").addEventListener("click", retryErrors);
     $("cj-quit").addEventListener("click", ()=>{ if(confirm("Quitter cet exercice ?")) renderSetup(); });
 
     if(q.type==="choice" || q.type==="id" || q.type==="gap"){
@@ -5777,6 +5882,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     // met à jour le compteur de série
     const st = stage.querySelector(".cj-streak");
     if(st) st.textContent = sess.streak>=3 ? "🔥 "+sess.streak : (sess.streak>0 ? "✔ "+sess.streak : "");
+    updErrBtn();
   }
   function answerChoice(btn){
     if(sess.answered) return;
@@ -5839,6 +5945,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     if(!sess || !$("sec-conjugation").classList.contains("active") || paneT.style.display==="none") return;
     const q = sess.qs[sess.i]; if(!q) return;
     if(e.key==="Enter"){
+      if(e.target && e.target.id==="cj-err-now") return;
       const next = $("cj-next");
       if(next){ if(document.activeElement!==next){ e.preventDefault(); nextQ(); } return; }
       if(!sess.answered && (q.type==="type" || q.type==="table")){
@@ -5907,14 +6014,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     $("cj-again").addEventListener("click", ()=>{ const qs=buildQuestions(); if(qs.length) beginSession(qs); else renderSetup(); });
     $("cj-settings").addEventListener("click", renderSetup);
     const rt = $("cj-retry");
-    if(rt) rt.addEventListener("click", ()=>{
-      const failed = sess.qs.filter((q,i)=>sess.res[i] && sess.res[i].pts<sess.res[i].max).map(q=>{
-        if(q.type==="choice") return {...q, options:formOptions(q.v,q.t,q.pi,q.answer)};
-        if(q.type==="gap") return {...q, options:formOptions(q.v,q.t,q.pi,q.answer)};
-        return q;
-      });
-      beginSession(sh(failed));
-    });
+    if(rt) rt.addEventListener("click", retryErrors);
     if(typeof renderConjProgress==="function") renderConjProgress();
   }
 
@@ -6188,24 +6288,32 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     {q:'Quel site est inscrit au patrimoine mondial de l’UNESCO ?',a:'La région d’Ohrid',o:['Vodno','La région d’Ohrid','Štip','Kruševo']},
     {q:'« Носии » désigne principalement...',a:'les costumes traditionnels',o:['les danses','les costumes traditionnels','les plats de fête','les instruments']}
   ];
-  let qi=0, score=0, answered=false;
-  const qEl=root.querySelector('#mk-quiz-question'), oEl=root.querySelector('#mk-quiz-options'), fEl=root.querySelector('#mk-quiz-feedback'), pEl=root.querySelector('#mk-quiz-progress'), next=root.querySelector('#mk-quiz-next');
+  let cur=QS.slice(), wrong=[], isRetry=false, qi=0, score=0, answered=false;
+  const qEl=root.querySelector('#mk-quiz-question'), oEl=root.querySelector('#mk-quiz-options'), fEl=root.querySelector('#mk-quiz-feedback'), pEl=root.querySelector('#mk-quiz-progress'), next=root.querySelector('#mk-quiz-next'), retryBtn=root.querySelector('#mk-quiz-retry');
+  function updRetry(){ retryBtn.disabled=!wrong.length; retryBtn.textContent='🔁 Retravailler mes erreurs ('+wrong.length+')'; }
   function renderMkQuiz(){
     if(!qEl) return;
-    if(qi>=QS.length){
-      pEl.textContent='Résultat'; qEl.textContent=`${score} / ${QS.length} — ${score>=7?'Отлично ! Excellent !':score>=5?'Многу добро ! Très bien !':'Продолжи ! Continue !'}`;
-      oEl.innerHTML=''; fEl.textContent='Tu peux recommencer pour consolider le vocabulaire.'; next.disabled=true; return;
+    updRetry();
+    if(qi>=cur.length){
+      const r=score/cur.length;
+      pEl.textContent='Résultat'; qEl.textContent=`${score} / ${cur.length} — ${r>=.85?'Отлично ! Excellent !':r>=.6?'Многу добро ! Très bien !':'Продолжи ! Continue !'}`;
+      oEl.innerHTML=''; fEl.textContent=wrong.length?'Clique sur « Retravailler mes erreurs » pour revoir uniquement les questions ratées.':'Tu peux recommencer pour consolider le vocabulaire.'; next.disabled=true; return;
     }
-    const x=QS[qi]; answered=false; pEl.textContent=`Question ${qi+1} / ${QS.length}`; qEl.textContent=x.q; fEl.textContent=''; next.disabled=true;
+    const x=cur[qi]; answered=false; pEl.textContent=`Question ${qi+1} / ${cur.length}${isRetry?' (révision des erreurs)':''}`; qEl.textContent=x.q; fEl.textContent=''; next.disabled=true;
     oEl.innerHTML=x.o.map(v=>`<button type="button" class="mk-qopt" data-answer="${v.replace(/"/g,'&quot;')}">${v}</button>`).join('');
     oEl.querySelectorAll('.mk-qopt').forEach(btn=>btn.addEventListener('click',()=>{
       if(answered) return; answered=true; const ok=btn.dataset.answer===x.a; if(ok) score++; btn.classList.add(ok?'correct':'wrong');
+      if(!ok && !wrong.includes(x)) wrong.push(x);
       oEl.querySelectorAll('.mk-qopt').forEach(b=>{if(b.dataset.answer===x.a)b.classList.add('correct');});
-      fEl.textContent=ok?'✓ Bonne réponse !':'→ Bonne réponse : '+x.a; next.disabled=false;
+      fEl.textContent=ok?'✓ Bonne réponse !':'→ Bonne réponse : '+x.a; next.disabled=false; updRetry();
     }));
   }
   next.addEventListener('click',()=>{if(!answered)return;qi++;renderMkQuiz();});
-  root.querySelector('#mk-quiz-restart').addEventListener('click',()=>{qi=0;score=0;renderMkQuiz();});
+  root.querySelector('#mk-quiz-restart').addEventListener('click',()=>{cur=QS.slice();wrong=[];isRetry=false;qi=0;score=0;renderMkQuiz();});
+  retryBtn.addEventListener('click',()=>{
+    if(!wrong.length) return;
+    cur=shuffle(wrong).map(x=>({...x,o:shuffle(x.o)})); wrong=[]; isRetry=true; qi=0; score=0; renderMkQuiz();
+  });
   renderMkQuiz();
 })();
 
@@ -6286,13 +6394,16 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   const themeSel=root.querySelector('#mk-fc-theme');
   let cat='all', theme='all', deck=[], pos=0, flipped=false, done=false;
   const known=new Set();
+  const missed=new Set();
+  const retryBar=root.querySelector('#mk-fc-retry-bar'), retryBtn=root.querySelector('#mk-fc-retry');
+  function updRetry(){ retryBtn.disabled=missed.size===0; retryBtn.textContent='🔁 Retravailler mes erreurs ('+missed.size+')'; }
 
   themeSel.innerHTML='<option value="all">Tous les thèmes ('+A1.length+' mots)</option>'+MK_A1.cats.map((n,i)=>`<option value="${i}">${i+1}. ${esc(n)} (${A1.filter(c=>c.theme===i).length})</option>`).join('');
   themeSel.addEventListener('change',()=>{theme=themeSel.value;build();render();});
 
   function build(){
     deck=D.filter(c=>(cat==='all'||c.cat===cat)&&(cat!=='a1'||theme==='all'||c.theme===+theme));
-    pos=0; done=false; setFlip(false);
+    pos=0; done=false; missed.clear(); setFlip(false);
   }
   function setFlip(v){ flipped=v; card.classList.toggle('flipped',v); }
   function renderChips(){
@@ -6304,6 +6415,7 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
     chipsEl.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{cat=b.dataset.fc;build();renderChips();render();}));
   }
   function render(){
+    retryBar.style.display=(deck.length&&!done)?'':'none';
     if(!deck.length){ card.style.display='none'; ctrl.style.display='none'; endEl.style.display=''; endEl.textContent='Aucune carte dans cette sélection.'; prog.textContent=''; return; }
     if(done){
       const n=deck.filter(c=>known.has(c.id)).length;
@@ -6322,6 +6434,7 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
     tagF.textContent=c.tag; tagB.textContent=c.tag;
     const n=deck.filter(x=>known.has(x.id)).length;
     prog.textContent=`Carte ${pos+1} / ${deck.length} — maîtrisées : ${n}`;
+    updRetry();
   }
   function step(d){
     if(!deck.length) return;
@@ -6333,8 +6446,12 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   card.addEventListener('click',()=>setFlip(!flipped));
   root.querySelector('#mk-fc-prev').addEventListener('click',()=>step(-1));
   root.querySelector('#mk-fc-next').addEventListener('click',()=>step(1));
-  root.querySelector('#mk-fc-know').addEventListener('click',()=>{if(deck.length){known.add(deck[pos].id);step(1);}});
-  root.querySelector('#mk-fc-dontknow').addEventListener('click',()=>{if(deck.length){known.delete(deck[pos].id);step(1);}});
+  root.querySelector('#mk-fc-know').addEventListener('click',()=>{if(deck.length){known.add(deck[pos].id);missed.delete(deck[pos].id);step(1);}});
+  root.querySelector('#mk-fc-dontknow').addEventListener('click',()=>{if(deck.length){known.delete(deck[pos].id);missed.add(deck[pos].id);step(1);}});
+  retryBtn.addEventListener('click',()=>{
+    if(!missed.size) return;
+    deck=deck.filter(c=>missed.has(c.id)); missed.clear(); pos=0; done=false; setFlip(false); render();
+  });
   root.querySelector('#mk-fc-shuffle').addEventListener('click',()=>{
     for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]];}
     pos=0; done=false; render();

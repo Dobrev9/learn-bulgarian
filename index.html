@@ -437,6 +437,23 @@
   button.good{ background:var(--ok); color:#fff; }
   button.bad{ background:var(--bad); color:#fff; }
   button.action:hover{ opacity:.88; }
+  .round-end{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    gap:.8rem;
+    width:100%;
+    max-width:440px;
+    padding:1.6rem 1.2rem;
+    background:var(--card);
+    border:1px solid var(--linen-dark);
+    border-top:6px solid var(--gold);
+    text-align:center;
+  }
+  .round-end .re-title{ font-family:'PT Serif', Georgia, serif; font-size:1.25rem; font-weight:700; color:var(--indigo); }
+  .round-end .re-text{ font-size:.98rem; color:var(--text2); }
+  .round-end .re-btns{ display:flex; flex-direction:column; gap:.6rem; width:100%; }
+  .round-end .re-btns button{ width:100%; }
   .progress-label{
     font-size:.85rem;
     color:var(--text3);
@@ -1328,7 +1345,8 @@
           </div>
         </div>
       </div>
-      <div class="card-controls">
+      <div class="round-end" id="fc-end"></div>
+      <div class="card-controls" id="fc-controls">
         <button class="action ghost" id="fc-prev">← Précédent</button>
         <button class="action bad" id="fc-dontknow">Pas encore</button>
         <button class="action good" id="fc-know">Je connais</button>
@@ -1920,13 +1938,14 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
           </div>
         </div>
       </div>
-      <div class="card-controls">
+      <div class="round-end" id="cu-end"></div>
+      <div class="card-controls" id="cu-controls">
         <button class="action ghost" id="cu-prev">← Précédent</button>
         <button class="action bad" id="cu-dontknow">Pas encore</button>
         <button class="action good" id="cu-know">Je connais</button>
         <button class="action ghost" id="cu-next">Suivant →</button>
       </div>
-      <div class="card-controls">
+      <div class="card-controls" id="cu-shuffle-row">
         <button class="action ghost" id="cu-shuffle">🔀 Mélanger les cartes</button>
       </div>
       <div class="progress-label" id="cu-progress"></div>
@@ -3819,8 +3838,21 @@ VOCAB.lucy.items.forEach(l=>{
 /* ---------------- FLASHCARDS (French front, Bulgarian back) ---------------- */
 const fcChips = document.getElementById("fc-chips");
 let fcCat = Object.keys(VOCAB)[0];
-let fcIndex = 0;
+let fcOrder = [];        // indices des cartes du tour en cours
+let fcPos = 0;           // position dans le tour
+let fcMissed = new Set();// cartes cliquées "Pas encore" pendant ce tour
+let fcDone = false;      // tour terminé -> écran de fin
+let fcRetry = false;     // tour limité aux cartes "Pas encore"
 let fcFlipped = false;
+
+function fcReset(){
+  fcOrder = getWordItems(fcCat).map((_, i)=>i);
+  fcPos = 0;
+  fcMissed = new Set();
+  fcDone = false;
+  fcRetry = false;
+}
+fcReset();
 
 function renderFcChips(){
   fcChips.innerHTML = "";
@@ -3828,7 +3860,7 @@ function renderFcChips(){
     const chip = document.createElement("button");
     chip.className = "chip" + (key===fcCat ? " active":"");
     chip.textContent = cat.label;
-    chip.addEventListener("click", ()=>{ fcCat = key; fcIndex = 0; renderFcChips(); renderFlashcard(); });
+    chip.addEventListener("click", ()=>{ fcCat = key; fcReset(); renderFcChips(); renderFlashcard(); });
     fcChips.appendChild(chip);
   });
 }
@@ -3841,9 +3873,55 @@ flashcardEl.addEventListener("click", ()=>{
 
 function knownKey(cat, idx){ return cat + ":" + idx; }
 
+/* Écran de fin de tour (partagé par les flashcards vocabulaire et culture) */
+function buildRoundEnd(host, missedCount, totalCount, onMissed, onAll){
+  const plural = missedCount > 1;
+  host.innerHTML = missedCount > 0
+    ? `<div class="re-title">Tour terminé !</div>
+       <div class="re-text">Tu as cliqué sur « Pas encore » pour <b>${missedCount}</b> carte${plural?"s":""} sur ${totalCount}.<br>Que veux-tu faire ?</div>
+       <div class="re-btns">
+         <button class="action primary" data-act="missed">🔁 Refaire uniquement les ${missedCount} carte${plural?"s":""} « Pas encore »</button>
+         <button class="action ghost" data-act="all">↺ Recommencer avec toutes les cartes (${totalCount})</button>
+       </div>`
+    : `<div class="re-title">🎉 Tour terminé !</div>
+       <div class="re-text">Aucune carte « Pas encore » sur ce tour. Bravo !</div>
+       <div class="re-btns">
+         <button class="action primary" data-act="all">↺ Recommencer avec toutes les cartes (${totalCount})</button>
+       </div>`;
+  const bm = host.querySelector('[data-act="missed"]');
+  if(bm) bm.addEventListener("click", onMissed);
+  host.querySelector('[data-act="all"]').addEventListener("click", onAll);
+}
+
+function fcShowEnd(){
+  const total = getWordItems(fcCat).length;
+  const host = document.getElementById("fc-end");
+  buildRoundEnd(host, fcMissed.size, total,
+    ()=>{ // refaire les "Pas encore"
+      fcOrder = fcOrder.filter(i=>fcMissed.has(i));
+      fcPos = 0; fcMissed = new Set(); fcDone = false; fcRetry = true;
+      renderFlashcard();
+    },
+    ()=>{ fcReset(); renderFlashcard(); }
+  );
+  flashcardEl.style.display = "none";
+  document.getElementById("fc-controls").style.display = "none";
+  host.style.display = "flex";
+  document.getElementById("fc-progress").textContent = "";
+}
+function fcHideEnd(){
+  flashcardEl.style.display = "";
+  document.getElementById("fc-controls").style.display = "";
+  document.getElementById("fc-end").style.display = "none";
+}
+
 function renderFlashcard(){
   const items = getWordItems(fcCat);
-  const it = items[fcIndex];
+  if(!fcOrder.length || fcOrder.some(i=>i>=items.length)) fcReset();
+  if(fcDone){ fcShowEnd(); return; }
+  fcHideEnd();
+  const idx = fcOrder[fcPos];
+  const it = items[idx];
   // FRONT = French, BACK = Bulgarian
   document.getElementById("fc-front-word").textContent = it.fr;
   document.getElementById("fc-back-word").textContent = it.bg;
@@ -3852,30 +3930,33 @@ function renderFlashcard(){
   flashcardEl.classList.remove("flipped");
   const knownCount = items.filter((_, i)=>progress.known[knownKey(fcCat,i)]).length;
   document.getElementById("fc-progress").textContent =
-    `Carte ${fcIndex+1} / ${items.length} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
+    `Carte ${fcPos+1} / ${fcOrder.length}${fcRetry ? " (révision des « Pas encore »)" : ""} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
 }
 
-document.getElementById("fc-next").addEventListener("click", ()=>{
-  const items = getWordItems(fcCat);
-  fcIndex = (fcIndex+1) % items.length;
+function fcMove(step){
+  const n = fcOrder.length;
+  if(step > 0 && fcPos === n-1){ fcDone = true; renderFlashcard(); return; }
+  fcPos = (fcPos + step + n) % n;
   renderFlashcard();
-});
-document.getElementById("fc-prev").addEventListener("click", ()=>{
-  const items = getWordItems(fcCat);
-  fcIndex = (fcIndex-1+items.length) % items.length;
-  renderFlashcard();
-});
+}
+
+document.getElementById("fc-next").addEventListener("click", ()=>fcMove(1));
+document.getElementById("fc-prev").addEventListener("click", ()=>fcMove(-1));
 document.getElementById("fc-know").addEventListener("click", ()=>{
-  progress.known[knownKey(fcCat, fcIndex)] = true;
+  const idx = fcOrder[fcPos];
+  progress.known[knownKey(fcCat, idx)] = true;
+  fcMissed.delete(idx);
   saveProgress(progress);
   renderLucyMiniProgress();
-  document.getElementById("fc-next").click();
+  fcMove(1);
 });
 document.getElementById("fc-dontknow").addEventListener("click", ()=>{
-  delete progress.known[knownKey(fcCat, fcIndex)];
+  const idx = fcOrder[fcPos];
+  delete progress.known[knownKey(fcCat, idx)];
+  fcMissed.add(idx);
   saveProgress(progress);
   renderLucyMiniProgress();
-  document.getElementById("fc-next").click();
+  fcMove(1);
 });
 
 renderFcChips();
@@ -4180,7 +4261,7 @@ function renderLucyMiniProgress(){
 
 document.getElementById("lucy-go-flashcards").addEventListener("click", ()=>{
   fcCat = "lucy";
-  fcIndex = 0;
+  fcReset();
   renderFcChips();
   renderFlashcard();
   switchNavTo("flashcards");
@@ -4236,6 +4317,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     progress = {known:{}, quizScores:{}};
     saveProgress(progress);
     renderProgressPage();
+    fcReset();
     renderFlashcard();
   }
 });
@@ -4455,8 +4537,12 @@ const cuCardsWrap = document.getElementById("cu-cards-wrap");
 const cuQuizBox = document.getElementById("cu-quiz-box");
 const cuFlashcardEl = document.getElementById("cu-flashcard");
 let cuCat = Object.keys(CULTURE)[0];
-let cuOrder = null;
+let cuOrder = null;      // indices des cartes du tour en cours
+let cuFullOrder = null;  // ordre complet du thème (mélangé ou non)
 let cuPos = 0;
+let cuMissed = new Set();// cartes "Pas encore" pendant ce tour
+let cuDone = false;
+let cuRetry = false;
 let cuFlipped = false;
 let cuMode = "cards";
 let cuQuestions = [];
@@ -4468,8 +4554,39 @@ function cuItems(){ return CULTURE[cuCat].items; }
 function cuBuildOrder(shuffled){
   const n = cuItems().length;
   const base = Array.from({length:n}, (_,i)=>i);
-  cuOrder = shuffled ? shuffle(base) : base;
+  cuFullOrder = shuffled ? shuffle(base) : base;
+  cuOrder = cuFullOrder.slice();
   cuPos = 0;
+  cuMissed = new Set();
+  cuDone = false;
+  cuRetry = false;
+}
+
+function cuShowEnd(){
+  const host = document.getElementById("cu-end");
+  buildRoundEnd(host, cuMissed.size, cuFullOrder.length,
+    ()=>{
+      cuOrder = cuFullOrder.filter(i=>cuMissed.has(i));
+      cuPos = 0; cuMissed = new Set(); cuDone = false; cuRetry = true;
+      cuRenderCard();
+    },
+    ()=>{
+      cuOrder = cuFullOrder.slice();
+      cuPos = 0; cuMissed = new Set(); cuDone = false; cuRetry = false;
+      cuRenderCard();
+    }
+  );
+  cuFlashcardEl.style.display = "none";
+  document.getElementById("cu-controls").style.display = "none";
+  document.getElementById("cu-shuffle-row").style.display = "none";
+  host.style.display = "flex";
+  document.getElementById("cu-progress").textContent = "";
+}
+function cuHideEnd(){
+  cuFlashcardEl.style.display = "";
+  document.getElementById("cu-controls").style.display = "";
+  document.getElementById("cu-shuffle-row").style.display = "";
+  document.getElementById("cu-end").style.display = "none";
 }
 
 function cuRenderChips(){
@@ -4495,7 +4612,9 @@ cuFlashcardEl.addEventListener("click", ()=>{
 
 function cuRenderCard(){
   const items = cuItems();
-  if(!cuOrder || cuOrder.length !== items.length) cuBuildOrder(false);
+  if(!cuFullOrder || cuFullOrder.length !== items.length) cuBuildOrder(false);
+  if(cuDone){ cuShowEnd(); return; }
+  cuHideEnd();
   const idx = cuOrder[cuPos];
   const it = items[idx];
   document.getElementById("cu-front-word").textContent = it.q;
@@ -4506,11 +4625,12 @@ function cuRenderCard(){
   const known = cuKnownStore();
   const knownCount = items.filter((_, i)=>known[cuKey(cuCat,i)]).length;
   document.getElementById("cu-progress").textContent =
-    `Carte ${cuPos+1} / ${items.length} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
+    `Carte ${cuPos+1} / ${cuOrder.length}${cuRetry ? " (révision des « Pas encore »)" : ""} — ${knownCount}/${items.length} maîtrisées dans ce thème`;
 }
 
 function cuMove(step){
   const n = cuOrder.length;
+  if(step > 0 && cuPos === n-1){ cuDone = true; cuRenderCard(); return; }
   cuPos = (cuPos + step + n) % n;
   cuRenderCard();
 }
@@ -4523,11 +4643,13 @@ document.getElementById("cu-shuffle").addEventListener("click", ()=>{
 });
 document.getElementById("cu-know").addEventListener("click", ()=>{
   cuKnownStore()[cuKey(cuCat, cuOrder[cuPos])] = true;
+  cuMissed.delete(cuOrder[cuPos]);
   saveProgress(progress);
   cuMove(1);
 });
 document.getElementById("cu-dontknow").addEventListener("click", ()=>{
   delete cuKnownStore()[cuKey(cuCat, cuOrder[cuPos])];
+  cuMissed.add(cuOrder[cuPos]);
   saveProgress(progress);
   cuMove(1);
 });

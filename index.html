@@ -204,6 +204,48 @@
   }
   :root[data-theme="dark"] .nav-group .nav-label{ opacity:.75; }
 
+  /* ---- Module Macédoine du Nord ---- */
+  .mk-hero{
+    background:linear-gradient(135deg,var(--header-bg),var(--madder-dark));
+    color:#fff;
+    padding:1.25rem 1.35rem;
+    margin-bottom:1.2rem;
+    border-left:6px solid var(--gold);
+  }
+  .mk-hero h3{color:#fff;margin-bottom:.25rem;}
+  .mk-hero p{color:#f4eadc;margin:.35rem 0;}
+  .mk-note{
+    background:var(--paper);
+    border:1px solid var(--linen-dark);
+    border-left:5px solid var(--gold);
+    padding:.9rem 1rem;
+    margin:1rem 0 1.2rem;
+    color:var(--text4);
+  }
+  .mk-tabs{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 1rem;}
+  .mk-tab{font-family:'PT Sans',Arial,sans-serif;font-size:.82rem;border:1.5px solid var(--sage);background:transparent;color:var(--sage);padding:.38rem .72rem;border-radius:20px;cursor:pointer;}
+  .mk-tab.active,.mk-tab:hover{background:var(--sage);color:#fff;}
+  .mk-pane{display:none;}
+  .mk-pane.active{display:block;}
+  .mk-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:.8rem;}
+  .mk-card{background:var(--card);border:1px solid var(--linen-dark);border-left:5px solid var(--madder);padding:1rem;}
+  .mk-card h3{font-size:1.08rem;color:var(--madder-dark);margin-bottom:.35rem;}
+  .mk-card p{margin:.35rem 0;color:var(--text4);}
+  .mk-word{font-family:'PT Serif',Georgia,serif;font-size:1.3rem;color:var(--madder-dark);}
+  .mk-trans{font-size:.82rem;color:var(--muted2);font-style:italic;}
+  .mk-timeline{display:flex;flex-direction:column;gap:.7rem;}
+  .mk-era{background:var(--card);border:1px solid var(--linen-dark);border-left:5px solid var(--gold);padding:.85rem 1rem;}
+  .mk-era strong{color:var(--madder-dark);}
+  .mk-quiz{background:var(--card);border:1px solid var(--linen-dark);padding:1rem;max-width:620px;}
+  .mk-quiz-options{display:grid;gap:.5rem;margin-top:.8rem;}
+  .mk-qopt{font-family:'PT Sans',Arial,sans-serif;text-align:left;padding:.65rem .8rem;border:1.5px solid var(--linen-dark);background:var(--paper);color:var(--text4);cursor:pointer;}
+  .mk-qopt:hover{border-color:var(--sage);}
+  .mk-qopt.correct{background:var(--ok-bg);border-color:var(--ok);}
+  .mk-qopt.wrong{background:var(--bad-bg);border-color:var(--bad);}
+  .mk-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem;margin-top:1rem;}
+  .mk-fact{background:var(--paper);border:1px solid var(--linen-dark);padding:.75rem;text-align:center;}
+  .mk-fact b{display:block;font-family:'PT Serif',Georgia,serif;font-size:1.35rem;color:var(--madder-dark);}
+
   /* ---- Cartes repliables (info-card en <details>) ---- */
   details.info-card{ padding:0; }
   details.info-card > summary{
@@ -932,6 +974,7 @@
       <button data-target="cuisine">Cuisine 🍽️</button>
       <button data-target="monuments">Monuments 🏛️</button>
       <button data-target="nosiya">Носии régionales 👗</button>
+      <button data-target="macedonia">Macédoine du Nord 🇲🇰</button>
     </div>
   </div>
   <div class="nav-group">
@@ -1984,6 +2027,124 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
     <div class="culture-cta"><span>Réviser les носии :</span><button class="action primary cu-jump" data-cat="nosiya" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="nosiya" data-mode="quiz">📝 Quiz</button></div>
   </section>
 
+
+  <!-- MACÉDOINE DU NORD -->
+  <section id="sec-macedonia">
+    <h2>Macédoine du Nord 🇲🇰</h2>
+    <p class="lead">Une section pour découvrir la langue, l'histoire, les lieux, les <em>носии</em> (costumes traditionnels) et la cuisine de la Macédoine du Nord. Les sujets communs aux Balkans sont signalés comme tels.</p>
+
+    <div class="mk-hero">
+      <h3>🇲🇰 Македонија — Makedonija</h3>
+      <p><strong>Македонски — makedonski</strong> : le macédonien est une langue slave méridionale écrite en alphabet cyrillique.</p>
+      <p>À retenir : la Macédoine du Nord est l'État actuel ; la région historique de Macédoine est plus vaste et comprend aujourd'hui des territoires de plusieurs États.</p>
+    </div>
+
+    <div class="mk-note"><strong>Repère historique :</strong> la section distingue l'histoire de l'actuel territoire de la Macédoine du Nord, l'histoire de la région de Macédoine et l'État contemporain, afin d'éviter de mélanger ces notions.</div>
+
+    <div class="mk-tabs" role="tablist" aria-label="Sections Macédoine du Nord">
+      <button class="mk-tab active" data-mk-tab="history">📜 Histoire</button>
+      <button class="mk-tab" data-mk-tab="vocab">🗣️ Vocabulaire</button>
+      <button class="mk-tab" data-mk-tab="places">🏛️ Lieux</button>
+      <button class="mk-tab" data-mk-tab="nosiya">👗 Носии</button>
+      <button class="mk-tab" data-mk-tab="food">🍽️ Cuisine</button>
+      <button class="mk-tab" data-mk-tab="quiz">📝 Quiz</button>
+    </div>
+
+    <div class="mk-pane active" id="mk-history">
+      <div class="mk-timeline">
+        <div class="mk-era"><strong>Antiquité — Paeonie et royaumes macédoniens</strong><p>Le territoire de l'actuelle Macédoine du Nord se trouve dans une zone de contact entre plusieurs peuples et ensembles politiques antiques. Le royaume antique de Macédoine s'étend à certaines périodes vers le nord, mais il ne faut pas assimiler automatiquement ce royaume à l'État moderne.</p></div>
+        <div class="mk-era"><strong>Époque romaine et byzantine</strong><p>La région entre dans le monde romain puis byzantin. La cité de <em>Lychnidos</em>, l'actuelle Ohrid, devient un centre important sur les rives du lac.</p></div>
+        <div class="mk-era"><strong>Moyen Âge — christianisation et culture slave</strong><p>Les populations slaves s'installent dans les Balkans. Ohrid devient un grand centre religieux et littéraire slave ; la tradition liée à Clément d'Ohrid et à l'école littéraire d'Ohrid joue un rôle majeur dans la diffusion de l'écriture et de la culture.</p></div>
+        <div class="mk-era"><strong>Époque ottomane</strong><p>La région fait partie de l'Empire ottoman pendant plusieurs siècles. Les villes, les villages, les métiers, l'architecture et les traditions culinaires portent encore des traces de cette longue période.</p></div>
+        <div class="mk-era"><strong>1912–1918 — guerres balkaniques et Première Guerre mondiale</strong><p>La région de Macédoine est disputée et réorganisée entre plusieurs États. Le territoire correspondant à l'actuelle Macédoine du Nord passe sous administration serbe puis, après 1918, dans le Royaume des Serbes, Croates et Slovènes, devenu Yougoslavie.</p></div>
+        <div class="mk-era"><strong>1944–1991 — république yougoslave</strong><p>La République socialiste de Macédoine devient l'une des républiques constitutives de la Yougoslavie. La langue macédonienne standard est codifiée au milieu des années 1940 et la République développe ses institutions culturelles et éducatives.</p></div>
+        <div class="mk-era"><strong>1991 — indépendance</strong><p>La République de Macédoine proclame son indépendance à la suite d'un référendum et quitte progressivement la Yougoslavie. Le pays rejoint ensuite l'ONU en 1993 sous une appellation provisoire liée au différend sur le nom avec la Grèce.</p></div>
+        <div class="mk-era"><strong>2018–2019 — accord de Prespa et nouveau nom</strong><p>L'accord de Prespa conduit au nom constitutionnel <strong>République de Macédoine du Nord</strong>, utilisé officiellement à partir de 2019.</p></div>
+      </div>
+      <div class="mk-facts">
+        <div class="mk-fact"><b>1991</b>indépendance</div>
+        <div class="mk-fact"><b>1993</b>entrée à l'ONU</div>
+        <div class="mk-fact"><b>2019</b>nom « Macédoine du Nord »</div>
+      </div>
+    </div>
+
+    <div class="mk-pane" id="mk-vocab">
+      <p class="lead">Quelques mots de base en macédonien. La translittération est indicative et sert à faciliter la lecture.</p>
+      <div class="mk-grid">
+        <div class="mk-card"><div class="mk-word">Здраво</div><div class="mk-trans">zdravo</div><p>Bonjour / Salut</p></div>
+        <div class="mk-card"><div class="mk-word">Добар ден</div><div class="mk-trans">dobar den</div><p>Bonjour / Bonne journée</p></div>
+        <div class="mk-card"><div class="mk-word">Добро утро</div><div class="mk-trans">dobro utro</div><p>Bonjour (matin)</p></div>
+        <div class="mk-card"><div class="mk-word">Добра вечер</div><div class="mk-trans">dobra večer</div><p>Bonsoir</p></div>
+        <div class="mk-card"><div class="mk-word">Благодарам</div><div class="mk-trans">blagodaram</div><p>Merci</p></div>
+        <div class="mk-card"><div class="mk-word">Молам</div><div class="mk-trans">molam</div><p>S'il vous plaît / Je vous en prie</p></div>
+        <div class="mk-card"><div class="mk-word">Да / Не</div><div class="mk-trans">da / ne</div><p>Oui / Non</p></div>
+        <div class="mk-card"><div class="mk-word">Како си?</div><div class="mk-trans">kako si?</div><p>Comment vas-tu ?</p></div>
+        <div class="mk-card"><div class="mk-word">Добро сум.</div><div class="mk-trans">dobro sum.</div><p>Je vais bien.</p></div>
+        <div class="mk-card"><div class="mk-word">Колку чини?</div><div class="mk-trans">kolku čini?</div><p>Combien ça coûte ?</p></div>
+        <div class="mk-card"><div class="mk-word">Каде е...?</div><div class="mk-trans">kade e...?</div><p>Où est... ?</p></div>
+        <div class="mk-card"><div class="mk-word">Вода</div><div class="mk-trans">voda</div><p>Eau</p></div>
+        <div class="mk-card"><div class="mk-word">Храна</div><div class="mk-trans">hrana</div><p>Nourriture</p></div>
+        <div class="mk-card"><div class="mk-word">Убаво!</div><div class="mk-trans">ubavo!</div><p>C'est beau ! / C'est joli !</p></div>
+        <div class="mk-card"><div class="mk-word">Македонија</div><div class="mk-trans">Makedonija</div><p>Macédoine</p></div>
+        <div class="mk-card"><div class="mk-word">Скопје</div><div class="mk-trans">Skopje</div><p>Skopje</p></div>
+      </div>
+      <details class="info-card" style="margin-top:1rem;"><summary>🔤 Trois repères de langue</summary><p><strong>Ѓ / ѓ</strong> et <strong>Ќ / ќ</strong> sont deux lettres spécifiques du macédonien standard. Le macédonien partage de nombreuses ressemblances avec les autres langues slaves méridionales, tout en ayant ses propres traits grammaticaux et lexicaux.</p></details>
+    </div>
+
+    <div class="mk-pane" id="mk-places">
+      <div class="mk-grid">
+        <div class="mk-card"><h3>Охрид — Ohrid</h3><p>Ville historique au bord du lac d'Ohrid, avec de nombreuses églises, fresques et vestiges. La région d'Ohrid est inscrite au patrimoine mondial de l'UNESCO depuis 1979 pour ses valeurs naturelles, puis étendue aux valeurs culturelles en 1980.</p></div>
+        <div class="mk-card"><h3>Скопје — Skopje</h3><p>Capitale et principal centre urbain du pays. À voir : le vieux bazar, la forteresse de Kale, le pont de pierre et la montagne Vodno.</p></div>
+        <div class="mk-card"><h3>Битола — Bitola</h3><p>Ville du sud-ouest connue pour la rue Širok Sokak et le site antique d'Heraclea Lyncestis.</p></div>
+        <div class="mk-card"><h3>Кањон Матка — Matka</h3><p>Canyon spectaculaire près de Skopje, apprécié pour ses falaises, ses grottes, ses sentiers et le lac artificiel créé par le barrage.</p></div>
+        <div class="mk-card"><h3>Маврово — Mavrovo</h3><p>Parc national de montagne, connu pour ses paysages, ses forêts, son lac et ses activités de plein air.</p></div>
+        <div class="mk-card"><h3>Крушево — Kruševo</h3><p>Ville de montagne associée à l'insurrection d'Ilinden de 1903 et à la République de Kruševo, épisode important de la mémoire nationale.</p></div>
+        <div class="mk-card"><h3>Кокино — Kokino</h3><p>Site archéo-astronomique préhistorique situé au nord-est du pays et inscrit sur la liste indicative de l'UNESCO.</p></div>
+        <div class="mk-card"><h3>Галичник — Galičnik</h3><p>Village de montagne des Mijaks, réputé pour son architecture traditionnelle, ses paysages et la fête du mariage de Galičnik.</p></div>
+      </div>
+      <div class="mk-note"><strong>À retenir :</strong> le patrimoine d'Ohrid est particulièrement important : l'UNESCO décrit le lac comme un écosystème ancien avec de nombreuses espèces endémiques et Ohrid comme l'un des plus anciens établissements humains d'Europe.</div>
+    </div>
+
+    <div class="mk-pane" id="mk-nosiya">
+      <p class="lead"><strong>Носии — nosii</strong> signifie « costumes traditionnels ». Les vêtements varient fortement selon les régions, les villages, le statut social, l'âge et les occasions. On peut donc parler de plusieurs traditions vestimentaires plutôt que d'un seul « costume macédonien ».</p>
+      <div class="mk-grid">
+        <div class="mk-card"><h3>👗 Région de Galičnik / Mijaks</h3><p>Costumes riches en laine, broderies, tabliers, ceintures et ornements. La région de Galičnik est particulièrement connue pour ses ensembles de fête.</p></div>
+        <div class="mk-card"><h3>👗 Région d'Ohrid</h3><p>Les costumes de la région d'Ohrid présentent des combinaisons de textiles, broderies et bijoux qui varient selon les villages et les occasions.</p></div>
+        <div class="mk-card"><h3>👗 Pelagonie et Bitola</h3><p>Dans les plaines et autour de Bitola, les vêtements traditionnels montrent des influences régionales et ottomanes, avec une grande variété de pièces et de broderies.</p></div>
+        <div class="mk-card"><h3>👗 Šar et ouest montagneux</h3><p>Dans les zones montagneuses, la laine et les vêtements adaptés au froid occupent une place importante. Les traditions peuvent aussi différer selon les communautés locales.</p></div>
+      </div>
+      <details class="info-card" style="margin-top:1rem;"><summary>🧵 Vocabulaire des costumes</summary><p><strong>носии</strong> = costumes traditionnels · <strong>вез</strong> = broderie · <strong>волна</strong> = laine · <strong>кошулa</strong> = chemise · <strong>прегача</strong> = tablier · <strong>појас</strong> = ceinture.</p></details>
+    </div>
+
+    <div class="mk-pane" id="mk-food">
+      <p class="lead">La cuisine macédonienne repose sur les légumes, les poivrons, les haricots, les aubergines, les produits laitiers, les céréales et les viandes. Plusieurs plats appartiennent à un patrimoine balkanique partagé : leur origine peut donc être revendiquée ou préparée différemment selon les pays.</p>
+      <div class="mk-grid">
+        <div class="mk-card"><h3>🫘 Тавче гравче — Tavče gravče</h3><p>Haricots cuits au four dans un plat en terre cuite, avec oignon, poivron et épices. Un des plats les plus emblématiques du pays.</p></div>
+        <div class="mk-card"><h3>🌶️ Ајвар — Ajvar</h3><p>Préparation de poivrons rouges grillés, souvent réalisée à la fin de l'été et conservée pour l'hiver. Très répandue dans les Balkans.</p></div>
+        <div class="mk-card"><h3>🍆 Пинџур — Pindžur</h3><p>Préparation de légumes, notamment poivrons et tomates, proche par son esprit des différentes préparations balkaniques de légumes grillés.</p></div>
+        <div class="mk-card"><h3>🥩 Пастрмајлија — Pastrmajlija</h3><p>Grande pâte ovale garnie traditionnellement de viande, spécialité particulièrement associée aux villes de Štip et Veles.</p></div>
+        <div class="mk-card"><h3>🥧 Зелник — Zelnik</h3><p>Tourte de pâte fine garnie selon les recettes de fromage, poireaux, épinards ou autres ingrédients.</p></div>
+        <div class="mk-card"><h3>🐟 Охридска пастрмка</h3><p>Truite d'Ohrid, liée au lac et à son patrimoine naturel. Le lac d'Ohrid abrite plusieurs poissons endémiques, ce qui rend sa protection particulièrement importante.</p></div>
+        <div class="mk-card"><h3>🥗 Шопска салата</h3><p>Salade de tomates, concombre, poivron et fromage blanc salé. Elle est très répandue dans les Balkans et ne doit pas être présentée comme exclusivement macédonienne.</p></div>
+        <div class="mk-card"><h3>☕ Турско кафе</h3><p>Café préparé dans un petit récipient, héritage culinaire partagé dans une grande partie des Balkans et de l'ancien espace ottoman.</p></div>
+      </div>
+    </div>
+
+    <div class="mk-pane" id="mk-quiz">
+      <div class="mk-quiz">
+        <div id="mk-quiz-progress" class="progress-label"></div>
+        <div id="mk-quiz-question" class="quiz-question">—</div>
+        <div id="mk-quiz-options" class="mk-quiz-options"></div>
+        <div id="mk-quiz-feedback" style="margin-top:.8rem;color:var(--text2);"></div>
+        <div class="card-controls" style="justify-content:flex-start;margin-top:.8rem;">
+          <button class="action primary" id="mk-quiz-next" disabled>Question suivante →</button>
+          <button class="action ghost" id="mk-quiz-restart">↻ Recommencer</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="culture-cta"><span>Réviser la Macédoine :</span><button class="action primary" data-mk-jump="vocab">🗣️ Vocabulaire</button><button class="action ghost" data-mk-jump="quiz">📝 Quiz</button></div>
+  </section>
 
   <!-- CULTURE : FLASHCARDS + QUIZ -->
   <section id="sec-culture">
@@ -5712,7 +5873,10 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     renaissance: { label:"🏘️ Renaissance : villes-musées",       color:"#8B5E3C" },
     sofia:       { label:"🏛️ Sofia (autres sites)",              color:"#6B4C9A" },
     xxe:         { label:"🛸 XXe siècle et mémoire nationale",   color:"#4a4a4a" },
-    monasteries: { label:"⛪ Autres monastères de Bulgarie",     color:"#2F7A6B" }
+    monasteries: { label:"⛪ Autres monastères de Bulgarie",     color:"#2F7A6B" },
+    macedonia:   { label:"🇲🇰 Macédoine du Nord",                color:"#D4452B" },
+    mkmonast:    { label:"⛪ Monastères de Macédoine du Nord",   color:"#E08A1E" },
+    mkfort:      { label:"🏰 Forteresses de Macédoine du Nord",  color:"#7A1F2B" }
   };
 
   const MONUMENTS = [
@@ -5805,7 +5969,34 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     { n:"Monastère de Gorno Ezerovo", bg:"Горноезеровски манастир", cat:"monasteries", lat:42.5330, lng:27.4000, d:"Près de Bourgas, sur la côte de la mer Noire." },
     { n:"Monastère de Lopushna", bg:"Лопушански манастир „Свети Иван Предтеча”", cat:"monasteries", lat:43.2830, lng:22.9670, d:"Dans les monts Berkovska, au nord-ouest du pays." },
     { n:"Monastère de Cherepish", bg:"Черепишки манастир", cat:"monasteries", lat:43.1700, lng:23.6200, d:"Dans les gorges de l'Iskar, près de Mezdra." },
-    { n:"Monastère des Sept-Trônes", bg:"Манастир „Седемте престола”", cat:"monasteries", lat:43.0500, lng:23.5500, d:"Non loin de Cherepish, dans les gorges de l'Iskar." }
+    { n:"Monastère des Sept-Trônes", bg:"Манастир „Седемте престола”", cat:"monasteries", lat:43.0500, lng:23.5500, d:"Non loin de Cherepish, dans les gorges de l'Iskar." },
+
+    // Macédoine du Nord
+    { n:"Ohrid", bg:"Охрид", cat:"macedonia", lat:41.1231, lng:20.8016, d:"Ville historique au bord du lac d'Ohrid, avec de nombreuses églises, fresques et vestiges. La région d'Ohrid est inscrite au patrimoine mondial de l'UNESCO depuis 1979 pour ses valeurs naturelles, puis étendue aux valeurs culturelles en 1980." },
+    { n:"Skopje", bg:"Скопје", cat:"macedonia", lat:41.9981, lng:21.4254, d:"Capitale et principal centre urbain du pays. À voir : le vieux bazar, la forteresse de Kale, le pont de pierre et la montagne Vodno." },
+    { n:"Bitola", bg:"Битола", cat:"macedonia", lat:41.0297, lng:21.3347, d:"Ville du sud-ouest connue pour la rue Širok Sokak et le site antique d'Heraclea Lyncestis." },
+    { n:"Matka", bg:"Кањон Матка", cat:"macedonia", lat:41.9533, lng:21.2967, d:"Canyon spectaculaire près de Skopje, apprécié pour ses falaises, ses grottes, ses sentiers et le lac artificiel créé par le barrage." },
+    { n:"Mavrovo", bg:"Маврово", cat:"macedonia", lat:41.6867, lng:20.7494, d:"Parc national de montagne, connu pour ses paysages, ses forêts, son lac et ses activités de plein air." },
+    { n:"Kruševo", bg:"Крушево", cat:"macedonia", lat:41.3697, lng:21.2483, d:"Ville de montagne associée à l'insurrection d'Ilinden de 1903 et à la République de Kruševo, épisode important de la mémoire nationale." },
+    { n:"Kokino", bg:"Кокино", cat:"macedonia", lat:42.2667, lng:21.9833, d:"Site archéo-astronomique préhistorique situé au nord-est du pays et inscrit sur la liste indicative de l'UNESCO." },
+    { n:"Galičnik", bg:"Галичник", cat:"macedonia", lat:41.5972, lng:20.6592, d:"Village de montagne des Mijaks, réputé pour son architecture traditionnelle, ses paysages et la fête du mariage de Galičnik." },
+
+    // Monastères de Macédoine du Nord
+    { n:"Monastère Saint-Jean Bigorski", bg:"Св. Јован Бигорски", cat:"mkmonast", lat:41.6006, lng:20.6139, d:"Près du parc national de Mavrovo : fondé au XIᵉ siècle, c'est l'un des centres spirituels les plus célèbres du pays. Il est réputé pour son exceptionnelle iconostase en bois sculpté." },
+    { n:"Monastère Saint-Naum", bg:"Св. Наум", cat:"mkmonast", lat:40.9114, lng:20.7414, d:"Au bord du lac d'Ohrid : créé au Xe siècle par saint Naum, disciple de Cyrille et Méthode, il est un grand lieu de pèlerinage et l'un des sites les plus visités du pays." },
+    { n:"Monastère d'Osogovo", bg:"Осоговски манастир", cat:"mkmonast", lat:42.1581, lng:22.5614, d:"Près de Kriva Palanka : fondé au XIIᵉ siècle, il est considéré comme l'un des monastères les plus importants de Macédoine du Nord, avec une architecture remarquable et de belles fresques." },
+    { n:"Monastère de Treskavec", bg:"Трескавец", cat:"mkmonast", lat:41.3333, lng:21.5500, d:"Au-dessus de Prilep : perché dans les montagnes, il est célèbre pour son cadre spectaculaire et ses fresques médiévales." },
+    { n:"Monastère de Lesnovo", bg:"Лесново", cat:"mkmonast", lat:42.0200, lng:22.1300, d:"Dans l'est du pays : un chef-d'œuvre de l'architecture serbo-byzantine du XIVᵉ siècle, connu pour ses fresques." },
+    { n:"Monastère de Marko", bg:"Марков манастир", cat:"mkmonast", lat:41.9630, lng:21.4780, d:"Près de Skopje : fondé au XIVᵉ siècle, il conserve des fresques importantes de l'époque médiévale." },
+    { n:"Monastère de Zrze", bg:"Зрзе", cat:"mkmonast", lat:41.4000, lng:21.5200, d:"Près de Prilep : moins connu, mais très important dans l'histoire spirituelle et artistique du pays." },
+
+    // Forteresses de Macédoine du Nord
+    { n:"Forteresse de Kale (Skopje)", bg:"Скопско Кале", cat:"mkfort", lat:42.0000, lng:21.4375, d:"La plus connue du pays, dominant la vieille ville de Skopje. Ses origines remontent à l'Antiquité et elle a été développée au Moyen Âge." },
+    { n:"Forteresse de Samuel (Ohrid)", bg:"Самуилова тврдина", cat:"mkfort", lat:41.1131, lng:20.7950, d:"Probablement la plus spectaculaire. Elle domine entièrement la ville et le lac d'Ohrid. Elle est associée au tsar Samuel de Bulgarie (Xe–XIe siècles)." },
+    { n:"Forteresse de Markovi Kuli (Prilep)", bg:"Маркови Кули", cat:"mkfort", lat:41.3550, lng:21.5730, d:"Impressionnante citadelle médiévale construite sur des formations rocheuses, près de Prilep. Les paysages sont particulièrement beaux." },
+    { n:"Forteresse de Kitino Kale (Kičevo)", bg:"Китино Кале", cat:"mkfort", lat:41.5120, lng:20.9590, d:"Vestiges d'une ancienne fortification dominant la ville de Kičevo." },
+    { n:"Forteresse de Vinica", bg:"Виничка тврдина", cat:"mkfort", lat:41.8800, lng:22.5100, d:"Fortifications anciennes situées au-dessus de Vinica, avec une histoire remontant à l'Antiquité tardive." },
+    { n:"Forteresse de Štip (Isar)", bg:"Штипски Исар", cat:"mkfort", lat:41.7430, lng:22.1990, d:"Située sur une colline dominant Štip, avec des vestiges médiévaux." }
   ];
 
   let map = null, initedOnce = false;
@@ -5842,7 +6033,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     }
     if(typeof L === "undefined") return; // Leaflet non chargé (pas de réseau)
     initedOnce = true;
-    map = L.map("monuments-map", { scrollWheelZoom:false }).setView([42.75, 25.2], 7);
+    map = L.map("monuments-map", { scrollWheelZoom:false }).setView([42.4, 23.0], 6);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 18,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
@@ -5874,6 +6065,52 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   const monSection = document.getElementById("sec-monuments");
   if(monSection && monSection.classList.contains("active")) initMonumentsMap();
 })();
+
+/* ================= MACÉDOINE DU NORD ================= */
+(function(){
+  const root=document.getElementById('sec-macedonia');
+  if(!root) return;
+  const tabs=[...root.querySelectorAll('.mk-tab')];
+  const panes=[...root.querySelectorAll('.mk-pane')];
+  function showTab(name){
+    tabs.forEach(b=>b.classList.toggle('active',b.dataset.mkTab===name));
+    panes.forEach(p=>p.classList.toggle('active',p.id==='mk-'+name));
+    if(name==='quiz') renderMkQuiz();
+  }
+  tabs.forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.mkTab)));
+  root.querySelectorAll('[data-mk-jump]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.mkJump)));
+
+  const QS=[
+    {q:'Quelle est la capitale de la Macédoine du Nord ?',a:'Skopje',o:['Ohrid','Skopje','Bitola','Kruševo']},
+    {q:'Quelle ville est située au bord du lac d’Ohrid ?',a:'Ohrid',o:['Ohrid','Štip','Veles','Kumanovo']},
+    {q:'Que signifie « Благодарам » ?',a:'Merci',o:['Bonjour','Merci','Au revoir','Pardon']},
+    {q:'Quel plat est composé principalement de haricots cuits au four ?',a:'Tavče gravče',o:['Pastrmajlija','Tavče gravče','Zelnik','Ajvar']},
+    {q:'Quel alphabet utilise le macédonien standard ?',a:'Cyrillique',o:['Grec','Latin uniquement','Cyrillique','Géorgien']},
+    {q:'En quelle année la Macédoine du Nord a-t-elle proclamé son indépendance ?',a:'1991',o:['1944','1974','1991','2001']},
+    {q:'Quel site est inscrit au patrimoine mondial de l’UNESCO ?',a:'La région d’Ohrid',o:['Vodno','La région d’Ohrid','Štip','Kruševo']},
+    {q:'« Носии » désigne principalement...',a:'les costumes traditionnels',o:['les danses','les costumes traditionnels','les plats de fête','les instruments']}
+  ];
+  let qi=0, score=0, answered=false;
+  const qEl=root.querySelector('#mk-quiz-question'), oEl=root.querySelector('#mk-quiz-options'), fEl=root.querySelector('#mk-quiz-feedback'), pEl=root.querySelector('#mk-quiz-progress'), next=root.querySelector('#mk-quiz-next');
+  function renderMkQuiz(){
+    if(!qEl) return;
+    if(qi>=QS.length){
+      pEl.textContent='Résultat'; qEl.textContent=`${score} / ${QS.length} — ${score>=7?'Отлично ! Excellent !':score>=5?'Многу добро ! Très bien !':'Продолжи ! Continue !'}`;
+      oEl.innerHTML=''; fEl.textContent='Tu peux recommencer pour consolider le vocabulaire.'; next.disabled=true; return;
+    }
+    const x=QS[qi]; answered=false; pEl.textContent=`Question ${qi+1} / ${QS.length}`; qEl.textContent=x.q; fEl.textContent=''; next.disabled=true;
+    oEl.innerHTML=x.o.map(v=>`<button type="button" class="mk-qopt" data-answer="${v.replace(/"/g,'&quot;')}">${v}</button>`).join('');
+    oEl.querySelectorAll('.mk-qopt').forEach(btn=>btn.addEventListener('click',()=>{
+      if(answered) return; answered=true; const ok=btn.dataset.answer===x.a; if(ok) score++; btn.classList.add(ok?'correct':'wrong');
+      oEl.querySelectorAll('.mk-qopt').forEach(b=>{if(b.dataset.answer===x.a)b.classList.add('correct');});
+      fEl.textContent=ok?'✓ Bonne réponse !':'→ Bonne réponse : '+x.a; next.disabled=false;
+    }));
+  }
+  next.addEventListener('click',()=>{if(!answered)return;qi++;renderMkQuiz();});
+  root.querySelector('#mk-quiz-restart').addEventListener('click',()=>{qi=0;score=0;renderMkQuiz();});
+  renderMkQuiz();
+})();
+
 </script>
 </body>
 </html>

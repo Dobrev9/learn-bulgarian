@@ -490,6 +490,18 @@
   .flashcard.fc-reveal{ animation:fcReveal .45s ease-out; }
   @keyframes fcReveal{ from{ opacity:0; transform:translateY(14px) scale(.96); } to{ opacity:1; transform:none; } }
 
+  /* Bouton « écouter la prononciation » des flashcards */
+  .fc-say{
+    display:inline-flex; align-items:center; gap:.4rem;
+    margin-top:.8rem; padding:.35rem .9rem;
+    font:inherit; font-size:.9rem; line-height:1.4;
+    color:var(--madder-dark); background:var(--linen);
+    border:1px solid var(--linen-dark); border-radius:16px;
+    cursor:pointer; transition:background .15s, border-color .15s;
+  }
+  .fc-say:hover, .fc-say:focus-visible{ border-color:var(--gold); background:var(--linen-dark); outline:none; }
+  .fc-say.playing{ border-color:var(--madder); }
+
   /* Culture (histoire / fêtes / fiertés) */
   .flashcard.culture{ height:280px; }
   .flashcard.culture .face.front{ border-top:6px solid var(--gold); }
@@ -1475,6 +1487,7 @@
           <div class="face back">
             <div class="word" id="fc-back-word">—</div>
             <div class="sub" id="fc-back-sub"></div>
+            <button type="button" class="fc-say" id="fc-say" aria-label="Écouter la prononciation en bulgare">🔊 Écouter</button>
             <div class="hint">clique pour revenir</div>
           </div>
         </div>
@@ -5566,6 +5579,66 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     el.setAttribute("role","button"); el.setAttribute("tabindex","0");
     el.setAttribute("aria-label","Écouter : "+(el.dataset.say||""));
   });
+})();
+
+/* ---------------- FLASHCARDS : bouton « écouter la prononciation » ---------------- */
+(function(){
+  const btn = document.getElementById("fc-say");
+  const wordEl = document.getElementById("fc-back-word");
+  if(!btn || !wordEl) return;
+  const synth = window.speechSynthesis;
+  let bgVoice = null;
+  function pickVoice(){
+    if(!synth) return;
+    bgVoice = synth.getVoices().find(x=>/^bg/i.test(x.lang)) || null;
+  }
+  if(synth){ pickVoice(); synth.addEventListener("voiceschanged", pickVoice); }
+
+  const toast = document.createElement("div");
+  toast.style.cssText = "position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#232B3D;color:#fff;padding:.6rem 1rem;border-radius:8px;font-size:.9rem;z-index:9999;display:none;max-width:90%;text-align:center";
+  document.body.appendChild(toast);
+  let toastT;
+  function say(msg){ toast.textContent = msg; toast.style.display = "block"; clearTimeout(toastT); toastT = setTimeout(()=>toast.style.display = "none", 4000); }
+
+  /* Texte à lire : mot bulgare sans accents toniques, variantes « / » séparées par une pause */
+  function textToSpeak(){
+    return (wordEl.textContent || "")
+      .replace(/[\u0300\u0301]/g, "")
+      .replace(/\s*\/\s*/g, ", ")
+      .trim();
+  }
+
+  let audio = null;
+  function playOnline(text){
+    if(audio) audio.pause();
+    audio = new Audio("https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=bg&q=" + encodeURIComponent(text));
+    btn.classList.add("playing");
+    audio.onended = ()=>btn.classList.remove("playing");
+    audio.onerror = ()=>{ btn.classList.remove("playing"); say("Audio indisponible : installe une voix bulgare dans ton système ou vérifie ta connexion."); };
+    audio.play().catch(()=>{ btn.classList.remove("playing"); say("Audio bloqué ou indisponible (connexion ?)."); });
+  }
+
+  function speak(){
+    const text = textToSpeak();
+    if(!text || text === "—") return;
+    if(!bgVoice) pickVoice();
+    if(synth && bgVoice){
+      synth.cancel();
+      setTimeout(()=>{
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = bgVoice.lang; u.voice = bgVoice; u.rate = 0.8;
+        u.onstart = ()=>btn.classList.add("playing");
+        u.onend = u.onerror = ()=>btn.classList.remove("playing");
+        synth.speak(u);
+      }, 60);
+    } else {
+      playOnline(text);
+    }
+  }
+
+  /* stopPropagation : cliquer sur 🔊 ne doit pas retourner la carte */
+  btn.addEventListener("click", e=>{ e.stopPropagation(); speak(); });
+  btn.addEventListener("keydown", e=>e.stopPropagation());
 })();
 </script>
 <script>

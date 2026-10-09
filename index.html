@@ -4477,7 +4477,7 @@ function fcBuildPile(){
   for(let i=0;i<FC_PILE_SIZE;i++){
     const c = document.createElement("div");
     c.className = "fc-deck-card";
-    c.textContent = "📇";
+    c.textContent = "";
     c.style.zIndex = i;
     c.style.transform = fcPileBase(i);
     fcPileEl.appendChild(c);

@@ -1037,6 +1037,23 @@
   .rg-src{ font-size:.9rem; }
   .rg-src a{ color:var(--madder-dark); word-break:break-word; }
   .rg-star{ display:inline-block; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; background:var(--gold); color:#fff; padding:.05rem .45rem; border-radius:10px; margin-right:.35rem; }
+
+  /* ---- Saints ---- */
+  .saints-search{width:100%;max-width:420px;font-family:'PT Sans',Arial,sans-serif;font-size:.95rem;padding:.5rem .8rem;border:1.5px solid var(--linen-dark);border-radius:20px;background:var(--card);color:var(--indigo);}
+  .saints-search:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .saints-count{font-size:.78rem;font-weight:400;color:var(--muted2);margin-left:.4rem;}
+  .saint-row{display:flex;gap:.8rem;padding:.55rem 1.3rem;border-top:1px solid var(--linen-dark);}
+  .saint-date{flex:0 0 2.2rem;font-family:'PT Serif',Georgia,serif;font-weight:700;color:var(--madder-dark);font-size:1.1rem;text-align:right;}
+  .saint-main{color:var(--text4);line-height:1.4;}
+  .saint-bg{color:var(--text3);font-style:italic;margin-left:.35rem;}
+  .saint-det{font-size:.88rem;color:var(--muted2);}
+  .saint-link{font-size:.82rem;color:var(--sage);margin-left:.3rem;text-decoration:none;border-bottom:1px dotted var(--sage);}
+  .saint-link:hover{color:var(--madder);}
+  .saints-empty{display:none;color:var(--muted2);font-style:italic;}
+  .saints-fiches{columns:2 280px;column-gap:2rem;padding-left:2.4rem !important;margin:.4rem 0 1rem;}
+  .saints-fiches li{margin:.2rem 0;break-inside:avoid;}
+  .saints-fiches a{color:var(--madder-dark);}
+  @media (max-width:520px){.saint-row{padding:.55rem .9rem}}
 </style>
 <script>
 (function(){
@@ -1109,6 +1126,8 @@
     <span class="nav-label">🙏 Spiritualité & notes</span>
     <div class="nav-btns">
       <button data-target="prayers">Prières</button>
+      <button data-target="saints">Saints ☦️</button>
+      <button data-target="saints-majeurs">Saints majeurs 🌟</button>
       <button data-target="lucy">Notes</button>
     </div>
   </div>
@@ -1481,6 +1500,207 @@
   </section>
 
   <!-- NOTES & LUCY CONTEXT -->
+    <!-- SAINTS MAJEURS -->
+  <section id="sec-saints-majeurs">
+    <h2>🌟 Saints majeurs de Bulgarie</h2>
+    <p class="lead">Les 31 figures à connaître en priorité : fondateurs de la foi, maîtres spirituels et martyrs. Pour le calendrier complet, voir la rubrique « Saints ☦️ ».</p>
+    <div class="section-toolbar">
+      <button type="button" class="mini-btn" data-expand="all">Tout déplier</button>
+      <button type="button" class="mini-btn" data-expand="none">Tout replier</button>
+    </div>
+    <details class="info-card" open><summary>I. Les figures majeures de la sainteté bulgare</summary>
+<div class="saint-row"><span class="saint-date">1</span><div class="saint-main"><strong>Saint Jean de Rila (Ivan Rilski)</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-ioan-rilski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 19 octobre</em></span><br>Le grand patron spirituel de la Bulgarie, ermite et figure fondatrice du monachisme bulgare. Il est l'un des saints les plus vénérés du pays.</div></div>
+<div class="saint-row"><span class="saint-date">2</span><div class="saint-main"><strong>Saint Boris-Michel Ier de Bulgarie</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-car-boris" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Règne : vers 852–889 · Fête : 2 mai</em></span><br>Le souverain qui a conduit la Bulgarie à la christianisation au IXe siècle. Son rôle est fondamental dans l'histoire de l'Église bulgare.</div></div>
+<div class="saint-row"><span class="saint-date">3</span><div class="saint-main"><strong>Saints Cyrille et Méthode</strong> <a class="saint-link" href="https://bg-patriarshia.bg/kiril-metodi" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête commune : 11 mai</em></span><br>Les apôtres des Slaves, dont la mission a profondément marqué la liturgie et la culture chrétiennes slaves, notamment en Bulgarie.</div></div>
+<div class="saint-row"><span class="saint-date">4</span><div class="saint-main"><strong>Saint Clément d'Ohrid</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-kliment-ohridski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 25 novembre</em></span><br>Disciple de Cyrille et Méthode, évangélisateur, éducateur et écrivain qui a contribué au développement de la culture chrétienne slave.</div></div>
+<div class="saint-row"><span class="saint-date">5</span><div class="saint-main"><strong>Saint Naum d'Ohrid</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-naum" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 23 décembre</em></span><br>Disciple de Cyrille et Méthode, il a participé à l'évangélisation et à l'enseignement chrétien dans les Balkans.</div></div>
+<div class="saint-row"><span class="saint-date">6</span><div class="saint-main"><strong>Saint Pierre Ier de Bulgarie</strong><br><span class="saint-det"><em>Règne : 927–969 · Fête : 30 janvier</em></span><br>Tsar reconnu comme saint dans la tradition orthodoxe bulgare, associé à la consolidation du christianisme dans le royaume.</div></div>
+<div class="saint-row"><span class="saint-date">7</span><div class="saint-main"><strong>Saint Euthyme de Tarnovo</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-patriarh-evtimii" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 20 janvier</em></span><br>Patriarche et figure majeure de la vie intellectuelle et ecclésiastique bulgare au Moyen Âge.</div></div>
+<div class="saint-row"><span class="saint-date">8</span><div class="saint-main"><strong>Saint Boyan-Enravota</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-boyan-enravota" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 28 mars</em></span><br>Prince martyr considéré comme le premier martyr chrétien bulgare selon la tradition orthodoxe.</div></div>
+<div class="saint-row"><span class="saint-date">9</span><div class="saint-main"><strong>Saint Théodose de Tarnovo</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-teodosii-tarnovski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 27 novembre</em></span><br>Moine et maître spirituel associé au renouveau monastique et à la diffusion de l'hésychasme.</div></div>
+<div class="saint-row"><span class="saint-date">10</span><div class="saint-main"><strong>Saint Païssios de Hilendar</strong> <a class="saint-link" href="https://bg-patriarshia.bg/paisii-hilendarski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 19 juin</em></span><br>Moine et auteur de l'Histoire slavo-bulgare, une œuvre majeure du renouveau culturel et religieux bulgare.</div></div>
+<div class="saint-row"><span class="saint-date">11</span><div class="saint-main"><strong>Saint Sophrone de Vratsa</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sofr-vrachanski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 11 mars</em></span><br>Évêque et écrivain, figure importante du renouveau spirituel et culturel bulgare.</div></div>
+<div class="saint-row"><span class="saint-date">12</span><div class="saint-main"><strong>Saint Dimitri de Bassarbovo</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-dimitrii-besarbovski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 27 octobre</em></span><br>Ermite du XVIIe siècle (vers 1685), très vénéré en Bulgarie et en Roumanie pour sa vie de prière et d'ascèse.</div></div>
+</details>
+<details class="info-card" open><summary>II. Les saints martyrs les plus importants</summary>
+<div class="saint-row"><span class="saint-date">13</span><div class="saint-main"><strong>Sainte Zlata de Méglen</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-zlata-maglenska" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 18 octobre</em></span><br>Grande martyre du XVIIIe siècle, honorée pour son refus de renier sa foi chrétienne sous la persécution ottomane.</div></div>
+<div class="saint-row"><span class="saint-date">14</span><div class="saint-main"><strong>Saint Georges le Nouveau de Sofia</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-georgi-sofiiski-nai-novi" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 26 mai</em></span><br>Martyr du XVIe siècle, figure importante de la mémoire chrétienne de Sofia.</div></div>
+<div class="saint-row"><span class="saint-date">15</span><div class="saint-main"><strong>Saint Nicolas de Sofia</strong><br><span class="saint-det"><em>Fête : 17 mai</em></span><br>Martyr mort en 1555, honoré pour sa fidélité au christianisme.</div></div>
+<div class="saint-row"><span class="saint-date">16</span><div class="saint-main"><strong>Les 26 martyrs de Zographou</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-zografski-machenici" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 10 octobre</em></span><br>Moines du monastère bulgare de Zographou, au mont Athos, commémorés pour leur fidélité à la foi orthodoxe.</div></div>
+<div class="saint-row"><span class="saint-date">17</span><div class="saint-main"><strong>Les martyrs de Batak</strong><br><span class="saint-det"><em>Fête : 17 mai</em></span><br>Chrétiens massacrés en 1876 pendant l'insurrection bulgare, vénérés collectivement comme martyrs.</div></div>
+<div class="saint-row"><span class="saint-date">18</span><div class="saint-main"><strong>Saint Damascène de Gabrovo</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-damaskin-gabrovski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Mort : 1771</em></span><br>Hiéromartyr honoré pour sa fidélité à la foi orthodoxe pendant la période ottomane.</div></div>
+<div class="saint-row"><span class="saint-date">19</span><div class="saint-main"><strong>Saint Luc d'Andrinople</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-luka-odrinski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Mort : 1802</em></span><br>Jeune moine martyr, mort à seize ans.</div></div>
+<div class="saint-row"><span class="saint-date">20</span><div class="saint-main"><strong>Saint Lazare le Bulgare</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-lazar-bulgarski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Mort : 1802</em></span><br>Nouveau martyr vénéré pour son refus de renier le christianisme.</div></div>
+<div class="saint-row"><span class="saint-date">21</span><div class="saint-main"><strong>Saint Triandaphyllos de Stara Zagora</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-trendafil-starozagorski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 8 août</em></span><br>Nouveau martyr mort à Constantinople, honoré pour sa fermeté dans la foi.</div></div>
+<div class="saint-row"><span class="saint-date">22</span><div class="saint-main"><strong>Saint Abraham de Bulgarie</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-avramii-bulg" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 1er avril</em></span><br>Martyr associé à la Bulgarie médiévale et vénéré dans la tradition orthodoxe.</div></div>
+<div class="saint-row"><span class="saint-date">23</span><div class="saint-main"><strong>Saint Michel le Soldat bulgare</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-mihail" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 22 novembre</em></span><br>Saint soldat associé à la défense de la foi chrétienne.</div></div>
+</details>
+<details class="info-card" open><summary>III. Les autres saints, moines et maîtres spirituels</summary>
+<div class="saint-row"><span class="saint-date">24</span><div class="saint-main"><strong>Saint Gabriel de Lesnovo</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-gavriil" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 15 janvier</em></span><br>Ermite et fondateur du monastère de Lesnovo.</div></div>
+<div class="saint-row"><span class="saint-date">25</span><div class="saint-main"><strong>Saint Prochore de Pčinja</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-prohor" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 15 janvier</em></span><br>Ermite et maître spirituel de la tradition monastique des Balkans.</div></div>
+<div class="saint-row"><span class="saint-date">26</span><div class="saint-main"><strong>Saint Joachim d'Osogovo</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-ioakim" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 16 août</em></span><br>Ermite du XIe siècle, vénéré pour sa vie ascétique.</div></div>
+<div class="saint-row"><span class="saint-date">27</span><div class="saint-main"><strong>Saint Pimen de Zographou</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-pimen-zografski" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 3 novembre</em></span><br>Moine, peintre et restaurateur de monastères, associé au renouveau spirituel et artistique bulgare.</div></div>
+<div class="saint-row"><span class="saint-date">28</span><div class="saint-main"><strong>Saint Jean Koukouzélis</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-ioan-kukuzel" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 1er octobre</em></span><br>Hymnographe et moine du mont Athos, figure majeure de la musique liturgique orthodoxe.</div></div>
+<div class="saint-row"><span class="saint-date">29</span><div class="saint-main"><strong>Sainte Philothée de Tarnovo</strong> <a class="saint-link" href="https://bg-patriarshia.bg/sv-filoteya" target="_blank" rel="noopener">fiche ↗</a><br><span class="saint-det"><em>Fête : 7 décembre</em></span><br>Sainte vénérée dans les traditions bulgare et roumaine, connue pour sa piété et sa charité.</div></div>
+<div class="saint-row"><span class="saint-date">30</span><div class="saint-main"><strong>Saint Romylos de Ravanica</strong><br><span class="saint-det"><em>Fête : 16 janvier</em></span><br>Moine et maître spirituel du XIVe siècle, associé aux traditions monastiques bulgare et serbe.</div></div>
+</details>
+<details class="info-card" open><summary>IV. Souverain à la sainteté particulière</summary>
+<div class="saint-row"><span class="saint-date">31</span><div class="saint-main"><strong>Saint Jean-Vladimir — prince martyr des Balkans</strong><br><span class="saint-det"><em>Mort : 1016 · Fête : 22 mai</em></span><br>Il est vénéré comme martyr dans la tradition orthodoxe balkanique, même s'il n'était pas un tsar bulgare au sens strict.</div></div>
+</details>
+  </section>
+
+  <!-- SAINTS -->
+  <section id="sec-saints">
+    <h2>☦️ Saints bulgares : calendrier</h2>
+    <p class="lead">Les saints de Bulgarie et des terres bulgares (Athos, Macédoine, Thrace), classés par mois, avec leur nom bulgare, l'année et le lieu quand ils sont connus. Quand un nom a une fiche sur le site du Patriarcat de Bulgarie, un lien « fiche ↗ » est proposé.</p>
+    <input type="search" id="saintsSearch" class="saints-search" placeholder="Rechercher un saint (FR ou БГ)…" aria-label="Rechercher un saint">
+    <div class="section-toolbar" style="margin-top:.8rem">
+      <button type="button" class="mini-btn" data-expand="all">Tout déplier</button>
+      <button type="button" class="mini-btn" data-expand="none">Tout replier</button>
+    </div>
+    <p id="saintsEmpty" class="saints-empty">Aucun saint ne correspond à cette recherche.</p>
+    <details class="info-card saints-month" data-month="1"><summary>Janvier <span class="saints-count">12</span></summary>
+<div class="saint-row"><span class="saint-date">4</span><div class="saint-main"><strong>Onuphre de Hilandar, nouveau martyr</strong> <span class="saint-bg" lang="bg">Онуфрий Габровски</span><br><span class="saint-det">† 1818, île de Chios</span> </div></div>
+<div class="saint-row"><span class="saint-date">8</span><div class="saint-main"><strong>Grégoire d'Ohrid</strong><br><span class="saint-det">Aucune donnée</span> </div></div>
+<div class="saint-row"><span class="saint-date">15</span><div class="saint-main"><strong>Prochore de Pshina, higoumène du désert de Vranski</strong> <span class="saint-bg" lang="bg">Прохор Пшински</span><br><span class="saint-det">† 1067, rivière Pshina</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-prohor" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">15</span><div class="saint-main"><strong>Gabriel, fondateur du monastère de Lesnovo</strong> <span class="saint-bg" lang="bg">Гаврил Лесновски</span><br><span class="saint-det">XIe–XIIe siècle</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-gavriil" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">16</span><div class="saint-main"><strong>Romylos de Ravanitsa</strong> <span class="saint-bg" lang="bg">Ромил Бдински (Видински)</span><br><span class="saint-det">1375, Ravanica (Serbie)</span> </div></div>
+<div class="saint-row"><span class="saint-date">16</span><div class="saint-main"><strong>Damascène de Gabrovo, hiéromartyr</strong> <span class="saint-bg" lang="bg">Дамаскин Габровски</span><br><span class="saint-det">† 1771, Svishtov</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-damaskin-gabrovski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">18</span><div class="saint-main"><strong>Joachim Ier, patriarche de Tarnovo et de Bulgarie</strong> <span class="saint-bg" lang="bg">Иоаким I</span><br><span class="saint-det">† 1246</span> </div></div>
+<div class="saint-row"><span class="saint-date">20</span><div class="saint-main"><strong>Euthyme, patriarche de Tarnovo et de Bulgarie</strong> <span class="saint-bg" lang="bg">Евтимий</span><br><span class="saint-det">† vers 1401</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-patriarh-evtimii" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">22</span><div class="saint-main"><strong>Pierre, évêque martyr en Bulgarie</strong><br><span class="saint-det">† 814</span> </div></div>
+<div class="saint-row"><span class="saint-date">22</span><div class="saint-main"><strong>Sionios, prêtre martyr en Bulgarie</strong><br><span class="saint-det">† 814</span> </div></div>
+<div class="saint-row"><span class="saint-date">30</span><div class="saint-main"><strong>Pierre, tsar de Bulgarie</strong> <span class="saint-bg" lang="bg">Петър Български</span><br><span class="saint-det">927–969, règne de 42 ans</span> </div></div>
+<div class="saint-row"><span class="saint-date">30</span><div class="saint-main"><strong>Démétrios de Sliven, nouveau martyr</strong> <span class="saint-bg" lang="bg">Димитър Сливенски</span><br><span class="saint-det">† 1841, Sliven</span> </div></div>
+</details>
+<details class="info-card saints-month" data-month="2"><summary>Février <span class="saints-count">3</span></summary>
+<div class="saint-row"><span class="saint-date">11</span><div class="saint-main"><strong>Georges de Sofia, nouveau martyr</strong> <span class="saint-bg" lang="bg">Георги Софийски Нови</span><br><span class="saint-det">† 1515</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-georgi-novi" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">14</span><div class="saint-main"><strong>Repos de Cyrille, égal aux apôtres et maître des Slaves</strong> <span class="saint-bg" lang="bg">Кирил</span><br><span class="saint-det">869, Rome</span> <a class="saint-link" href="https://bg-patriarshia.bg/kiril-metodi" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">17</span><div class="saint-main"><strong>Romain, disciple de saint Théodose de Tarnovo</strong> <span class="saint-bg" lang="bg">Роман Търновски</span><br><span class="saint-det">après 1364</span> </div></div>
+</details>
+<details class="info-card saints-month" data-month="3"><summary>Mars <span class="saints-count">5</span></summary>
+<div class="saint-row"><span class="saint-date">5</span><div class="saint-main"><strong>Jean le Bulgare, nouveau martyr</strong> <span class="saint-bg" lang="bg">Иоан Български</span><br><span class="saint-det">1784, Constantinople</span> </div></div>
+<div class="saint-row"><span class="saint-date">11</span><div class="saint-main"><strong>Sophrone, évêque de Vratsa</strong> <span class="saint-bg" lang="bg">Софроний Врачански</span><br><span class="saint-det">† 1813</span> <a class="saint-link" href="https://bg-patriarshia.bg/sofr-vrachanski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">23</span><div class="saint-main"><strong>Luc de Sainte-Anne (Mont Athos) et d'Andrinople, moine martyr</strong> <span class="saint-bg" lang="bg">Лука Одрински</span><br><span class="saint-det">1802, Mytilène, mort à 16 ans</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-luka-odrinski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">26</span><div class="saint-main"><strong>Georges de Sofia (l'Ancien), martyr</strong> <span class="saint-bg" lang="bg">Георги Софийски (Стари)</span><br><span class="saint-det">XVe siècle</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-georgi-sofiiski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">28</span><div class="saint-main"><strong>Boyan-Enravota, prince de Bulgarie, martyr</strong> <span class="saint-bg" lang="bg">Боян (Енравота)</span><br><span class="saint-det">† vers 833</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-boyan-enravota" target="_blank" rel="noopener">fiche ↗</a></div></div>
+</details>
+<details class="info-card saints-month" data-month="4"><summary>Avril <span class="saints-count">4</span></summary>
+<div class="saint-row"><span class="saint-date">1</span><div class="saint-main"><strong>Abraham de Bulgarie, martyr</strong> <span class="saint-bg" lang="bg">Аврамий Български</span><br><span class="saint-det">Pas de données (1229 selon Dimitri de Rostov)</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-avramii-bulg" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">3</span><div class="saint-main"><strong>Nicétas d'Albanie, hiéromartyr du Mont Athos et de Serrès</strong> <span class="saint-bg" lang="bg">Никита Сярски</span><br><span class="saint-det">1808, Serrès (ton autre liste le place le 4 avril)</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-nikita-serski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">6</span><div class="saint-main"><strong>Méthode, égal aux apôtres, archevêque de Moravie</strong> <span class="saint-bg" lang="bg">Методий</span><br><span class="saint-det">885, Velehrad</span> <a class="saint-link" href="https://bg-patriarshia.bg/kiril-metodi" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">23</span><div class="saint-main"><strong>Lazare le Bulgare, nouveau martyr</strong> <span class="saint-bg" lang="bg">Лазар Български</span><br><span class="saint-det">1802, Soma (Asie Mineure)</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-lazar-bulgarski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+</details>
+<details class="info-card saints-month" data-month="5"><summary>Mai <span class="saints-count">10</span></summary>
+<div class="saint-row"><span class="saint-date">1</span><div class="saint-main"><strong>Acace du Mont Athos et de Serrès, nouveau martyr</strong> <span class="saint-bg" lang="bg">Акакий Сярски</span><br><span class="saint-det">1816, Constantinople</span> </div></div>
+<div class="saint-row"><span class="saint-date">2</span><div class="saint-main"><strong>Boris (Michel au baptême), égal aux apôtres, prince et baptiseur de la Bulgarie</strong> <span class="saint-bg" lang="bg">Борис-Михаил</span><br><span class="saint-det">907, Preslav</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-car-boris" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">11</span><div class="saint-main"><strong>Cyrille et Méthode, égaux aux apôtres, maîtres des Slaves</strong> <span class="saint-bg" lang="bg">Кирил и Методий</span><br><span class="saint-det">Fête principale</span> <a class="saint-link" href="https://bg-patriarshia.bg/kiril-metodi" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">14</span><div class="saint-main"><strong>Raïko (Jean) de Bulgarie, nouveau martyr</strong> <span class="saint-bg" lang="bg">Райко-Иоан Български</span><br><span class="saint-det">Aucune donnée</span> </div></div>
+<div class="saint-row"><span class="saint-date">17</span><div class="saint-main"><strong>Nicolas de Sofia, grand martyr · Martyrs de Batak</strong> <span class="saint-bg" lang="bg">Николай Софийски</span><br><span class="saint-det">1555, Sofia · Batak, 1876</span> </div></div>
+<div class="saint-row"><span class="saint-date">21</span><div class="saint-main"><strong>Constantin, martyr de Sofia</strong><br><span class="saint-det">Récit de sa vie dans le Tsarkoven Vestnik</span> </div></div>
+<div class="saint-row"><span class="saint-date">22</span><div class="saint-main"><strong>Jean-Vladimir, prince de Bulgarie, grand martyr et thaumaturge</strong> <span class="saint-bg" lang="bg">Иоан Владимир</span><br><span class="saint-det">1016, Ohrid</span> </div></div>
+<div class="saint-row"><span class="saint-date">26</span><div class="saint-main"><strong>Georges le Nouveau (Най-нови) de Sofia, grand martyr</strong> <span class="saint-bg" lang="bg">Георги Най-нови</span><br><span class="saint-det">1530</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-georgi-sofiiski-nai-novi" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">27</span><div class="saint-main"><strong>Thérapont, évêque de Sardes, hiéromartyr</strong> <span class="saint-bg" lang="bg">Терапонт</span><br><span class="saint-det">1515</span> </div></div>
+<div class="saint-row"><span class="saint-date">28</span><div class="saint-main"><strong>Sophrone le Bulgare</strong> <span class="saint-bg" lang="bg">Софроний Български (Софийски)</span><br><span class="saint-det">XVe–XVIe siècle, région de Ruse</span> </div></div>
+</details>
+<details class="info-card saints-month" data-month="6"><summary>Juin <span class="saints-count">5</span></summary>
+<div class="saint-row"><span class="saint-date">15</span><div class="saint-main"><strong>Éphrem le Bulgare, patriarche de Serbie</strong> <span class="saint-bg" lang="bg">Ефрем</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">19</span><div class="saint-main"><strong>Païssi de Hilendar</strong> <span class="saint-bg" lang="bg">Паисий Хилендарски</span><br><span class="saint-det">Date et lieu incertains (vers 1770)</span> <a class="saint-link" href="https://bg-patriarshia.bg/paisii-hilendarski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">19</span><div class="saint-main"><strong>Zosime le soldat, martyr</strong> <span class="saint-bg" lang="bg">Зосима Созополски</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">25</span><div class="saint-main"><strong>Procope de Varna, nouveau martyr</strong> <span class="saint-bg" lang="bg">Прокопий Варненски</span><br><span class="saint-det">1870, Smyrne</span> </div></div>
+<div class="saint-row"><span class="saint-date">25</span><div class="saint-main"><strong>Denys l'Hagiorite</strong> <span class="saint-bg" lang="bg">Дионисий Атонски</span><br> </div></div>
+</details>
+<details class="info-card saints-month" data-month="7"><summary>Juillet <span class="saints-count">7</span></summary>
+<div class="saint-row"><span class="saint-date">7</span><div class="saint-main"><strong>Astion, moine, en Scythie</strong> <span class="saint-bg" lang="bg">Астион</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">7</span><div class="saint-main"><strong>Épictète, prêtre martyr</strong> <span class="saint-bg" lang="bg">Епиктет</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">7</span><div class="saint-main"><strong>Kyriaki de Nicomédie, grande martyre</strong> <span class="saint-bg" lang="bg">Кириакия-Неделя</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">8</span><div class="saint-main"><strong>Théophile le myroblyte de Macédoine</strong> <span class="saint-bg" lang="bg">Теофил</span><br><span class="saint-det">1548, Karyès (Mont Athos) (ton autre liste le place le 10 octobre)</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-teofil-mirotochivi" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">11</span><div class="saint-main"><strong>Nicodème d'Albanie, nouveau martyr</strong> <span class="saint-bg" lang="bg">Никодим Албански</span><br><span class="saint-det">1722, Elbasan (ton autre liste le place le 14 juillet)</span> </div></div>
+<div class="saint-row"><span class="saint-date">16</span><div class="saint-main"><strong>Jean de Tarnovo, nouveau martyr</strong> <span class="saint-bg" lang="bg">Иоан Търновски</span><br><span class="saint-det">1822, Tarnovo</span> </div></div>
+<div class="saint-row"><span class="saint-date">29</span><div class="saint-main"><strong>Bessarion, évêque de Smolyan, hiéromartyr</strong> <span class="saint-bg" lang="bg">Висарион Смолянски</span><br> </div></div>
+</details>
+<details class="info-card saints-month" data-month="8"><summary>Août <span class="saints-count">6</span></summary>
+<div class="saint-row"><span class="saint-date">8</span><div class="saint-main"><strong>Triandaphyllos de Stara Zagora, nouveau martyr</strong> <span class="saint-bg" lang="bg">Триандафил Старозагорски</span><br><span class="saint-det">1570 ou 1680, Constantinople, vers 18 ans</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-trendafil-starozagorski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">16</span><div class="saint-main"><strong>Joachim d'Osogovo</strong> <span class="saint-bg" lang="bg">Иоаким Осоговски</span><br><span class="saint-det">1105</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-ioakim" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">19</span><div class="saint-main"><strong>Théophane de Dochiariou (Mont Athos)</strong><br><span class="saint-det">Aucune donnée</span> </div></div>
+<div class="saint-row"><span class="saint-date">20</span><div class="saint-main"><strong>38 soldats martyrs de Thrace, avec Sévère et Memnon</strong><br><span class="saint-det">Aucune donnée</span> </div></div>
+<div class="saint-row"><span class="saint-date">21</span><div class="saint-main"><strong>Syméon de Samokov, hiéromartyr</strong> <span class="saint-bg" lang="bg">Симеон Самоковски</span><br><span class="saint-det">Aucune donnée</span> </div></div>
+<div class="saint-row"><span class="saint-date">29</span><div class="saint-main"><strong>Anastase de Strumitsa, nouveau martyr</strong> <span class="saint-bg" lang="bg">Анастасий Струмишки</span><br><span class="saint-det">1794, Thessalonique</span> </div></div>
+</details>
+<details class="info-card saints-month" data-month="9"><summary>Septembre <span class="saints-count">3</span></summary>
+<div class="saint-row"><span class="saint-date">16</span><div class="saint-main"><strong>Cyprien de Serbie</strong> <span class="saint-bg" lang="bg">Киприан</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">22</span><div class="saint-main"><strong>Cosmas de Zographou, originaire de Tarnovo</strong> <span class="saint-bg" lang="bg">Козма Зографски</span><br><span class="saint-det">1323</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-kozma" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">30</span><div class="saint-main"><strong>Michel, premier métropolite de Kiev</strong> <span class="saint-bg" lang="bg">Михаил</span><br> </div></div>
+</details>
+<details class="info-card saints-month" data-month="10"><summary>Octobre <span class="saints-count">8</span></summary>
+<div class="saint-row"><span class="saint-date">1</span><div class="saint-main"><strong>Jean Koukouzélis, hymnographe du Mont Athos</strong> <span class="saint-bg" lang="bg">Иоан Кукузел</span><br><span class="saint-det">Fin du Xe siècle, Mont Athos</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-ioan-kukuzel" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">8</span><div class="saint-main"><strong>Ignace, moine de Bulgarie, nouveau martyr</strong><br><span class="saint-det">1814, Constantinople</span> </div></div>
+<div class="saint-row"><span class="saint-date">10</span><div class="saint-main"><strong>26 martyrs du monastère de Zographou, tués par les croisés</strong> <span class="saint-bg" lang="bg">Двадесет и шест Зографски мъченици</span><br><span class="saint-det">1284, Mont Athos</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-zografski-machenici" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">14</span><div class="saint-main"><strong>Parascève (Petka) de Serbie</strong> <span class="saint-bg" lang="bg">Параскева-Петка Епиватска</span><br><span class="saint-det">XIe siècle, Épivates (mer de Marmara)</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-petka" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">18</span><div class="saint-main"><strong>Zlata de Méglen, grande martyre</strong> <span class="saint-bg" lang="bg">Злата Мъгленска</span><br><span class="saint-det">1795, Slatina (auj. en Grèce) (ton autre liste la place le 13 octobre)</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-zlata-maglenska" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">19</span><div class="saint-main"><strong>Translation des reliques de Jean de Rila</strong> <span class="saint-bg" lang="bg">Иван Рилски</span><br><span class="saint-det">946</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-ioan-rilski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">21</span><div class="saint-main"><strong>Translation des reliques d'Hilarion, évêque de Méglen</strong><br><span class="saint-det">1164</span> </div></div>
+<div class="saint-row"><span class="saint-date">27</span><div class="saint-main"><strong>Démétrios de Bassarbovo</strong> <span class="saint-bg" lang="bg">Димитрий Бесарбовски</span><br><span class="saint-det">Vers 1685</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-dimitrii-besarbovski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+</details>
+<details class="info-card saints-month" data-month="11"><summary>Novembre <span class="saints-count">8</span></summary>
+<div class="saint-row"><span class="saint-date">1</span><div class="saint-main"><strong>Jacques de Kostour, moine martyr</strong> <span class="saint-bg" lang="bg">Яков Кустурски</span><br><span class="saint-det">1520, Andrinople</span> </div></div>
+<div class="saint-row"><span class="saint-date">1</span><div class="saint-main"><strong>Denys, moine du skite du Prodrome (Athos)</strong> <span class="saint-bg" lang="bg">Дионисий</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">3</span><div class="saint-main"><strong>Pimène le Bulgare, de Zographou</strong> <span class="saint-bg" lang="bg">Пимен Зографски</span><br><span class="saint-det">1620, monastère de Cherepish</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-pimen-zografski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">22</span><div class="saint-main"><strong>Michel le soldat, de Potouka</strong> <span class="saint-bg" lang="bg">Михаил Воин</span><br><span class="saint-det">Vers 865, Potouka (probablement Batak)</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-mihail" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">25</span><div class="saint-main"><strong>Clément, évêque d'Ohrid, éclaireur des Bulgares</strong> <span class="saint-bg" lang="bg">Климент Охридски</span><br><span class="saint-det">916, monastère Saint-Panteleimon</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-kliment-ohridski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">27</span><div class="saint-main"><strong>Théodose de Tarnovo (le Bulgare), avec son disciple Romain</strong> <span class="saint-bg" lang="bg">Теодосий Търновски</span><br><span class="saint-det">1363, Constantinople</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-teodosii-tarnovski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">28</span><div class="saint-main"><strong>Hristo de Bulgarie, martyr</strong><br><span class="saint-det">1748, Constantinople</span> </div></div>
+<div class="saint-row"><span class="saint-date">28</span><div class="saint-main"><strong>15 martyrs de Tibériopolis</strong> <span class="saint-bg" lang="bg">Петнадесет Тивериополски свещеномъченици</span><br> </div></div>
+</details>
+<details class="info-card saints-month" data-month="12"><summary>Décembre <span class="saints-count">6</span></summary>
+<div class="saint-row"><span class="saint-date">5</span><div class="saint-main"><strong>Nectaire de Bitola et du Mont Athos</strong> <span class="saint-bg" lang="bg">Нектарий Битолски</span><br><span class="saint-det">1500, Karyès</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-nektarii-bitolski" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">7</span><div class="saint-main"><strong>Philothée de Thrace, protectrice de la Roumanie</strong> <span class="saint-bg" lang="bg">Филотея Търновска</span><br><span class="saint-det">Vers 1218, Polivot</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-filoteya" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">9</span><div class="saint-main"><strong>Anthyme, fol-en-Christ athonite, hiéromoine</strong> <span class="saint-bg" lang="bg">Антим</span><br> </div></div>
+<div class="saint-row"><span class="saint-date">16</span><div class="saint-main"><strong>Marin, martyr</strong><br><span class="saint-det">Aucune donnée</span> </div></div>
+<div class="saint-row"><span class="saint-date">23</span><div class="saint-main"><strong>Nahum d'Ohrid, disciple de Cyrille et Méthode</strong> <span class="saint-bg" lang="bg">Наум Охридски</span><br><span class="saint-det">910, Ohrid</span> <a class="saint-link" href="https://bg-patriarshia.bg/sv-naum" target="_blank" rel="noopener">fiche ↗</a></div></div>
+<div class="saint-row"><span class="saint-date">26</span><div class="saint-main"><strong>Euthyme, évêque de Sardes, hiéromartyr</strong><br><span class="saint-det">Aucune donnée</span> </div></div>
+</details>
+    <details class="info-card"><summary>📜 Fiches et vies (site du Patriarcat de Bulgarie)</summary>
+      <ul class="saints-fiches">
+<li><a href="https://bg-patriarshia.bg/sv-naum" target="_blank" rel="noopener" lang="bg">Св. Наум Преславско-Охридски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-ioan-rilski" target="_blank" rel="noopener" lang="bg">Св. преподобни Иоан Рилски Чудотворец</a></li>
+<li><a href="https://bg-patriarshia.bg/kiril-metodi" target="_blank" rel="noopener" lang="bg">Св. равноапостолни и славянобългарски просветители Кирил и Методий</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-car-boris" target="_blank" rel="noopener" lang="bg">Св. цар Борис-Михаил</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-boyan-enravota" target="_blank" rel="noopener" lang="bg">Св. мъченик Боян–Енравота</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-kliment-ohridski" target="_blank" rel="noopener" lang="bg">Св. Климент Охридски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-mihail" target="_blank" rel="noopener" lang="bg">Св. Михаил Войн Българин</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-petka" target="_blank" rel="noopener" lang="bg">Св. преподобна Петка</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-ioakim" target="_blank" rel="noopener" lang="bg">Св. преподобни Йоаким Осоговски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-gavriil" target="_blank" rel="noopener" lang="bg">Св. преподобни Гавриил Лесновски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-prohor" target="_blank" rel="noopener" lang="bg">Св. преподобни Прохор Пшински</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-filoteya" target="_blank" rel="noopener" lang="bg">Св. преподобна Филотея Търновска</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-kozma" target="_blank" rel="noopener" lang="bg">Св. преподобни Козма Зографски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-zografski-machenici" target="_blank" rel="noopener" lang="bg">Св. 26 Зографски мъченици</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-ioan-kukuzel" target="_blank" rel="noopener" lang="bg">Св. преподобни Йоан Кукузел</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-avramii-bulg" target="_blank" rel="noopener" lang="bg">Свещеномъченик Аврамий Български</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-teodosii-tarnovski" target="_blank" rel="noopener" lang="bg">Св. Теодосий Търновски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-patriarh-evtimii" target="_blank" rel="noopener" lang="bg">Св. патриарх Евтимий Търновски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-nektarii-bitolski" target="_blank" rel="noopener" lang="bg">Св. преподобни Нектарий Битолски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-teofil-mirotochivi" target="_blank" rel="noopener" lang="bg">Св. преподобни Теофил Мироточиви</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-pimen-zografski" target="_blank" rel="noopener" lang="bg">Св. Пимен Зографски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-georgi-sofiiski" target="_blank" rel="noopener" lang="bg">Св. Георги Софийски Стари</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-georgi-novi" target="_blank" rel="noopener" lang="bg">Св. Георги Нови</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-georgi-sofiiski-nai-novi" target="_blank" rel="noopener" lang="bg">Св. мъченик Георги Софийски Най-нови (26 май)</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-trendafil-starozagorski" target="_blank" rel="noopener" lang="bg">Св. мъченик Трендафил Старозагорски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-dimitrii-besarbovski" target="_blank" rel="noopener" lang="bg">Св. Димитрий Басарбовски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-zlata-maglenska" target="_blank" rel="noopener" lang="bg">Св. великомъченица Злата Мъгленска</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-damaskin-gabrovski" target="_blank" rel="noopener" lang="bg">Житие на свещеномъченик Дамаскин Габровски</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-luka-odrinski" target="_blank" rel="noopener" lang="bg">Житие на св. преподобномъченик Лука Одрински</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-lazar-bulgarski" target="_blank" rel="noopener" lang="bg">Житие на св. мъченик Лазар Български</a></li>
+<li><a href="https://bg-patriarshia.bg/sv-nikita-serski" target="_blank" rel="noopener" lang="bg">Житие на св. свещеномъченик Никита Серски</a></li>
+<li><a href="https://bg-patriarshia.bg/paisii-hilendarski" target="_blank" rel="noopener" lang="bg">Св. Паисий Хилендарски (19 юни)</a></li>
+<li><a href="https://bg-patriarshia.bg/sofr-vrachanski" target="_blank" rel="noopener" lang="bg">Св. Софроний Врачански (11 март)</a></li>
+<li><a href="https://bg-patriarshia.bg/new-martyrs" target="_blank" rel="noopener" lang="bg">Св. Новоселски мъченици</a></li>
+      </ul>
+    </details>
+    <p class="lead" style="margin-top:1rem;font-size:.88rem">Les dates peuvent varier selon les calendriers et les sources (par exemple Nicétas, Théophile, Nicodème ou Zlata) : l'écart est signalé sur la fiche concernée.</p>
+  </section>
+
   <section id="sec-lucy">
     <h2>Notes de cours & Expressions du quotidien</h2>
     <p class="lead">Toutes les tournures, phrases pratiques, conjonctions et expressions utiles relevées dans vos leçons.</p>
@@ -7010,6 +7230,32 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   const img=document.getElementById('mk-map-img'), lb=document.getElementById('rg-lightbox');
   if(!img||!lb) return;
   img.addEventListener('click',()=>{ lb.querySelector('img').src=img.src; lb.classList.add('open'); });
+})();
+</script>
+
+<script>
+/* ================= SAINTS : recherche ================= */
+(function(){
+  const root=document.getElementById('sec-saints'); if(!root) return;
+  const input=document.getElementById('saintsSearch'), empty=document.getElementById('saintsEmpty');
+  const months=[...root.querySelectorAll('.saints-month')];
+  const norm=t=>t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  input.addEventListener('input',()=>{
+    const q=norm(input.value.trim()); let any=false;
+    months.forEach(d=>{
+      let n=0;
+      d.querySelectorAll('.saint-row').forEach(r=>{
+        const ok=!q||norm(r.textContent).includes(q);
+        r.style.display=ok?'':'none'; if(ok) n++;
+      });
+      d.style.display=n?'':'none';
+      if(q&&n) d.open=true;
+      if(!q) d.open=false;
+      d.querySelector('.saints-count').textContent=n;
+      if(n) any=true;
+    });
+    empty.style.display=any?'none':'block';
+  });
 })();
 </script>
 </body>

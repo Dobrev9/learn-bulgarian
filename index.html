@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22></text></svg>">
-<title>Уча български език 🇧🇬</title>
+<title>Уча български език</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@400;700&display=swap');
@@ -1304,6 +1304,87 @@ h1, h2, h3, h4 { font-family: 'PT Serif', Georgia, serif; }
   border-style: solid !important;
 }
 </style>
+
+<style id="visual-harmonisation">
+  /* Palette commune : bleu profond, rouge brodé et or */
+  :root {
+    --header-bg: #20394D;
+    --btn-primary: #20394D;
+  }
+  :root[data-theme="dark"] {
+    --header-bg: #111D29;
+    --btn-primary: #30485D;
+  }
+
+  /* Le header garde le bleu comme couleur dominante ; l'or fait le lien
+     avec les détails de la shevitsa. */
+  header {
+    background: var(--header-bg);
+    border-bottom: 0;
+    box-shadow: 0 5px 22px rgba(22, 43, 59, .16);
+  }
+  header p, header .subtitle, header .desc {
+    color: #D8E2E8;
+  }
+  #themeToggle {
+    border-color: var(--gold);
+    color: #E3B65E;
+  }
+
+  /* Motif brodé plus cohérent avec le bleu du header */
+  .shevitsa {
+    background-color: var(--paper);
+    border-bottom: 1px solid var(--linen-dark);
+    box-shadow: 0 3px 12px rgba(32, 57, 77, .10);
+  }
+
+  /* Même axe, même largeur utile et mêmes marges pour navigation et contenu */
+  nav#nav {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 1.1rem 1rem 0;
+    gap: .9rem 1.25rem;
+  }
+  main {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Les boutons reprennent le bleu du header au lieu du bleu électrique */
+  #nav button {
+    border-color: #49677C !important;
+    color: #29485D !important;
+  }
+  #nav button:hover {
+    background: #E6EDF0 !important;
+    border-color: #29485D !important;
+  }
+  #nav button.active, #nav button[aria-current="page"] {
+    background: #A22C3B !important;
+    border-color: #A22C3B !important;
+    color: #fff !important;
+  }
+  :root[data-theme="dark"] #nav button {
+    border-color: #7896A8 !important;
+    color: #D5E2E9 !important;
+  }
+  :root[data-theme="dark"] #nav button:hover {
+    background: #263847 !important;
+  }
+  :root[data-theme="dark"] #nav button.active,
+  :root[data-theme="dark"] #nav button[aria-current="page"] {
+    background: #C4485A !important;
+    border-color: #C4485A !important;
+    color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    nav#nav { padding: 1rem 1rem 0; gap: .8rem 1rem; }
+  }
+</style>
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
@@ -2328,7 +2409,7 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 
   <!-- PRIDE -->
   <section id="sec-pride">
-    <h2> Fiertés bulgares : héros, victoires, patrimoine et symboles</h2>
+    <h2> Fiertés bulgares 🇧🇬 : héros, victoires, patrimoine et symboles</h2>
     <p class="lead">Une encyclopédie de révision consacrée à ce que la mémoire nationale bulgare associe particulièrement à son histoire, sa culture, sa spiritualité et ses réussites.</p>
 
     <div class="info-card"><h3> Grandes victoires militaires</h3>
@@ -2859,7 +2940,7 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
     <p class="lead">Une section pour découvrir la langue, l'histoire, les lieux, les <em>носии</em> (costumes traditionnels) et la cuisine de la Macédoine du Nord. Les sujets communs aux Balkans sont signalés comme tels.</p>
 
     <div class="mk-hero">
-      <h3> Македонија — Makedonija</h3>
+      <h3> 🇲🇰 Македонија — Makedonija</h3>
       <p><strong>Македонски — makedonski</strong> : le macédonien est une langue slave méridionale écrite en alphabet cyrillique.</p>
       <p>À retenir : la Macédoine du Nord est l'État actuel ; la région historique de Macédoine est plus vaste et comprend aujourd'hui des territoires de plusieurs États.</p>
     </div>

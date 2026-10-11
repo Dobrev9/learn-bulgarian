@@ -1054,6 +1054,48 @@
   .saints-fiches li{margin:.2rem 0;break-inside:avoid;}
   .saints-fiches a{color:var(--madder-dark);}
   @media (max-width:520px){.saint-row{padding:.55rem .9rem}}
+
+  /* ----- Frises : Histoire et Fêtes ----- */
+  .fr-sub{ font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); font-size:1.25rem; margin:0 0 .5rem; }
+  .tl-hint{ color:var(--muted2); font-size:.88rem; margin:0 0 .6rem; }
+  .timeline{ border-left:3px solid var(--madder); margin:.5rem 0 0 .6rem; padding-left:1.3rem; }
+  .tl-item{ position:relative; margin-bottom:1.1rem; padding:.2rem .4rem; border-radius:6px; scroll-margin-top:1rem; transition:background .3s; }
+  .tl-item::before{ content:""; position:absolute; left:calc(-1.3rem - 8.5px); top:.7rem; width:12px; height:12px; border-radius:50%; background:var(--card); border:3px solid var(--madder); }
+  .tl-item h3{ margin:.25rem 0 0; font-family:'PT Serif', Georgia, serif; font-size:1.1rem; color:var(--madder-dark); }
+  .tl-item p{ margin:.35rem 0 0; color:var(--text4); }
+  .tl-item.hl{ background:var(--paper); }
+  .tl-item.t-rel::before{ border-color:var(--sage); }
+  .tl-item.t-nat::before{ border-color:var(--madder); }
+  .tl-item.t-cou::before{ border-color:var(--gold); }
+  .tl-item.mob::before{ border-style:dashed; }
+  .tl-date{ display:inline-block; border:1.5px solid var(--gold); background:var(--paper); color:var(--madder-dark); border-radius:10px; padding:.02rem .65rem; font-size:.78rem; font-weight:700; margin-right:.4rem; }
+  .tl-tag{ display:inline-block; border:1px solid var(--linen-dark); color:var(--muted2); border-radius:10px; padding:.02rem .55rem; font-size:.74rem; }
+  .tl-era{ position:relative; margin:1.7rem 0 .9rem; scroll-margin-top:1rem; }
+  .tl-era:first-child{ margin-top:.2rem; }
+  .tl-era::before{ content:""; position:absolute; box-sizing:border-box; left:calc(-1.3rem - 12.5px); top:.25rem; width:22px; height:22px; border-radius:50%; background:var(--madder); border:4px solid var(--card); box-shadow:0 0 0 2px var(--madder); }
+  .tl-era h3{ margin:0; font-family:'PT Serif', Georgia, serif; font-size:1.2rem; color:var(--madder-dark); }
+  .frh{ display:flex; gap:.6rem; overflow-x:auto; padding:.3rem .1rem .8rem; margin:0 0 .4rem; scroll-snap-type:x proximity; }
+  .frh .fh{ flex:0 0 160px; text-align:left; background:var(--card); color:var(--text2); border:1px solid var(--linen-dark); border-top:4px solid var(--gold); border-radius:6px; padding:.55rem .7rem; cursor:pointer; font:inherit; scroll-snap-align:start; }
+  .frh .fh small{ display:block; color:var(--gold); font-weight:700; font-size:.78rem; }
+  .frh .fh b{ display:block; color:var(--madder-dark); font-family:'PT Serif', Georgia, serif; font-size:.95rem; line-height:1.25; }
+  .frh .fh.on{ background:var(--paper); border-top-color:var(--madder); outline:2px solid var(--sage); outline-offset:-1px; }
+  .frh .fh:focus-visible{ outline:2px solid var(--madder); outline-offset:2px; }
+  .fhp{ border:1px solid var(--linen-dark); border-left:5px solid var(--madder); background:var(--card); border-radius:6px; padding:.8rem 1rem; margin:0 0 1rem; min-height:4.4rem; }
+  .fhp h3{ margin:.3rem 0 .3rem; font-family:'PT Serif', Georgia, serif; color:var(--madder-dark); font-size:1.15rem; }
+  .fhp p{ margin:0; color:var(--text4); }
+  .facts{ display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.7rem; margin:.6rem 0 1rem; }
+  .fact{ background:var(--paper); border:1px solid var(--linen-dark); border-radius:6px; padding:.7rem; text-align:center; color:var(--text2); font-size:.88rem; }
+  .fact b{ display:block; font-family:'PT Serif', Georgia, serif; font-size:1.2rem; color:var(--madder-dark); }
+  .dotc{ display:inline-block; width:8px; height:8px; border-radius:50%; }
+  .yr{ display:grid; grid-template-columns:repeat(12,1fr); gap:3px; margin:0 0 .8rem; }
+  .yr button{ border:1px solid var(--linen-dark); background:var(--card); color:var(--text2); border-radius:4px; padding:.35rem 0 .3rem; font:inherit; font-size:.74rem; cursor:pointer; text-align:center; }
+  .yr button:disabled{ opacity:.5; cursor:default; }
+  .yr button:not(:disabled):hover{ background:var(--paper); }
+  .yr button:focus-visible{ outline:2px solid var(--sage); outline-offset:1px; }
+  .yr .dots{ display:flex; justify-content:center; gap:2px; min-height:8px; margin-top:.2rem; }
+  .lg{ display:flex; flex-wrap:wrap; gap:.4rem 1rem; font-size:.84rem; color:var(--text2); margin:0 0 .8rem; }
+  .lg span{ display:inline-flex; align-items:center; gap:.35rem; }
+  @media (max-width:560px){ .yr button{ font-size:.64rem; } .frh .fh{ flex-basis:140px; } }
 </style>
 <script>
 (function(){
@@ -1811,179 +1853,283 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
   <!-- HISTORY -->
   <section id="sec-history">
     <h2>Histoire de la Bulgarie : empires, foi, résistance et liberté</h2>
-    <p class="lead">Des Proto-Bulgares et de la fondation de l'État en 681 aux empires médiévaux, à la domination ottomane, à la Renaissance nationale et à la Bulgarie moderne.</p>
-
-    <div class="info-card">
-      <h3>1. Les Proto-Bulgares et la fondation de l'État</h3>
-      <p>Les Proto-Bulgares étaient un peuple de cavaliers des steppes eurasiatiques. Leur rencontre et leur alliance avec les populations slaves des Balkans contribuent à la formation de l'État bulgare danubien.</p>
+    <p class="lead">Des Proto-Bulgares et de la fondation de l'État en 681 aux empires médiévaux, à la domination ottomane, à la Renaissance nationale et à la Bulgarie moderne. Frise chronologique : les grandes périodes d’un coup d’œil, puis le détail, siècle après siècle.</p>
+    <h3 class="fr-sub">Grandes périodes</h3>
+    <div class="frh" id="bg-frh"></div>
+    <div class="fhp" id="bg-fhp" aria-live="polite"></div>
+    <h3 class="fr-sub" style="margin-top:1.6rem">Frise détaillée</h3>
+    <p class="tl-hint">Des Proto-Bulgares à la Bulgarie contemporaine. Touchez une période pour y accéder.</p>
+    <div class="chips" id="bg-hera"><button type="button" class="chip" data-e="0">VIIe–IXe siècles</button><button type="button" class="chip" data-e="1">IXe–XIe siècles</button><button type="button" class="chip" data-e="2">XIIe–XIVe siècles</button><button type="button" class="chip" data-e="3">Fin XIVe–XVIe siècle</button><button type="button" class="chip" data-e="4">XVIIe–XVIIIe siècles</button><button type="button" class="chip" data-e="5">XVIIIe–XIXe siècles</button><button type="button" class="chip" data-e="6">1877–1908</button><button type="button" class="chip" data-e="7">XXe siècle</button></div>
+    <div class="timeline" id="bg-htl">
+<div class="tl-era" id="bg-hera-0"><h3>VIIe–IXe siècles : fondation de l’État et puissance militaire</h3></div>
+<div class="tl-item"><div><span class="tl-date">680–681</span></div><h3>Les Proto-Bulgares et la fondation de l'État</h3>
+<p>Les Proto-Bulgares étaient un peuple de cavaliers des steppes eurasiatiques. Leur rencontre et leur alliance avec les populations slaves des Balkans contribuent à la formation de l'État bulgare danubien.</p>
       <p>• <strong>Khan Asparoukh (Аспарух) :</strong> après les combats de 680-681, Byzance reconnaît le nouvel État bulgare. <strong>Pliska</strong> devient sa première capitale.</p>
       <p>• <strong>Ongal :</strong> victoire fondatrice contre l'armée byzantine.</p>
       <p>• <strong>Khan Tervel :</strong> en 717-718, les forces bulgares participent à la défense de Constantinople contre les Omeyyades.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>2. Krum et la puissance militaire</h3>
-      <p><strong>Khan Krum (803-814)</strong> est l'un des grands souverains guerriers bulgares. En <strong>811</strong>, il inflige à l'armée de l'empereur Nicéphore Ier une défaite catastrophique lors de la campagne de Pliska.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">803–814</span></div><h3>Krum et la puissance militaire</h3>
+<p><strong>Khan Krum (803-814)</strong> est l'un des grands souverains guerriers bulgares. En <strong>811</strong>, il inflige à l'armée de l'empereur Nicéphore Ier une défaite catastrophique lors de la campagne de Pliska.</p>
       <p>Cette période nourrit fortement l'image traditionnelle du Bulgare médiéval comme cavalier, guerrier et défenseur de son État.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>3. Boris Ier, christianisation et Âge d'or</h3>
-      <p>• <strong>Boris Ier (Boris-Mikhaïl) :</strong> christianisation officielle de la Bulgarie au IXe siècle, puis accueil des disciples de Cyrille et Méthode.</p>
+</div>
+<div class="tl-era" id="bg-hera-1"><h3>IXe–XIe siècles : christianisation, Âge d’or et résistance à Byzance</h3></div>
+<div class="tl-item"><div><span class="tl-date">IXe–Xe siècles</span></div><h3>Boris Ier, christianisation et Âge d'or</h3>
+<p>• <strong>Boris Ier (Boris-Mikhaïl) :</strong> christianisation officielle de la Bulgarie au IXe siècle, puis accueil des disciples de Cyrille et Méthode.</p>
       <p>• <strong>Siméon Ier le Grand (893-927) :</strong> le Premier Empire atteint un sommet politique, militaire et culturel. Son règne est associé à l'<strong>Âge d'or de la culture bulgare</strong>.</p>
       <p>• <strong>Acheloos (917) :</strong> grande victoire bulgare contre l'armée byzantine.</p>
       <p>• <strong>Preslav</strong> devient un immense centre littéraire et culturel.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>4. Samuel et la résistance à Byzance</h3>
-      <p><strong>Tsar Samuel (Samuil)</strong> mène une longue résistance contre Byzance. La <strong>Porte de Trajan (986)</strong> est une victoire bulgare importante. La défaite de <strong>Kleidion (1014)</strong> et la conquête byzantine de 1018 constituent au contraire un grand traumatisme de la mémoire historique.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>5. Le Second Empire bulgare</h3>
-      <p>En <strong>1185</strong>, les frères <strong>Asen et Petar</strong> déclenchent la révolte qui restaure l'État bulgare.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">986–1018</span></div><h3>Samuel et la résistance à Byzance</h3>
+<p><strong>Tsar Samuel (Samuil)</strong> mène une longue résistance contre Byzance. La <strong>Porte de Trajan (986)</strong> est une victoire bulgare importante. La défaite de <strong>Kleidion (1014)</strong> et la conquête byzantine de 1018 constituent au contraire un grand traumatisme de la mémoire historique.</p>
+</div>
+<div class="tl-era" id="bg-hera-2"><h3>XIIe–XIVe siècles : Le Second Empire bulgare</h3></div>
+<div class="tl-item"><div><span class="tl-date">Dès 1185</span></div><h3>Le Second Empire bulgare</h3>
+<p>En <strong>1185</strong>, les frères <strong>Asen et Petar</strong> déclenchent la révolte qui restaure l'État bulgare.</p>
       <p>• <strong>Kaloyan :</strong> grande victoire d'<strong>Andrinople (1205)</strong> contre les forces de l'Empire latin.</p>
       <p>• <strong>Ivan Asen II :</strong> sous son règne, la Bulgarie atteint un nouvel apogée. La victoire de <strong>Klokotnitsa (1230)</strong> en fait la puissance dominante des Balkans.</p>
       <p><strong>Veliko Tarnovo</strong> et la forteresse de <strong>Tsarevets</strong> deviennent les symboles de cette époque.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>6. Domination ottomane et mémoire de la résistance</h3>
-      <p>À la fin du XIVe siècle, les États bulgares passent sous domination ottomane. La mémoire nationale conserve le souvenir des derniers tsars, des résistances locales, des haïdouks et, plus tard, des révolutionnaires de la Renaissance nationale.</p>
+</div>
+<div class="tl-era" id="bg-hera-3"><h3>Fin XIVe–XVIe siècle : chute de Tarnovo et domination ottomane</h3></div>
+<div class="tl-item"><div><span class="tl-date">Fin XIVe siècle</span></div><h3>Domination ottomane et mémoire de la résistance</h3>
+<p>À la fin du XIVe siècle, les États bulgares passent sous domination ottomane. La mémoire nationale conserve le souvenir des derniers tsars, des résistances locales, des haïdouks et, plus tard, des révolutionnaires de la Renaissance nationale.</p>
       <p>Il faut distinguer cette période de la « Libération » de 1878 : les siècles ottomans sont un élément majeur de la mémoire historique, mais les formes de coexistence et l'expérience des populations furent diverses selon les lieux et les époques.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>7. Renaissance nationale — Българско възраждане</h3>
-      <p>La Renaissance bulgare met au premier plan la langue, l'éducation, la culture, l'Église et la conscience nationale.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1393</span></div><h3>Euthyme de Tarnovo — Le dernier gardien de la capitale</h3>
+<p>En 1393, l'armée ottomane de Bayezid Ier vint mettre le siège devant <strong>Tarnovo</strong>, la capitale du Second Empire bulgare. Le tsar Ivan Shishman n'était pas dans la ville. Celui qui demeurait au milieu des habitants était le <strong>patriarche Euthyme</strong>, chef spirituel de l'Église bulgare.</p>
+      <p>Pendant le siège, Euthyme devint le symbole de la résistance de la ville. Lorsque les Ottomans finirent par franchir les défenses et que Tarnovo tomba, la puissance politique de la Bulgarie médiévale s'effondra avec elle.</p>
+      <p>La tradition orthodoxe conserva cependant une autre image d'Euthyme : celle d'un homme qui ne renonça pas à sa foi lorsque la ville qu'il défendait avait déjà été vaincue. Il fut finalement exilé. Mais la chute de Tarnovo ne fut pas la fin de son héritage : Euthyme devint l'un des grands saints et maîtres spirituels de la Bulgarie.</p>
+      <p>L'empire avait perdu sa capitale. La mémoire bulgare, elle, avait conservé son dernier patriarche.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1402</span></div><h3>Constantin et Fruzhin — Les princes qui voulurent reconquérir la Bulgarie</h3>
+<p>Au début du XVe siècle, la Bulgarie n'avait plus de royaume indépendant, mais ses anciennes dynasties n'avaient pas complètement disparu. <strong>Constantin II</strong> et <strong>Fruzhin</strong>, liés aux anciennes familles régnantes bulgares, cherchèrent à profiter d'une crise majeure de l'Empire ottoman.</p>
+      <p>En <strong>1402</strong>, le sultan Bayezid Ier fut vaincu et capturé par Timur à Ankara. L'Empire ottoman entra alors dans une période de guerre civile : c'était peut-être la meilleure occasion depuis longtemps. Les princes bulgares obtinrent l'appui de puissances chrétiennes et tentèrent de provoquer un soulèvement contre les Ottomans. Des territoires furent temporairement repris.</p>
+      <p>Mais les Ottomans finirent par rétablir leur puissance et la tentative échoua. Constantin et Fruzhin ne restaurèrent pas le royaume bulgare. Leur histoire raconte pourtant quelque chose d'important : pendant plusieurs générations après la conquête, certains descendants des anciennes dynasties continuèrent à espérer une reconquête.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1515</span></div><h3>Georges de Kratovo — Mourir plutôt que renier le Christ</h3>
+<p>En <strong>1515</strong> vivait à Kratovo, dans l'actuelle Macédoine du Nord, un jeune chrétien nommé Georges. La tradition orthodoxe raconte qu'il refusa d'abandonner sa foi lorsqu'on lui demanda de se convertir à l'islam. On lui offrit la possibilité de sauver sa vie. Il refusa. Alors commencèrent les tortures, mais Georges resta ferme. Il fut finalement condamné à mort.</p>
+      <p>La mémoire orthodoxe le conserva comme martyr et lui donna le nom de <strong>Georges le Nouveau de Sofia</strong>. La bataille n'est pas livrée avec une armée, mais avec la fidélité à sa foi : son arme est son refus, et sa victoire n'est pas militaire, elle est spirituelle.</p>
+      <p>L'Église bulgare le compte parmi ses grands martyrs de la période ottomane.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1530</span></div><h3>Georges le Plus récent de Sofia — Un second martyr de Sofia</h3>
+<p>Ces martyrs ne sont pas des combattants de la guerre de 1877–1878 : ils appartiennent à la longue mémoire des persécutions et du christianisme bulgare sous la domination ottomane.</p>
+      <p><strong>Saint Georges le Plus récent de Sofia (mort en 1530)</strong> est un autre martyr chrétien commémoré à Sofia, exécuté sous les Ottomans en raison de sa foi. Il est distinct de Georges le Nouveau de Sofia, mort en 1515.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1598</span></div><h3>Le premier soulèvement de Tarnovo (1598) — Quand les prêtres prirent les armes</h3>
+<p>En <strong>1598</strong>, plus de deux siècles après la chute de Tarnovo, des Bulgares tentèrent de reprendre leur ancienne capitale aux Ottomans. Ce ne furent pas seulement des guerriers qui préparèrent le soulèvement : des hommes d'Église y participèrent directement. Le métropolite <strong>Dionysius de Tarnovo</strong>, plusieurs évêques et des dizaines de prêtres prirent part à l'organisation de la révolte. La tradition de l'Église bulgare conserve notamment les noms des évêques de Lovech, Rousse, Shumen et de Thrace qui furent impliqués.</p>
+      <p>Le moment semblait favorable. Les Ottomans étaient engagés dans la Longue Guerre contre les Habsbourg, tandis que le prince valaque <strong>Michel le Brave</strong> avait franchi le Danube et attaqué les territoires ottomans. Les insurgés espéraient que les armées chrétiennes viendraient à leur secours.</p>
+      <p>Un descendant supposé de la dynastie des Shishman fut proclamé tsar sous le nom d'<strong>Ivan Shishman II</strong>. Tarnovo fut brièvement libérée et environ douze mille personnes auraient rejoint le mouvement.</p>
+      <p>Mais l'armée ottomane revint. La ville fut reprise et le soulèvement écrasé. Des milliers de Bulgares quittèrent ensuite les territoires ottomans et traversèrent le Danube.</p>
+      <p>Le premier grand soulèvement bulgare de l'époque ottomane avait échoué. Mais il avait montré que, même deux siècles après la chute du royaume, le souvenir de la Bulgarie indépendante n'était pas mort.</p>
+</div>
+<div class="tl-era" id="bg-hera-4"><h3>XVIIe–XVIIIe siècles : soulèvements et martyrs de la période ottomane</h3></div>
+<div class="tl-item"><div><span class="tl-date">1688</span></div><h3>Chiprovtsi (1688) — La ville qui espérait l'arrivée des armées chrétiennes</h3>
+<p>En <strong>1688</strong>, une autre insurrection éclata dans la ville de Chiprovtsi, dans le nord-ouest de l'actuelle Bulgarie. Le contexte était une nouvelle guerre entre l'Empire ottoman et les puissances chrétiennes européennes. Les insurgés espéraient profiter de l'avance des armées des Habsbourg. Des Bulgares, principalement chrétiens, se soulevèrent et la révolte réussit temporairement à prendre plusieurs positions.</p>
+      <p>Mais l'aide extérieure ne suffit pas. Les Ottomans contre-attaquèrent et Chiprovtsi fut finalement prise et détruite. Une partie de sa population fut tuée, réduite en esclavage ou contrainte de fuir vers le nord du Danube.</p>
+      <p>L'histoire de Chiprovtsi est donc moins celle d'une victoire que celle d'un espoir brisé : les chrétiens pensaient que l'armée de secours arrivait. Elle n'arriva pas à temps, et lorsque les Ottomans revinrent, la ville paya le prix du soulèvement.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1689</span></div><h3>Karposh — Le chef des rebelles de Macédoine</h3>
+<p>En <strong>1689</strong>, les Ottomans furent engagés dans une guerre gigantesque contre les puissances chrétiennes européennes. Leur position dans les Balkans s'affaiblit momentanément. Dans la région de l'actuelle Macédoine du Nord, un chef rebelle connu sous le nom de <strong>Karposh</strong> prit la tête d'une insurrection. Les rebelles profitèrent de l'avancée des forces chrétiennes pour s'emparer de positions ottomanes, et pendant un bref moment l'espoir d'une libération sembla possible.</p>
+      <p>Mais l'armée ottomane contre-attaqua et le mouvement fut écrasé. Karposh fut capturé et exécuté.</p>
+      <p>Comme dans beaucoup de soulèvements de cette époque, le contexte international avait donné aux populations chrétiennes locales l'impression qu'une occasion historique venait de s'ouvrir. Et l'occasion disparut. Mais le nom de Karposh survécut : il devint dans la mémoire historique et populaire l'un des symboles de la résistance à la domination ottomane.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1771</span></div><h3>Damascène de Gabrovo — Un moine martyr</h3>
+<p><strong>Saint Damascène de Gabrovo (mort en 1771)</strong> est un moine commémoré dans le calendrier des saints bulgares. Il est associé aux martyrs orthodoxes de la période ottomane, bien avant la guerre de libération.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1795</span></div><h3>Zlata de Muglen — « Ils peuvent prendre mon corps, pas ma foi »</h3>
+<p>À la fin du XVIIIe siècle vivait dans la région de Meglen une jeune chrétienne appelée Zlata, issue d'une famille paysanne pauvre. Selon sa vie de sainte, sa beauté attira l'attention d'un jeune homme musulman qui voulut la contraindre à abandonner sa foi. Zlata refusa. Elle aurait demandé à un chrétien de prier pour elle afin qu'elle puisse rester ferme jusqu'à la fin.</p>
+      <p>Les tortures commencèrent, mais elle ne céda pas. Le <strong>18 octobre 1795</strong>, selon la tradition conservée par l'Église orthodoxe bulgare, Zlata fut tuée après avoir refusé de renier le Christ. Son corps fut ensuite mutilé. Elle devint la grande martyre <strong>Zlata de Muglen</strong>. Son culte existe encore aujourd'hui dans plusieurs traditions orthodoxes, notamment bulgare et macédonienne.</p>
+      <p>Son histoire reprend une structure que l'on retrouve dans tous ces récits de martyrs : une personne sans armée, une puissance qui exige sa soumission, un choix entre la vie et la foi, et finalement un martyr dont la mémoire dure plus longtemps que celle de ses bourreaux.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">XVIe–XIXe siècles</span></div><h3>Le martyrologe bulgare — Ceux dont les noms ont survécu</h3>
+<p>Il n'y a pas seulement les grands chefs. L'Église bulgare conserve la mémoire d'une longue série de martyrs morts pendant les siècles de domination ottomane. Parmi eux figurent <strong>Georges de Kratovo</strong> et <strong>Nicolas de Sofia</strong> (1515), <strong>Vissarion de Smolyan</strong> (1670), <strong>Damaskin de Gabrovo</strong> (1771), <strong>Zlata de Muglen</strong> (1795), ainsi que <strong>Jean le Bulgare</strong>, <strong>Ignace de Stara Zagora</strong> et <strong>Onuphre de Gabrovo</strong> au début du XIXe siècle.</p>
+      <p>Leur point commun n'est pas une grande bataille, c'est le refus. Certains refusèrent de changer de religion, d'autres refusèrent de se soumettre, d'autres encore furent associés à des mouvements de résistance. Ils moururent sans armée derrière eux, mais leurs noms furent conservés dans les calendriers liturgiques et dans la mémoire des communautés chrétiennes.</p>
+      <p>C'est peut-être le point commun le plus profond de ces histoires : un empire peut détruire une famille, une ville ou une armée. Il ne contrôle pas nécessairement la manière dont les générations suivantes se souviendront de ceux qu'il a tués.</p>
+</div>
+<div class="tl-era" id="bg-hera-5"><h3>XVIIIe–XIXe siècles : renaissance nationale</h3></div>
+<div class="tl-item"><div><span class="tl-date">1762–1876</span></div><h3>Renaissance nationale — Българско възраждане</h3>
+<p>La Renaissance bulgare met au premier plan la langue, l'éducation, la culture, l'Église et la conscience nationale.</p>
       <p>• <strong>Paisius de Hilendar (Паисий Хилендарски) :</strong> son <em>Histoire slavo-bulgare</em> (1762) devient un texte fondateur de la conscience historique moderne.</p>
       <p>• <strong>Vasil Levski :</strong> « l'Apôtre de la liberté », organisateur du mouvement révolutionnaire clandestin.</p>
       <p>• <strong>Hristo Botev :</strong> poète et révolutionnaire, mort en 1876 à 28 ans.</p>
       <p>• <strong>Insurrection d'Avril (1876) :</strong> soulèvement violemment réprimé qui contribue à internationaliser la question bulgare.</p>
       <p>• <strong>Rayna Knyaginya :</strong> figure emblématique de l'insurrection d'Avril et de la participation des femmes au mouvement national.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>8. Libération, Unification, Indépendance</h3>
-      <p>• <strong>3 mars 1878 :</strong> traité préliminaire de San Stefano, date devenue la fête nationale de la Libération de la Bulgarie.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">XIXe siècle</span></div><h3>« Свобода или смърт » — La liberté ou la mort</h3>
+<p>« <strong>Свобода или смърт</strong> », qui signifie « La liberté ou la mort », est une devise profondément liée à l’histoire nationale bulgare et à la lutte contre la domination de l’Empire ottoman. Elle s’inscrit particulièrement dans le contexte du mouvement de libération nationale bulgare au XIX<sup>e</sup> siècle, lorsque des révolutionnaires et des intellectuels bulgares militent pour l’autonomie puis l’indépendance de leur peuple. La formule exprime l’idée que la liberté nationale constitue un objectif pour lequel il faut être prêt à sacrifier sa vie.</p>
+      <p>Elle est notamment associée à la figure de <strong>Vassil Levski</strong>, l’un des principaux héros de la libération bulgare, qui organise dans les années 1860-1870 un réseau révolutionnaire clandestin à l’intérieur des territoires bulgares. Après l’insurrection d’avril 1876 et la guerre russo-turque de 1877-1878, la Bulgarie obtient son autonomie puis devient progressivement un État indépendant.</p>
+      <p>Ainsi, « Свобода или смърт » symbolise à la fois le combat pour la liberté, le sacrifice des révolutionnaires et la construction de l’identité nationale bulgare.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1762–1813</span></div><h3>Les saints du renouveau national — Païssi de Hilendar et Sophrone de Vratsa</h3>
+<p>Certains saints ont préparé le renouveau spirituel et national bulgare, plusieurs décennies avant la guerre : tous n'ont donc pas combattu directement en 1877–1878.</p>
+      <p>• <strong>Saint Païssi de Hilendar (1722–1773) :</strong> moine et auteur de l'<em>Histoire slavo-bulgare</em> en 1762. Son œuvre encourage les Bulgares à redécouvrir leur histoire, leur langue et leur identité. Il est canonisé par l'Église orthodoxe bulgare en 1962.</p>
+      <p>• <strong>Saint Sophrone de Vratsa (1739–1813) :</strong> évêque, écrivain et continuateur du renouveau religieux et culturel bulgare. Il contribue à la transmission de l'œuvre de Païssi et à la formation de la conscience nationale, plusieurs décennies avant la guerre.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1867–1868</span></div><h3>Rakovski, Hadzhi Dimitar et Stefan Karadzha — Les précurseurs</h3>
+<p>• <strong>Georgi Rakovski (1821–1867) :</strong> précurseur du mouvement révolutionnaire organisé. Il meurt avant la guerre, mais ses idées et ses projets de lutte armée influencent les générations suivantes.</p>
+      <p>• <strong>Hadzhi Dimitar (1840–1868) et Stefan Karadzha (1840–1868) :</strong> deux chefs de détachements révolutionnaires qui combattent les Ottomans en 1868. Leur expédition échoue militairement, mais leur sacrifice devient un symbole de la résistance nationale.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1873</span></div><h3>Vasil Levski — L'Apôtre de la liberté</h3>
+<p>Surnommé l'« Apôtre de la liberté », <strong>Vasil Levski (1837–1873)</strong> organise un réseau révolutionnaire clandestin visant à libérer la Bulgarie. Capturé par les autorités ottomanes, il est exécuté en 1873, avant la guerre.</p>
+      <p>C'est un héros national et un révolutionnaire, mais il n'est pas officiellement canonisé comme saint par l'Église orthodoxe bulgare.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1876</span></div><h3>L'insurrection d'Avril — Organisateurs, poètes et porte-drapeau</h3>
+<p>La libération ne doit pas être attribuée uniquement à la Russie : les soulèvements, les réseaux révolutionnaires et les volontaires bulgares ont joué un rôle majeur dans la préparation et la conduite de la lutte nationale.</p>
+      <p>• <strong>Hristo Botev (1848–1876) :</strong> poète et révolutionnaire. Il meurt en 1876 après avoir conduit un groupe armé entré en Bulgarie depuis la Roumanie pour soutenir l'insurrection. Il est honoré comme héros de la liberté nationale, mais pas comme saint officiellement canonisé.</p>
+      <p>• <strong>Georgi Benkovski (1843–1876) :</strong> l'un des principaux organisateurs de l'insurrection d'avril 1876. Il est tué pendant la répression qui suit le soulèvement.</p>
+      <p>• <strong>Panayot Volov (1850–1876) :</strong> organisateur important de l'insurrection d'avril. Il participe à la préparation du soulèvement et meurt en fuite après son échec.</p>
+      <p>• <strong>Rayna Knyaginya (1856–1917) :</strong> enseignante devenue célèbre pour avoir confectionné et porté le drapeau des insurgés de Panagyurichté en 1876. Elle survit à la répression et devient une figure emblématique du mouvement national.</p>
+      <p>• <strong>Exarque Antim Ier (1816–1888) :</strong> chef de l'Église bulgare et figure publique pendant la crise de 1876.</p>
+      <p>• <strong>Petko Slaveykov (1827–1895) :</strong> écrivain et acteur du mouvement national.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">Mai 1876</span></div><h3>Les saints martyrs de Batak et de Novo Selo</h3>
+<p>Certains saints sont morts pendant les persécutions et les massacres qui ont précédé la guerre. Les victimes civiles de 1876 ont été explicitement reconnues comme saints martyrs par l'Église orthodoxe bulgare.</p>
+      <p>• <strong>Les saints martyrs de Batak :</strong> en mai 1876, de nombreux habitants chrétiens sont massacrés lors de la répression de l'insurrection d'avril. Des milliers de victimes sont associées au massacre de Batak, notamment dans l'église Sainte-Nédélia. Elles ont été officiellement canonisées par l'Église orthodoxe bulgare en 2011 ; leur fête collective est célébrée le <strong>17 mai</strong>.</p>
+      <p>• <strong>Les saints néomartyrs de Novo Selo :</strong> des civils, dont de nombreuses femmes et des enfants, sont tués lors de la répression de 1876 à Novo Selo, aujourd'hui dans la commune d'Apriltsi. Les victimes reconnues par l'Église orthodoxe bulgare ont été canonisées en 2011 ; leur mémoire collective est célébrée le <strong>9 mai</strong>.</p>
+      <p>Ces deux groupes de martyrs ont une place particulière dans la mémoire religieuse bulgare : ils incarnent à la fois les souffrances des civils et la fidélité à la foi orthodoxe pendant la répression.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1873–1876</span></div><h3>Héros nationaux ou saints ? Une distinction importante</h3>
+<p>Il existe une différence entre un héros national et un saint reconnu par l'Église. Plusieurs révolutionnaires bulgares sont honorés comme des martyrs dans la mémoire populaire, mais ils ne sont pas tous officiellement canonisés.</p>
+      <p>• <strong>Vasil Levski :</strong> héros national et révolutionnaire exécuté en 1873, non canonisé.</p>
+      <p>• <strong>Hristo Botev :</strong> poète et combattant mort en 1876, héros de la liberté nationale, non canonisé.</p>
+      <p>• <strong>Georgi Benkovski :</strong> organisateur de l'insurrection d'avril, tué en 1876.</p>
+      <p>• <strong>Les victimes civiles de 1876 :</strong> certaines ont, elles, été explicitement reconnues comme saints martyrs par l'Église orthodoxe bulgare, notamment les groupes de Batak et de Novo Selo.</p>
+</div>
+<div class="tl-era" id="bg-hera-6"><h3>1877–1908 : libération, Unification, Indépendance</h3></div>
+<div class="tl-item"><div><span class="tl-date">1877–1908</span></div><h3>Libération, Unification, Indépendance</h3>
+<p>• <strong>3 mars 1878 :</strong> traité préliminaire de San Stefano, date devenue la fête nationale de la Libération de la Bulgarie.</p>
       <p>• <strong>6 septembre 1885 :</strong> Unification de la Principauté de Bulgarie et de la Roumélie orientale.</p>
       <p>• <strong>22 septembre 1908 :</strong> proclamation de l'indépendance complète de la Bulgarie.</p>
       <p>• <strong>Shipka :</strong> les combats de 1877 sont un symbole majeur de courage et de sacrifice des volontaires bulgares et des forces russes.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>9. XXe siècle et fin du communisme</h3>
-      <p>Après la Seconde Guerre mondiale, la Bulgarie devient un État communiste sous domination politique soviétique.</p>
-      <p><strong>10 novembre 1989 :</strong> Todor Zhivkov est écarté de la direction du pays. Cette date marque le début de la transition politique vers le pluralisme et la démocratie.</p>
-      <p><strong>1991 :</strong> nouvelle Constitution. <strong>2004 :</strong> adhésion à l'OTAN. <strong>2007 :</strong> adhésion à l'Union européenne.</p>
-    </div>
-    <div class="info-card">
-      <h3>10. Euthyme de Tarnovo — Le dernier gardien de la capitale</h3>
-      <p>En 1393, l'armée ottomane de Bayezid Ier vint mettre le siège devant <strong>Tarnovo</strong>, la capitale du Second Empire bulgare. Le tsar Ivan Shishman n'était pas dans la ville. Celui qui demeurait au milieu des habitants était le <strong>patriarche Euthyme</strong>, chef spirituel de l'Église bulgare.</p>
-      <p>Pendant le siège, Euthyme devint le symbole de la résistance de la ville. Lorsque les Ottomans finirent par franchir les défenses et que Tarnovo tomba, la puissance politique de la Bulgarie médiévale s'effondra avec elle.</p>
-      <p>La tradition orthodoxe conserva cependant une autre image d'Euthyme : celle d'un homme qui ne renonça pas à sa foi lorsque la ville qu'il défendait avait déjà été vaincue. Il fut finalement exilé. Mais la chute de Tarnovo ne fut pas la fin de son héritage : Euthyme devint l'un des grands saints et maîtres spirituels de la Bulgarie.</p>
-      <p>L'empire avait perdu sa capitale. La mémoire bulgare, elle, avait conservé son dernier patriarche.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>11. Le premier soulèvement de Tarnovo (1598) — Quand les prêtres prirent les armes</h3>
-      <p>En <strong>1598</strong>, plus de deux siècles après la chute de Tarnovo, des Bulgares tentèrent de reprendre leur ancienne capitale aux Ottomans. Ce ne furent pas seulement des guerriers qui préparèrent le soulèvement : des hommes d'Église y participèrent directement. Le métropolite <strong>Dionysius de Tarnovo</strong>, plusieurs évêques et des dizaines de prêtres prirent part à l'organisation de la révolte. La tradition de l'Église bulgare conserve notamment les noms des évêques de Lovech, Rousse, Shumen et de Thrace qui furent impliqués.</p>
-      <p>Le moment semblait favorable. Les Ottomans étaient engagés dans la Longue Guerre contre les Habsbourg, tandis que le prince valaque <strong>Michel le Brave</strong> avait franchi le Danube et attaqué les territoires ottomans. Les insurgés espéraient que les armées chrétiennes viendraient à leur secours.</p>
-      <p>Un descendant supposé de la dynastie des Shishman fut proclamé tsar sous le nom d'<strong>Ivan Shishman II</strong>. Tarnovo fut brièvement libérée et environ douze mille personnes auraient rejoint le mouvement.</p>
-      <p>Mais l'armée ottomane revint. La ville fut reprise et le soulèvement écrasé. Des milliers de Bulgares quittèrent ensuite les territoires ottomans et traversèrent le Danube.</p>
-      <p>Le premier grand soulèvement bulgare de l'époque ottomane avait échoué. Mais il avait montré que, même deux siècles après la chute du royaume, le souvenir de la Bulgarie indépendante n'était pas mort.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>12. Georges de Kratovo — Mourir plutôt que renier le Christ</h3>
-      <p>En <strong>1515</strong> vivait à Kratovo, dans l'actuelle Macédoine du Nord, un jeune chrétien nommé Georges. La tradition orthodoxe raconte qu'il refusa d'abandonner sa foi lorsqu'on lui demanda de se convertir à l'islam. On lui offrit la possibilité de sauver sa vie. Il refusa. Alors commencèrent les tortures, mais Georges resta ferme. Il fut finalement condamné à mort.</p>
-      <p>La mémoire orthodoxe le conserva comme martyr et lui donna le nom de <strong>Georges le Nouveau de Sofia</strong>. La bataille n'est pas livrée avec une armée, mais avec la fidélité à sa foi : son arme est son refus, et sa victoire n'est pas militaire, elle est spirituelle.</p>
-      <p>L'Église bulgare le compte parmi ses grands martyrs de la période ottomane.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>13. Zlata de Muglen — « Ils peuvent prendre mon corps, pas ma foi »</h3>
-      <p>À la fin du XVIIIe siècle vivait dans la région de Meglen une jeune chrétienne appelée Zlata, issue d'une famille paysanne pauvre. Selon sa vie de sainte, sa beauté attira l'attention d'un jeune homme musulman qui voulut la contraindre à abandonner sa foi. Zlata refusa. Elle aurait demandé à un chrétien de prier pour elle afin qu'elle puisse rester ferme jusqu'à la fin.</p>
-      <p>Les tortures commencèrent, mais elle ne céda pas. Le <strong>18 octobre 1795</strong>, selon la tradition conservée par l'Église orthodoxe bulgare, Zlata fut tuée après avoir refusé de renier le Christ. Son corps fut ensuite mutilé. Elle devint la grande martyre <strong>Zlata de Muglen</strong>. Son culte existe encore aujourd'hui dans plusieurs traditions orthodoxes, notamment bulgare et macédonienne.</p>
-      <p>Son histoire reprend une structure que l'on retrouve dans tous ces récits de martyrs : une personne sans armée, une puissance qui exige sa soumission, un choix entre la vie et la foi, et finalement un martyr dont la mémoire dure plus longtemps que celle de ses bourreaux.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>14. Karposh — Le chef des rebelles de Macédoine</h3>
-      <p>En <strong>1689</strong>, les Ottomans furent engagés dans une guerre gigantesque contre les puissances chrétiennes européennes. Leur position dans les Balkans s'affaiblit momentanément. Dans la région de l'actuelle Macédoine du Nord, un chef rebelle connu sous le nom de <strong>Karposh</strong> prit la tête d'une insurrection. Les rebelles profitèrent de l'avancée des forces chrétiennes pour s'emparer de positions ottomanes, et pendant un bref moment l'espoir d'une libération sembla possible.</p>
-      <p>Mais l'armée ottomane contre-attaqua et le mouvement fut écrasé. Karposh fut capturé et exécuté.</p>
-      <p>Comme dans beaucoup de soulèvements de cette époque, le contexte international avait donné aux populations chrétiennes locales l'impression qu'une occasion historique venait de s'ouvrir. Et l'occasion disparut. Mais le nom de Karposh survécut : il devint dans la mémoire historique et populaire l'un des symboles de la résistance à la domination ottomane.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>15. Chiprovtsi (1688) — La ville qui espérait l'arrivée des armées chrétiennes</h3>
-      <p>En <strong>1688</strong>, une autre insurrection éclata dans la ville de Chiprovtsi, dans le nord-ouest de l'actuelle Bulgarie. Le contexte était une nouvelle guerre entre l'Empire ottoman et les puissances chrétiennes européennes. Les insurgés espéraient profiter de l'avance des armées des Habsbourg. Des Bulgares, principalement chrétiens, se soulevèrent et la révolte réussit temporairement à prendre plusieurs positions.</p>
-      <p>Mais l'aide extérieure ne suffit pas. Les Ottomans contre-attaquèrent et Chiprovtsi fut finalement prise et détruite. Une partie de sa population fut tuée, réduite en esclavage ou contrainte de fuir vers le nord du Danube.</p>
-      <p>L'histoire de Chiprovtsi est donc moins celle d'une victoire que celle d'un espoir brisé : les chrétiens pensaient que l'armée de secours arrivait. Elle n'arriva pas à temps, et lorsque les Ottomans revinrent, la ville paya le prix du soulèvement.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>16. Constantin et Fruzhin — Les princes qui voulurent reconquérir la Bulgarie</h3>
-      <p>Au début du XVe siècle, la Bulgarie n'avait plus de royaume indépendant, mais ses anciennes dynasties n'avaient pas complètement disparu. <strong>Constantin II</strong> et <strong>Fruzhin</strong>, liés aux anciennes familles régnantes bulgares, cherchèrent à profiter d'une crise majeure de l'Empire ottoman.</p>
-      <p>En <strong>1402</strong>, le sultan Bayezid Ier fut vaincu et capturé par Timur à Ankara. L'Empire ottoman entra alors dans une période de guerre civile : c'était peut-être la meilleure occasion depuis longtemps. Les princes bulgares obtinrent l'appui de puissances chrétiennes et tentèrent de provoquer un soulèvement contre les Ottomans. Des territoires furent temporairement repris.</p>
-      <p>Mais les Ottomans finirent par rétablir leur puissance et la tentative échoua. Constantin et Fruzhin ne restaurèrent pas le royaume bulgare. Leur histoire raconte pourtant quelque chose d'important : pendant plusieurs générations après la conquête, certains descendants des anciennes dynasties continuèrent à espérer une reconquête.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>17. Le combat de Kresna (1878) — Quatre cents hommes contre une garnison ottomane</h3>
-      <p>Le <strong>17 octobre 1878</strong>, dans la région de Kresna, un groupe d'environ quatre cents insurgés attaqua une garnison ottomane. Parmi les chefs figuraient <strong>Stoyan Karastoilov</strong> et <strong>Dimitar Pop Georgiev Berovski</strong>. Les combats furent acharnés et les insurgés finirent par prendre la position ottomane.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">24 avril 1877</span></div><h3>La guerre russo-ottomane de 1877–1878 — L'événement central de la libération</h3>
+<p>La guerre russo-ottomane de 1877–1878 est l'événement militaire central qui conduit à la libération d'une grande partie des territoires bulgares de la domination ottomane et à la création d'une principauté bulgare autonome en 1878. Elle s'inscrit dans une histoire plus longue de résistance bulgare, de soulèvements chrétiens et d'interventions russes dans les Balkans.</p>
+      <p>• <strong>Début de la guerre :</strong> le 24 avril 1877 selon le calendrier grégorien. Combats majeurs à Plevna et à Chipka. La guerre se déroule sur deux fronts : les Balkans et le Caucase.</p>
+      <p>Pour construire une liste solide, il faut distinguer quatre catégories : les dirigeants russes, les commandants militaires, les révolutionnaires et héros bulgares, et les saints ou martyrs de la tradition orthodoxe. Ces catégories se recoupent parfois, mais elles ne sont pas équivalentes.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1877–1878</span></div><h3>Les principaux dirigeants et personnages russes</h3>
+<p>Personnages politiques, diplomatiques et militaires de la guerre de 1877–1878.</p>
+      <p>• <strong>Alexandre II (1818–1881) :</strong> empereur de Russie. Il décide d'entrer en guerre contre l'Empire ottoman en avril 1877, dans le contexte de la crise des Balkans. Son gouvernement joue un rôle central dans les négociations qui suivent la victoire russe.</p>
+      <p>• <strong>Nicolas Nikolaïevitch l'Ancien (1831–1891) :</strong> grand-duc et commandant en chef de l'armée russe sur le front des Balkans. Il dirige la campagne principale contre les forces ottomanes.</p>
+      <p>• <strong>Nikolaï Ignatiev (1832–1908) :</strong> diplomate russe influent dans les affaires ottomanes. Il est associé aux négociations de paix et au traité de San Stefano, signé le 3 mars 1878, qui prévoit une vaste Bulgarie autonome.</p>
+      <p>• <strong>Dmitri Milioutine (1816–1912) :</strong> ministre de la Guerre sous Alexandre II. Il joue un rôle essentiel dans la préparation et l'organisation de l'armée russe.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1877–1878</span></div><h3>Les grands généraux de la libération</h3>
+<p>• <strong>Iosif Gourko (1828–1901) :</strong> l'un des principaux commandants de la campagne des Balkans. Il s'empare de Veliko Tarnovo, franchit les Balkans en hiver et prend <strong>Sofia en janvier 1878</strong>.</p>
+      <p>• <strong>Mikhaïl Skobelev (1843–1882) :</strong> général célèbre pour son rôle dans les combats autour de Plevna et lors de la campagne finale. Surnommé le « général blanc » en raison de sa tenue et de son cheval blancs.</p>
+      <p>• <strong>Édouard Totleben (1818–1884) :</strong> ingénieur militaire réputé. Il contribue à la conduite du siège de Plevna, dont la capitulation en décembre 1877 constitue un tournant majeur.</p>
+      <p>• <strong>Fiodor Radetski (1820–1890) :</strong> figure centrale de la défense du col de Chipka. Il commande des forces russes engagées dans cette bataille décisive.</p>
+      <p>• <strong>Nikolaï Stoletov (1831–1912) :</strong> il commande les volontaires bulgares, les opaltchentsi, intégrés aux forces russo-bulgares. Son nom est étroitement associé à la résistance héroïque de Chipka.</p>
+      <p>• <strong>Mikhaïl Dragomirov (1830–1905) :</strong> général qui participe à la campagne du Danube, notamment au franchissement du fleuve. Il est aussi connu pour ses travaux sur la formation militaire.</p>
+      <p>D'autres officiers importants comprennent <strong>Mikhaïl Loris-Melikov</strong> (commandant sur le front du Caucase), <strong>Arshak Ter-Gukasov</strong> (campagne caucasienne) et <strong>Nikolai Vannovski</strong> (officier supérieur de l'armée russe). La guerre se déroule en effet sur deux fronts : les Balkans et le Caucase.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">Août 1877</span></div><h3>Les opaltchentsi et la défense de Chipka</h3>
+<p>Les <strong>opaltchentsi (ополченци)</strong>, ou volontaires bulgares, combattent aux côtés des troupes russes. Leur participation est particulièrement célèbre à <strong>Chipka</strong>, où les forces russo-bulgares résistent aux offensives de l'armée de Süleyman Pacha en août 1877.</p>
+      <p>Le commandant des volontaires, Nikolaï Stoletov, et le général Fiodor Radetski sont étroitement associés à cette défense du col, devenue un symbole majeur de la mémoire nationale.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1877–1878</span></div><h3>Les principaux commandants ottomans</h3>
+<p>Pour comprendre la guerre dans son ensemble, il est utile de connaître aussi les figures du camp ottoman, qui commandent les forces opposées à l'armée russo-bulgare.</p>
+      <p>• <strong>Osman Nuri Pacha (1832–1900) :</strong> défenseur de Plevna. Il organise une résistance particulièrement efficace contre les troupes russes et roumaines avant de capituler le <strong>10 décembre 1877</strong>.</p>
+      <p>• <strong>Süleyman Pacha (vers 1838–1892) :</strong> commandant ottoman engagé dans les offensives contre les positions russo-bulgares de Chipka en 1877. Ses attaques échouent à briser la défense du col.</p>
+      <p>• <strong>Abdülhamid II (1842–1918) :</strong> sultan de l'Empire ottoman depuis 1876. Il est le souverain ottoman pendant la guerre et les négociations qui conduisent à la perte du contrôle direct sur une grande partie de la Bulgarie.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">3 mars 1878</span></div><h3>Le traité de San Stefano — Le projet d'une vaste Bulgarie autonome</h3>
+<p>Signé le 3 mars 1878 après la victoire russe, le traité de San Stefano prévoit une vaste Bulgarie autonome. Le diplomate russe Nikolaï Ignatiev est étroitement associé à ces négociations de paix.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">13 juillet 1878</span></div><h3>Le traité de Berlin — La révision du règlement de San Stefano</h3>
+<p>Les grandes puissances révisent le règlement de San Stefano. La Bulgarie devient une principauté autonome, tandis que la <strong>Roumélie orientale</strong> reste une province ottomane autonome.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">17 oct. 1878</span></div><h3>Le combat de Kresna (1878) — Quatre cents hommes contre une garnison ottomane</h3>
+<p>Le <strong>17 octobre 1878</strong>, dans la région de Kresna, un groupe d'environ quatre cents insurgés attaqua une garnison ottomane. Parmi les chefs figuraient <strong>Stoyan Karastoilov</strong> et <strong>Dimitar Pop Georgiev Berovski</strong>. Les combats furent acharnés et les insurgés finirent par prendre la position ottomane.</p>
       <p>Le soulèvement se propagea ensuite dans les villages de la région. Les insurgés établirent même une zone qu'ils contrôlaient temporairement. Un personnage religieux se trouvait également au cœur du mouvement : le métropolite <strong>Nathanaël d'Ohrid</strong>. C'est ce mélange entre religieux, chefs militaires et population locale qui donne à l'épisode une ressemblance avec les anciennes révoltes bulgares. Mais le mouvement fut finalement écrasé.</p>
       <p>L'histoire de Kresna est particulièrement intéressante parce qu'elle est revendiquée et interprétée différemment dans les historiographies bulgare et macédonienne. Les sources bulgares la présentent notamment comme un soulèvement de Bulgares de Macédoine, tandis que les institutions historiques de Macédoine du Nord la présentent comme un soulèvement macédonien.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>18. Nathanaël d'Ohrid — Le métropolite qui entra dans la lutte</h3>
-      <p>Nathanaël d'Ohrid n'est pas seulement intéressant comme chef religieux. Son histoire montre à quel point, dans les Balkans du XIXe siècle, la frontière entre le religieux et le politique pouvait devenir extrêmement mince. Lors du soulèvement de Kresna, il fut associé à la direction du mouvement aux côtés de Dimitar Pop Georgiev Berovski et Stoyan Karastoilov.</p>
+</div>
+<div class="tl-item"><div><span class="tl-date">1878</span></div><h3>Nathanaël d'Ohrid — Le métropolite qui entra dans la lutte</h3>
+<p>Nathanaël d'Ohrid n'est pas seulement intéressant comme chef religieux. Son histoire montre à quel point, dans les Balkans du XIXe siècle, la frontière entre le religieux et le politique pouvait devenir extrêmement mince. Lors du soulèvement de Kresna, il fut associé à la direction du mouvement aux côtés de Dimitar Pop Georgiev Berovski et Stoyan Karastoilov.</p>
       <p>L'image est frappante : un métropolite orthodoxe, des prêtres et des combattants, des villages qui se soulèvent, une armée ottomane qui intervient. Et derrière tout cela, l'idée que la libération politique et la défense de la communauté chrétienne étaient liées.</p>
       <p>C'est probablement l'un des meilleurs récits pour faire le pont entre les histoires médiévales et les mouvements nationaux modernes.</p>
+</div>
+<div class="tl-era" id="bg-hera-7"><h3>XXe siècle : XXe siècle et fin du communisme</h3></div>
+<div class="tl-item"><div><span class="tl-date">XXe siècle</span></div><h3>XXe siècle et fin du communisme</h3>
+<p>Après la Seconde Guerre mondiale, la Bulgarie devient un État communiste sous domination politique soviétique.</p>
+      <p><strong>10 novembre 1989 :</strong> Todor Zhivkov est écarté de la direction du pays. Cette date marque le début de la transition politique vers le pluralisme et la démocratie.</p>
+      <p><strong>1991 :</strong> nouvelle Constitution. <strong>2004 :</strong> adhésion à l'OTAN. <strong>2007 :</strong> adhésion à l'Union européenne.</p>
+</div>
     </div>
-
-    <div class="info-card">
-      <h3>19. Le martyrologe bulgare — Ceux dont les noms ont survécu</h3>
-      <p>Il n'y a pas seulement les grands chefs. L'Église bulgare conserve la mémoire d'une longue série de martyrs morts pendant les siècles de domination ottomane. Parmi eux figurent <strong>Georges de Kratovo</strong> et <strong>Nicolas de Sofia</strong> (1515), <strong>Vissarion de Smolyan</strong> (1670), <strong>Damaskin de Gabrovo</strong> (1771), <strong>Zlata de Muglen</strong> (1795), ainsi que <strong>Jean le Bulgare</strong>, <strong>Ignace de Stara Zagora</strong> et <strong>Onuphre de Gabrovo</strong> au début du XIXe siècle.</p>
-      <p>Leur point commun n'est pas une grande bataille, c'est le refus. Certains refusèrent de changer de religion, d'autres refusèrent de se soumettre, d'autres encore furent associés à des mouvements de résistance. Ils moururent sans armée derrière eux, mais leurs noms furent conservés dans les calendriers liturgiques et dans la mémoire des communautés chrétiennes.</p>
-      <p>C'est peut-être le point commun le plus profond de ces histoires : un empire peut détruire une famille, une ville ou une armée. Il ne contrôle pas nécessairement la manière dont les générations suivantes se souviendront de ceux qu'il a tués.</p>
-    </div>
-
-    <div class="info-card">
-      <h3>20. « Свобода или смърт » — La liberté ou la mort</h3>
-      <p>« <strong>Свобода или смърт</strong> », qui signifie « La liberté ou la mort », est une devise profondément liée à l’histoire nationale bulgare et à la lutte contre la domination de l’Empire ottoman. Elle s’inscrit particulièrement dans le contexte du mouvement de libération nationale bulgare au XIX<sup>e</sup> siècle, lorsque des révolutionnaires et des intellectuels bulgares militent pour l’autonomie puis l’indépendance de leur peuple. La formule exprime l’idée que la liberté nationale constitue un objectif pour lequel il faut être prêt à sacrifier sa vie.</p>
-      <p>Elle est notamment associée à la figure de <strong>Vassil Levski</strong>, l’un des principaux héros de la libération bulgare, qui organise dans les années 1860-1870 un réseau révolutionnaire clandestin à l’intérieur des territoires bulgares. Après l’insurrection d’avril 1876 et la guerre russo-turque de 1877-1878, la Bulgarie obtient son autonomie puis devient progressivement un État indépendant.</p>
-      <p>Ainsi, « Свобода или смърт » symbolise à la fois le combat pour la liberté, le sacrifice des révolutionnaires et la construction de l’identité nationale bulgare.</p>
-    </div>
-
+    <h3 class="fr-sub" style="margin-top:1.6rem">Dates clés</h3>
+    <div class="facts"><div class="fact"><b>681</b>reconnaissance de l’État bulgare par Byzance, après les combats de 680-681.</div><div class="fact"><b>811</b>Krum inflige une défaite catastrophique à l’empereur Nicéphore Ier.</div><div class="fact"><b>893–927</b>règne de Siméon Ier le Grand et Âge d’or de la culture bulgare.</div><div class="fact"><b>1018</b>conquête byzantine, après la défaite de Kleidion (1014).</div><div class="fact"><b>1185</b>révolte d’Asen et Petar : restauration de l’État bulgare.</div><div class="fact"><b>1230</b>victoire de Klokotnitsa sous Ivan Asen II.</div><div class="fact"><b>1393</b>chute de Tarnovo, capitale du Second Empire.</div><div class="fact"><b>1762</b>Histoire slavo-bulgare de Paisius de Hilendar.</div><div class="fact"><b>1873</b>exécution de Vasil Levski.</div><div class="fact"><b>1876</b>insurrection d’Avril, violemment réprimée ; massacres de civils, dont ceux de Batak et de Novo Selo.</div><div class="fact"><b>24 avr. 1877</b>début de la guerre russo-ottomane (combats majeurs à Plevna et à Chipka).</div><div class="fact"><b>10 déc. 1877</b>capitulation d’Osman Nuri Pacha à Plevna.</div><div class="fact"><b>3 mars 1878</b>traité préliminaire de San Stefano : fête de la Libération.</div><div class="fact"><b>13 juil. 1878</b>traité de Berlin : principauté autonome de Bulgarie ; la Roumélie orientale reste une province ottomane autonome.</div><div class="fact"><b>6 sept. 1885</b>Unification de la Principauté et de la Roumélie orientale.</div><div class="fact"><b>22 sept. 1908</b>proclamation de l’indépendance complète.</div><div class="fact"><b>10 nov. 1989</b>Todor Zhivkov est écarté : début de la transition.</div><div class="fact"><b>2004 · 2007</b>adhésion à l’OTAN, puis à l’Union européenne.</div></div>
     <div class="culture-cta"><span>Réviser cette partie :</span><button class="action primary cu-jump" data-cat="hist" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="hist" data-mode="quiz">📝 Quiz</button></div>
   </section>
 
   <!-- HOLIDAYS -->
   <section id="sec-holidays">
     <h2>Fêtes, saints et grandes dates bulgares</h2>
-    <p class="lead">Un calendrier élargi réunissant fêtes orthodoxes, fêtes traditionnelles, fêtes nationales et grandes dates de mémoire historique.</p>
-
-    <div class="info-card"><h3>1. Нова година — Nouvel An (1er janvier)</h3><p>Nouvel An et tradition du <em>survakane</em> : la <em>survaknitsa</em> en cornouiller symbolise santé, bonheur et prospérité.</p></div>
-    <div class="info-card"><h3>2. Богоявление / Йордановден — Théophanie (6 janvier)</h3><p>Grande fête orthodoxe. Dans de nombreuses localités, une croix est jetée dans l'eau et des hommes plongent pour la récupérer.</p></div>
-    <div class="info-card"><h3>3. Сирни Заговезни — Dimanche du Pardon</h3><p>Avant le Grand Carême : on demande pardon, on allume des feux et l'on pratique notamment le <em>hamkanie</em>.</p></div>
-    <div class="info-card"><h3>4. Баба Марта — Baba Marta (1er mars)</h3><p>Grande tradition populaire : on offre des <em>martenitsi</em> rouges et blanches pour souhaiter santé et printemps.</p></div>
-    <div class="info-card"><h3>5. Великден — Pâques orthodoxes</h3><p>La plus grande fête chrétienne. Œufs rouges, <em>kozunak</em>, veillée pascale et salut traditionnel : <strong>Христос воскресе! — Воистина воскресе!</strong></p></div>
-    <div class="info-card"><h3>6. Гергьовден — Saint-Georges (6 mai)</h3><p>Fête religieuse et populaire, mais aussi <strong>Jour de la bravoure et de l'Armée bulgare</strong>. Saint Georges est associé aux soldats, aux bergers et au printemps.</p></div>
-    <div class="info-card"><h3>7. 24 май — Saints Cyrille et Méthode, alphabet, éducation et culture</h3><p>Une des fêtes culturelles les plus importantes du pays. Elle célèbre Cyrille, Méthode, leurs disciples, la littérature slave et la tradition écrite développée dans la Bulgarie médiévale. Le cyrillique n'a pas été inventé directement par Cyrille et Méthode : il est associé au travail ultérieur de leurs disciples dans le monde slave, notamment en Bulgarie.</p></div>
-    <div class="info-card"><h3>8. 2 юни — Hristo Botev et les morts pour la liberté</h3><p>À midi, les sirènes retentissent traditionnellement dans le pays et un moment de silence honore Botev et ceux qui sont morts pour la liberté et l'indépendance de la Bulgarie.</p></div>
-    <div class="info-card"><h3>9. Еньовден — Saint-Jean / fête du solstice (24 juin)</h3><p>Traditions liées au soleil, aux herbes médicinales, à la rosée et au cycle annuel.</p></div>
-    <div class="info-card"><h3>10. Успение Богородично — Dormition de la Vierge (15 août)</h3><p>Grande fête orthodoxe mariale, accompagnée de liturgies et de pèlerinages.</p></div>
-    <div class="info-card"><h3>11. Съединение — Unification (6 septembre)</h3><p><strong>Fête nationale officielle :</strong> commémoration de l'Unification de 1885 entre la Principauté de Bulgarie et la Roumélie orientale.</p></div>
-    <div class="info-card"><h3>12. Ден на независимостта — Indépendance (22 septembre)</h3><p>Proclamation de l'indépendance de la Bulgarie en 1908.</p></div>
-    <div class="info-card"><h3>13. Димитровден — Saint-Démètre (26 octobre)</h3><p>Grande fête populaire et religieuse, traditionnellement associée à la fin du cycle agricole et à l'arrivée de l'hiver.</p></div>
-    <div class="info-card"><h3>14. Ден на народните будители — Éveilleurs nationaux (1er novembre)</h3><p>Hommage aux écrivains, religieux, enseignants, historiens et révolutionnaires qui ont nourri la conscience culturelle et nationale bulgare.</p></div>
-    <div class="info-card"><h3>15. Никулден — Saint-Nicolas (6 décembre)</h3><p>Fête de Saint Nicolas, très liée aux familles, aux pêcheurs et à la tradition du poisson, notamment la carpe.</p></div>
-    <div class="info-card"><h3>16. Бъдни вечер / Коледа — Veille et Noël (24-26 décembre)</h3><p>Le 24 décembre est marqué par un repas maigre traditionnel avec un nombre impair de plats dans de nombreuses familles. Noël est célébré les 25 et 26 décembre.</p></div>
-    <div class="info-card"><h3>17. 3 март — Libération de la Bulgarie</h3><p><strong>Fête nationale :</strong> commémore le traité préliminaire de San Stefano du 3 mars 1878 et la fin de la guerre russo-turque qui ouvre la voie à la restauration de l'État bulgare. <strong>Shipka</strong> est le grand symbole militaire associé à cette libération.</p></div>
-    <div class="info-card"><h3>18. 10 ноември 1989 — Début de la transition post-communiste</h3><p>Date historique majeure, même si elle n'est pas une fête nationale officielle comparable au 3 mars, au 6 septembre ou au 22 septembre.</p></div>
+    <p class="lead">Un calendrier élargi réunissant fêtes orthodoxes, fêtes traditionnelles, fêtes nationales et grandes dates de mémoire historique. Frise de l’année, de janvier à décembre.</p>
+    <div class="yr" id="bg-yr"><button type="button" data-m="0" aria-label="janvier"><span>janv.</span><span class="dots"><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="1" disabled aria-label="février"><span>févr.</span><span class="dots"></span></button><button type="button" data-m="2" aria-label="mars"><span>mars</span><span class="dots"><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="3" disabled aria-label="avril"><span>avr.</span><span class="dots"></span></button><button type="button" data-m="4" aria-label="mai"><span>mai</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="5" aria-label="juin"><span>juin</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--gold)"></i></span></button><button type="button" data-m="6" disabled aria-label="juillet"><span>juil.</span><span class="dots"></span></button><button type="button" data-m="7" aria-label="août"><span>août</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="8" aria-label="septembre"><span>sept.</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="9" aria-label="octobre"><span>oct.</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="10" aria-label="novembre"><span>nov.</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="11" aria-label="décembre"><span>déc.</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i><i class="dotc" style="background:var(--sage)"></i></span></button></div>
+    <div class="chips" id="bg-holmob"><span class="tl-hint" style="align-self:center">Dates mobiles :</span><button type="button" class="chip" data-id="bg-h-3">Сирни Заговезни</button><button type="button" class="chip" data-id="bg-h-5">Великден</button></div>
+    <div class="lg"><span><i class="dotc" style="background:var(--sage)"></i>Fête religieuse</span><span><i class="dotc" style="background:var(--madder)"></i>Fête nationale / mémoire</span><span><i class="dotc" style="background:var(--gold)"></i>Tradition populaire</span></div>
+    <div class="timeline" id="bg-holtl">
+<div class="tl-era"><h3>❄️ Janvier</h3></div>
+<div class="tl-item t-cou" id="bg-h-1" data-m="0"><div><span class="tl-date">1er janvier</span><span class="tl-tag">Tradition populaire</span></div><h3>Нова година — Nouvel An</h3>
+<p>Nouvel An et tradition du <em>survakane</em> : la <em>survaknitsa</em> en cornouiller symbolise santé, bonheur et prospérité.</p>
+</div>
+<div class="tl-item t-rel" id="bg-h-2" data-m="0"><div><span class="tl-date">6 janvier</span><span class="tl-tag">Fête religieuse</span></div><h3>Богоявление / Йордановден — Théophanie</h3>
+<p>Grande fête orthodoxe. Dans de nombreuses localités, une croix est jetée dans l'eau et des hommes plongent pour la récupérer.</p>
+</div>
+<div class="tl-era"><h3>Février – mars</h3></div>
+<div class="tl-item t-rel mob" id="bg-h-3" data-m="-1"><div><span class="tl-date">Date mobile</span><span class="tl-tag">Fête religieuse</span></div><h3>Сирни Заговезни — Dimanche du Pardon</h3>
+<p>Avant le Grand Carême : on demande pardon, on allume des feux et l'on pratique notamment le <em>hamkanie</em>.</p>
+</div>
+<div class="tl-item t-cou" id="bg-h-4" data-m="2"><div><span class="tl-date">1er mars</span><span class="tl-tag">Tradition populaire</span></div><h3>Баба Марта — Baba Marta</h3>
+<p>Grande tradition populaire : on offre des <em>martenitsi</em> rouges et blanches pour souhaiter santé et printemps.</p>
+</div>
+<div class="tl-item t-nat" id="bg-h-17" data-m="2"><div><span class="tl-date">3 mars</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>3 март — Libération de la Bulgarie</h3>
+<p><strong>Fête nationale :</strong> commémore le traité préliminaire de San Stefano du 3 mars 1878 et la fin de la guerre russo-turque qui ouvre la voie à la restauration de l'État bulgare. <strong>Shipka</strong> est le grand symbole militaire associé à cette libération.</p>
+</div>
+<div class="tl-era"><h3>🌷 Printemps</h3></div>
+<div class="tl-item t-rel mob" id="bg-h-5" data-m="-1"><div><span class="tl-date">Date mobile</span><span class="tl-tag">Fête religieuse</span></div><h3>Великден — Pâques orthodoxes</h3>
+<p>La plus grande fête chrétienne. Œufs rouges, <em>kozunak</em>, veillée pascale et salut traditionnel : <strong>Христос воскресе! — Воистина воскресе!</strong></p>
+</div>
+<div class="tl-item t-rel" id="bg-h-6" data-m="4"><div><span class="tl-date">6 mai</span><span class="tl-tag">Fête religieuse</span></div><h3>Гергьовден — Saint-Georges</h3>
+<p>Fête religieuse et populaire, mais aussi <strong>Jour de la bravoure et de l'Armée bulgare</strong>. Saint Georges est associé aux soldats, aux bergers et au printemps.</p>
+</div>
+<div class="tl-item t-nat" id="bg-h-7" data-m="4"><div><span class="tl-date">24 mai</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>24 май — Saints Cyrille et Méthode, alphabet, éducation et culture</h3>
+<p>Une des fêtes culturelles les plus importantes du pays. Elle célèbre Cyrille, Méthode, leurs disciples, la littérature slave et la tradition écrite développée dans la Bulgarie médiévale. Le cyrillique n'a pas été inventé directement par Cyrille et Méthode : il est associé au travail ultérieur de leurs disciples dans le monde slave, notamment en Bulgarie.</p>
+</div>
+<div class="tl-era"><h3>☀️ Été</h3></div>
+<div class="tl-item t-nat" id="bg-h-8" data-m="5"><div><span class="tl-date">2 juin</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>2 юни — Hristo Botev et les morts pour la liberté</h3>
+<p>À midi, les sirènes retentissent traditionnellement dans le pays et un moment de silence honore Botev et ceux qui sont morts pour la liberté et l'indépendance de la Bulgarie.</p>
+</div>
+<div class="tl-item t-cou" id="bg-h-9" data-m="5"><div><span class="tl-date">24 juin</span><span class="tl-tag">Tradition populaire</span></div><h3>Еньовден — Saint-Jean / fête du solstice</h3>
+<p>Traditions liées au soleil, aux herbes médicinales, à la rosée et au cycle annuel.</p>
+</div>
+<div class="tl-item t-rel" id="bg-h-10" data-m="7"><div><span class="tl-date">15 août</span><span class="tl-tag">Fête religieuse</span></div><h3>Успение Богородично — Dormition de la Vierge</h3>
+<p>Grande fête orthodoxe mariale, accompagnée de liturgies et de pèlerinages.</p>
+</div>
+<div class="tl-era"><h3>🍂 Automne</h3></div>
+<div class="tl-item t-nat" id="bg-h-11" data-m="8"><div><span class="tl-date">6 septembre</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>Съединение — Unification</h3>
+<p><strong>Fête nationale officielle :</strong> commémoration de l'Unification de 1885 entre la Principauté de Bulgarie et la Roumélie orientale.</p>
+</div>
+<div class="tl-item t-nat" id="bg-h-12" data-m="8"><div><span class="tl-date">22 septembre</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>Ден на независимостта — Indépendance</h3>
+<p>Proclamation de l'indépendance de la Bulgarie en 1908.</p>
+</div>
+<div class="tl-item t-rel" id="bg-h-13" data-m="9"><div><span class="tl-date">26 octobre</span><span class="tl-tag">Fête religieuse</span></div><h3>Димитровден — Saint-Démètre</h3>
+<p>Grande fête populaire et religieuse, traditionnellement associée à la fin du cycle agricole et à l'arrivée de l'hiver.</p>
+</div>
+<div class="tl-item t-nat" id="bg-h-14" data-m="10"><div><span class="tl-date">1er novembre</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>Ден на народните будители — Éveilleurs nationaux</h3>
+<p>Hommage aux écrivains, religieux, enseignants, historiens et révolutionnaires qui ont nourri la conscience culturelle et nationale bulgare.</p>
+</div>
+<div class="tl-item t-nat" id="bg-h-18" data-m="10"><div><span class="tl-date">10 novembre 1989</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>10 ноември 1989 — Début de la transition post-communiste</h3>
+<p>Date historique majeure, même si elle n'est pas une fête nationale officielle comparable au 3 mars, au 6 septembre ou au 22 septembre.</p>
+</div>
+<div class="tl-era"><h3>🎄 Décembre</h3></div>
+<div class="tl-item t-rel" id="bg-h-15" data-m="11"><div><span class="tl-date">6 décembre</span><span class="tl-tag">Fête religieuse</span></div><h3>Никулден — Saint-Nicolas</h3>
+<p>Fête de Saint Nicolas, très liée aux familles, aux pêcheurs et à la tradition du poisson, notamment la carpe.</p>
+</div>
+<div class="tl-item t-rel" id="bg-h-16" data-m="11"><div><span class="tl-date">24–26 décembre</span><span class="tl-tag">Fête religieuse</span></div><h3>Бъдни вечер / Коледа — Veille et Noël</h3>
+<p>Le 24 décembre est marqué par un repas maigre traditionnel avec un nombre impair de plats dans de nombreuses familles. Noël est célébré les 25 et 26 décembre.</p>
+</div>
+    </div>
+    <p class="tl-hint">Les dates mobiles (Сирни Заговезни, Великден) changent chaque année ; leur place dans la frise est indicative.</p>
     <div class="culture-cta"><span>Réviser le calendrier :</span><button class="action primary cu-jump" data-cat="fetes" data-mode="cards">📇 Flashcards</button><button class="action ghost cu-jump" data-cat="fetes" data-mode="quiz">📝 Quiz</button></div>
   </section>
 
@@ -7256,6 +7402,30 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
     });
     empty.style.display=any?'none':'block';
   });
+})();
+</script>
+<script>
+/* Frises Histoire et Fêtes */
+(function(){
+  const PERIODS=[["VIIe–IXe siècles","Fondation de l’État et puissance militaire","Les Proto-Bulgares, cavaliers des steppes, s’allient aux Slaves des Balkans : après les combats de 680-681, Byzance reconnaît le nouvel État, dont Pliska est la première capitale. Sous Krum (803-814), il devient une puissance militaire."],["IXe–XIe siècles","Christianisation, Âge d’or et résistance à Byzance","Boris Ier christianise la Bulgarie ; sous Siméon Ier le Grand (893-927), le Premier Empire connaît son Âge d’or. Puis le tsar Samuel résiste à Byzance jusqu’à la conquête byzantine de 1018."],["XIIe–XIVe siècles","Le Second Empire bulgare","En 1185, Asen et Petar restaurent l’État bulgare. Kaloyan puis Ivan Asen II (Klokotnitsa, 1230) font de la Bulgarie la puissance dominante des Balkans ; Tarnovo en est la capitale."],["Fin XIVe–XVIe siècle","Chute de Tarnovo et domination ottomane","Tarnovo tombe en 1393 ; à la fin du XIVe siècle, les États bulgares passent sous domination ottomane. Princes, prêtres et martyrs entretiennent pourtant la mémoire de la Bulgarie indépendante."],["XVIIe–XVIIIe siècles","Soulèvements et martyrs de la période ottomane","À la faveur des guerres entre l’Empire ottoman et les puissances chrétiennes, des soulèvements éclatent (Chiprovtsi en 1688, Karposh en 1689) ; l’Église conserve la mémoire de ses martyrs."],["XVIIIe–XIXe siècles","Renaissance nationale","La langue, l’éducation, la culture, l’Église et la conscience nationale passent au premier plan : Paisius de Hilendar, Rakovski, Vasil Levski (exécuté en 1873), Hristo Botev, Benkovski et l’insurrection d’Avril (1876), suivie des massacres de Batak et de Novo Selo dont les victimes sont canonisées en 2011."],["1877–1908","Libération, Unification, Indépendance","La guerre russo-ottomane (1877–1878 : Plevna, Chipka, prise de Sofia) libère une grande partie des terres bulgares. Traité préliminaire de San Stefano (3 mars 1878), traité de Berlin (13 juillet 1878), Unification (1885), indépendance complète (1908) : la Bulgarie moderne prend forme."],["XXe siècle","XXe siècle et fin du communisme","Après la Seconde Guerre mondiale, la Bulgarie devient un État communiste ; le 10 novembre 1989 ouvre la transition vers la démocratie, puis viennent l’OTAN (2004) et l’Union européenne (2007)."]];
+  const sc=(el,block)=>el&&el.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:block||"center"});
+  const frh=document.getElementById("bg-frh"), fhp=document.getElementById("bg-fhp");
+  if(frh&&fhp){
+    const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;");
+    frh.innerHTML=PERIODS.map((p,i)=>'<button type="button" class="fh'+(i===0?" on":"")+'" data-p="'+i+'" aria-pressed="'+(i===0)+'"><small>'+esc(p[0])+'</small><b>'+esc(p[1])+'</b></button>').join("");
+    const pick=i=>{ const p=PERIODS[i];
+      frh.querySelectorAll(".fh").forEach((b,k)=>{ b.classList.toggle("on",k===i); b.setAttribute("aria-pressed",k===i); });
+      fhp.innerHTML='<span class="tl-date">'+esc(p[0])+'</span><h3>'+esc(p[1])+'</h3><p>'+esc(p[2])+'</p>'; };
+    pick(0);
+    frh.addEventListener("click",e=>{ const b=e.target.closest(".fh"); if(b) pick(+b.dataset.p); });
+  }
+  const hera=document.getElementById("bg-hera");
+  if(hera) hera.addEventListener("click",e=>{ const b=e.target.closest(".chip"); if(b) sc(document.getElementById("bg-hera-"+b.dataset.e),"start"); });
+  const flash=el=>{ if(!el) return; sc(el); el.classList.add("hl"); setTimeout(()=>el.classList.remove("hl"),1600); };
+  const yr=document.getElementById("bg-yr");
+  if(yr) yr.addEventListener("click",e=>{ const b=e.target.closest("[data-m]"); if(!b||b.disabled) return; flash(document.querySelector('#bg-holtl .tl-item[data-m="'+b.dataset.m+'"]')); });
+  const mob=document.getElementById("bg-holmob");
+  if(mob) mob.addEventListener("click",e=>{ const b=e.target.closest("[data-id]"); if(b) flash(document.getElementById(b.dataset.id)); });
 })();
 </script>
 </body>

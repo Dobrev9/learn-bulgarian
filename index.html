@@ -1103,7 +1103,7 @@
     --linen-dark:#D9DFEC;
     --madder:#D32A1F;
     --madder-dark:#A11E16;
-    --indigo:#14224A;
+    --indigo:#0E2563;
     --gold:#B7852A;
     --sage:#3E7A57;
     --ok:#3E7A57;
@@ -1114,7 +1114,7 @@
     --muted2:#697088;
     --text2:#434B63;
     --text3:#697088;
-    --text4:#14224A;
+    --text4:#0E2563;
     --header-bg:#0E2563;
     --btn-primary:#17388C;
     --ok-bg:#DFEFE5;
@@ -1397,6 +1397,45 @@ h1, h2, h3, h4 { font-family: 'PT Serif', Georgia, serif; }
   #sec-history .fact b {
     color: #0E2563;
   }
+</style>
+<style id="couleurs-site-russe">
+/* Titres h2, texte et frises : mêmes couleurs que le site russe */
+h2{color:#0E2563;}
+:root[data-theme="dark"] h2{color:#9DB5F5;}
+/* Frises chronologiques (Histoire, Fêtes) */
+.timeline{border-left-color:#D32A1F;}
+.tl-date,#sec-history .tl-date{background:#17388C;border-color:#17388C;color:#fff;}
+.tl-item h3,#sec-history .tl-item h3{color:#0E2563;}
+.tl-era h3{color:#A11E16;}
+.tl-item.t-rel::before{border-color:#17388C;}
+.frh .fh{border-top-color:#17388C;}
+.frh .fh b{color:#0E2563;}
+.frh .fh.on{border-top-color:#D32A1F;outline-color:#17388C;}
+.fhp{border-left-color:#D32A1F;}
+.fact b,#sec-history .fact b{color:#0E2563;}
+:root[data-theme="dark"] .tl-date,:root[data-theme="dark"] #sec-history .tl-date{background:#3A4F8F;border-color:#3A4F8F;}
+:root[data-theme="dark"] .tl-item h3,:root[data-theme="dark"] #sec-history .tl-item h3,
+:root[data-theme="dark"] .frh .fh b,:root[data-theme="dark"] .fact b,:root[data-theme="dark"] #sec-history .fact b{color:#9DB5F5;}
+:root[data-theme="dark"] .tl-era h3{color:#F08A82;}
+:root[data-theme="dark"] .tl-item.t-rel::before,:root[data-theme="dark"] .frh .fh{border-top-color:#7C9CF0;}
+:root[data-theme="dark"] .frh .fh.on{border-top-color:#E5574D;outline-color:#7C9CF0;}
+</style>
+<style id="fetes-puces-russe">
+.yr .dots{flex-wrap:wrap;}
+/* Frise des Fêtes : rond blanc au centre + cercle de couleur à l'extérieur (comme le site russe) */
+#sec-holidays .tl-item::before{
+  background:var(--card);
+  border:3px solid #D32A1F;
+  box-shadow:none;
+}
+#sec-holidays .tl-item.t-rel::before{border-color:#17388C;}
+#sec-holidays .tl-item.t-nat::before{border-color:#D32A1F;}
+#sec-holidays .tl-item.t-cou::before{border-color:#B7852A;}
+#sec-holidays .tl-item.mob::before{border-style:dashed;}
+:root[data-theme="dark"] #sec-holidays .tl-item::before{background:var(--card);}
+:root[data-theme="dark"] #sec-holidays .tl-item.t-rel::before{border-color:#7C9CF0;}
+:root[data-theme="dark"] #sec-holidays .tl-item.t-nat::before{border-color:#E5574D;}
+:root[data-theme="dark"] #sec-holidays .tl-item.t-cou::before{border-color:#D7A64A;}
 </style>
 </head>
 <body>
@@ -2351,8 +2390,8 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
   <section id="sec-holidays">
     <h2>Fêtes, saints et grandes dates bulgares</h2>
     <p class="lead">Un calendrier élargi réunissant fêtes orthodoxes, fêtes traditionnelles, fêtes nationales et grandes dates de mémoire historique. Frise de l’année, de janvier à décembre.</p>
-    <div class="yr" id="bg-yr"><button type="button" data-m="0" aria-label="janvier"><span>janv.</span><span class="dots"><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="1" disabled aria-label="février"><span>févr.</span><span class="dots"></span></button><button type="button" data-m="2" aria-label="mars"><span>mars</span><span class="dots"><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="3" disabled aria-label="avril"><span>avr.</span><span class="dots"></span></button><button type="button" data-m="4" aria-label="mai"><span>mai</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="5" aria-label="juin"><span>juin</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--gold)"></i></span></button><button type="button" data-m="6" disabled aria-label="juillet"><span>juil.</span><span class="dots"></span></button><button type="button" data-m="7" aria-label="août"><span>août</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="8" aria-label="septembre"><span>sept.</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="9" aria-label="octobre"><span>oct.</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="10" aria-label="novembre"><span>nov.</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="11" aria-label="décembre"><span>déc.</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i><i class="dotc" style="background:var(--sage)"></i></span></button></div>
-    <div class="chips" id="bg-holmob"><span class="tl-hint" style="align-self:center">Dates mobiles :</span><button type="button" class="chip" data-id="bg-h-3">Сирни Заговезни</button><button type="button" class="chip" data-id="bg-h-5">Великден</button></div>
+    <div class="yr" id="bg-yr"><button type="button" data-m="0" aria-label="janvier"><span>janv.</span><span class="dots"><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="1" aria-label="février"><span>févr.</span><span class="dots"><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="2" aria-label="mars"><span>mars</span><span class="dots"><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="3" disabled aria-label="avril"><span>avr.</span><span class="dots"></span></button><button type="button" data-m="4" aria-label="mai"><span>mai</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="5" aria-label="juin"><span>juin</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--gold)"></i><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="6" aria-label="juillet"><span>juil.</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="7" aria-label="août"><span>août</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="8" aria-label="septembre"><span>sept.</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i></span></button><button type="button" data-m="9" aria-label="octobre"><span>oct.</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i></span></button><button type="button" data-m="10" aria-label="novembre"><span>nov.</span><span class="dots"><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--sage)"></i><i class="dotc" style="background:var(--gold)"></i></span></button><button type="button" data-m="11" aria-label="décembre"><span>déc.</span><span class="dots"><i class="dotc" style="background:var(--sage)"></i><i class="dotc" style="background:var(--madder)"></i><i class="dotc" style="background:var(--gold)"></i></span></button></div>
+    <div class="chips" id="bg-holmob"><span class="tl-hint" style="align-self:center">Dates mobiles :</span><button type="button" class="chip" data-id="bg-h-3">Сирни Заговезни</button><button type="button" class="chip" data-id="bg-h-23">Кукери</button><button type="button" class="chip" data-id="bg-h-25">Лазаровден / Цветница</button><button type="button" class="chip" data-id="bg-h-5">Великден</button><button type="button" class="chip" data-id="bg-h-35">Нестинарство</button></div>
     <div class="lg"><span><i class="dotc" style="background:var(--sage)"></i>Fête religieuse</span><span><i class="dotc" style="background:var(--madder)"></i>Fête nationale / mémoire</span><span><i class="dotc" style="background:var(--gold)"></i>Tradition populaire</span></div>
     <div class="timeline" id="bg-holtl">
 <div class="tl-era"><h3> Janvier</h3></div>
@@ -2362,7 +2401,25 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <div class="tl-item t-rel" id="bg-h-2" data-m="0"><div><span class="tl-date">6 janvier</span><span class="tl-tag">Fête religieuse</span></div><h3>Богоявление / Йордановден — Théophanie</h3>
 <p>Grande fête orthodoxe. Dans de nombreuses localités, une croix est jetée dans l'eau et des hommes plongent pour la récupérer.</p>
 </div>
+<div class="tl-item t-rel" id="bg-h-19" data-m="0"><div><span class="tl-date">7 janvier</span><span class="tl-tag">Fête religieuse</span></div><h3>Ивановден — Saint-Jean</h3>
+<p>Fête religieuse et grande fête des prénoms, très répandue : on souhaite sa fête à tous ceux qui portent un prénom lié à Jean.</p>
+</div>
+<div class="tl-item t-cou" id="bg-h-20" data-m="0"><div><span class="tl-date">8 janvier</span><span class="tl-tag">Tradition populaire</span></div><h3>Бабинден — Fête des sages-femmes et des grands-mères</h3>
+<p>Tradition populaire liée à la maternité : on honore les sages-femmes, les accoucheuses et les grands-mères.</p>
+</div>
+<div class="tl-item t-cou" id="bg-h-34" data-m="0"><div><span class="tl-date">13–14 janvier</span><span class="tl-tag">Tradition populaire</span></div><h3>Сурова — Surova, fête des Koukeri de Pernik</h3>
+<p>Fête traditionnelle du Nouvel An dans la région de Pernik : des groupes masqués (<em>survakari</em>) défilent avec des costumes impressionnants et de grosses cloches pour chasser les mauvais esprits et attirer santé, fertilité et prospérité. La fête rassemble les communautés villageoises et se prolonge par des célébrations collectives.</p>
+</div>
 <div class="tl-era"><h3>Février – mars</h3></div>
+<div class="tl-item t-cou" id="bg-h-21" data-m="1"><div><span class="tl-date">1er février (ou 14 février)</span><span class="tl-tag">Tradition populaire</span></div><h3>Трифон Зарезан — Trifon Zarezan</h3>
+<p>Fête des vignerons et de la vigne : on taille symboliquement les ceps et l'on célèbre le vin. Tradition importante du calendrier populaire bulgare ; la date varie selon les traditions (1er ou 14 février).</p>
+</div>
+<div class="tl-item t-nat" id="bg-h-22" data-m="1"><div><span class="tl-date">19 février</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>Поклонение пред Васил Левски — Hommage à Vassil Levski</h3>
+<p>Commémoration nationale du grand héros révolutionnaire bulgare, exécuté le 19 février 1873 selon la date commémorative actuelle. Une date essentielle pour la mémoire nationale.</p>
+</div>
+<div class="tl-item t-cou mob" id="bg-h-23" data-m="-1"><div><span class="tl-date">Janvier à mars, selon les régions</span><span class="tl-tag">Tradition populaire</span></div><h3>Кукери — Les Koukeri</h3>
+<p>Des groupes costumés, portant des masques impressionnants et de grosses cloches, défilent pour chasser symboliquement les mauvais esprits et favoriser la fertilité et la prospérité. Les dates varient selon les régions.</p>
+</div>
 <div class="tl-item t-rel mob" id="bg-h-3" data-m="-1"><div><span class="tl-date">Date mobile</span><span class="tl-tag">Fête religieuse</span></div><h3>Сирни Заговезни — Dimanche du Pardon</h3>
 <p>Avant le Grand Carême : on demande pardon, on allume des feux et l'on pratique notamment le <em>hamkanie</em>.</p>
 </div>
@@ -2372,9 +2429,18 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <div class="tl-item t-nat" id="bg-h-17" data-m="2"><div><span class="tl-date">3 mars</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>3 март — Libération de la Bulgarie</h3>
 <p><strong>Fête nationale :</strong> commémore le traité préliminaire de San Stefano du 3 mars 1878 et la fin de la guerre russo-turque qui ouvre la voie à la restauration de l'État bulgare. <strong>Shipka</strong> est le grand symbole militaire associé à cette libération.</p>
 </div>
+<div class="tl-item t-rel" id="bg-h-24" data-m="2"><div><span class="tl-date">25 mars</span><span class="tl-tag">Fête religieuse</span></div><h3>Благовещение — Annonciation</h3>
+<p>Grande fête chrétienne, également associée au retour du printemps dans les croyances populaires.</p>
+</div>
 <div class="tl-era"><h3> Printemps</h3></div>
+<div class="tl-item t-rel mob" id="bg-h-25" data-m="-1"><div><span class="tl-date">Date mobile</span><span class="tl-tag">Fête religieuse</span></div><h3>Лазаровден и Цветница — Samedi de Lazare et dimanche des Rameaux</h3>
+<p>Fêtes religieuses et traditions populaires. Le samedi précédant les Rameaux, les jeunes filles participent traditionnellement aux rites des <em>lazarki</em>. Le dimanche des Rameaux, on apporte notamment des rameaux de saule à l'église. Цветница est aussi une fête importante des prénoms.</p>
+</div>
 <div class="tl-item t-rel mob" id="bg-h-5" data-m="-1"><div><span class="tl-date">Date mobile</span><span class="tl-tag">Fête religieuse</span></div><h3>Великден — Pâques orthodoxes</h3>
-<p>La plus grande fête chrétienne. Œufs rouges, <em>kozunak</em>, veillée pascale et salut traditionnel : <strong>Христос воскресе! — Воистина воскресе!</strong></p>
+<p>La plus grande fête chrétienne. Œufs rouges, <em>kozunak</em>, veillée pascale et salut traditionnel : <strong>Христос воскресе! — Воистина воскресе!</strong> Le Vendredi saint et le Samedi saint font aussi partie de la période officielle des congés.</p>
+</div>
+<div class="tl-item t-nat" id="bg-h-26" data-m="4"><div><span class="tl-date">1er mai</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>Ден на труда — Fête du Travail</h3>
+<p>Jour férié officiel : journée internationale des travailleurs, reconnue comme fête chômée en Bulgarie.</p>
 </div>
 <div class="tl-item t-rel" id="bg-h-6" data-m="4"><div><span class="tl-date">6 mai</span><span class="tl-tag">Fête religieuse</span></div><h3>Гергьовден — Saint-Georges</h3>
 <p>Fête religieuse et populaire, mais aussi <strong>Jour de la bravoure et de l'Armée bulgare</strong>. Saint Georges est associé aux soldats, aux bergers et au printemps.</p>
@@ -2382,12 +2448,21 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <div class="tl-item t-nat" id="bg-h-7" data-m="4"><div><span class="tl-date">24 mai</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>24 май — Saints Cyrille et Méthode, alphabet, éducation et culture</h3>
 <p>Une des fêtes culturelles les plus importantes du pays. Elle célèbre Cyrille, Méthode, leurs disciples, la littérature slave et la tradition écrite développée dans la Bulgarie médiévale. Le cyrillique n'a pas été inventé directement par Cyrille et Méthode : il est associé au travail ultérieur de leurs disciples dans le monde slave, notamment en Bulgarie.</p>
 </div>
+<div class="tl-item t-cou mob" id="bg-h-35" data-m="-1"><div><span class="tl-date">Date variable selon les régions (mai–juin)</span><span class="tl-tag">Tradition populaire</span></div><h3>Нестинарство — Danse sur les braises</h3>
+<p>Ancien rituel de la région de Strandja : des danseurs (<em>nestinari</em>) traversent pieds nus un lit de braises ardentes au son de la musique traditionnelle, lors de cérémonies liées aux saints Constantin et Hélène. Tradition inscrite au patrimoine culturel immatériel de l'UNESCO.</p>
+</div>
 <div class="tl-era"><h3> Été</h3></div>
 <div class="tl-item t-nat" id="bg-h-8" data-m="5"><div><span class="tl-date">2 juin</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>2 юни — Hristo Botev et les morts pour la liberté</h3>
 <p>À midi, les sirènes retentissent traditionnellement dans le pays et un moment de silence honore Botev et ceux qui sont morts pour la liberté et l'indépendance de la Bulgarie.</p>
 </div>
 <div class="tl-item t-cou" id="bg-h-9" data-m="5"><div><span class="tl-date">24 juin</span><span class="tl-tag">Tradition populaire</span></div><h3>Еньовден — Saint-Jean / fête du solstice</h3>
 <p>Traditions liées au soleil, aux herbes médicinales, à la rosée et au cycle annuel.</p>
+</div>
+<div class="tl-item t-rel" id="bg-h-27" data-m="5"><div><span class="tl-date">29 juin</span><span class="tl-tag">Fête religieuse</span></div><h3>Петровден — Saint-Pierre et Saint-Paul</h3>
+<p>Fête religieuse et populaire, liée au calendrier agricole.</p>
+</div>
+<div class="tl-item t-rel" id="bg-h-28" data-m="6"><div><span class="tl-date">20 juillet</span><span class="tl-tag">Fête religieuse</span></div><h3>Илинден — Saint-Élie</h3>
+<p>Fête religieuse et traditionnelle, particulièrement importante dans certaines régions.</p>
 </div>
 <div class="tl-item t-rel" id="bg-h-10" data-m="7"><div><span class="tl-date">15 août</span><span class="tl-tag">Fête religieuse</span></div><h3>Успение Богородично — Dormition de la Vierge</h3>
 <p>Grande fête orthodoxe mariale, accompagnée de liturgies et de pèlerinages.</p>
@@ -2405,18 +2480,33 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <div class="tl-item t-nat" id="bg-h-14" data-m="10"><div><span class="tl-date">1er novembre</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>Ден на народните будители — Éveilleurs nationaux</h3>
 <p>Hommage aux écrivains, religieux, enseignants, historiens et révolutionnaires qui ont nourri la conscience culturelle et nationale bulgare.</p>
 </div>
+<div class="tl-item t-rel" id="bg-h-29" data-m="10"><div><span class="tl-date">8 novembre</span><span class="tl-tag">Fête religieuse</span></div><h3>Архангеловден — Saint-Michel-Archange</h3>
+<p>Fête religieuse et populaire consacrée à l'archange Michel et aux forces célestes. Elle est aussi associée aux traditions familiales et aux fêtes de prénom.</p>
+</div>
 <div class="tl-item t-nat" id="bg-h-18" data-m="10"><div><span class="tl-date">10 novembre 1989</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>10 ноември 1989 — Début de la transition post-communiste</h3>
 <p>Date historique majeure, même si elle n'est pas une fête nationale officielle comparable au 3 mars, au 6 septembre ou au 22 septembre.</p>
+</div>
+<div class="tl-item t-cou" id="bg-h-30" data-m="10"><div><span class="tl-date">30 novembre</span><span class="tl-tag">Tradition populaire</span></div><h3>Андреевден — Saint-André</h3>
+<p>Fête populaire associée à la croissance des récoltes et à l'approche de l'hiver.</p>
 </div>
 <div class="tl-era"><h3> Décembre</h3></div>
 <div class="tl-item t-rel" id="bg-h-15" data-m="11"><div><span class="tl-date">6 décembre</span><span class="tl-tag">Fête religieuse</span></div><h3>Никулден — Saint-Nicolas</h3>
 <p>Fête de Saint Nicolas, très liée aux familles, aux pêcheurs et à la tradition du poisson, notamment la carpe.</p>
 </div>
+<div class="tl-item t-nat" id="bg-h-31" data-m="11"><div><span class="tl-date">8 décembre</span><span class="tl-tag">Fête nationale / mémoire</span></div><h3>Студентски празник — Fête des étudiants</h3>
+<p>Fête nationale étudiante, très populaire auprès des étudiants bulgares, souvent marquée par des sorties et des rassemblements.</p>
+</div>
+<div class="tl-item t-cou" id="bg-h-32" data-m="11"><div><span class="tl-date">20 décembre</span><span class="tl-tag">Tradition populaire</span></div><h3>Игнажден — Saint-Ignace</h3>
+<p>Tradition populaire et fête religieuse du cycle de Noël. Selon les croyances populaires, la première personne qui entre dans la maison ce jour-là peut influencer la chance de la famille pour l'année à venir.</p>
+</div>
 <div class="tl-item t-rel" id="bg-h-16" data-m="11"><div><span class="tl-date">24–26 décembre</span><span class="tl-tag">Fête religieuse</span></div><h3>Бъдни вечер / Коледа — Veille et Noël</h3>
 <p>Le 24 décembre est marqué par un repas maigre traditionnel avec un nombre impair de plats dans de nombreuses familles. Noël est célébré les 25 et 26 décembre.</p>
 </div>
+<div class="tl-item t-rel" id="bg-h-33" data-m="11"><div><span class="tl-date">27 décembre</span><span class="tl-tag">Fête religieuse</span></div><h3>Стефановден — Saint-Étienne</h3>
+<p>Fête religieuse qui prolonge le cycle festif de Noël.</p>
+</div>
     </div>
-    <p class="tl-hint">Les dates mobiles (Сирни Заговезни, Великден) changent chaque année ; leur place dans la frise est indicative.</p>
+    <p class="tl-hint">Les dates mobiles (Сирни Заговезни, Лазаровден et Цветница, Великден) changent chaque année et les Кукери comme le Нестинарство varient selon les régions ; leur place dans la frise est indicative.</p>
     <div class="culture-cta"><span>Réviser le calendrier :</span><button class="action primary cu-jump" data-cat="fetes" data-mode="cards"> Flashcards</button><button class="action ghost cu-jump" data-cat="fetes" data-mode="quiz"> Quiz</button></div>
   </section>
 
@@ -5856,6 +5946,25 @@ const CULTURE = {
     {q:"Qu'a de particulier le repas du 24 décembre ?", a:"Repas maigre, nombre impair de plats", n:"Бъдни вечер, veille de Noël."},
     {q:"Quelle fête nationale tombe le 3 mars ?", a:"Libération de la Bulgarie (1878)", n:"Traité préliminaire de San Stefano ; Shipka en est le symbole militaire."},
     {q:"Le 10 novembre 1989 est-il une fête nationale officielle ?", a:"Non, une grande date de mémoire", n:"Contrairement au 3 mars, au 6 septembre et au 22 septembre."},
+    {q:"Quelle fête de la vigne et du vin tombe le 1er février (ou le 14) ?", a:"Трифон Зарезан (Trifon Zarezan)", n:"On taille symboliquement les ceps et l'on célèbre le vin."},
+    {q:"Qui honore-t-on le 19 février ?", a:"Vassil Levski", n:"Héros révolutionnaire exécuté le 19 février 1873 selon la date commémorative actuelle."},
+    {q:"Quels rites ont lieu le samedi de Lazare (Лазаровден) ?", a:"Les rites des lazarki, avec les jeunes filles", n:"Le samedi précédant les Rameaux."},
+    {q:"Qu'apporte-t-on à l'église le dimanche des Rameaux (Цветница) ?", a:"Des rameaux de saule", n:"Цветница est aussi une fête importante des prénoms."},
+    {q:"Que sont les Кукери (Koukeri) ?", a:"Des groupes masqués, avec de grosses cloches", n:"Ils chassent les mauvais esprits et favorisent fertilité et prospérité ; janvier à mars selon les régions."},
+    {q:"Quelle fête tombe le 1er mai ?", a:"Ден на труда (fête du Travail)", n:"Jour férié officiel en Bulgarie."},
+    {q:"Quelle fête de l'archange tombe le 8 novembre ?", a:"Архангеловден (Saint-Michel-Archange)", n:"Associée aux traditions familiales et aux fêtes de prénom."},
+    {q:"Que célèbre-t-on le 8 décembre ?", a:"Студентски празник (fête des étudiants)", n:"Fête nationale étudiante, très populaire."},
+    {q:"Que croit-on de la première personne qui entre dans la maison à Игнажден (20 décembre) ?", a:"Qu'elle peut influencer la chance de la famille pour l'année", n:"Date importante du cycle de Noël."},
+    {q:"Quelle fête tombe le 7 janvier ?", a:"Ивановден (Saint-Jean)", n:"Fête religieuse et fête des prénoms très répandue."},
+    {q:"Quelle fête honore les sages-femmes et les grands-mères le 8 janvier ?", a:"Бабинден", n:"Tradition populaire liée à la maternité."},
+    {q:"Quelle grande fête chrétienne tombe le 25 mars ?", a:"Благовещение (Annonciation)", n:"Aussi associée au retour du printemps."},
+    {q:"Quelle fête tombe le 29 juin ?", a:"Петровден (Saint-Pierre et Saint-Paul)", n:"Fête religieuse et populaire, liée au calendrier agricole."},
+    {q:"Quelle fête tombe le 20 juillet ?", a:"Илинден (Saint-Élie)", n:"Particulièrement importante dans certaines régions."},
+    {q:"Quelle fête populaire tombe le 30 novembre ?", a:"Андреевден (Saint-André)", n:"Associée à la croissance des récoltes et à l'approche de l'hiver."},
+    {q:"Quelle fête prolonge le cycle de Noël le 27 décembre ?", a:"Стефановден (Saint-Étienne)", n:"Fête religieuse."},
+    {q:"Que fait-on lors du Нестинарство (Strandja) ?", a:"Une danse pieds nus sur des braises ardentes", n:"Rituel lié aux saints Constantin et Hélène, inscrit à l'UNESCO (patrimoine immatériel)."},
+    {q:"Comment appelle-t-on les danseurs sur les braises ?", a:"Les nestinari", n:"Ils dansent au son de la musique traditionnelle."},
+    {q:"Quelle fête des Koukeri a lieu les 13–14 janvier dans la région de Pernik ?", a:"Сурова (Surova)", n:"Les survakari défilent masqués, avec de grosses cloches, pour chasser les mauvais esprits."},
   ]},
 
   fierte: { label:"Fiertés ", items:[

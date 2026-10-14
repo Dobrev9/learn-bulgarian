@@ -1489,6 +1489,28 @@ h2{color:#0E2563;}
 @media(prefers-reduced-motion:reduce){.cdj-btn{transition:none}}
 </style>
 
+<style id="alignement-blocs">
+/* En-tête, navigation et toutes les rubriques partagent la même colonne :
+   leur bord gauche tombe au même endroit que "Langue / Alphabet / Prononciation…".
+   --shift décale toute la colonne vers la droite pour recentrer visuellement le contenu
+   (mettre 0px pour revenir à la colonne exactement centrée). */
+:root{ --col-w:900px; --shift:max(0px, min(70px, calc((100vw - 900px) / 2 - 1rem))); }
+header .inner{ max-width:var(--col-w); margin-left:calc((100% - min(100%, var(--col-w))) / 2 + var(--shift)); margin-right:0; }
+nav#nav, main{ width:100%; max-width:calc(var(--col-w) + 2rem); margin-left:calc((100% - min(100%, var(--col-w) + 2rem)) / 2 + var(--shift)); margin-right:0; padding-left:1rem; padding-right:1rem; box-sizing:border-box; }
+/* Chapitre du jour : même colonne et même bord gauche que les autres rubriques */
+#sec-chapitre{ max-width:none; margin-left:0; margin-right:0; }
+/* Flashcards : cartes alignées à gauche, sous le titre, comme le reste */
+/* Flashcards : centrées sur l'écran (on compense le décalage --shift de la colonne) */
+.flashcard-wrap{ align-items:center; padding-right:calc(var(--shift) * 2); box-sizing:border-box; }
+.flashcard-wrap .fc-deck{ align-items:center; }
+.fc-deck-btns{ justify-content:center; align-items:center; }
+/* Quiz : centrés sur l'écran, dans le même alignement que les flashcards */
+.quiz-box{ --qw:560px; margin-left:max(0px, calc((100% - var(--qw)) / 2 - var(--shift))); }
+.mk-quiz{ --qw:620px; margin-left:max(0px, calc((100% - var(--qw)) / 2 - var(--shift))); }
+.cj-stage{ --qw:680px; margin-left:max(0px, calc((100% - var(--qw)) / 2 - var(--shift))); }
+/* Le bouton thème garde sa place d'origine (à gauche de l'aigle) */
+@media (min-width:960px){ header .inner #themeToggle{ right:calc((var(--col-w) - 780px) / 2 + var(--shift) - 112px); } }
+</style>
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>

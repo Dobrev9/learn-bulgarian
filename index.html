@@ -2207,7 +2207,7 @@ nav#nav, main{ width:100%; max-width:calc(var(--col-w) + 2rem); margin-left:calc
     
     <div class="info-card">
       <h3>1. Le Notre Père (« Отче наш »)</h3>
-      <div class="prayer-box"><strong>En bulgare :</strong>
+      <div class="prayer-box" id="np-text"><strong>En bulgare :</strong>
 Господи, помилуй
 Отче наш, Който си на небесата!
 Да се свети Твоето име;
@@ -2215,6 +2215,7 @@ nav#nav, main{ width:100%; max-width:calc(var(--col-w) + 2rem); margin-left:calc
 да бъде Твоята воля както на небето, така и на земята;
 насъщния ни хляб дай ни днес и прости нам дълговете ни, както и ние прощаваме на длъжниците си;
 и не ни въвеждай в изкушение, но ни избави от лукавия. Амин.</div>
+      <button type="button" class="fc-say" id="np-say" aria-label="Écouter la prononciation en bulgare">🔊 Écouter</button>
       <div class="prayer-box"><strong>En français :</strong>
 Seigneur, prends pitié.
 Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienne, que ta volonté soit faite sur la terre comme au ciel. Donne-nous aujourd'hui notre pain de ce jour. Pardonne-nous nos offenses, comme nous pardonnons aussi à ceux qui nous ont offensés. Et ne nous laisse pas entrer en tentation, but délivre-nous du Mal. Amen.</div>
@@ -6642,6 +6643,48 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   /* stopPropagation : cliquer sur  ne doit pas retourner la carte */
   btn.addEventListener("click", e=>{ e.stopPropagation(); speak(); });
   btn.addEventListener("keydown", e=>e.stopPropagation());
+})();
+/* ---------------- NOTRE PÈRE : bouton « écouter la prononciation » ---------------- */
+(function(){
+  const btn = document.getElementById("np-say");
+  const box = document.getElementById("np-text");
+  if(!btn || !box) return;
+  const synth = window.speechSynthesis;
+  let bgVoice = null;
+  function pickVoice(){ if(synth) bgVoice = synth.getVoices().find(x=>/^bg/i.test(x.lang)) || null; }
+  if(synth){ pickVoice(); synth.addEventListener("voiceschanged", pickVoice); }
+  const text = ()=>Array.from(box.childNodes).filter(n=>n.nodeType===3).map(n=>n.textContent).join(" ").replace(/\s+/g," ").trim();
+  let audio = null;
+  function playOnline(t){
+    /* l'API en ligne limite la longueur : lecture par phrases */
+    const parts = t.match(/[^.;!]+[.;!]?/g).map(x=>x.trim()).filter(Boolean);
+    let i = 0;
+    btn.classList.add("playing");
+    const next = ()=>{
+      if(i >= parts.length){ btn.classList.remove("playing"); return; }
+      audio = new Audio("https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=bg&q=" + encodeURIComponent(parts[i++]));
+      audio.onended = next;
+      audio.onerror = ()=>btn.classList.remove("playing");
+      audio.play().catch(()=>btn.classList.remove("playing"));
+    };
+    next();
+  }
+  btn.addEventListener("click", ()=>{
+    if(audio) audio.pause();
+    const t = text();
+    if(!t) return;
+    if(!bgVoice) pickVoice();
+    if(synth && bgVoice){
+      synth.cancel();
+      setTimeout(()=>{
+        const u = new SpeechSynthesisUtterance(t);
+        u.lang = bgVoice.lang; u.voice = bgVoice; u.rate = 0.85;
+        u.onstart = ()=>btn.classList.add("playing");
+        u.onend = u.onerror = ()=>btn.classList.remove("playing");
+        synth.speak(u);
+      }, 60);
+    } else playOnline(t);
+  });
 })();
 </script>
 <script>

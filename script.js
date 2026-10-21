@@ -4230,6 +4230,25 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   img.addEventListener('click',()=>{ lb.querySelector('img').src=img.src; lb.classList.add('open'); });
 })();
 
+/* ================= SAINTS : saint(s) du jour ================= */
+(function(){
+  const body=document.getElementById('saints-today-body');
+  if(!body) return;
+  const now=new Date(), d=now.getDate(), m=now.getMonth()+1;
+  const mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  const rows=[...document.querySelectorAll('#sec-saints .saints-month[data-month="'+m+'"] .saint-row')]
+    .filter(r=>parseInt(r.querySelector('.saint-date').textContent,10)===d);
+  const h=document.createElement('p'); h.className='saints-today-date';
+  h.textContent=d+(d===1?'er ':' ')+mois[m-1];
+  body.appendChild(h);
+  if(!rows.length){
+    const p=document.createElement('p');
+    p.textContent="Aucun saint bulgare n'est indiqué pour aujourd'hui dans ce calendrier.";
+    body.appendChild(p); return;
+  }
+  rows.forEach(r=>body.appendChild(r.cloneNode(true)));
+})();
+
 /* ================= SAINTS : recherche ================= */
 (function(){
   const root=document.getElementById('sec-saints'); if(!root) return;

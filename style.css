@@ -1553,3 +1553,12 @@ nav#nav, main{ width:100%; max-width:calc(var(--col-w) + 2rem); margin-left:calc
   .cat-proph-c{grid-template-columns:1fr;}
   .cat-proph-b + .cat-proph-b{border-left:0;border-top:1px solid var(--linen-dark);}
 }
+
+/* Prières en français (cartes Éphrem, matin, soir) */
+.prayer-fr .prayer-box{white-space:normal}
+.prayer-fr .prayer-box p{margin:.2rem 0 .7rem}
+.prayer-fr .prayer-box h4{margin:1.2rem 0 .4rem;color:var(--gold)}
+
+/* Saint(s) du jour */
+#saints-today .saint-row{margin:.4rem 0}
+#saints-today .saints-today-date{font-weight:600;margin:0 0 .4rem}

@@ -1562,3 +1562,44 @@ nav#nav, main{ width:100%; max-width:calc(var(--col-w) + 2rem); margin-left:calc
 /* Saint(s) du jour */
 #saints-today .saint-row{margin:.4rem 0}
 #saints-today .saints-today-date{font-weight:600;margin:0 0 .4rem}
+
+/* Prières : sélecteur (même système que le Catéchisme) */
+#pr-frh{flex-wrap:wrap;overflow:visible;scroll-snap-type:none;}
+#pr-frh .fh{flex:1 1 170px;max-width:240px;}
+.pr-panel[hidden]{display:none;}
+@media(max-width:640px){
+  #pr-frh{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;}
+  #pr-frh .fh{flex:0 0 150px;}
+}
+
+/* Calendrier liturgique */
+#sec-calendar [id^="cal-"]{scroll-margin-top:.8rem;}
+#sec-calendar .cal-card{padding:1rem 1.1rem;}
+#sec-calendar .cal-card-top{border-left-color:var(--gold);}
+.cal-big{font-family:'PT Serif',Georgia,serif;font-size:1.15rem;font-weight:700;color:var(--madder-dark);margin:.4rem 0 0;}
+.cal-big .tl-date{margin:0 .5rem .2rem 0;font-size:.9rem;}
+.cal-h{font-family:'PT Serif',Georgia,serif;font-size:1.1rem;color:var(--madder-dark);margin:1.6rem 0 .2rem;padding-bottom:.3rem;border-bottom:2px solid var(--gold);text-transform:none;letter-spacing:0;}
+.cal-h:first-of-type{margin-top:.2rem;}
+.cal-table tbody th{width:8.5rem;white-space:nowrap;}
+.cal-table2 tbody th{width:12rem;white-space:normal;}
+.cal-table tbody tr.cal-major th{box-shadow:inset 4px 0 0 var(--gold);}
+.cal-table tbody tr.cal-pascha th{box-shadow:inset 4px 0 0 var(--madder);}
+.cal-table tbody tr.cal-major td:nth-child(2){font-weight:700;color:var(--madder-dark);}
+.cal-table tbody tr.cal-pascha td,.cal-table tbody tr.cal-pascha th{background:var(--paper);font-weight:700;}
+.cal-table tbody tr.cal-pascha td:nth-child(2){color:var(--madder-dark);}
+.cal-key{display:inline-block;width:.8rem;height:.8rem;vertical-align:-.1rem;margin-right:.2rem;border-radius:2px;}
+.cal-key-major{background:var(--gold);}
+.cal-key-pascha{background:var(--madder);}
+.cal-dl{margin:.4rem 0 0;}
+.cal-dl dt{font-family:'PT Serif',Georgia,serif;font-weight:700;color:var(--madder-dark);margin:.9rem 0 .1rem;}
+.cal-dl dt:first-child{margin-top:.2rem;}
+.cal-dl dd{margin:0;color:var(--text4);line-height:1.55;}
+.cal-ul{margin:.4rem 0 0;padding-left:1.2rem;color:var(--text4);}
+.cal-ul li{margin:.5rem 0;line-height:1.55;}
+.cal-ul li::marker{color:var(--gold);}
+@media(max-width:560px){
+  .cal-table{font-size:.88rem;}
+  .cal-table th,.cal-table td{padding:.45rem .5rem;}
+  .cal-table tbody th{width:6.2rem;white-space:normal;}
+  .cal-table2 tbody th{width:7.5rem;}
+}

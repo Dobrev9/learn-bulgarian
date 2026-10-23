@@ -4391,3 +4391,40 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   document.getElementById('cdj-fs-down').addEventListener('click',()=>{ fs=Math.max(0.9,fs-0.1); applyFs(); });
   document.getElementById('cdj-fs-up').addEventListener('click',()=>{ fs=Math.min(1.7,fs+0.1); applyFs(); });
 })();
+
+/* ================= PRIÈRES : sélecteur (même système que Catéchisme / Histoire) ================= */
+(function(){
+  const frh = document.getElementById("pr-frh");
+  if(!frh) return;
+  const btns = Array.from(frh.querySelectorAll(".fh"));
+  const panels = Array.from(document.querySelectorAll("#sec-prayers .pr-panel"));
+  const KEY = "pr_choice";
+  const behavior = ()=> matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth";
+  function pick(i, scroll){
+    if(!(i >= 0 && i < panels.length)) i = 0;
+    btns.forEach((b,k)=>{ b.classList.toggle("on", k===i); b.setAttribute("aria-pressed", k===i); });
+    panels.forEach((p,k)=>{ p.hidden = k!==i; });
+    try{ localStorage.setItem(KEY, i); }catch(e){}
+    if(scroll){
+      frh.scrollIntoView({behavior:behavior(), block:"start"});
+      if(frh.scrollWidth > frh.clientWidth && getComputedStyle(frh).flexWrap === "nowrap"){
+        try{ btns[i].scrollIntoView({inline:"center", block:"nearest"}); }catch(e){}
+      }
+    }
+  }
+  frh.addEventListener("click", e=>{ const b = e.target.closest(".fh"); if(b) pick(+b.dataset.p, true); });
+  let start = 0;
+  try{ const s = parseInt(localStorage.getItem(KEY), 10); if(s >= 0 && s < panels.length) start = s; }catch(e){}
+  pick(start, false);
+})();
+
+/* ================= CALENDRIER : raccourcis vers les blocs ================= */
+(function(){
+  const chips = document.getElementById("cal-chips");
+  if(!chips) return;
+  chips.addEventListener("click", e=>{
+    const b = e.target.closest("[data-t]"); if(!b) return;
+    const el = document.getElementById(b.dataset.t); if(!el) return;
+    el.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion:reduce)").matches ? "auto" : "smooth", block:"start"});
+  });
+})();

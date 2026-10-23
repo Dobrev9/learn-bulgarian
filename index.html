@@ -78,6 +78,7 @@
 <button data-target="prayers">Prières</button>
 <button data-target="catechisme">Catéchisme</button>
 <button data-target="chapitre">Chapitre du jour</button>
+<button data-target="calendar">Calendrier</button>
 <button data-target="saints">Saints </button>
 <button data-target="saints-majeurs">Saints majeurs </button>
 <button data-target="lucy">Notes</button>
@@ -1268,8 +1269,9 @@
 <section id="sec-prayers">
 <h2>Spiritualité : Prières orthodoxes bulgares</h2>
 <p class="lead">Le Notre Père et le Symbole de la foi (Credo) en bulgare et français. Tiré de la <a href="http://www.paroisseorthodoxeorleans-christsauveur.com/index.html" rel="noopener" target="_blank">Paroisse Orthodoxe du Christ-Sauveur, Orléans</a>.</p>
-<div class="info-card">
-<h3>1. Le Notre Père (« Отче наш »)</h3>
+<div class="frh" id="pr-frh"><button aria-pressed="true" class="fh on" data-p="0" type="button"><small>Bulgare + Français</small><b>Le Notre Père</b></button><button aria-pressed="false" class="fh" data-p="1" type="button"><small>Bulgare + Français</small><b>Le Credo orthodoxe</b></button><button aria-pressed="false" class="fh" data-p="2" type="button"><small>Carême</small><b>Prière de saint Éphrem le Syrien</b></button><button aria-pressed="false" class="fh" data-p="3" type="button"><small>Au lever</small><b>Prière du matin</b></button><button aria-pressed="false" class="fh" data-p="4" type="button"><small>Au coucher</small><b>Prière du soir</b></button></div>
+<div class="info-card pr-panel" id="pr-0">
+<h3>Le Notre Père (« Отче наш »)</h3>
 <div class="prayer-box" id="np-text"><strong>En bulgare :</strong>
 Господи, помилуй
 Отче наш, Който си на небесата!
@@ -1283,8 +1285,8 @@
 Seigneur, prends pitié.
 Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienne, que ta volonté soit faite sur la terre comme au ciel. Donne-nous aujourd'hui notre pain de ce jour. Pardonne-nous nos offenses, comme nous pardonnons aussi à ceux qui nous ont offensés. Et ne nous laisse pas entrer en tentation, but délivre-nous du Mal. Amen.</div>
 </div>
-<div class="info-card">
-<h3>2. Le Credo orthodoxe (« Символ на вярата »)</h3>
+<div class="info-card pr-panel" id="pr-1" hidden="">
+<h3>Le Credo orthodoxe (« Символ на вярата »)</h3>
 <div class="prayer-box"><strong>En bulgare :</strong>
 1. Вярвам в един Бог Отец, Вседържител, Творец на небето и земята, на всичко видимо и невидимо.
 2. И в един Господ Исус Христос, Син Божий, Единородния, Който е роден от Отца преди всички векове: Светлина от Светлина, Бог истинен от Бог истинен, роден, несътворен, единосущен на Отца, чрез Когото всичко е станало.
@@ -1312,8 +1314,8 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 11. J'attends la résurrection des morts.
 12. Et la vie du siècle à venir. Amen.</div>
 </div>
-<div class="info-card prayer-fr">
-<h3>3. Prière de saint Éphrem le Syrien</h3>
+<div class="info-card prayer-fr pr-panel" id="pr-2" hidden="">
+<h3>Prière de saint Éphrem le Syrien</h3>
 <p><em>Dite habituellement en Carême.</em></p>
 <div class="prayer-box">
 <p>Seigneur et maître de ma vie, ne m’abandonne pas à l’esprit d’oisiveté, d’abattement, de domination et de vaines paroles. <em>(prosternation)</em></p>
@@ -1323,8 +1325,8 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <p>Et après cela de nouveau la prière tout entière :<br/>Seigneur et maître de ma vie… <em>(avec une prosternation à la fin)</em></p>
 </div>
 </div>
-<div class="info-card prayer-fr">
-<h3>4. Prière du matin</h3>
+<div class="info-card prayer-fr pr-panel" id="pr-3" hidden="">
+<h3>Prière du matin</h3>
 <div class="prayer-box">
 <p>On débute la prière en disant :</p>
 <p>Par les prières de nos saints pères, Seigneur Jésus-Christ notre Dieu, aie pitié de nous. Amen.</p>
@@ -1397,8 +1399,8 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <p>Par les prières de nos saints pères, Seigneur Jésus-Christ notre Dieu, aie pitié de nous. Amen.</p>
 </div>
 </div>
-<div class="info-card prayer-fr">
-<h3>5. Prière du soir</h3>
+<div class="info-card prayer-fr pr-panel" id="pr-4" hidden="">
+<h3>Prière du soir</h3>
 <div class="prayer-box">
 <p>On débute la prière en disant :</p>
 <p>Par les prières de nos saints pères, Seigneur Jésus-Christ notre Dieu, aie pitié de nous. Amen.</p>
@@ -1422,7 +1424,7 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <p>Dieu éternel et Roi de toute créature, toi qui as daigné me conduire jusqu'à cette heure, pardonne-moi les péchés que j'ai commis ce jour en actions, en paroles et en pensées, et purifie, Seigneur, mon humble âme de toute souillure de la chair et de l'esprit. Accorde-moi, Seigneur, de passer cette nuit dans un sommeil paisible, afin que, me relevant de mon humble couche, je puisse me rendre agréable à ton très saint Nom tous les jours de ma vie, et terrasser tous les ennemis charnels et incorporels qui m'assaillent. Et délivre-moi, Seigneur, des vaines pensées qui me souillent et des désirs mauvais. Car à toi appartiennent le règne, la puissance et la gloire, Père, Fils et Saint-Esprit, maintenant et toujours et pour les siècles des siècles. Amen.</p>
 <h4>Autre prière</h4>
 <p>Seigneur notre Dieu, pardonne-moi tout péché commis en ce jour, en paroles, en actes et en pensées, car Tu es bon et ami des hommes. Accorde-moi un sommeil paisible et tranquille ; envoie-moi ton Ange gardien, afin qu'il me protège et me préserve de tout mal, car Tu es le Gardien de nos âmes et de nos corps, et nous te rendons gloire, Père, Fils et Saint-Esprit, maintenant et toujours et pour les siècles des siècles. Amen.</p>
-<h4>Prière de saint Jean Chrysostome
+<h4>Prière de saint Jean Chrysostome</h4>
 <p><em>pour chaque heure du jour et de la nuit</em></p>
 <p>Seigneur, ne me prive pas de tes biens célestes.</p>
 <p>Seigneur, préserve-moi des tourments éternels.</p>
@@ -1473,7 +1475,76 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <p>Que Dieu se lève, et que ses ennemis soient dispersés, et que ceux qui le haïssent fuient loin de sa Face. Qu'ils se dissipent, comme la fumée ; comme fond la cire en face du feu, ainsi périront les démons devant la face de ceux qui aiment Dieu et se signent du signe de la Croix disant dans l'allégresse : Réjouis-toi très vénérable et vivifiante Croix du Seigneur, toi qui chasses les démons par la puissance de notre Seigneur Jésus-Christ crucifié sur toi, qui est descendu aux enfers et a terrassé la puissance du Diable, et qui nous a fait don de toi, sa croix précieuse pour chasser tout adversaire. Ô très vénérable et vivifiante croix, assiste-moi avec la sainte Souveraine, la Vierge Mère de Dieu, et tous les saints pour les siècles. Amen.</p>
 <p>Puis avant de s'endormir :</p>
 <p>Entre tes mains, Seigneur Jésus-Christ, mon Dieu, je remets mon esprit : bénis-moi, aie pitié de moi et accorde-moi la vie éternelle. Amen.</p>
-</h4></div>
+</div>
+</div>
+</section>
+<!-- CALENDRIER -->
+<section id="sec-calendar">
+<h2>Spiritualité : Année liturgique orthodoxe 2026 ☦</h2>
+<p class="lead">Calendrier grégorien : informations pascales, hiérarchie des fêtes, calendrier chronologique complet de l’année et signification spirituelle des fêtes.</p>
+<div class="chips" id="cal-chips">
+<button class="chip" data-t="cal-pascha" type="button">Informations pascales</button>
+<button class="chip" data-t="cal-hier" type="button">Hiérarchie des fêtes</button>
+<button class="chip" data-t="cal-chrono" type="button">Calendrier chronologique</button>
+<button class="chip" data-t="cal-sens" type="button">Signification spirituelle</button>
+</div>
+
+<h3 class="fr-sub" id="cal-pascha">Informations Pascales 2026</h3>
+<div class="facts">
+<div class="fact"><b>Dimanche 12 avril 2026</b>Sainte Pâques (Orthodoxe)</div>
+<div class="fact"><b>Dimanche 5 avril 2026</b>Pâques Occidentales</div>
+</div>
+
+<h3 class="fr-sub" id="cal-hier" style="margin-top:1.6rem">Hiérarchie des Fêtes</h3>
+<div class="info-card cal-card cal-card-top">
+<h3>I. Fête des fêtes et solennité des solennités</h3>
+<p class="cal-big"><span class="tl-date">12 avril</span> LA RÉSURRECTION DU SEIGNEUR (PÂQUES)</p>
+</div>
+<div class="info-card cal-card">
+<h3>II. Les 12 fêtes majeures</h3>
+<div class="cat-tablewrap"><table class="cat-table cal-table cal-table2"><thead><tr><th>Date</th><th>Fête</th></tr></thead><tbody><tr><th scope="row">6 janvier</th><td>Théophanie (Baptême du Seigneur)</td></tr><tr><th scope="row">2 février</th><td>Sainte Rencontre (Présentation au Temple)</td></tr><tr><th scope="row">25 mars</th><td>Annonciation de la Mère de Dieu</td></tr><tr><th scope="row">5 avril</th><td>Dimanche des Rameaux</td></tr><tr><th scope="row">21 mai</th><td>Ascension du Seigneur</td></tr><tr><th scope="row">31 mai</th><td>Pentecôte (Descente de l’Esprit Saint)</td></tr><tr><th scope="row">6 août</th><td>Transfiguration de notre Seigneur</td></tr><tr><th scope="row">15 août</th><td>Dormition de la Mère de Dieu</td></tr><tr><th scope="row">8 septembre</th><td>Nativité de la Mère de Dieu</td></tr><tr><th scope="row">14 septembre</th><td>Exaltation de la très sainte Croix</td></tr><tr><th scope="row">21 novembre</th><td>Présentation au temple de la Mère de Dieu</td></tr><tr><th scope="row">25 décembre</th><td>Noël (Nativité de notre Seigneur)</td></tr></tbody></table></div>
+</div>
+<div class="info-card cal-card">
+<h3>III. Les 7 grandes fêtes</h3>
+<div class="cat-tablewrap"><table class="cat-table cal-table cal-table2"><thead><tr><th>Date</th><th>Fête</th></tr></thead><tbody><tr><th scope="row">1er janvier</th><td>Circoncision de notre Seigneur</td></tr><tr><th scope="row">30 janvier</th><td>Les trois saints Hiérarques</td></tr><tr><th scope="row">29 juin</th><td>Saints apôtres Pierre et Paul</td></tr><tr><th scope="row">29 août</th><td>Décollation de saint Jean le Baptiste</td></tr><tr><th scope="row">1er octobre</th><td>Protection de la Mère de Dieu (usage slave)</td></tr><tr><th scope="row">6 décembre</th><td>Saint Nicolas le Thaumaturge</td></tr><tr><th scope="row">Dimanches précédant Noël</th><td>Ancêtres et Généalogie</td></tr></tbody></table></div>
+</div>
+
+<h3 class="fr-sub" id="cal-chrono" style="margin-top:1.6rem">Calendrier Chronologique 2026</h3>
+<p class="tl-hint"><span class="cal-key cal-key-major"></span> l’une des 12 fêtes majeures &nbsp;·&nbsp; <span class="cal-key cal-key-pascha"></span> Sainte Pâques</p>
+<div class="info-card cal-card">
+<h4 class="cal-h">Janvier</h4>
+<div class="cat-tablewrap"><table class="cat-table cal-table"><thead><tr><th>Date</th><th>Événement</th><th>Précisions</th></tr></thead><tbody><tr><th scope="row">1er Janvier</th><td>Circoncision</td><td>Fête du Seigneur</td></tr><tr><th scope="row">4 Janvier</th><td>Dimanche</td><td>Avant la Théophanie</td></tr><tr><th scope="row">5 Janvier</th><td>Veille Théophanie</td><td>Jour de carême</td></tr><tr class="cal-major"><th scope="row">6 Janvier</th><td>Théophanie</td><td>Baptême du Seigneur</td></tr><tr><th scope="row">11 Janvier</th><td>Dimanche</td><td>Après la Théophanie</td></tr><tr><th scope="row">25 Janvier</th><td>Dimanche</td><td>Dimanche de Zachée / Martyrs Russes</td></tr><tr><th scope="row">30 Janvier</th><td>3 Saints Hiérarques</td><td>Basile, Grégoire, Jean Chrysostome</td></tr></tbody></table></div>
+<h4 class="cal-h">Période du Triode</h4>
+<div class="cat-tablewrap"><table class="cat-table cal-table"><thead><tr><th>Date</th><th>Événement</th><th>Précisions</th></tr></thead><tbody><tr><th scope="row">1er Février</th><td>Publicain &amp; Pharisien</td><td>Début du Triode</td></tr><tr><th scope="row">1 - 7 Février</th><td>Semaine du Triode</td><td>Jours festifs (sans jeûne)</td></tr><tr class="cal-major"><th scope="row">2 Février</th><td>Sainte Rencontre</td><td>Fête Majeure</td></tr><tr><th scope="row">8 Février</th><td>Fils Prodigue</td><td>Dimanche du retour</td></tr><tr><th scope="row">14 Février</th><td>Samedi des Défunts</td><td>Universel. Prière pour tous les chrétiens.</td></tr><tr><th scope="row">15 Février</th><td>Jugement Dernier</td><td>Dimanche du Carnaval</td></tr><tr><th scope="row">16 - 21 Février</th><td>Semaine des Laitages</td><td>Maslenitsa (Blini)</td></tr><tr><th scope="row">22 Février</th><td>Dimanche du Pardon</td><td>Exil d’Adam</td></tr><tr><th scope="row">23 Fév - 3 Avr</th><td>Grand Carême</td><td>Période de pénitence</td></tr><tr><th scope="row">28 Février</th><td>Saint Théodore</td><td>Saint Théodore le Conscrit</td></tr><tr><th scope="row">1er Mars</th><td>1er Dimanche</td><td>Triomphe de l’Orthodoxie</td></tr><tr><th scope="row">7 Mars</th><td>Samedi des Défunts</td><td>2ème samedi du Grand Carême.</td></tr><tr><th scope="row">8 Mars</th><td>2e Dimanche</td><td>Saint Grégoire Palamas</td></tr><tr><th scope="row">14 Mars</th><td>Samedi des Défunts</td><td>3ème samedi du Grand Carême.</td></tr><tr><th scope="row">15 Mars</th><td>3e Dimanche</td><td>Vénération de la Sainte Croix</td></tr><tr><th scope="row">21 Mars</th><td>Samedi des Défunts</td><td>4ème samedi du Grand Carême.</td></tr><tr><th scope="row">22 Mars</th><td>4e Dimanche</td><td>Saint Jean Climaque</td></tr><tr class="cal-major"><th scope="row">25 Mars</th><td>Annonciation</td><td>Fête Majeure</td></tr><tr><th scope="row">29 Mars</th><td>5e Dimanche</td><td>Sainte Marie l’Égyptienne</td></tr></tbody></table></div>
+<h4 class="cal-h">Semaine Sainte &amp; Pâques</h4>
+<div class="cat-tablewrap"><table class="cat-table cal-table"><thead><tr><th>Date</th><th>Événement</th><th>Précisions</th></tr></thead><tbody><tr class="cal-major"><th scope="row">5 Avril</th><td>Rameaux</td><td>Entrée à Jérusalem</td></tr><tr><th scope="row">6 - 11 Avril</th><td>Semaine Sainte</td><td>Semaine de la Passion</td></tr><tr class="cal-pascha"><th scope="row">12 Avril</th><td>SAINTE PÂQUES</td><td>Résurrection du Seigneur</td></tr><tr><th scope="row">13 - 18 Avril</th><td>Semaine Radieuse</td><td>Jours festifs</td></tr><tr><th scope="row">19 Avril</th><td>Dimanche de Thomas</td><td>2e Dimanche</td></tr><tr><th scope="row">21 Avril</th><td>Radonitsa (Mardi)</td><td>Visite des tombes.</td></tr><tr><th scope="row">26 Avril</th><td>Myrrhophores</td><td>3e Dimanche</td></tr><tr><th scope="row">3 Mai</th><td>Le Paralytique</td><td>4e Dimanche</td></tr><tr><th scope="row">9 Mai</th><td>Saint Nicolas</td><td>Translation des reliques</td></tr><tr><th scope="row">10 Mai</th><td>La Samaritaine</td><td>5e Dimanche</td></tr><tr><th scope="row">17 Mai</th><td>L’Aveugle-né</td><td>6e Dimanche</td></tr><tr class="cal-major"><th scope="row">21 Mai</th><td>ASCENSION</td><td>40 jours après Pâques</td></tr><tr><th scope="row">24 Mai</th><td>Saints Pères</td><td>1er Concile Œcuménique</td></tr><tr><th scope="row">30 Mai</th><td>Samedi des Défunts</td><td>Avant la Pentecôte.</td></tr><tr class="cal-major"><th scope="row">31 Mai</th><td>PENTECÔTE</td><td>50 jours après Pâques</td></tr><tr><th scope="row">1er Juin</th><td>St Chota Rousthavéli</td><td>Saint de Géorgie</td></tr><tr><th scope="row">1 - 6 Juin</th><td>Semaine Pentecôte</td><td>Jours festifs</td></tr><tr><th scope="row">7 Juin</th><td>Tous les Saints</td><td>Dimanche suivant la Pentecôte.</td></tr></tbody></table></div>
+<h4 class="cal-h">Carême des Apôtres &amp; Été</h4>
+<div class="cat-tablewrap"><table class="cat-table cal-table"><thead><tr><th>Date</th><th>Événement</th><th>Précisions</th></tr></thead><tbody><tr><th scope="row">8 - 28 Juin</th><td>Carême des Apôtres</td><td>Pierre et Paul</td></tr><tr><th scope="row">29 Juin</th><td>Saints Pierre &amp; Paul</td><td>Fête des chefs des Apôtres</td></tr><tr><th scope="row">19 Juillet</th><td>Dimanche</td><td>Pères des 6 premiers conciles</td></tr><tr><th scope="row">1er - 14 Août</th><td>Carême Dormition</td><td>14 jours de jeûne.</td></tr><tr class="cal-major"><th scope="row">6 Août</th><td>Transfiguration</td><td>Fête Majeure</td></tr><tr class="cal-major"><th scope="row">15 Août</th><td>Dormition</td><td>Fin du carême</td></tr><tr><th scope="row">29 Août</th><td>Décollation St Jean</td><td>Jour de carême</td></tr></tbody></table></div>
+<h4 class="cal-h">Nouvelle Année Liturgique</h4>
+<div class="cat-tablewrap"><table class="cat-table cal-table"><thead><tr><th>Date</th><th>Événement</th><th>Précisions</th></tr></thead><tbody><tr class="cal-major"><th scope="row">8 Septembre</th><td>Nativité Marie</td><td>1re fête de l’année liturgique</td></tr><tr><th scope="row">13 Septembre</th><td>Dimanche</td><td>Avant l’Exaltation</td></tr><tr class="cal-major"><th scope="row">14 Septembre</th><td>Exaltation Croix</td><td>Jour de carême</td></tr><tr><th scope="row">20 Septembre</th><td>Dimanche</td><td>Après l’Exaltation</td></tr><tr><th scope="row">1er Octobre</th><td>Protection Marie</td><td>Pokrov</td></tr><tr><th scope="row">11 Octobre</th><td>Dimanche</td><td>Pères du 7e Concile</td></tr><tr><th scope="row">24 Octobre</th><td>St Démétrios</td><td>Samedi des défunts.</td></tr><tr><th scope="row">15 Nov - 24 Déc</th><td>Carême de Noël</td><td>Avent orthodoxe (40 jours).</td></tr><tr class="cal-major"><th scope="row">21 Novembre</th><td>Présentation Marie</td><td>Au Temple</td></tr><tr><th scope="row">6 Décembre</th><td>Saint Nicolas</td><td>Le Thaumaturge</td></tr><tr><th scope="row">13 Décembre</th><td>Les Ancêtres</td><td>Dimanche</td></tr><tr><th scope="row">20 Décembre</th><td>La Généalogie</td><td>Dimanche</td></tr><tr class="cal-major"><th scope="row">25 Décembre</th><td>NOËL</td><td>Nativité du Seigneur</td></tr><tr><th scope="row">27 Décembre</th><td>Dimanche</td><td>Après la Nativité</td></tr><tr><th scope="row">25 Déc - 4 Jan</th><td>Temps de Noël</td><td>Jours festifs (Svjatki)</td></tr></tbody></table></div>
+</div>
+
+<h3 class="fr-sub" id="cal-sens" style="margin-top:1.6rem">Signification et Portée Spirituelle</h3>
+<div class="info-card cal-card">
+<h3>La Fête des Fêtes</h3>
+<p><strong>Pâques (La Sainte Pasque) :</strong> C’est le cœur du christianisme. On célèbre la victoire définitive du Christ sur la mort. Ce n’est pas seulement un événement historique, mais l’ouverture du Royaume de Dieu à l’humanité.</p>
+</div>
+<div class="info-card cal-card">
+<h3>Les 12 Fêtes Majeures (Le Dodécaorton)</h3>
+<dl class="cal-dl"><dt>La Nativité de la Mère de Dieu</dt><dd>Célèbre la naissance de Marie de parents âgés (Joachim et Anne), marquant le début du plan de salut.</dd><dt>L’Élévation de la Croix</dt><dd>Commémore la découverte de la Vraie Croix par Sainte Hélène. C’est un jour de carême strict où l’on vénère l’instrument du salut.</dd><dt>La Présentation au Temple</dt><dd>Marie est conduite au Temple à trois ans pour y être consacrée. Elle devient elle-même le « Temple vivant ».</dd><dt>La Nativité du Seigneur (Noël)</dt><dd>L’Incarnation. Dieu devient homme pour que l’homme puisse devenir dieu (par la grâce).</dd><dt>La Théophanie</dt><dd>Le baptême du Christ manifeste la Sainte Trinité : la voix du Père, le Fils dans l’eau et le Saint-Esprit sous forme de colombe.</dd><dt>La Sainte Rencontre</dt><dd>Le vieillard Siméon reçoit l’Enfant-Jésus au Temple. C’est la rencontre entre l’Ancien Testament qui s’achève et le Nouveau qui commence.</dd><dt>L’Annonciation</dt><dd>Le « Oui » de Marie à l’Archange Gabriel. Le moment précis de la conception virginale.</dd><dt>Le Dimanche des Rameaux</dt><dd>L’entrée triomphale à Jérusalem. Le Christ est reconnu comme Roi, mais un Roi qui vient souffrir.</dd><dt>L’Ascension</dt><dd>Quarante jours après Pâques, le Christ monte au ciel avec son corps glorifié, emmenant notre humanité auprès du Père.</dd><dt>La Pentecôte</dt><dd>Cinquante jours après Pâques, la descente de l’Esprit Saint. C’est l’anniversaire de l’Église et la révélation finale de la Trinité.</dd><dt>La Transfiguration</dt><dd>Sur le mont Thabor, le Christ montre sa gloire divine à trois disciples pour les fortifier avant sa Passion.</dd><dt>La Dormition</dt><dd>La mort paisible de la Vierge, son enterrement et sa résurrection/élévation au ciel par son Fils.</dd></dl>
+</div>
+<div class="info-card cal-card">
+<h3>Les Grandes Fêtes et Dimanches Spéciaux</h3>
+<dl class="cal-dl"><dt>La Circoncision</dt><dd>Rappelle que le Christ s’est soumis à la Loi juive et a reçu son nom de Jésus le 8ème jour.</dd><dt>Le Fils Prodigue</dt><dd>Parabole de la repentance. Dieu attend toujours le retour de « l’indigne » avec les bras ouverts.</dd><dt>Le Dimanche du Pardon</dt><dd>Dernier jour avant le Carême. On demande pardon à tous pour commencer le jeûne le cœur léger.</dd><dt>Sainte Marie l’Égyptienne</dt><dd>Ancienne pécheresse devenue la plus grande ascète du désert. Preuve que personne n’est exclu de la sainteté.</dd><dt>Le Triomphe de l’Orthodoxie</dt><dd>Célèbre la fin des persécutions contre les icônes. L’icône affirme que Dieu est vraiment devenu visible en s’incarnant.</dd><dt>La Protection de la Mère de Dieu (Pokrov)</dt><dd>Apparition de la Vierge étendant son voile sur les fidèles à Constantinople pour les protéger.</dd><dt>La Décollation de St Jean-Baptiste</dt><dd>Commémoration du martyre du Précurseur. Jour de jeûne en signe de deuil et de tempérance.</dd></dl>
+</div>
+<div class="info-card cal-card">
+<h3>Les Samedis des Défunts (Samedis des Âmes)</h3>
+<p>Contrairement à la fête unique du 2 novembre en Occident, l’Orthodoxie consacre plusieurs samedis à la mémoire des défunts.</p>
+<ul class="cal-ul">
+<li><strong>Le Samedi :</strong> C’est le jour où le Christ reposait au Tombeau ; c’est donc le jour liturgique dédié à ceux qui se sont endormis dans l’espérance de la vie éternelle.</li>
+<li><strong>La Radonitsa :</strong> Ce n’est pas un jour de tristesse mais de « joie » (du russe <em>radost</em>). On apporte des œufs rouges de Pâques sur les tombes pour signifier que la mort est vaincue.</li>
+<li><strong>Lien avec la Pentecôte :</strong> Le samedi précédant la Pentecôte souligne que le salut apporté par l’Esprit Saint ne s’arrête pas aux frontières du monde visible, mais englobe toute l’humanité, vivante ou décédée.</li>
+</ul>
 </div>
 </section>
 <!-- HISTORY -->

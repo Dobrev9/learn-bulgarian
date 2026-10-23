@@ -1605,8 +1605,11 @@ nav#nav, main{ width:100%; max-width:calc(var(--col-w) + 2rem); margin-left:calc
 }
 
 /* ===== Contes & Légendes + Conte du jour (même présentation que « Chapitre du jour ») ===== */
-#sec-contes,#sec-conte-jour{max-width:none;margin-left:0;margin-right:0}
-#sec-conte-jour .cdj-lead{margin-bottom:1rem}
+#sec-contes{max-width:none;margin-left:0;margin-right:0}
+#ct-pane-day .cdj-lead{margin-bottom:1rem}
+.ct-tabs{margin:0 0 1rem}
+.ct-tabs .fh{flex:1 1 0;min-width:0}
+#ct-pane-list[hidden],#ct-pane-day[hidden]{display:none}
 .cdj-pick.cdj-pick-1{grid-template-columns:1fr}
 .cdj-chap.ct-title{font-size:clamp(1.5rem,5vw,2rem);line-height:1.2}
 .ct-source{max-width:65ch;margin:0 0 1.2rem;padding:.55rem .9rem;background:var(--paper);border-left:4px solid var(--gold);border-radius:2px;font-family:'PT Serif',Georgia,serif;font-size:.95rem;line-height:1.5;color:var(--text4)}
@@ -1628,9 +1631,9 @@ nav#nav, main{ width:100%; max-width:calc(var(--col-w) + 2rem); margin-left:calc
 :root[data-theme="dark"] .ct-back:hover{background:#263653}
 #ct-reader[hidden],#ct-list-view[hidden]{display:none}
 @media(max-width:600px){
-  #sec-contes,#sec-conte-jour{margin:0 -.35rem}
-  #sec-contes>h2,#sec-contes>.lead,#sec-contes>.ct-source,#sec-contes #ct-list-view,#sec-contes .ct-back,
-  #sec-conte-jour>h2,#sec-conte-jour>.lead,#sec-conte-jour>.ct-source,#sec-conte-jour .cdj-pick,#sec-conte-jour .cdj-tools{margin-left:.35rem;margin-right:.35rem}
+  #sec-contes{margin:0 -.35rem}
+  #sec-contes>h2,#sec-contes>.lead,#sec-contes>.ct-source,#sec-contes>.ct-tabs,#sec-contes #ct-list-view,#sec-contes .ct-back,
+  #ct-pane-day>.lead,#ct-pane-day .cdj-pick,#ct-pane-day .cdj-tools{margin-left:.35rem;margin-right:.35rem}
   .ct-items{grid-template-columns:1fr}
 }
 

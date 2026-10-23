@@ -4408,12 +4408,12 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
 /* ================= CONTES & LÉGENDES + CONTE DU JOUR ================= */
 /* Source : « Contes et Légendes de Bulgarie » (Bajdaev, A.) */
 (function(){
-  const secList=document.getElementById('sec-contes'), secDay=document.getElementById('sec-conte-jour');
+  const secList=document.getElementById('sec-contes'), secDay=document.getElementById('ct-pane-day');
+  const paneList=document.getElementById('ct-pane-list'), tabs=document.getElementById('ct-frh');
   if(!secList||!secDay) return;
   const SOURCE='Contes et Légendes de Bulgarie (Bajdaev, A.)';
   const CATS=['Contes de fées','Contes de la vie réelle','Contes sur les animaux','Cycle de Pierre le Rusé'];
   const navList=document.querySelector('#nav button[data-target="contes"]');
-  const navDay=document.querySelector('#nav button[data-target="conte-jour"]');
   let tales=null, readyList=false, readyDay=false, curList=-1, curDay=-1;
 
   function load(){
@@ -4446,7 +4446,7 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   /* ---------- Taille du texte (commune aux deux rubriques) ---------- */
   const KEY='ct-fs'; let fs=1.1;
   try{ const s=parseFloat(localStorage.getItem(KEY)); if(s>=0.9&&s<=1.7) fs=s; }catch(e){}
-  const applyFs=()=>{ [secList,secDay].forEach(s=>s.style.setProperty('--cdj-fs',fs.toFixed(2)+'rem')); try{ localStorage.setItem(KEY,fs); }catch(e){} };
+  const applyFs=()=>{ [secList].forEach(s=>s.style.setProperty('--cdj-fs',fs.toFixed(2)+'rem')); try{ localStorage.setItem(KEY,fs); }catch(e){} };
   applyFs();
   document.querySelectorAll('.ct-fs-down').forEach(b=>b.addEventListener('click',()=>{ fs=Math.max(0.9,fs-0.1); applyFs(); }));
   document.querySelectorAll('.ct-fs-up').forEach(b=>b.addEventListener('click',()=>{ fs=Math.min(1.7,fs+0.1); applyFs(); }));
@@ -4525,16 +4525,24 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   secDay.querySelector('.ctj-prev').addEventListener('click',()=>{ if(readyDay&&curDay>0) showDay(curDay-1,true); });
   secDay.querySelector('.ctj-next').addEventListener('click',()=>{ if(readyDay&&curDay<tales.length-1) showDay(curDay+1,true); });
   secDay.querySelector('.ctj-rand').addEventListener('click',()=>{ if(readyDay) randomDay(true); });
-  if(navDay) navDay.addEventListener('click',initDay);
-  if(secDay.classList.contains('active')) initDay();
+  /* Onglets internes : liste / conte du jour */
+  let tab=0;
+  function setTab(k){
+    tab=k;
+    paneList.hidden=k!==0; secDay.hidden=k!==1;
+    tabs.querySelectorAll('.fh').forEach((b,j)=>{ b.classList.toggle('on',j===k); b.setAttribute('aria-pressed',j===k); });
+    if(k===0) initList(); else initDay();
+  }
+  tabs.addEventListener('click',e=>{ const b=e.target.closest('.fh'); if(b) setTab(+b.dataset.p); });
 
   /* Flèches du clavier */
   document.addEventListener('keydown',e=>{
     if(/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''))) return;
-    if(secDay.classList.contains('active')&&readyDay){
+    if(!secList.classList.contains('active')) return;
+    if(tab===1&&readyDay){
       if(e.key==='ArrowLeft'&&curDay>0) showDay(curDay-1,true);
       if(e.key==='ArrowRight'&&curDay<tales.length-1) showDay(curDay+1,true);
-    } else if(secList.classList.contains('active')&&readyList&&!reader.hidden){
+    } else if(tab===0&&readyList&&!reader.hidden){
       if(e.key==='ArrowLeft'&&curList>0) openTale(curList-1,true);
       if(e.key==='ArrowRight'&&curList<tales.length-1) openTale(curList+1,true);
       if(e.key==='Escape') backToList();

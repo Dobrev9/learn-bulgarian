@@ -71,7 +71,6 @@
 <button data-target="regions">Régions </button>
 <button data-target="macedonia">Macédoine du Nord </button>
 <button data-target="contes">Contes &amp; Légendes</button>
-<button data-target="conte-jour">Conte du jour</button>
 </div>
 </div>
 <div class="nav-group">
@@ -3042,11 +3041,13 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 </div>
 </div>
 </section>
-<!-- CONTES & LÉGENDES -->
+<!-- CONTES & LÉGENDES (contient « Conte du jour ») -->
 <section id="sec-contes">
 <h2>Culture &amp; histoire : Contes &amp; Légendes</h2>
-<p class="lead">Les contes et légendes de Bulgarie, regroupés par genre : contes de fées, contes de la vie réelle, contes sur les animaux et cycle de Pierre le Rusé. Touchez un titre pour lire le récit.</p>
+<p class="lead">Les contes et légendes de Bulgarie, regroupés par genre : contes de fées, contes de la vie réelle, contes sur les animaux et cycle de Pierre le Rusé. Parcourez la liste ou découvrez le conte du jour.</p>
 <p class="ct-source">Ces contes et légendes sont tirés de <em>« Contes et Légendes de Bulgarie »</em> (Bajdaev, A.).</p>
+<div class="frh ct-tabs" id="ct-frh"><button aria-pressed="true" class="fh on" data-p="0" type="button"><small>Tous les genres</small><b>Contes &amp; Légendes</b></button><button aria-pressed="false" class="fh" data-p="1" type="button"><small>Change chaque jour</small><b>Conte du jour</b></button></div>
+<div id="ct-pane-list">
 <div id="ct-list-view"><div id="ct-list"></div></div>
 <div hidden id="ct-reader">
 <button class="ct-back" id="ct-back-top" type="button">← Retour à la liste des contes</button>
@@ -3064,12 +3065,9 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 </div>
 </div>
 </div>
-</section>
-<!-- CONTE DU JOUR -->
-<section id="sec-conte-jour">
-<h2>Culture : Conte du jour</h2>
+</div>
+<div hidden id="ct-pane-day">
 <p class="lead cdj-lead">Un conte ou une légende de Bulgarie pour la journée : il change chaque jour. Avancez ou reculez de conte en conte, ou tirez-en un au hasard.</p>
-<p class="ct-source">Ces contes et légendes sont tirés de <em>« Contes et Légendes de Bulgarie »</em> (Bajdaev, A.).</p>
 <div class="cdj-pick cdj-pick-1">
 <label class="cdj-sel"><span>Conte</span><select aria-label="Choisir un conte" id="ctj-sel"></select></label>
 </div>
@@ -3086,6 +3084,7 @@ Notre Père, qui es aux cieux, que ton nom soit sanctifié, que ton règne vienn
 <button aria-label="Conte précédent" class="cdj-btn ctj-prev" type="button"><span class="cdj-t">← Précédent</span><small></small></button>
 <button aria-label="Conte au hasard" class="cdj-btn cdj-rand ctj-rand" type="button">🎲 Au hasard</button>
 <button aria-label="Conte suivant" class="cdj-btn ctj-next" type="button"><span class="cdj-t">Suivant →</span><small></small></button>
+</div>
 </div>
 </div>
 </section>

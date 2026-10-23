@@ -4392,6 +4392,143 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
   document.getElementById('cdj-fs-up').addEventListener('click',()=>{ fs=Math.min(1.7,fs+0.1); applyFs(); });
 })();
 
+/* ================= CONTES & LÉGENDES + CONTE DU JOUR ================= */
+/* Source : « Contes et Légendes de Bulgarie » (Bajdaev, A.) */
+(function(){
+  const secList=document.getElementById('sec-contes'), secDay=document.getElementById('sec-conte-jour');
+  if(!secList||!secDay) return;
+  const SOURCE='Contes et Légendes de Bulgarie (Bajdaev, A.)';
+  const CATS=['Contes de fées','Contes de la vie réelle','Contes sur les animaux','Cycle de Pierre le Rusé'];
+  const navList=document.querySelector('#nav button[data-target="contes"]');
+  const navDay=document.querySelector('#nav button[data-target="conte-jour"]');
+  let tales=null, readyList=false, readyDay=false, curList=-1, curDay=-1;
+
+  function load(){
+    if(tales) return true;
+    try{ tales=JSON.parse(document.getElementById('contes-data').textContent); tales.forEach(t=>{ t.w=t.p.join(' ').split(/\s+/).length; }); return true; }
+    catch(e){ return false; }
+  }
+  const minutes=t=>Math.max(1,Math.round(t.w/200));
+  const behavior=()=>matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth';
+  const el=(tag,cls,txt)=>{ const e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e; };
+
+  /* Rendu d'un conte dans une carte (même présentation que « Chapitre du jour ») */
+  function renderTale(card,i){
+    const t=tales[i];
+    card.textContent='';
+    const head=el('div','cdj-head');
+    head.append(el('span','cdj-testament',t.c), el('p','cdj-book','Conte '+(i+1)+' sur '+tales.length+' · env. '+minutes(t)+' min de lecture'), el('h3','cdj-chap ct-title',t.t));
+    card.appendChild(head);
+    const box=el('div','cdj-text');
+    t.p.forEach(par=>box.appendChild(el('p',null,par)));
+    card.appendChild(box);
+    const cr=el('p','ct-credit'); cr.append('Source : ',el('em',null,SOURCE)); card.appendChild(cr);
+  }
+  function setNav(sec,pfx,i){
+    const prev=sec.querySelector('.'+pfx+'prev'), next=sec.querySelector('.'+pfx+'next');
+    prev.disabled=i<=0; prev.querySelector('small').textContent=i>0?tales[i-1].t:'';
+    next.disabled=i>=tales.length-1; next.querySelector('small').textContent=i<tales.length-1?tales[i+1].t:'';
+  }
+
+  /* ---------- Taille du texte (commune aux deux rubriques) ---------- */
+  const KEY='ct-fs'; let fs=1.1;
+  try{ const s=parseFloat(localStorage.getItem(KEY)); if(s>=0.9&&s<=1.7) fs=s; }catch(e){}
+  const applyFs=()=>{ [secList,secDay].forEach(s=>s.style.setProperty('--cdj-fs',fs.toFixed(2)+'rem')); try{ localStorage.setItem(KEY,fs); }catch(e){} };
+  applyFs();
+  document.querySelectorAll('.ct-fs-down').forEach(b=>b.addEventListener('click',()=>{ fs=Math.max(0.9,fs-0.1); applyFs(); }));
+  document.querySelectorAll('.ct-fs-up').forEach(b=>b.addEventListener('click',()=>{ fs=Math.min(1.7,fs+0.1); applyFs(); }));
+
+  /* ================= Rubrique « Contes & Légendes » ================= */
+  const listView=document.getElementById('ct-list-view'), reader=document.getElementById('ct-reader'), listHost=document.getElementById('ct-list'), cardL=document.getElementById('ct-card');
+
+  function buildList(){
+    listHost.textContent='';
+    const cats=CATS.filter(c=>tales.some(t=>t.c===c)).concat(tales.map(t=>t.c).filter((c,k,a)=>CATS.indexOf(c)<0&&a.indexOf(c)===k));
+    const total=el('p','ct-total',tales.length+' contes et légendes répertoriés');
+    listHost.appendChild(total);
+    cats.forEach(cat=>{
+      const group=tales.map((t,i)=>({t:t,i:i})).filter(x=>x.t.c===cat);
+      const h=el('h3','ct-cat'); h.append(cat,el('span','ct-count',group.length+(group.length>1?' contes':' conte')));
+      listHost.appendChild(h);
+      const ul=el('ul','ct-items');
+      group.forEach(x=>{
+        const li=document.createElement('li');
+        const b=el('button','ct-item'); b.type='button'; b.dataset.i=x.i;
+        b.append(el('span','ct-num',String(x.i+1)), el('span','ct-name',x.t.t), el('span','ct-min',minutes(x.t)+' min'));
+        li.appendChild(b); ul.appendChild(li);
+      });
+      listHost.appendChild(ul);
+    });
+  }
+  function openTale(i,scroll){
+    curList=i; renderTale(cardL,i); setNav(secList,'ct-',i);
+    listView.hidden=true; reader.hidden=false;
+    if(scroll) secList.scrollIntoView({behavior:behavior(),block:'start'});
+  }
+  function backToList(){
+    reader.hidden=true; listView.hidden=false;
+    const b=listHost.querySelector('.ct-item[data-i="'+curList+'"]');
+    if(b){ b.scrollIntoView({behavior:behavior(),block:'center'}); try{ b.focus({preventScroll:true}); }catch(e){} }
+    else secList.scrollIntoView({behavior:behavior(),block:'start'});
+  }
+  function initList(){ if(readyList) return; if(!load()){ listHost.textContent='Impossible de charger les contes.'; return; } readyList=true; buildList(); }
+
+  listHost.addEventListener('click',e=>{ const b=e.target.closest('.ct-item'); if(b) openTale(+b.dataset.i,true); });
+  document.getElementById('ct-back-top').addEventListener('click',backToList);
+  secList.querySelector('.ct-tolist').addEventListener('click',backToList);
+  secList.querySelector('.ct-prev').addEventListener('click',()=>{ if(curList>0) openTale(curList-1,true); });
+  secList.querySelector('.ct-next').addEventListener('click',()=>{ if(curList<tales.length-1) openTale(curList+1,true); });
+  if(navList) navList.addEventListener('click',()=>{ initList(); });
+  if(secList.classList.contains('active')) initList();
+
+  /* ================= Rubrique « Conte du jour » ================= */
+  const cardD=document.getElementById('ctj-card'), sel=document.getElementById('ctj-sel');
+
+  function showDay(i,scroll){
+    curDay=i; renderTale(cardD,i); sel.value=i; setNav(secDay,'ctj-',i);
+    if(scroll) cardD.scrollIntoView({behavior:behavior(),block:'start'});
+  }
+  function randomDay(scroll){
+    let i; do{ i=Math.floor(Math.random()*tales.length); }while(tales.length>1&&i===curDay);
+    showDay(i,scroll);
+  }
+  function todayIndex(){
+    const d=new Date(); const day=Math.floor(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())/86400000);
+    return day%tales.length;
+  }
+  function initDay(){
+    if(readyDay) return;
+    if(!load()){ cardD.innerHTML='<div class="cdj-loading">Impossible de charger les contes.</div>'; return; }
+    readyDay=true;
+    const cats=CATS.concat(tales.map(t=>t.c).filter((c,k,a)=>CATS.indexOf(c)<0&&a.indexOf(c)===k));
+    cats.forEach(cat=>{
+      const og=document.createElement('optgroup'); og.label=cat;
+      tales.forEach((t,i)=>{ if(t.c===cat){ const op=document.createElement('option'); op.value=i; op.textContent=t.t; og.appendChild(op); } });
+      if(og.children.length) sel.appendChild(og);
+    });
+    showDay(todayIndex(),false);
+  }
+  sel.addEventListener('change',()=>{ if(readyDay) showDay(+sel.value,true); });
+  secDay.querySelector('.ctj-prev').addEventListener('click',()=>{ if(readyDay&&curDay>0) showDay(curDay-1,true); });
+  secDay.querySelector('.ctj-next').addEventListener('click',()=>{ if(readyDay&&curDay<tales.length-1) showDay(curDay+1,true); });
+  secDay.querySelector('.ctj-rand').addEventListener('click',()=>{ if(readyDay) randomDay(true); });
+  if(navDay) navDay.addEventListener('click',initDay);
+  if(secDay.classList.contains('active')) initDay();
+
+  /* Flèches du clavier */
+  document.addEventListener('keydown',e=>{
+    if(/INPUT|TEXTAREA|SELECT/.test((e.target.tagName||''))) return;
+    if(secDay.classList.contains('active')&&readyDay){
+      if(e.key==='ArrowLeft'&&curDay>0) showDay(curDay-1,true);
+      if(e.key==='ArrowRight'&&curDay<tales.length-1) showDay(curDay+1,true);
+    } else if(secList.classList.contains('active')&&readyList&&!reader.hidden){
+      if(e.key==='ArrowLeft'&&curList>0) openTale(curList-1,true);
+      if(e.key==='ArrowRight'&&curList<tales.length-1) openTale(curList+1,true);
+      if(e.key==='Escape') backToList();
+    }
+  });
+})();
+
 /* ================= PRIÈRES : sélecteur (même système que Catéchisme / Histoire) ================= */
 (function(){
   const frh = document.getElementById("pr-frh");

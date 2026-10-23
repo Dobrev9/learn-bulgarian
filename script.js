@@ -4289,13 +4289,13 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
       const btns=frh.querySelectorAll(".fh");
       btns.forEach((b,k)=>{ b.classList.toggle("on",k===i); b.setAttribute("aria-pressed",k===i); b.setAttribute("aria-selected",k===i); });
       fhp.innerHTML='<span class="tl-date">'+esc(p[0])+'</span><h3>'+esc(p[1])+'</h3><p>'+esc(p[2])+'</p>'
-        +'<div class="fhp-nav"><button type="button" class="fhp-prev" '+(i===0?'disabled':'')+'>← Période précédente</button><span class="fhp-count">'+(i+1)+' / '+PERIODS.length+'</span><button type="button" class="fhp-goto">Voir dans la frise ↓</button><button type="button" class="fhp-next" '+(i===PERIODS.length-1?'disabled':'')+'>Période suivante →</button></div>';
+        +'<div class="fhp-nav"><button type="button" class="fhp-prev" '+(i===0?'disabled':'')+'>← Période précédente</button><span class="fhp-count">'+(i+1)+' / '+PERIODS.length+'</span><button type="button" class="fhp-next" '+(i===PERIODS.length-1?'disabled':'')+'>Période suivante →</button></div>';
       const b=btns[i]; if(b&&frh.scrollWidth>frh.clientWidth) frh.scrollTo({left:b.offsetLeft-frh.clientWidth/2+b.offsetWidth/2,behavior:"smooth"}); };
     const go=i=>{ i=Math.max(0,Math.min(PERIODS.length-1,i)); lock=true; clearTimeout(lockT); lockT=setTimeout(()=>lock=false,1100); pick(i); sc(eras[i],"start"); };
     pick(0);
     frh.addEventListener("click",e=>{ const b=e.target.closest(".fh"); if(b) go(+b.dataset.p); });
     frh.addEventListener("keydown",e=>{ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ const n=cur+(e.key==="ArrowRight"?1:-1); if(n>=0&&n<PERIODS.length){ go(n); const nb=frh.querySelectorAll(".fh")[n]; if(nb) nb.focus({preventScroll:true}); e.preventDefault(); } } });
-    fhp.addEventListener("click",e=>{ if(e.target.closest(".fhp-prev")) pick(Math.max(0,cur-1)); else if(e.target.closest(".fhp-next")) pick(Math.min(PERIODS.length-1,cur+1)); else if(e.target.closest(".fhp-goto")) go(cur); });
+    fhp.addEventListener("click",e=>{ if(e.target.closest(".fhp-prev")) pick(Math.max(0,cur-1)); else if(e.target.closest(".fhp-next")) pick(Math.min(PERIODS.length-1,cur+1)); });
     /* suivi de lecture : la période active suit le défilement */
     if("IntersectionObserver" in window){
       const io=new IntersectionObserver(es=>{ if(lock) return; es.forEach(en=>{ if(en.isIntersecting){ const i=eras.indexOf(en.target); if(i>-1) pick(i); } }); },{rootMargin:"-15% 0px -75% 0px"});

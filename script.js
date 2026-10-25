@@ -3030,11 +3030,14 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   ];
   const TENSES = {
     pres:{label:"Présent", low:"présent"},
-    past:{label:"Passé", low:"passé"},
+    past:{label:"Aoriste", low:"aoriste"},
+    impf:{label:"Imparfait", low:"imparfait"},
     fut :{label:"Futur", low:"futur"},
+    perf:{label:"Parfait", low:"parfait"},
+    cond:{label:"Conditionnel", low:"conditionnel"},
     imp :{label:"Impératif", low:"impératif"}
   };
-  const T_ORDER = ["pres","past","fut","imp"];
+  const T_ORDER = ["pres","past","impf","fut","perf","cond","imp"];
   const GROUPS = {
     e:{label:"1re conjugaison (-е)"},
     i:{label:"2e conjugaison (-и)"},
@@ -3125,10 +3128,73 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
       past:["правих","прави","прави","правихме","правихте","правиха"],
       imp:["прави","правете"],
       pastKind:"aoriste",
-      tip:"Question de base : Какво правиш ? (Que fais-tu ?) / Какво правите ? (vous)."}
+      tip:"Question de base : Какво правиш ? (Que fais-tu ?) / Какво правите ? (vous)."},
+    {id:"pisha", bg:"пиша", fr:"écrire", grp:"e",
+      pres:["пиша","пишеш","пише","пишем","пишете","пишат"],
+      past:["писах","писа","писа","писахме","писахте","писаха"],
+      imp:["пиши","пишете"],
+      pastKind:"aoriste",
+      tip:"1re conjugaison. Alternance с / ш : пиша, пишеш… mais aoriste писах, писа… (радикал пис-). Perfectif : напиша."}
   ];
   VERBS.forEach(v=>{
     if(!v.fut) v.fut = v.pres.map(f=>"ще "+f);
+  });
+  /* ---------- Enrichissement (guide « verbes bulgares B1 ») ---------- */
+  const AUX_P = ["съм","си","е","сме","сте","са"];
+  const AUX_C = ["бих","би","би","бихме","бихте","биха"];
+  const EXTRA = {
+    sam:{impf:null, part:["бил","била","било","били"],
+      asp:"<b>съм</b> n'a pas de perfectif propre : au futur et à l'impératif on emploie <b>бъда</b>.",
+      ex:[["Аз съм французин.","Je suis français."],["Вчера бях в София.","Hier, j'étais à Sofia."],["Бил съм в България.","Je suis déjà allé en Bulgarie (homme)."],["Бих бил щастлив.","Je serais heureux."]]},
+    imam:{impf:null, part:["имал","имала","имало","имали"],
+      ex:[["Имам брат и сестра.","J'ai un frère et une sœur."],["Когато бях малък, имах куче.","Quand j'étais petit, j'avais un chien."],["Имал съм късмет.","J'ai eu de la chance."],["Бих имал повече време.","J'aurais plus de temps."]]},
+    cheta:{impf:["четях","четеше","четеше","четяхме","четяхте","четяха"], part:["чел","чела","чело","чели"],
+      asp:"<b>чета</b> → <b>прочета</b> (lire jusqu'au bout). Pour « je lis en ce moment », on dit <b>чета</b>, pas <b>прочета</b>.",
+      ex:[["Всяка вечер чета книга.","Chaque soir, je lis un livre."],["Вчера четох вестник.","Hier, j'ai lu le journal."],["Чел съм тази книга.","J'ai déjà lu ce livre (homme)."],["Бих чел повече.","Je lirais davantage (homme)."]]},
+    govorya:{impf:["говорех","говореше","говореше","говорехме","говорехте","говореха"], part:["говорил","говорила","говорило","говорили"],
+      asp:"« Dire » se dit <b>казвам</b> → <b>кажа</b> ; <b>говоря</b> signifie plutôt « parler ».",
+      ex:[["Говоря малко български.","Je parle un peu bulgare."],["Когато бях дете, говорех само френски.","Quand j'étais enfant, je ne parlais que français."],["Говорил съм с него.","J'ai parlé avec lui."],["Бих говорил по-често.","Je parlerais plus souvent (homme)."]]},
+    iskam:{impf:null, part:["искал","искала","искало","искали"],
+      asp:"<b>искам</b> → <b>поискам</b> (demander).",
+      ex:[["Искам да уча в България.","Je veux étudier en Bulgarie."],["Исках да ти се обадя.","Je voulais t'appeler."],["Бих искал вода, моля.","Je voudrais de l'eau, s'il vous plaît (homme)."],["Бих искала да пътувам повече.","J'aimerais voyager davantage (femme)."]]},
+    rabotya:{impf:["работех","работеше","работеше","работехме","работехте","работеха"], part:["работил","работила","работило","работили"],
+      ex:[["Утре ще работя.","Demain, je travaillerai."],["Когато бях студент, работех в кафене.","Quand j'étais étudiant, je travaillais dans un café."],["Работил съм в София.","J'ai travaillé à Sofia (homme)."],["Работила съм в София.","J'ai travaillé à Sofia (femme)."],["Бих работил в чужбина.","Je travaillerais à l'étranger (homme)."]]},
+    zhiveya:{impf:["живеех","живееше","живееше","живеехме","живеехте","живееха"], part:["живял","живяла","живяло","живяли"],
+      asp:"<b>живея</b> → <b>поживея</b>.",
+      ex:[["Живея във Франция.","J'habite en France."],["Преди живеех в Лион.","Avant, j'habitais à Lyon."],["Живял съм в София две години.","J'ai vécu deux ans à Sofia (homme)."],["Бих живял край морето.","Je vivrais au bord de la mer (homme)."]]},
+    piya:{impf:["пиех","пиеше","пиеше","пиехме","пиехте","пиеха"], part:["пил","пила","пило","пили"],
+      asp:"<b>пия</b> → <b>изпия</b> (boire jusqu'au bout).",
+      ex:[["Пия кафе сутрин.","Je bois du café le matin."],["Вчера пих чай.","Hier, j'ai bu du thé."],["Пил съм българско вино.","J'ai déjà bu du vin bulgare (homme)."],["Бих пил още една вода.","Je boirais bien encore un verre d'eau (homme)."]]},
+    yam:{impf:["ядях","ядеше","ядеше","ядяхме","ядяхте","ядяха"], part:["ял","яла","яло","яли"],
+      asp:"<b>ям</b> → <b>изям</b> (manger jusqu'au bout).",
+      ex:[["Ям хляб със сирене.","Je mange du pain avec du fromage."],["Вчера ядох баница.","Hier, j'ai mangé de la banitsa."],["Яли сме в този ресторант.","Nous avons déjà mangé dans ce restaurant."],["Бих яла нещо сладко.","Je mangerais bien quelque chose de sucré (femme)."]]},
+    znam:{impf:null, part:["знаел","знаела","знаело","знаели"],
+      ex:[["Знам отговора.","Je connais la réponse."],["Не знаех, че си тук.","Je ne savais pas que tu étais ici."],["Знаеш ли български?","Sais-tu le bulgare ?"]]},
+    moga:{impf:["можех","можеше","можеше","можехме","можехте","можеха"], part:["могъл","могла","могло","могли"],
+      ex:[["Мога да плувам.","Je sais nager."],["Не можах да дойда.","Je n'ai pas pu venir."],["Можеше да ми кажеш.","Tu aurais pu me le dire."],["Бих могъл да помогна.","Je pourrais aider (homme)."]]},
+    otivam:{impf:["отивах","отиваше","отиваше","отивахме","отивахте","отиваха"], part:["отивал","отивала","отивало","отивали"],
+      asp:"<b>отивам</b> → <b>отида</b> (aller, une fois). Aoriste de отида : отидох, отиде, отиде, отидохме, отидохте, отидоха.",
+      ex:[["Всеки ден отивам на работа.","Chaque jour, je vais au travail."],["Вчера отидох на кино.","Hier, je suis allé au cinéma."],["Отивах към гарата, когато завали.","J'allais vers la gare quand il s'est mis à pleuvoir."],["Ще отида в Пловдив.","J'irai à Plovdiv."]]},
+    ucha:{impf:["учех","учеше","учеше","учехме","учехте","учеха"], part:["учил","учила","учило","учили"],
+      asp:"<b>уча</b> → <b>науча</b> (apprendre quelque chose).",
+      ex:[["Уча български.","J'apprends le bulgare."],["Учех всяка вечер.","J'étudiais chaque soir."],["Учил съм в Лион.","J'ai étudié à Lyon (homme)."],["Бих искал да уча в България.","J'aimerais étudier en Bulgarie (homme)."]]},
+    pravya:{impf:["правех","правеше","правеше","правехме","правехте","правеха"], part:["правил","правила","правило","правили"],
+      asp:"<b>правя</b> → <b>направя</b> (faire / achever).",
+      ex:[["Какво правиш?","Que fais-tu ?"],["Вчера направих торта.","Hier, j'ai fait un gâteau."],["Правех сладкиши всяка неделя.","Je faisais des gâteaux chaque dimanche."],["Какво бихте правили?","Que feriez-vous ?"]]},
+    pisha:{impf:["пишех","пишеше","пишеше","пишехме","пишехте","пишеха"], part:["писал","писала","писало","писали"],
+      asp:"<b>пиша</b> → <b>напиша</b> (écrire jusqu'au bout).",
+      ex:[["Пиша писмо.","J'écris une lettre."],["Вчера писах на приятел.","Hier, j'ai écrit à un ami."],["Писал съм му.","Je lui ai écrit (homme)."],["Утре ще напиша писмото.","Demain, j'écrirai (j'aurai terminé) la lettre."]]}
+  };
+  VERBS.forEach(v=>{
+    const x = EXTRA[v.id]; if(!x) return;
+    v.part = x.part; v.asp = x.asp || ""; v.ex = x.ex || [];
+    v.impfSame = !x.impf;
+    v.impf = x.impf || v.past.slice();
+    const m = x.part[0], f = x.part[1], n = x.part[2], pl = x.part[3];
+    v.perf = AUX_P.map((a,i)=>a+" "+(i<3?m:pl));
+    v.cond = AUX_C.map((a,i)=>a+" "+(i<3?m:pl));
+    const altOf = aux => aux.map((a,i)=> i<2 ? [{l:"fém.", f:a+" "+f}] : i===2 ? [{l:"fém.", f:a+" "+f},{l:"neutre", f:a+" "+n}] : []);
+    v.alt = { perf: altOf(AUX_P), cond: altOf(AUX_C) };
   });
   const VBY = {}; VERBS.forEach(v=>VBY[v.id]=v);
 
@@ -3177,7 +3243,37 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     ["ucha","past",0,"Вчера аз ___ цял час.","Hier, j'ai étudié une heure entière."],
     ["pravya","pres",4,"Какво ___ вие?","Que faites-vous ?"],
     ["pravya","pres",1,"Какво ___ ти?","Que fais-tu ?"],
-    ["pravya","past",0,"Вчера аз ___ торта.","Hier, j'ai fait un gâteau."]
+    ["pravya","past",0,"Вчера аз ___ торта.","Hier, j'ai fait un gâteau."],
+    ["pisha","pres",0,"Аз ___ писмо.","J'écris une lettre."],
+    ["pisha","past",0,"Вчера аз ___ на приятел.","Hier, j'ai écrit à un ami."],
+    ["pisha","fut",3,"Утре ние ___ имейл.","Demain, nous écrirons un e-mail."],
+    ["pisha","imp",0,"___ ми скоро!","Écris-moi bientôt !"],
+    ["pisha","perf",2,"Той ___ много писма.","Il a écrit beaucoup de lettres."],
+    ["rabotya","impf",0,"Когато бях студент, аз ___ в кафене.","Quand j'étais étudiant, je travaillais dans un café."],
+    ["zhiveya","impf",3,"Като деца ние ___ край морето.","Enfants, nous vivions au bord de la mer."],
+    ["cheta","impf",0,"Всяка вечер аз ___ преди сън.","Chaque soir, je lisais avant de dormir."],
+    ["govorya","impf",5,"Те ___ много бързо.","Ils parlaient très vite."],
+    ["pravya","impf",0,"Всяка неделя аз ___ сладкиши.","Chaque dimanche, je faisais des gâteaux."],
+    ["otivam","impf",0,"Аз ___ към гарата, когато завали.","J'allais vers la gare quand il s'est mis à pleuvoir."],
+    ["ucha","impf",3,"Тогава ние ___ всеки ден.","À l'époque, nous étudiions tous les jours."],
+    ["piya","impf",1,"Ти ___ много кафе.","Tu buvais beaucoup de café."],
+    ["yam","impf",3,"В детството ние ___ много плодове.","Dans l'enfance, nous mangions beaucoup de fruits."],
+    ["moga","impf",2,"Той не ___ да спи.","Il ne pouvait pas dormir."],
+    ["znam","impf",0,"Не ___, че си тук.","Je ne savais pas que tu étais ici."],
+    ["rabotya","perf",2,"Той ___ в София две години.","Il a travaillé à Sofia pendant deux ans."],
+    ["cheta","perf",3,"Ние ___ тази книга.","Nous avons lu ce livre."],
+    ["sam","perf",5,"Те ___ в България.","Ils ont été en Bulgarie."],
+    ["piya","perf",4,"Вие ___ ли българско вино?","Avez-vous déjà bu du vin bulgare ?"],
+    ["imam","perf",2,"Той ___ късмет.","Il a eu de la chance."],
+    ["yam","perf",3,"Ние ___ в този ресторант.","Nous avons déjà mangé dans ce restaurant."],
+    ["zhiveya","perf",5,"Те ___ в Лион.","Ils ont vécu à Lyon."],
+    ["iskam","cond",3,"Ние ___ вода, моля.","Nous voudrions de l'eau, s'il vous plaît."],
+    ["moga","cond",2,"Той ___ да помогне.","Il pourrait aider."],
+    ["sam","cond",4,"Вие ___ щастливи.","Vous seriez heureux."],
+    ["pravya","cond",5,"Те ___ нещо друго.","Ils feraient autre chose."],
+    ["rabotya","cond",4,"Вие ___ ли в чужбина?","Travailleriez-vous à l'étranger ?"],
+    ["govorya","cond",2,"Той ___ по-често с нас.","Il parlerait plus souvent avec nous."],
+    ["ucha","cond",3,"Ние ___ в България.","Nous étudierions en Bulgarie."]
   ].map(s=>({v:s[0], t:s[1], pi:s[2], text:s[3], fr:s[4]}));
 
   const MODES = {
@@ -3188,7 +3284,18 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     table :{icon:"", name:"Tableau à remplir", desc:"Conjugue toutes les personnes d'un verbe d'un coup."},
     mix   :{icon:"", name:"Défi mixte", desc:"Un mélange de tous les exercices (hors tableaux)."}
   };
-  const MODE_ORDER = ["choice","type","id","gap","table","mix"];
+  Object.assign(MODES, {
+    vlex :{icon:"", name:"Tous les verbes : traduire", desc:"Les ~200 verbes du répertoire B1 : trouve le verbe bulgare à partir du français."},
+    vpart:{icon:"", name:"Tous les verbes : participe en -л", desc:"À partir de la forme « je », retrouve le participe (parfait, conditionnel)."},
+    vasp :{icon:"", name:"Tous les verbes : aspect", desc:"Donne le perfectif d'un verbe imperfectif (ou l'inverse)."},
+    vpc  :{icon:"", name:"Tous les verbes : parfait & conditionnel", desc:"Forme le parfait ou le conditionnel de n'importe quel verbe du répertoire."}
+  });
+  const MODE_ORDER = ["choice","type","id","gap","table","mix","vlex","vpart","vasp","vpc"];
+  const LEX_MODES = ["vlex","vpart","vasp","vpc"];
+  const LEXL = {vlex:"Traduction", vpart:"Participe en -л", vasp:"Aspect", vpc:"Parfait / conditionnel"};
+  const isLex = () => LEX_MODES.includes(cfg.mode);
+  const isOptQ = q => q.type==="choice" || q.type==="id" || q.type==="gap" || (q.type==="lex" && !q.typed);
+  const isTypeQ = q => q.type==="type" || q.type==="table" || (q.type==="lex" && q.typed);
 
   /* ---------- Utilitaires ---------- */
   const $ = id => document.getElementById(id);
@@ -3202,6 +3309,9 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
       .toLowerCase().replace(/[.,!?;:«»"]/g,"").replace(/\s+/g," ").trim();
   }
   function persOf(tense){ return tense==="imp" ? PERS_IMP : PERS; }
+  /* Formes acceptées : le féminin / neutre est accepté au parfait et au conditionnel */
+  function altOf(v,t,i){ return (v.alt && v.alt[t] && v.alt[t][i]) || []; }
+  function accepted(v,t,i){ return [v[t][i]].concat(altOf(v,t,i).map(x=>x.f)); }
   function forms(v,t){ return v[t]; }
   function hasT(v,t){ return !!v[t]; }
   function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
@@ -3232,10 +3342,10 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
 
   /* ---------- Onglets ---------- */
   const paneF = $("cj-pane-fiches"), paneT = $("cj-pane-train");
+  const PANES = { fiches:paneF, train:paneT, rep:$("cj-pane-rep"), asp:$("cj-pane-asp"), guide:$("cj-pane-guide") };
   function showTab(name){
     document.querySelectorAll(".cj-tab").forEach(b=>b.classList.toggle("active", b.dataset.cj===name));
-    paneF.style.display = name==="fiches" ? "block" : "none";
-    paneT.style.display = name==="train" ? "block" : "none";
+    Object.keys(PANES).forEach(k=>{ if(PANES[k]) PANES[k].style.display = k===name ? "block" : "none"; });
     if(name==="train" && !sess) renderSetup();
   }
   document.querySelectorAll(".cj-tab").forEach(b=>b.addEventListener("click", ()=>showTab(b.dataset.cj)));
@@ -3257,22 +3367,27 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   function cell(f){ return `${f}<span class="cj-tr">${tr(f)}</span>`; }
   function renderFiche(){
     const v = VBY[ficheId];
-    let rows = "";
-    for(let i=0;i<6;i++){
-      rows += `<tr><td class="p">${PERS[i].bg} <small>${PERS[i].fr}</small></td><td class="f">${cell(v.pres[i])}</td><td class="f">${cell(v.past[i])}</td><td class="f">${cell(v.fut[i])}</td></tr>`;
-    }
     const imp = v.imp ? `<div class="tip"><b>Impératif</b> — ти : <span class="bg-cell">${v.imp[0]}</span> <span class="cj-tr" style="display:inline">(${tr(v.imp[0])})</span> · вие : <span class="bg-cell">${v.imp[1]}</span> <span class="cj-tr" style="display:inline">(${tr(v.imp[1])})</span></div>` : "";
+    const part = v.part ? `<div class="tip"><b>Participe en -л</b> (parfait, conditionnel) — masc. <span class="bg-cell">${v.part[0]}</span> · fém. <span class="bg-cell">${v.part[1]}</span> · neutre <span class="bg-cell">${v.part[2]}</span> · pluriel <span class="bg-cell">${v.part[3]}</span> <span class="cj-tr" style="display:inline">(${tr(v.part[0])})</span></div>` : "";
+    const asp = v.asp ? `<div class="tip"><b>Aspect</b> — ${v.asp}</div>` : "";
+    const same = v.impfSame ? `<div class="tip">Pour <b>${v.bg}</b>, l'imparfait et l'aoriste ont les mêmes formes : le contexte indique si l'on décrit une situation ou un fait borné.</div>` : "";
+    const ex = (v.ex && v.ex.length) ? `<div class="cj-label">Exemples</div>` + v.ex.map(e=>`<div class="cj-ex"><span class="bg-cell">${esc(e[0])}</span><span class="cj-tr">${tr(e[0])}</span><span class="fr">${esc(e[1])}</span></div>`).join("") : "";
     $("cj-fiche").innerHTML = `
       <div class="cj-head">
         <span class="big">${v.bg}</span><span class="fr">${v.fr}</span>
         <span class="cj-badge">${GROUPS[v.grp].label}</span>
-        <span class="cj-badge gold">passé : ${v.pastKind}</span>
+        <span class="cj-badge gold">aoriste : ${v.pastKind}</span>
       </div>
-      <div class="tbl-scroll"><table class="gtable cj-table">
-        <tr><th></th><th>Présent</th><th>Passé</th><th>Futur</th></tr>${rows}
-      </table></div>
+      <div class="cj-label">Temps simples</div>
+      ${tenseTable(v, ["pres","past","impf","fut"])}
+      <div class="cj-label">Temps composés <small style="text-transform:none;letter-spacing:0">(participe en -л accordé avec le sujet)</small></div>
+      ${tenseTable(v, ["perf","cond"])}
+      ${same}
+      ${part}
       ${imp}
+      ${asp}
       <div class="tip"> ${v.tip}</div>
+      ${ex}
       <div class="cj-cta">
         <button type="button" class="action primary" id="cj-train-this"> S'entraîner sur ce verbe</button>
       </div>`;
@@ -3286,12 +3401,13 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   });
 
   /* ---------- Réglages d'entraînement ---------- */
-  const cfg = { mode:"choice", tenses:new Set(["pres","past"]), verbs:new Set(VERBS.map(v=>v.id)), len:12, weak:false };
+  const cfg = { mode:"choice", tenses:new Set(["pres","past"]), verbs:new Set(VERBS.map(v=>v.id)), len:12, weak:false, fmt:"choice", lexThemes:new Set() };
   let sess = null;   // session en cours
   let lastInput = null;
   const stage = $("cj-stage");
 
   function setupPoolCount(){
+    if(isLex()) return buildLex(cfg.mode, true).length;
     const ids = cfg.weak ? weakVerbs() : Array.from(cfg.verbs);
     return VERBS.filter(v=>ids.includes(v.id) && Array.from(cfg.tenses).some(t=>hasT(v,t))).length;
   }
@@ -3305,7 +3421,16 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
         <div class="cj-label">1 · Type d'exercice</div>
         <div class="cj-modes">${MODE_ORDER.map(m=>`<button type="button" class="cj-mode${cfg.mode===m?" active":""}" data-mode="${m}"><b>${MODES[m].icon} ${MODES[m].name}</b><span>${MODES[m].desc}</span></button>`).join("")}</div>
 
-        <div class="cj-label">2 · Temps</div>
+        ${isLex() ? `        <div class="cj-label">2 · Thèmes</div>
+        <div class="cj-chipline" style="margin-bottom:.5rem;">
+          <button type="button" class="chip q" data-lth="all">Tous</button>
+          <button type="button" class="chip q" data-lth="none">Aucun</button>
+        </div>
+        <div class="cj-chipline">${REP.map(t=>`<button type="button" class="chip${cfg.lexThemes.has(t.n)?" active":""}" data-lth="${t.n}">${t.t} <small style="opacity:.75">· ${t.r.length}</small></button>`).join("")}</div>
+        <div class="cj-label">3 · Réponse</div>
+        <div class="cj-seg" id="cj-fmt">${[["choice","Choix (4 propositions)"],["type","Saisie au clavier"]].map(x=>`<button type="button" class="${cfg.fmt===x[0]?"active":""}" data-fmt="${x[0]}">${x[1]}</button>`).join("")}</div>
+
+` : `        <div class="cj-label">2 · Temps</div>
         <div class="cj-chipline" id="cj-tsel">${T_ORDER.map(t=>`<button type="button" class="chip${cfg.tenses.has(t)?" active":""}" data-tsel="${t}">${TENSES[t].label}</button>`).join("")}</div>
 
         <div class="cj-label">3 · Verbes</div>
@@ -3322,7 +3447,8 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
            Cibler mes points faibles ${weak.length?`(${weak.map(id=>VBY[id].bg).join(", ")})`:"(disponible après quelques exercices)"}
         </label>
 
-        <div class="cj-label">4 · Nombre de questions</div>
+`}
+        <div class="cj-label">${isLex()?4:4} · Nombre de questions</div>
         <div class="cj-seg" id="cj-len">${[8,12,20].map(n=>`<button type="button" class="${cfg.len===n?"active":""}" data-len="${n}">${n}</button>`).join("")}</div>
 
         <div class="cj-start">
@@ -3348,11 +3474,19 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
       cfg.weak=false; renderSetup();
     }));
     stage.querySelectorAll("[data-len]").forEach(b=>b.addEventListener("click", ()=>{ cfg.len=+b.dataset.len; renderSetup(); }));
+    stage.querySelectorAll("[data-lth]").forEach(b=>b.addEventListener("click", ()=>{
+      const k=b.dataset.lth;
+      if(k==="all") cfg.lexThemes = new Set(REP.map(t=>t.n));
+      else if(k==="none") cfg.lexThemes = new Set();
+      else { const n=+k; if(cfg.lexThemes.has(n)) cfg.lexThemes.delete(n); else cfg.lexThemes.add(n); }
+      renderSetup();
+    }));
+    stage.querySelectorAll("[data-fmt]").forEach(b=>b.addEventListener("click", ()=>{ cfg.fmt=b.dataset.fmt; renderSetup(); }));
     const w = $("cj-weak"); if(w) w.addEventListener("change", e=>{ cfg.weak=e.target.checked; renderSetup(); });
     $("cj-go").addEventListener("click", startFromSetup);
     const hint = $("cj-hint");
     const n = setupPoolCount();
-    hint.textContent = n ? `${n} verbe${n>1?"s":""} · ${cfg.tenses.size} temps` : "Aucun verbe ne correspond à ce temps.";
+    hint.textContent = isLex() ? (n ? `${n} question${n>1?"s":""} possible${n>1?"s":""}` : "Choisis au moins un thème.") : (n ? `${n} verbe${n>1?"s":""} · ${cfg.tenses.size} temps` : "Aucun verbe ne correspond à ce temps.");
     if(!n) $("cj-go").disabled = true;
   }
 
@@ -3440,6 +3574,8 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
         cfg.tenses.forEach(t=>{ if(hasT(v,t)) combos.push({type:"table", v, t}); });
       });
       qs = sh(combos).slice(0, Math.max(3, Math.ceil(N/3)));
+    } else if(LEX_MODES.includes(m)){
+      qs = buildLex(m);
     } else if(m==="mix"){
       const gaps = sh(gapPool());
       const idc = sh(cands.filter(c=>!ambiguous(c.v,c.f)));
@@ -3455,6 +3591,83 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
       qs = sh(qs);
     }
     return qs.filter(Boolean);
+  }
+
+  /* ---------- Exercices sur tous les verbes du répertoire ---------- */
+  const CWS = /^[\u0400-\u04FF]+( се| си)?$/;
+  function lexPool(){
+    const out=[], seen=new Set();
+    REP.forEach(t=>{
+      if(!cfg.lexThemes.has(t.n)) return;
+      t.r.forEach(r=>{
+        const bg=r[1]; if(!bg || /…|\sда$/.test(bg)) return;
+        const key=r[0]+"|"+bg; if(seen.has(key)) return; seen.add(key);
+        out.push({fr:r[0], bg, part:CWS.test(r[2])?r[2]:"", perf:CWS.test(r[3])?r[3]:"", rem:r[3], n:t.n});
+      });
+    });
+    return out;
+  }
+  function lexOther(pool, all, ans, get, k){
+    const set = new Set([ans]); const out=[];
+    sh(pool).concat(sh(all)).forEach(x=>{ const g=get(x); if(g && !set.has(g) && out.length<k){ set.add(g); out.push(g); } });
+    return out;
+  }
+  function pcForms(part){
+    const pl = part.slice(0,-1)+"ли", f = part+"а", n = part+"о";
+    const mk = (aux,t)=>aux.map((a,i)=>a+" "+(i<3?part:pl));
+    const fm = aux=>aux.map((a,i)=> i<3 ? [a+" "+f].concat(i===2?[a+" "+n]:[]) : []);
+    return { perf:mk(AUX_P), cond:mk(AUX_C), altP:fm(AUX_P), altC:fm(AUX_C) };
+  }
+  function buildLex(m, countOnly){
+    const pool = lexPool();
+    const allRows = REP.flatMap(t=>t.r.map(r=>({fr:r[0],bg:r[1],part:CWS.test(r[2])?r[2]:"",perf:CWS.test(r[3])?r[3]:""}))).filter(x=>x.bg && !/…|\sда$/.test(x.bg));
+    const typed = cfg.fmt==="type";
+    const V = x=>({id:"lex:"+x.bg, bg:x.bg, fr:x.fr, tip:""});
+    const small = t=>`<small style="font-family:'PT Sans';color:var(--muted2)">${t}</small>`;
+    let items = [];
+    if(m==="vlex"){
+      items = pool.map(x=>({type:"lex",sub:m,typed,t:"lex",v:V(x),
+        html:`Comment dit-on <span class="v">${esc(x.fr)}</span> en bulgare ?`,
+        answer:x.bg, accept:[x.bg],
+        note:x.rem?`Perfectif / remarque : ${esc(x.rem)}`:"",
+        options:typed?null:sh([x.bg,...lexOther(pool.filter(y=>y.n===x.n),allRows,x.bg,y=>y.bg,3)])}));
+    } else if(m==="vpart"){
+      items = pool.filter(x=>x.part).map(x=>({type:"lex",sub:m,typed,t:"lex",v:V(x),
+        html:`Participe en -л (masc.) de <span class="v">${esc(x.bg)}</span> ${small("("+esc(x.fr)+")")}`,
+        answer:x.part, accept:[x.part, x.part+"а"],
+        note:`Parfait : съм ${esc(x.part)} (masc.) / съм ${esc(x.part)}а (fém.) · conditionnel : бих ${esc(x.part)}.`,
+        options:typed?null:sh([x.part,...lexOther(pool.filter(y=>y.n===x.n),allRows,x.part,y=>y.part,3)])}));
+    } else if(m==="vasp"){
+      const seen=new Set();
+      const rows = pool.filter(x=>x.perf).map(x=>({bg:x.bg,perf:x.perf,fr:x.fr,n:x.n}));
+      if(cfg.lexThemes.size===REP.length) ASP.forEach(a=>{ rows.push({bg:a[0],perf:a[1],fr:a[2],n:0}); });
+      rows.forEach(x=>{
+        if(seen.has(x.bg)) return; seen.add(x.bg);
+        const perfs = rows.map(y=>y.perf), imps = rows.map(y=>y.bg);
+        const back = Math.random()<.3 && !typed;
+        const ask = back ? x.perf : x.bg, ans = back ? x.bg : x.perf;
+        items.push({type:"lex",sub:m,typed,t:"lex",v:{id:"lex:"+x.bg,bg:x.bg,fr:x.fr,tip:""},
+          html: back ? `Quel est l'<b>imperfectif</b> de <span class="v">${esc(x.perf)}</span> ${small("("+esc(x.fr)+")")} ?` : `Quel est le <b>perfectif</b> de <span class="v">${esc(x.bg)}</span> ${small("("+esc(x.fr)+")")} ?`,
+          answer:ans, accept:[ans],
+          note:`${esc(x.bg)} (imperfectif) → ${esc(x.perf)} (perfectif).`,
+          options:typed?null:sh([ans,...lexOther([],[],ans,y=>y,0), ...(sh(back?imps:perfs).filter(z=>z!==ans).slice(0,3))])});
+      });
+    } else if(m==="vpc"){
+      items = pool.filter(x=>x.part && !/\s/.test(x.bg) ).map(x=>{
+        const F = pcForms(x.part);
+        const t = Math.random()<.5 ? "perf" : "cond", pi = rnd(6);
+        const ans = F[t][pi], alts = (t==="perf"?F.altP:F.altC)[pi].slice();
+        const others = uniq([].concat(F.perf, F.cond).filter(f=>f!==ans && !alts.includes(f)));
+        return {type:"lex",sub:m,typed,t:"lex",v:V(x),
+          html:`Conjugue <span class="v">${esc(x.bg)}</span> ${small("("+esc(x.fr)+")")}<br><span class="pill t">${TENSES[t].label}</span> <span class="pill p">${PERS[pi].bg}</span> ${small(PERS[pi].fr)}<br>${small("Forme masculine attendue (le féminin est accepté).")}`,
+          answer:ans, accept:[ans].concat(alts),
+          note:`Participe en -л : ${x.part} · ${x.part}а · ${x.part}о · ${x.part.slice(0,-1)}ли.`,
+          alt:alts,
+          options:typed?null:sh([ans,...sh(others).slice(0,3)])};
+      });
+    }
+    items = items.filter(q=>typed || !q.options || q.options.length>=2);
+    return countOnly ? items : sh(items).slice(0,cfg.len);
   }
 
   function startFromSetup(){
@@ -3488,12 +3701,13 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   }
 
   /* ---------- Affichage d'une question ---------- */
-  const KIND = {choice:"Choisis la forme", type:"Écris la forme", id:"Reconnais la forme", gap:"Complète la phrase", table:"Remplis le tableau"};
+  const KIND = {choice:"Choisis la forme", type:"Écris la forme", id:"Reconnais la forme", gap:"Complète la phrase", table:"Remplis le tableau", lex:"Verbes du répertoire B1"};
   function promptHTML(q){
+    if(q.type==="lex") return q.html;
     const P = persOf(q.t)[q.pi];
     if(q.type==="choice" || q.type==="type"){
       return `Conjugue <span class="v">${q.v.bg}</span> <small style="font-family:'PT Sans';color:var(--muted2)">(${q.v.fr})</small><br>
-        <span class="pill t">${TENSES[q.t].label}</span> <span class="pill p">${P.bg}</span> <small style="font-family:'PT Sans';color:var(--muted2)">${P.fr}</small>`;
+        <span class="pill t">${TENSES[q.t].label}</span> <span class="pill p">${P.bg}</span> <small style="font-family:'PT Sans';color:var(--muted2)">${P.fr}</small>${(q.t==="perf"||q.t==="cond")?`<br><small style="font-family:'PT Sans';color:var(--muted2)">Forme masculine attendue (le féminin est accepté).</small>`:""}`;
     }
     if(q.type==="id"){
       return `Quelle est cette forme ?<span class="cj-form">${q.form}</span><span class="cj-tr" style="display:block;font-size:.78rem;color:var(--muted2);font-style:italic;font-family:'PT Sans'">${tr(q.form)}</span>`;
@@ -3553,9 +3767,9 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     const q = sess.qs[sess.i];
     sess.answered = false;
     let body = "";
-    if(q.type==="choice" || q.type==="id" || q.type==="gap"){
+    if(isOptQ(q)){
       body = `<div class="cj-opts">${q.options.map((o,k)=>`<button type="button" class="opt-btn" data-opt="${esc(o)}"><span class="n">${k+1}</span>${esc(o)}</button>`).join("")}</div>`;
-    } else if(q.type==="type"){
+    } else if(q.type==="type" || q.type==="lex"){
       body = `<input class="cj-input" id="cj-in" type="text" lang="bg" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Écris ta réponse…">
         ${keyboardHTML()}
         <div class="cj-actions"><button type="button" class="action primary" id="cj-submit">Valider</button></div>`;
@@ -3571,7 +3785,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     $("cj-err-now").addEventListener("click", retryErrors);
     $("cj-quit").addEventListener("click", ()=>{ if(confirm("Quitter cet exercice ?")) renderSetup(); });
 
-    if(q.type==="choice" || q.type==="id" || q.type==="gap"){
+    if(isOptQ(q)){
       stage.querySelectorAll(".opt-btn").forEach(b=>b.addEventListener("click", ()=>answerChoice(b)));
     } else {
       bindKeyboard();
@@ -3585,16 +3799,31 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     const P = persOf(t);
     return `<div class="cj-para">${v[t].map((f,i)=>`<div class="${i===hi?"hi":""}"><small>${P[i].short}</small>${f}</div>`).join("")}</div>`;
   }
+  function feedbackLex(q, ok, given){
+    const fbEl = $("cj-fb");
+    const alt = (q.alt&&q.alt.length) ? ` <small style="color:var(--text3)">(fém. / neutre : ${q.alt.map(esc).join(" · ")})</small>` : "";
+    fbEl.innerHTML = `<div class="cj-fb ${ok?"":"ko"}">
+        <div class="verdict">${ok?" Correct !":" Pas tout à fait"}</div>
+        ${ok && !q.note ? "" : `<div>Réponse : <span class="ans">${esc(q.answer)}</span>${alt}<span class="cj-tr" style="display:block;font-size:.8rem;color:var(--muted2);font-style:italic;font-family:'PT Sans'">${tr(q.answer)}</span></div>`}
+        ${(!ok && given) ? `<div class="why">Ta réponse : <s>${esc(given)}</s></div>` : ""}
+        ${q.note?`<div class="why">${q.note}</div>`:""}
+      </div>
+      <div class="cj-actions"><button type="button" class="action primary" id="cj-next">${sess.i+1>=sess.qs.length?"Voir le résultat":"Question suivante"} →</button></div>`;
+    $("cj-next").addEventListener("click", nextQ);
+    $("cj-next").focus();
+  }
   function feedback(q, ok, given){
+    if(q.type==="lex") return feedbackLex(q, ok, given);
     const fbEl = $("cj-fb");
     let ansTxt = q.type==="id" ? q.answer : q.answer;
     const trLine = (q.type==="id") ? "" : `<span class="cj-tr" style="display:block;font-size:.8rem;color:var(--muted2);font-style:italic;font-family:'PT Sans'">${tr(q.answer)}</span>`;
     const notes = [];
-    if(q.t==="past") notes.push(`Passé de <b>${q.v.bg}</b> : ${q.v.pastKind}.`);
+    if(q.t==="past") notes.push(`Aoriste de <b>${q.v.bg}</b> : ${q.v.pastKind}.`);
+    if((q.t==="perf"||q.t==="cond") && q.v.part) notes.push(`Participe en -л de <b>${q.v.bg}</b> : ${q.v.part.join(" · ")} (masc. · fém. · neutre · pluriel).`);
     if(!ok && q.type!=="id") notes.push(q.v.tip);
     fbEl.innerHTML = `<div class="cj-fb ${ok?"":"ko"}">
         <div class="verdict">${ok?" Correct !":" Pas tout à fait"}</div>
-        ${ok && q.type!=="id" ? "" : `<div>Réponse : <span class="ans">${esc(ansTxt)}</span>${trLine}</div>`}
+        ${ok && q.type!=="id" ? "" : `<div>Réponse : <span class="ans">${esc(ansTxt)}</span>${(q.type!=="id" && altOf(q.v,q.t,q.pi).length) ? ` <small style="color:var(--text3)">(${altOf(q.v,q.t,q.pi).map(x=>x.l+" : "+esc(x.f)).join(" · ")})</small>` : ""}${trLine}</div>`}
         ${ (!ok && given) ? `<div class="why">Ta réponse : <s>${esc(given)}</s></div>` : ""}
         ${q.type==="id" ? "" : paraHTML(q.v,q.t,q.pi)}
         ${notes.length?`<div class="why"> ${notes.join(" ")}</div>`:""}
@@ -3608,7 +3837,8 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     sess.res[sess.i] = {ok, given, pts, max};
     sess.streak = ok ? sess.streak+1 : 0;
     sess.bestStreak = Math.max(sess.bestStreak, sess.streak);
-    if(q.type!=="table") record(q.v.id, q.t, ok?1:0, ok?0:1);
+    if(q.type==="lex"){ const c=store(); c.lexScore = c.lexScore||{ok:0,ko:0}; c.lexScore[ok?"ok":"ko"]++; }
+    else if(q.type!=="table") record(q.v.id, q.t, ok?1:0, ok?0:1);
     saveProgress(progress);
     // met à jour le compteur de série
     const st = stage.querySelector(".cj-streak");
@@ -3635,7 +3865,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     const inp = $("cj-in");
     const given = inp.value.trim();
     if(!given){ inp.focus(); return; }
-    const ok = norm(given)===norm(q.answer);
+    const ok = (q.type==="lex" ? q.accept : accepted(q.v,q.t,q.pi)).some(a=>norm(a)===norm(given));
     inp.disabled = true; inp.classList.add(ok?"correct":"incorrect");
     const kb = stage.querySelector(".cj-kbd"); if(kb) kb.style.display="none";
     $("cj-submit").style.display="none";
@@ -3649,7 +3879,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     let good = 0; const bad = [];
     P.forEach((p,i)=>{
       const inp = $("cj-c"+i);
-      const okc = norm(inp.value)===norm(q.v[q.t][i]);
+      const okc = accepted(q.v,q.t,i).some(a=>norm(a)===norm(inp.value));
       inp.disabled = true; inp.classList.add(okc?"correct":"incorrect");
       if(okc) good++; else {
         bad.push({p:p.short, given:inp.value.trim(), ans:q.v[q.t][i]});
@@ -3679,7 +3909,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
       if(e.target && e.target.id==="cj-err-now") return;
       const next = $("cj-next");
       if(next){ if(document.activeElement!==next){ e.preventDefault(); nextQ(); } return; }
-      if(!sess.answered && (q.type==="type" || q.type==="table")){
+      if(!sess.answered && isTypeQ(q)){
         if(q.type==="table"){
           const inputs = Array.from(stage.querySelectorAll(".cj-input"));
           const idx = inputs.indexOf(document.activeElement);
@@ -3687,7 +3917,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
           e.preventDefault(); answerTable();
         } else { e.preventDefault(); answerType(); }
       }
-    } else if(!sess.answered && /^[1-4]$/.test(e.key) && (q.type==="choice"||q.type==="id"||q.type==="gap")){
+    } else if(!sess.answered && /^[1-4]$/.test(e.key) && isOptQ(q)){
       const b = stage.querySelectorAll(".opt-btn")[+e.key-1]; if(b) b.click();
     }
   });
@@ -3708,17 +3938,19 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
 
     // détail par temps
     const by = {};
-    sess.qs.forEach((q,i)=>{ const r=sess.res[i]; if(!r) return; const t=q.t; by[t]=by[t]||{p:0,m:0}; by[t].p+=r.pts; by[t].m+=r.max; });
-    const brk = T_ORDER.filter(t=>by[t]).map(t=>{
+    sess.qs.forEach((q,i)=>{ const r=sess.res[i]; if(!r) return; const t=q.type==="lex"?q.sub:q.t; by[t]=by[t]||{p:0,m:0}; by[t].p+=r.pts; by[t].m+=r.max; });
+    const brk = T_ORDER.concat(Object.keys(LEXL)).filter(t=>by[t]).map(t=>{
       const p = Math.round(by[t].p/by[t].m*100);
-      return `<div class="prog-row"><div class="lbl">${TENSES[t].label}</div><div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${p>=70?"var(--sage)":"var(--gold)"}"></div></div><div class="num">${by[t].p}/${by[t].m}</div></div>`;
+      return `<div class="prog-row"><div class="lbl">${TENSES[t]?TENSES[t].label:LEXL[t]}</div><div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${p>=70?"var(--sage)":"var(--gold)"}"></div></div><div class="num">${by[t].p}/${by[t].m}</div></div>`;
     }).join("");
 
     // erreurs
     const errs = [];
     sess.qs.forEach((q,i)=>{
       const r = sess.res[i]; if(!r || r.pts===r.max) return;
-      if(q.type==="table"){
+      if(q.type==="lex"){
+        errs.push(`<div class="cj-err">${q.html.replace(/<br>.*$/,"")} → <span class="bgf">${q.answer}</span> ${r.given?`<span class="was">${esc(r.given)}</span>`:""}</div>`);
+      } else if(q.type==="table"){
         errs.push(`<div class="cj-err"><span class="bgf">${q.v.bg}</span> · ${TENSES[q.t].low} — ${(r.bad||[]).map(b=>`${b.p} : ${b.given?`<span class="was">${esc(b.given)}</span> → `:""}<span class="bgf">${b.ans}</span>`).join(" · ")}</div>`);
       } else if(q.type==="id"){
         errs.push(`<div class="cj-err"><span class="bgf">${q.form}</span> = <span class="bgf">${q.answer}</span> ${r.given?`<br><span class="was">${esc(r.given)}</span>`:""}</div>`);
@@ -3784,9 +4016,213 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
   });
 });
 
+  /* ---------- Répertoire, aspect, guide (données du guide B1) ---------- */
+  const REP = [{"n":8,"t":"Identité, communication et pensée","r":[["être","съм","бил","irrégulier"],["avoir","имам","имал",""],["s'appeler","казвам се","казвал се","кажа се est limité ; forme usuelle : казвам се"],["parler","говоря","говорил","кажа = dire, perfectif"],["dire","казвам","казвал","кажа"],["raconter","разказвам","разказвал","разкажа"],["demander","питам","питал","попитам"],["répondre","отговарям","отговарял","отговоря"],["expliquer","обяснявам","обяснявал","обясня"],["comprendre","разбирам","разбирал","разбера"],["savoir / connaître un fait","знам","знаел",""],["connaître une personne / un lieu","познавам","познавал","позная selon le sens"],["penser","мисля","мислел","помисля"],["croire","вярвам","вярвал","повярвам"],["se souvenir","помня","помнил","спомня си"],["oublier","забравям","забравял","забравя"],["apprendre une information","научавам","научавал","науча"],["répéter","повтарям","повтарял","повторя"],["traduire","превеждам","превеждал","преведа"],["choisir","избирам","избирал","избера"],["décider","решавам","решавал","реша"],["essayer","опитвам се","опитвал се","опитам се"],["réussir","успявам","успявал","успея"],["échouer / ne pas réussir","не успявам","успявал",""],["avoir besoin","нуждая се","нуждаел се",""],["signifier","означавам","означавал","означа"]]},{"n":9,"t":"Quotidien, maison et habitudes","r":[["faire","правя","правил","направя"],["travailler","работя","работил",""],["vivre","живея","живял","поживея"],["habiter / résider","живея","живял",""],["se réveiller","събуждам се","събуждал се","събудя се"],["se lever","ставам","ставал","стана"],["se laver","мия се","мил се","измия се"],["se doucher","къпя се","къпал се","изкъпя се"],["s'habiller","обличам се","обличал се","облека се"],["se déshabiller","събличам се","събличал се","съблека се"],["dormir","спя","спал","поспя"],["se reposer","почивам","почивал","почина"],["nettoyer","чистя","чистил","изчистя"],["ranger","подреждам","подреждал","подредя"],["cuisiner","готвя","готвил","сготвя"],["laver (quelque chose)","мия","мил","измия"],["ouvrir","отварям","отварял","отворя"],["fermer","затварям","затварял","затворя"],["commencer","започвам","започвал","започна"],["continuer","продължавам","продължавал","продължа"],["finir","свършвам","свършвал","свърша"],["attendre","чакам","чакал","изчакам"],["utiliser","използвам","използвал","използвам est souvent imperfectif"],["porter","нося","носил","облека selon le sens"],["donner","давам","давал","дам"],["prendre","вземам","вземал","взема"],["mettre / poser","слагам","слагал","сложа"],["garder","пазя","пазил","запазя"],["trouver","намирам","намирал","намеря"],["chercher","търся","търсил","потърся"]]},{"n":10,"t":"Déplacements et voyages","r":[["aller à pied / régulièrement","ходя","ходил","отида pour « aller une fois »"],["aller / partir","отивам","отивал","отида"],["venir","идвам","идвал","дойда"],["arriver","пристигам","пристигал","пристигна"],["partir / s'en aller","тръгвам","тръгвал","тръгна"],["revenir","връщам се","връщал се","върна се"],["entrer","влизам","влизал","вляза"],["sortir","излизам","излизал","изляза"],["monter","качвам се","качвал се","кача се"],["descendre","слизам","слизал","сляза"],["voyager","пътувам","пътувал",""],["conduire","карам","карал",""],["traverser","пресичам","пресичал","пресека"],["tourner","завивам","завивал","завия"],["marcher","вървя","вървял",""],["courir","тичам","тичал",""],["voler (en avion)","летя","летял",""],["rester","оставам","оставал","остана"],["se perdre","губя се","губил се","загубя се"],["réserver","резервирам","резервирал",""],["acheter un billet","купувам билет","купувал билет","купя билет"]]},{"n":11,"t":"Nourriture, achats et services","r":[["manger","ям","ял","изям"],["boire","пия","пил","изпия"],["acheter","купувам","купувал","купя"],["vendre","продавам","продавал","продам"],["payer","плащам","плащал","платя"],["coûter","струвам","струвал",""],["commander","поръчвам","поръчвал","поръчам"],["demander (au restaurant)","искам","искал","поискам"],["goûter","опитвам","опитвал","опитам"],["préparer","приготвям","приготвял","приготвя"],["apporter","нося","носил","донеса"],["choisir","избирам","избирал","избера"],["peser","тежа","тежал",""],["changer","обменям / сменям","обменял / сменял","обменя / сменя"],["rendre (un objet)","връщам","връщал","върна"],["recevoir","получавам","получавал","получа"],["offrir / présenter","предлагам","предлагал","предложа"],["servir","сервирам","сервирал",""],["manquer (à quelqu'un)","липсвам","липсвал",""]]},{"n":12,"t":"Études, travail et compétences","r":[["apprendre / étudier","уча","учил","науча = apprendre quelque chose"],["enseigner","преподавам","преподавал","преподам"],["lire","чета","чел","прочета"],["écrire","пиша","писал","напиша"],["travailler","работя","работил",""],["pratiquer / s'exercer","упражнявам се","упражнявал се","упражня се / упражнявам се selon le sens"],["comprendre","разбирам","разбирал","разбера"],["savoir faire / pouvoir","мога","могъл","verbe modal, formes particulières"],["être capable","успявам","успявал","успея"],["devoir","трябва","—","impersonnel, généralement invariable"],["devoir / falloir","налага се","налагал се","наложи се"],["permettre","позволявам","позволявал","позволя"],["interdire","забранявам","забранявал","забраня"],["aider","помагам","помагал","помогна"],["vérifier","проверявам","проверявал","проверя"],["préparer","подготвям","подготвял","подготвя"],["organiser","организирам","организирал",""],["participer","участвам","участвал",""],["manquer / être absent","отсъствам","отсъствал",""],["gagner","печеля","печелил","спечеля"],["perdre","губя","губил","загубя"],["essayer","опитвам се","опитвал се","опитам се"],["corriger","поправям","поправял","поправя"]]},{"n":13,"t":"Relations, émotions et opinions","r":[["aimer bien / apprécier","харесвам","харесвал","харесам"],["aimer","обичам","обичал",""],["préférer","предпочитам","предпочитал",""],["vouloir","искам","искал","поискам"],["souhaiter","желая","желал","пожелая"],["espérer","надявам се","надявал се",""],["avoir peur","страхувам се","страхувал се",""],["s'inquiéter","тревожа се","тревожил се","разтревожа се"],["se réjouir","радвам се","радвал се","зарадвам се"],["être triste","тъгувам","тъгувал",""],["se fâcher","ядосвам се","ядосвал се","ядосам се"],["se sentir","чувствам се","чувствал се",""],["sembler","изглеждам","изглеждал",""],["sembler / paraître","струва ми се","струвало ми се",""],["être d'accord","съгласявам се","съгласявал се","съглася се"],["être en désaccord","не съм съгласен/съгласна","adjectif","construction avec съм"],["remercier","благодаря","благодарил",""],["s'excuser","извинявам се","извинявал се","извиня се"],["rencontrer","срещам","срещал","срещна"],["connaître / faire connaissance","запознавам се","запознавал се","запозная се"],["aider","помагам","помагал","помогна"],["inviter","каня","канил","поканя"],["téléphoner","обаждам се","обаждал се","обадя се"],["attendre quelqu'un","чакам","чакал","изчакам"],["manquer à quelqu'un","липсвам","липсвал",""]]},{"n":14,"t":"Santé et corps","r":[["être malade","боледувам","боледувал",""],["avoir mal","боли ме","боляло ме е","construction impersonnelle"],["tousser","кашлям","кашлял",""],["respirer","дишам","дишал",""],["se sentir","чувствам се","чувствал се",""],["se reposer","почивам","почивал","почина"],["guérir","оздравявам","оздравявал","оздравея"],["examiner","преглеждам","преглеждал","прегледам"],["soigner / traiter","лекувам","лекувал",""],["prendre un médicament","вземам лекарство","вземал лекарство","взема лекарство"],["se blesser","наранявам се","наранявал се","нараня се"]]},{"n":15,"t":"Temps, changement et environnement","r":[["commencer","започвам","започвал","започна"],["finir","свършвам","свършвал","свърша"],["changer","променям","променял","променя"],["devenir","ставам","ставал","стана"],["se passer / arriver","случвам се","случвал се","случи се"],["apparaître","появявам се","появявал се","появя се"],["disparaître","изчезвам","изчезвал","изчезна"],["grandir","раста","расъл","порасна"],["diminuer","намалявам","намалявал","намаля"],["augmenter","увеличавам","увеличавал","увелича"],["continuer","продължавам","продължавал","продължа"],["durer","трая","траял",""],["tomber","падам","падал","падна"],["pousser / grandir","раста","расъл",""],["pleuvoir","вали","валяло е","construction impersonnelle"],["briller","грее","гряло е","souvent impersonnel"],["polluer","замърсявам","замърсявал","замърся"],["protéger","пазя","пазил","запазя"],["jeter","изхвърлям","изхвърлял","изхвърля"],["recycler","рециклирам","рециклирал",""]]},{"n":16,"t":"Autres verbes très utiles","r":[["pouvoir","мога","","modal irrégulier"],["vouloir","искам","",""],["devoir / falloir","трябва","","impersonnel"],["devoir (être obligé)","трябва да…","","suivi de да + verbe"],["savoir","знам","",""],["être possible","възможно е","","construction impersonnelle"],["être nécessaire","необходимо е","","construction impersonnelle"],["préférer","предпочитам","",""],["paraître","изглежда","","souvent impersonnel"],["exister","съществувам","",""],["appartenir","принадлежа","",""],["dépendre","завися","",""],["inclure","включвам","","включа"],["exclure","изключвам","","изключа"],["offrir / proposer","предлагам","","предложа"],["accepter","приемам","","приема"],["refuser","отказвам","","откажа"],["promettre","обещавам","","обещая"],["permettre","позволявам","","позволя"],["empêcher","преча","","попреча"],["remplacer","заменям","","заменя"],["comparer","сравнявам","","сравня"],["ajouter","добавям","","добавя"],["enlever","махам","","махна"],["envoyer","изпращам","","изпратя"],["recevoir","получавам","","получа"],["appeler","звъня","","обадя се = téléphoner"],["sonner","звъня","",""],["montrer","показвам","","покажа"],["apparaître / montrer-se","показвам се","","покажа се"]]}];
+  const ASP = [["правя","направя","faire / achever"],["казвам","кажа","dire"],["разказвам","разкажа","raconter"],["питам","попитам","demander"],["отговарям","отговоря","répondre"],["обяснявам","обясня","expliquer"],["разбирам","разбера","comprendre"],["забравям","забравя","oublier"],["научавам","науча","apprendre / découvrir"],["повтарям","повторя","répéter"],["превеждам","преведа","traduire"],["решавам","реша","décider / résoudre"],["опитвам","опитам","essayer / goûter"],["успявам","успея","réussir"],["ставам","стана","se lever / devenir"],["събуждам се","събудя се","se réveiller"],["мия","измия","laver"],["обличам се","облека се","s'habiller"],["чистя","изчистя","nettoyer"],["подреждам","подредя","ranger"],["готвя","сготвя","cuisiner"],["отварям","отворя","ouvrir"],["затварям","затворя","fermer"],["започвам","започна","commencer"],["продължавам","продължа","continuer"],["свършвам","свърша","finir"],["чакам","изчакам","attendre jusqu'à / patienter"],["намирам","намеря","trouver"],["търся","потърся","chercher (une fois)"],["отивам","отида","aller (une fois)"],["идвам","дойда","venir (une fois)"],["пристигам","пристигна","arriver"],["тръгвам","тръгна","partir"],["връщам се","върна се","revenir"],["влизам","вляза","entrer"],["излизам","изляза","sortir"],["качвам се","кача се","monter"],["слизам","сляза","descendre"],["купувам","купя","acheter"],["продавам","продам","vendre"],["плащам","платя","payer"],["поръчвам","поръчам","commander"],["приготвям","приготвя","préparer"],["получавам","получа","recevoir"],["давам","дам","donner"],["вземам","взема","prendre"],["слагам","сложа","mettre"],["пазя","запазя","garder / préserver"],["помагам","помогна","aider"],["проверявам","проверя","vérifier"],["подготвям","подготвя","préparer"],["печеля","спечеля","gagner"],["губя","загубя","perdre"],["каня","поканя","inviter"],["срещам","срещна","rencontrer"],["запознавам се","запозная се","faire connaissance"],["обаждам се","обадя се","téléphoner"],["извинявам се","извиня се","s'excuser"],["радвам се","зарадвам се","se réjouir"],["ядосвам се","ядосам се","se fâcher"],["съгласявам се","съглася се","être d'accord"],["оздравявам","оздравея","guérir"],["променям","променя","changer"],["случвам се","случи се","se produire"],["появявам се","появя се","apparaître"],["изчезвам","изчезна","disparaître"],["раста","порасна","grandir"],["намалявам","намаля","diminuer"],["увеличавам","увелича","augmenter"],["позволявам","позволя","permettre"],["забранявам","забраня","interdire"],["приемам","приема","accepter"],["отказвам","откажа","refuser"],["предлагам","предложа","proposer"],["изпращам","изпратя","envoyer"],["показвам","покажа","montrer"],["изхвърлям","изхвърля","jeter"]];
+  const MINI = [
+    ["Parler de soi et de ses habitudes",[["Казвам се …","Je m'appelle…"],["Живея в …","J'habite à…"],["Обикновено ставам в седем.","D'habitude, je me lève à sept heures."],["Работя / уча …","Je travaille / j'étudie…"]]],
+    ["Raconter hier (aoriste)",[["Вчера отидох на работа.","Hier, je suis allé au travail."],["След това купих храна.","Ensuite, j'ai acheté de la nourriture."],["Вечерта гледах филм.","Le soir, j'ai regardé un film."]]],
+    ["Décrire une situation passée (imparfait)",[["Когато бях малък/малка, живеех в …","Quand j'étais petit/petite, j'habitais à…"],["Валеше и чаках автобуса.","Il pleuvait et j'attendais le bus."]]],
+    ["Parler d'un projet (futur)",[["Утре ще се срещна с приятел.","Demain, je vais rencontrer un ami."],["Ще уча български.","J'étudierai le bulgare."]]],
+    ["Parler d'expérience (parfait)",[["Бил съм в България.","Je suis déjà allé en Bulgarie (locuteur masculin)."],["Опитвала съм българска храна.","J'ai goûté la cuisine bulgare (locutrice féminine)."]]],
+    ["Formuler un souhait ou une hypothèse (conditionnel)",[["Бих искал вода, моля.","Je voudrais de l'eau, s'il vous plaît (locuteur masculin)."],["Бих искала да пътувам повече.","J'aimerais voyager davantage (locutrice féminine)."]]]
+  ];
+  const ERRS = [
+    "<b>Ne pas confondre aoriste et parfait.</b> L'aoriste raconte souvent un événement passé situé ; le parfait met en avant l'expérience ou la pertinence actuelle.",
+    "<b>Ne pas employer automatiquement le perfectif au présent pour une action en cours.</b> Pour « je lis en ce moment », on dira <span class=\"bg-cell\">чета</span>, pas <span class=\"bg-cell\">прочета</span>.",
+    "<b>Ne pas oublier le genre au parfait et au conditionnel.</b> Un homme dit <span class=\"bg-cell\">съм бил / бих бил</span> ; une femme dit <span class=\"bg-cell\">съм била / бих била</span>.",
+    "<b>Les verbes modaux ne se comportent pas tous comme les verbes ordinaires.</b> <span class=\"bg-cell\">Мога</span> (« pouvoir ») et <span class=\"bg-cell\">трябва</span> (« il faut ») ont des constructions spécifiques.",
+    "<b>Les verbes pronominaux gardent la particule réfléchie</b> : <span class=\"bg-cell\">се</span> ou <span class=\"bg-cell\">си</span>, selon la construction.",
+    "<b>Les participes en -л ne se déduisent pas toujours du présent.</b> Il faut mémoriser les formes telles que <span class=\"bg-cell\">чел, писал, бил, ял, пил, могъл</span>."
+  ];
+  const CHECK = [
+    "Conjuguer au présent les verbes fréquents et les verbes irréguliers.",
+    "Raconter un événement terminé à l'aoriste.",
+    "Décrire des habitudes et un contexte passé à l'imparfait.",
+    "Parler de projets avec ще + présent.",
+    "Parler d'expériences au parfait, en accordant le participe.",
+    "Formuler des demandes polies et des hypothèses au conditionnel.",
+    "Reconnaître les principales paires imperfectif / perfectif.",
+    "Utiliser да + verbe après les verbes de volonté, de nécessité, de capacité et de souhait.",
+    "Employer correctement les verbes pronominaux et les constructions impersonnelles.",
+    "Raconter une expérience de façon cohérente, en combinant les temps et les connecteurs."
+  ];
+  function fold(s){ return String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase(); }
+  function trCell(bg){ return `${esc(bg)}<span class="cj-tr">${tr(bg.replace(/…/g,""))}</span>`; }
+  function openFicheLink(bg){
+    const v = VERBS.find(x=>x.bg===bg);
+    return v ? ` <button type="button" class="cj-open" data-open="${v.id}" title="Ouvrir la fiche complète">fiche →</button>` : "";
+  }
+  function bindOpen(root){
+    root.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click", ()=>{
+      ficheId = b.dataset.open; renderVChips(); renderFiche(); showTab("fiches");
+      $("sec-conjugation").scrollIntoView({behavior:"smooth", block:"start"});
+    }));
+  }
+
+  /* Répertoire par thème */
+  let repTheme = "all", repQ = "";
+  function renderRep(){
+    const host = $("cj-pane-rep"); if(!host) return;
+    const total = REP.reduce((a,t)=>a+t.r.length,0);
+    host.innerHTML = `
+      <div class="cj-card">
+        <h3>Répertoire de verbes B1</h3>
+        <p class="cj-note">${total} verbes et expressions verbales classés par thème. Chaque ligne donne la 1<sup>re</sup> personne du présent, le participe en <b>-л</b> (masculin, utile au parfait et au conditionnel) et le perfectif ou une remarque. Les verbes perfectifs n'ont généralement pas de présent « en cours » : leur présent sert surtout après <span class="bg-cell">ще</span> ou <span class="bg-cell">да</span>.</p>
+        <p class="cj-note"><i>Il n'existe pas de liste officielle de « tous les verbes B1 » : c'est un noyau large de verbes essentiels, pas une garantie d'exhaustivité.</i></p>
+        <input type="search" class="cj-search" id="cj-rep-q" placeholder="Chercher un verbe (français, bulgare ou lettres latines)…" autocomplete="off" value="${esc(repQ)}">
+        <div class="cj-chipline" id="cj-rep-themes" style="margin-top:.7rem">
+          <button type="button" class="chip${repTheme==="all"?" active":""}" data-th="all">Tous · ${total}</button>
+          ${REP.map(t=>`<button type="button" class="chip${repTheme===String(t.n)?" active":""}" data-th="${t.n}">${esc(t.t)} · ${t.r.length}</button>`).join("")}
+        </div>
+      </div>
+      <div id="cj-rep-list"></div>`;
+    $("cj-rep-q").addEventListener("input", e=>{ repQ = e.target.value; renderRepList(); });
+    host.querySelectorAll("[data-th]").forEach(b=>b.addEventListener("click", ()=>{
+      repTheme = b.dataset.th;
+      host.querySelectorAll("[data-th]").forEach(x=>x.classList.toggle("active", x===b));
+      renderRepList();
+    }));
+    renderRepList();
+  }
+  function renderRepList(){
+    const host = $("cj-rep-list"); if(!host) return;
+    const q = fold(repQ).trim();
+    let n = 0, html = "";
+    REP.forEach(t=>{
+      if(repTheme!=="all" && String(t.n)!==repTheme) return;
+      const rows = t.r.filter(r=>!q || fold(r.join(" ")+" "+tr(r[1])).includes(q));
+      if(!rows.length) return;
+      n += rows.length;
+      html += `<div class="cj-card"><h3>${esc(t.t)} <small class="cj-count">${rows.length}</small></h3>
+        <div class="tbl-scroll"><table class="gtable cj-rep"><tr><th>Français</th><th>Bulgare (je)</th>${t.n===16?"":"<th>Participe en -л</th>"}<th>${t.n===16?"Remarque / perfectif":"Perfectif / remarque"}</th></tr>
+        ${rows.map(r=>{
+          const rem = r[3] ? r[3].replace(/([Ѐ-ӿ][Ѐ-ӿ\s]*[Ѐ-ӿ]|[Ѐ-ӿ])/g, m=>`<span class="bg-cell">${m}</span>`) : "";
+          return `<tr><td>${esc(r[0])}</td><td class="f">${trCell(r[1])}${openFicheLink(r[1])}</td>${t.n===16?"":`<td class="f">${r[2]?trCell(r[2]):"—"}</td>`}<td class="rem">${rem||"—"}</td></tr>`;
+        }).join("")}</table></div></div>`;
+    });
+    host.innerHTML = html || `<div class="vs-empty">Aucun verbe ne correspond à « ${esc(repQ)} ».</div>`;
+    bindOpen(host);
+    const c = $("cj-rep-count"); if(c) c.textContent = n;
+  }
+
+  /* Paires d'aspect */
+  let aspQ = "", aspTest = false;
+  function renderAsp(){
+    const host = $("cj-pane-asp"); if(!host) return;
+    host.innerHTML = `
+      <div class="cj-card">
+        <h3>Aspect verbal : imperfectif / perfectif</h3>
+        <p class="cj-note">Presque chaque verbe bulgare existe sous deux aspects. L'<b>imperfectif</b> décrit une action en cours, répétée ou habituelle ; le <b>perfectif</b> présente l'action comme achevée ou ponctuelle. Au présent, c'est l'imperfectif qui dit « en ce moment » ; le perfectif apparaît surtout après <span class="bg-cell">ще</span> (futur « j'aurai fini ») ou <span class="bg-cell">да</span>.</p>
+        <div class="tip"><b>Exemples</b> —
+          <span class="bg-cell">Чета книга.</span> Je lis un livre (en cours). ·
+          <span class="bg-cell">Утре ще прочета книгата.</span> Demain, je lirai le livre (jusqu'au bout). ·
+          <span class="bg-cell">Вчера отидох на работа.</span> Hier, je suis allé au travail (une fois, achevé).</div>
+        <div class="tip"><b>À mémoriser pour chaque verbe</b> : présent (je), présent (tu), aoriste (je), imparfait (je), participe masculin en -л, paire aspectuelle et une phrase personnelle. C'est plus utile pour le B1 que d'apprendre une longue liste de formes isolées.</div>
+        <input type="search" class="cj-search" id="cj-asp-q" placeholder="Chercher une paire…" autocomplete="off" value="${esc(aspQ)}">
+        <label class="cj-check" style="margin-top:.7rem"><input type="checkbox" id="cj-asp-test" ${aspTest?"checked":""}> S'auto-tester : masquer les perfectifs (clique sur une case floue pour la révéler)</label>
+      </div>
+      <div class="cj-card" id="cj-asp-card"></div>`;
+    $("cj-asp-q").addEventListener("input", e=>{ aspQ = e.target.value; renderAspList(); });
+    $("cj-asp-test").addEventListener("change", e=>{ aspTest = e.target.checked; renderAspList(); });
+    renderAspList();
+  }
+  function renderAspList(){
+    const host = $("cj-asp-card"); if(!host) return;
+    const q = fold(aspQ).trim();
+    const rows = ASP.filter(r=>!q || fold(r.join(" ")+" "+tr(r[0])+" "+tr(r[1])).includes(q));
+    host.className = "cj-card" + (aspTest ? " cj-asp-test" : "");
+    host.innerHTML = `<h3>Paires à mémoriser <small class="cj-count">${rows.length}</small></h3>
+      <div class="tbl-scroll"><table class="gtable cj-rep"><tr><th>Imperfectif</th><th>Perfectif</th><th>Sens</th></tr>
+      ${rows.map(r=>`<tr><td class="f">${trCell(r[0])}</td><td class="f perf"><span class="cj-blur">${trCell(r[1])}</span></td><td>${esc(r[2])}</td></tr>`).join("")}
+      </table></div>`;
+    host.querySelectorAll("td.perf").forEach(td=>td.addEventListener("click", ()=>td.classList.toggle("rev")));
+    if(!rows.length) host.innerHTML += `<div class="vs-empty">Aucune paire ne correspond.</div>`;
+  }
+
+  /* Guide : formation et emploi des temps */
+  function tenseTable(v, list){
+    let rows = "";
+    for(let i=0;i<6;i++){
+      rows += `<tr><td class="p">${PERS[i].bg} <small>${PERS[i].fr}</small></td>` + list.map(t=>{
+        const f = v[t][i];
+        const a = (v.alt && v.alt[t] && v.alt[t][i]) || [];
+        return `<td class="f">${cell(f)}${a.length?`<span class="cj-alt">${a.map(x=>`${x.l} : ${x.f}`).join(" · ")}</span>`:""}</td>`;
+      }).join("") + `</tr>`;
+    }
+    return `<div class="tbl-scroll"><table class="gtable cj-table"><tr><th></th>${list.map(t=>`<th>${TENSES[t].label}</th>`).join("")}</tr>${rows}</table></div>`;
+  }
+  function checkState(){ const c = store(); if(!c.check) c.check = {}; return c.check; }
+  function renderGuide(){
+    const host = $("cj-pane-guide"); if(!host) return;
+    const rab = VBY.rabotya, sam = VBY.sam;
+    const ck = checkState();
+    host.innerHTML = `
+      <div class="cj-card">
+        <h3>Les six temps en un coup d'œil</h3>
+        <div class="tbl-scroll"><table class="gtable cj-guide">
+          <tr><th>Temps</th><th>Formation</th><th>Pour dire…</th><th>Exemple</th></tr>
+          <tr><td><b>Présent</b><br><small>сегашно време</small></td><td>radical + terminaisons de la conjugaison (à apprendre verbe par verbe)</td><td>ce qui se passe maintenant, les habitudes</td><td class="bg-cell">Работя в Париж.${cell0("Работя в Париж.")}</td></tr>
+          <tr><td><b>Aoriste</b><br><small>минало свършено време</small></td><td>radical + <b>-х, —, —, -хме, -хте, -ха</b></td><td>un événement passé achevé et situé</td><td class="bg-cell">Вчера отидох на работа.${cell0("Вчера отидох на работа.")}</td></tr>
+          <tr><td><b>Imparfait</b><br><small>минало несвършено време</small></td><td>radical + <b>-х, -ше, -ше, -хме, -хте, -ха</b> (avec -е- / -я- avant)</td><td>un contexte, une habitude, une action en cours dans le passé</td><td class="bg-cell">Когато бях дете, играех навън.${cell0("Когато бях дете, играех навън.")}</td></tr>
+          <tr><td><b>Futur</b><br><small>бъдеще време</small></td><td><b>ще</b> + présent (négation : <b>няма да</b> + présent)</td><td>projets, prévisions ; avec un perfectif : « j'aurai fini »</td><td class="bg-cell">Ще уча български.${cell0("Ще уча български.")}</td></tr>
+          <tr><td><b>Parfait</b><br><small>минало неопределено време</small></td><td>présent de <b>съм</b> + participe en <b>-л</b> (accordé en genre et en nombre)</td><td>une expérience, un passé qui compte maintenant</td><td class="bg-cell">Работил съм в София.${cell0("Работил съм в София.")}</td></tr>
+          <tr><td><b>Conditionnel</b><br><small>условно наклонение</small></td><td><b>бих, би, би, бихме, бихте, биха</b> + participe en <b>-л</b></td><td>un souhait, une demande polie, une hypothèse</td><td class="bg-cell">Бих искал да уча в България.${cell0("Бих искал да уча в България.")}</td></tr>
+        </table></div>
+        <div class="tip"><b>Accord du participe</b> : -л (masc.), -ла (fém.), -ло (neutre), -ли (pluriel). Un homme dit <span class="bg-cell">съм бил / бих бил</span>, une femme <span class="bg-cell">съм била / бих била</span>.</div>
+      </div>
+
+      <div class="cj-card">
+        <h3>Aoriste ou imparfait ?</h3>
+        <p class="cj-note"><b>L'aoriste</b> présente l'événement comme achevé ; il est particulièrement fréquent avec les verbes perfectifs, mais de nombreux imperfectifs ont aussi un aoriste pour raconter une action passée. <b>L'imparfait</b> sert à décrire un contexte, une habitude ou une action en cours dans le passé.</p>
+        <div class="tip"><span class="bg-cell">Валеше и чаках автобуса.</span> <span class="cj-tr" style="display:inline">(${tr("Валеше и чаках автобуса.")})</span> — Il pleuvait et j'attendais le bus. <br><span class="bg-cell">Вчера купих храна.</span> <span class="cj-tr" style="display:inline">(${tr("Вчера купих храна.")})</span> — Hier, j'ai acheté de la nourriture.</div>
+        <div class="tip">Pour <span class="bg-cell">съм</span> et plusieurs verbes d'état (<span class="bg-cell">имам, знам</span>), l'aoriste et l'imparfait ont les mêmes formes : c'est le contexte qui décide.</div>
+      </div>
+
+      <div class="cj-card">
+        <h3>Verbe modèle : работя à tous les temps</h3>
+        ${tenseTable(rab, ["pres","past","impf","fut","perf","cond"])}
+        <div class="tip">Participe : <span class="bg-cell">${rab.part.join(" · ")}</span> — impératif : <span class="bg-cell">${rab.imp.join(" / ")}</span></div>
+      </div>
+
+      <div class="cj-card">
+        <h3>Un aoriste perfectif : отида (aller, une fois)</h3>
+        <div class="tbl-scroll"><table class="gtable cj-table"><tr><th></th><th>Aoriste</th></tr>
+          ${["отидох","отиде","отиде","отидохме","отидохте","отидоха"].map((f,i)=>`<tr><td class="p">${PERS[i].bg} <small>${PERS[i].fr}</small></td><td class="f">${cell(f)}</td></tr>`).join("")}
+        </table></div>
+        <div class="tip"><span class="bg-cell">Вчера отидох на работа.</span> — Hier, je suis allé au travail.</div>
+      </div>
+
+      <div class="cj-card">
+        <h3>Erreurs fréquentes à éviter</h3>
+        <ul class="cj-list">${ERRS.map(e=>`<li>${e}</li>`).join("")}</ul>
+      </div>
+
+      <div class="cj-card">
+        <h3>Mini-modèles de production B1</h3>
+        ${MINI.map(g=>`<div class="cj-label">${esc(g[0])}</div>${g[1].map(s=>`<div class="cj-ex"><span class="bg-cell">${esc(s[0])}</span><span class="cj-tr">${tr(s[0].replace(/…/g,""))}</span><span class="fr">${esc(s[1])}</span></div>`).join("")}`).join("")}
+      </div>
+
+      <div class="cj-card">
+        <h3>Checklist de révision B1</h3>
+        <ul class="cj-checklist">${CHECK.map((c,i)=>`<li><label><input type="checkbox" data-ck="${i}" ${ck[i]?"checked":""}> ${esc(c)}</label></li>`).join("")}</ul>
+        <p class="cj-hint" id="cj-ck-count"></p>
+      </div>`;
+    const upd = ()=>{ const n = CHECK.filter((_,i)=>checkState()[i]).length; $("cj-ck-count").textContent = `${n} / ${CHECK.length} objectifs validés`; };
+    host.querySelectorAll("[data-ck]").forEach(b=>b.addEventListener("change", ()=>{
+      checkState()[b.dataset.ck] = b.checked; saveProgress(progress); upd();
+    }));
+    upd();
+  }
+  function cell0(s){ return `<span class="cj-tr">${tr(s)}</span>`; }
+
   /* ---------- Init ---------- */
+  cfg.lexThemes = new Set(REP.map(t=>t.n));
   renderVChips();
   renderFiche();
+  renderRep();
+  renderAsp();
+  renderGuide();
 })();
 
 /* ---------- Carte interactive des monuments ---------- */

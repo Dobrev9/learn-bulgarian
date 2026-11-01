@@ -1643,3 +1643,8 @@ button.fp-back:hover{background:var(--indigo);color:#fff;}
 .dish-bg + p{margin-top:.5rem;}
 .cu-body + .culture-cta{margin-top:1.8rem;}
 @media (max-width:600px){ .dish-grid{grid-template-columns:1fr;} .cu-cat > h3{font-size:1.35rem;} }
+
+/* Prières : sélecteur de prière par boutons */
+#pr-frh{flex-wrap:wrap;overflow:visible;scroll-snap-type:none;margin-bottom:1rem;}
+#pr-frh .fh{flex:1 1 150px;max-width:230px;}
+#sec-prayers .info-card[hidden]{display:none;}

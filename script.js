@@ -4456,3 +4456,28 @@ const MK_A1={"cats":["Salutations, politesse, expressions essentielles","Présen
     if(t) t.scrollIntoView({behavior:"smooth", block:"start"});
   });
 })();
+
+
+/* Prières : un bouton = une prière affichée */
+(function(){
+  var sec = document.getElementById("sec-prayers");
+  var bar = document.getElementById("pr-frh");
+  if(!sec || !bar) return;
+  var KEY = "prayer_pick";
+  var btns = Array.prototype.slice.call(bar.querySelectorAll(".fh"));
+  var cards = Array.prototype.slice.call(sec.querySelectorAll(":scope > .info-card"));
+  if(!btns.length || cards.length !== btns.length) return;
+  function pick(i, scroll){
+    btns.forEach(function(b,k){ b.classList.toggle("on", k===i); b.setAttribute("aria-pressed", k===i ? "true" : "false"); });
+    cards.forEach(function(c,k){ c.hidden = k!==i; });
+    try{ localStorage.setItem(KEY, i); }catch(e){}
+    if(scroll){ try{ bar.scrollIntoView({behavior:"smooth", block:"start"}); }catch(e){} }
+  }
+  bar.addEventListener("click", function(e){
+    var b = e.target.closest(".fh"); if(!b) return;
+    pick(+b.dataset.p, true);
+  });
+  var start = 0;
+  try{ var s = parseInt(localStorage.getItem(KEY), 10); if(s>=0 && s<cards.length) start = s; }catch(e){}
+  pick(start, false);
+})();

@@ -1648,3 +1648,68 @@ button.fp-back:hover{background:var(--indigo);color:#fff;}
 #pr-frh{flex-wrap:wrap;overflow:visible;scroll-snap-type:none;margin-bottom:1rem;}
 #pr-frh .fh{flex:1 1 150px;max-width:230px;}
 #sec-prayers .info-card[hidden]{display:none;}
+
+/* ===== Contes & Légendes + Conte du jour (même présentation que « Chapitre du jour ») ===== */
+#sec-contes{max-width:none;margin-left:0;margin-right:0}
+#ct-pane-day .cdj-lead{margin-bottom:1rem}
+.ct-tabs{margin:0 0 1rem}
+.ct-tabs .fh{flex:1 1 0;min-width:0}
+#ct-pane-list[hidden],#ct-pane-day[hidden]{display:none}
+.cdj-pick.cdj-pick-1{grid-template-columns:1fr}
+.cdj-chap.ct-title{font-size:clamp(1.5rem,5vw,2rem);line-height:1.2}
+.ct-source{max-width:65ch;margin:0 0 1.2rem;padding:.55rem .9rem;background:var(--paper);border-left:4px solid var(--gold);border-radius:2px;font-family:'PT Serif',Georgia,serif;font-size:.95rem;line-height:1.5;color:var(--text4)}
+.ct-credit{margin:1.4rem 0 0;padding-top:.8rem;border-top:1px solid var(--linen-dark);text-align:center;font-family:'PT Sans',Arial,sans-serif;font-size:.82rem;color:var(--muted2)}
+.ct-total{margin:0 0 .4rem;font-family:'PT Sans',Arial,sans-serif;font-size:.85rem;color:var(--muted2)}
+.ct-cat{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;font-family:'PT Serif',Georgia,serif;font-size:1.2rem;color:var(--madder-dark);margin:1.8rem 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--gold);text-transform:none;letter-spacing:0}
+.ct-cat .ct-count{font-family:'PT Sans',Arial,sans-serif;font-size:.78rem;font-weight:400;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
+.ct-items{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,17rem),1fr));gap:.6rem}
+.ct-item{width:100%;height:100%;display:flex;align-items:center;gap:.7rem;text-align:left;padding:.65rem .8rem;background:var(--card);border:1px solid var(--linen-dark);border-left:4px solid var(--gold);border-radius:3px;color:var(--text4);font-family:'PT Serif',Georgia,serif;font-size:1rem;line-height:1.3;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s,border-color .15s}
+.ct-item:hover{background:var(--paper);border-left-color:var(--madder)}
+.ct-item:focus-visible{outline:2px solid #B7852A;outline-offset:2px}
+.ct-num{flex:0 0 auto;min-width:1.9rem;padding:.1rem .3rem;border-radius:3px;background:var(--linen-dark);color:var(--madder-dark);font-family:'PT Sans',Arial,sans-serif;font-size:.78rem;font-weight:700;text-align:center}
+.ct-name{flex:1 1 auto;font-weight:700;color:var(--madder-dark)}
+.ct-min{flex:0 0 auto;font-family:'PT Sans',Arial,sans-serif;font-size:.75rem;color:var(--muted2);white-space:nowrap}
+.ct-back{font-family:'PT Sans',Arial,sans-serif;font-size:.9rem;min-height:2.4rem;padding:.35rem .8rem;border:1.5px solid #17388C;border-radius:6px;background:transparent;color:#17388C;cursor:pointer}
+.ct-back:hover{background:#E7EDF7}
+.ct-back:focus-visible{outline:2px solid #B7852A;outline-offset:2px}
+:root[data-theme="dark"] .ct-back{border-color:#8EADEB;color:#DCE6FF}
+:root[data-theme="dark"] .ct-back:hover{background:#263653}
+#ct-reader[hidden],#ct-list-view[hidden]{display:none}
+@media(max-width:600px){
+  #sec-contes{margin:0 -.35rem}
+  #sec-contes>h2,#sec-contes>.lead,#sec-contes>.ct-source,#sec-contes>.ct-tabs,#sec-contes #ct-list-view,#sec-contes .ct-back,
+  #ct-pane-day>.lead,#ct-pane-day .cdj-pick,#ct-pane-day .cdj-tools{margin-left:.35rem;margin-right:.35rem}
+  .ct-items{grid-template-columns:1fr}
+}
+
+/* Calendrier liturgique */
+#sec-calendar [id^="cal-"]{scroll-margin-top:.8rem;}
+#sec-calendar .cal-card{padding:1rem 1.1rem;}
+#sec-calendar .cal-card-top{border-left-color:var(--gold);}
+.cal-big{font-family:'PT Serif',Georgia,serif;font-size:1.15rem;font-weight:700;color:var(--madder-dark);margin:.4rem 0 0;}
+.cal-big .tl-date{margin:0 .5rem .2rem 0;font-size:.9rem;}
+.cal-h{font-family:'PT Serif',Georgia,serif;font-size:1.1rem;color:var(--madder-dark);margin:1.6rem 0 .2rem;padding-bottom:.3rem;border-bottom:2px solid var(--gold);text-transform:none;letter-spacing:0;}
+.cal-h:first-of-type{margin-top:.2rem;}
+.cal-table tbody th{width:8.5rem;white-space:nowrap;}
+.cal-table2 tbody th{width:12rem;white-space:normal;}
+.cal-table tbody tr.cal-major th{box-shadow:inset 4px 0 0 var(--gold);}
+.cal-table tbody tr.cal-pascha th{box-shadow:inset 4px 0 0 var(--madder);}
+.cal-table tbody tr.cal-major td:nth-child(2){font-weight:700;color:var(--madder-dark);}
+.cal-table tbody tr.cal-pascha td,.cal-table tbody tr.cal-pascha th{background:var(--paper);font-weight:700;}
+.cal-table tbody tr.cal-pascha td:nth-child(2){color:var(--madder-dark);}
+.cal-key{display:inline-block;width:.8rem;height:.8rem;vertical-align:-.1rem;margin-right:.2rem;border-radius:2px;}
+.cal-key-major{background:var(--gold);}
+.cal-key-pascha{background:var(--madder);}
+.cal-dl{margin:.4rem 0 0;}
+.cal-dl dt{font-family:'PT Serif',Georgia,serif;font-weight:700;color:var(--madder-dark);margin:.9rem 0 .1rem;}
+.cal-dl dt:first-child{margin-top:.2rem;}
+.cal-dl dd{margin:0;color:var(--text4);line-height:1.55;}
+.cal-ul{margin:.4rem 0 0;padding-left:1.2rem;color:var(--text4);}
+.cal-ul li{margin:.5rem 0;line-height:1.55;}
+.cal-ul li::marker{color:var(--gold);}
+@media(max-width:560px){
+  .cal-table{font-size:.88rem;}
+  .cal-table th,.cal-table td{padding:.45rem .5rem;}
+  .cal-table tbody th{width:6.2rem;white-space:normal;}
+  .cal-table2 tbody th{width:7.5rem;}
+}

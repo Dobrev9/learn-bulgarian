@@ -208,191 +208,452 @@
 </div>
 </section>
 <!-- PRONONCIATION -->
+
 <section id="sec-pronunciation">
+
 <h2>Prononciation : avoir un vrai accent bulgare</h2>
-<p class="lead">Connaître l'alphabet ne suffit pas : il faut apprendre les sons réels, l'accent tonique, la réduction des voyelles et l'enchaînement des consonnes. Clique sur  pour écouter (voix bulgare de ton système si elle existe, sinon voix en ligne : connexion internet requise).</p>
+
+<p class="lead">Connaître l'alphabet ne suffit pas : il faut apprendre les sons réels, l'accent tonique, la réduction des voyelles et l'enchaînement des consonnes. Clique sur  pour écouter (voix bulgare de ton système si elle existe, sinon voix en ligne : connexion internet requise).</p>
+
 <div class="tip">Convention : la voyelle <span class="st">soulignée</span> est la voyelle accentuée. Les transcriptions [API/IPA] sont volontairement approximatives ; le but est de t'orienter, pas de remplacer l'écoute de vrais locuteurs.</div>
-<div class="gram-card">
+
+
+<div class="frh pronunciation-nav" id="pron-frh" aria-label="Accéder aux 14 parties de la prononciation">
+<button type="button" class="fh on" data-p="0" data-target="partie-1" aria-pressed="true"><small>Partie 1</small><b>Écrit ≠ prononcé</b></button>
+<button type="button" class="fh" data-p="1" data-target="partie-2" aria-pressed="false"><small>Partie 2</small><b>Accent tonique</b></button>
+<button type="button" class="fh" data-p="2" data-target="partie-3" aria-pressed="false"><small>Partie 3</small><b>Les voyelles</b></button>
+<button type="button" class="fh" data-p="3" data-target="partie-4" aria-pressed="false"><small>Partie 4</small><b>Le fameux ъ /ɤ/</b></button>
+<button type="button" class="fh" data-p="4" data-target="partie-5" aria-pressed="false"><small>Partie 5</small><b>я, ю, ьо et й</b></button>
+<button type="button" class="fh" data-p="5" data-target="partie-6" aria-pressed="false"><small>Partie 6</small><b>Les consonnes</b></button>
+<button type="button" class="fh" data-p="6" data-target="partie-7" aria-pressed="false"><small>Partie 7</small><b>Р et Л</b></button>
+<button type="button" class="fh" data-p="7" data-target="partie-8" aria-pressed="false"><small>Partie 8</small><b>La palatalisation</b></button>
+<button type="button" class="fh" data-p="8" data-target="partie-9" aria-pressed="false"><small>Partie 9</small><b>Réduction des voyelles</b></button>
+<button type="button" class="fh" data-p="9" data-target="partie-10" aria-pressed="false"><small>Partie 10</small><b>Dévoisement et assimilation</b></button>
+<button type="button" class="fh" data-p="10" data-target="partie-11" aria-pressed="false"><small>Partie 11</small><b>Rythme et enchaînement</b></button>
+<button type="button" class="fh" data-p="11" data-target="partie-12" aria-pressed="false"><small>Partie 12</small><b>Paires minimales</b></button>
+<button type="button" class="fh" data-p="12" data-target="partie-13" aria-pressed="false"><small>Partie 13</small><b>26 mots fréquents</b></button>
+<button type="button" class="fh" data-p="13" data-target="partie-14" aria-pressed="false"><small>Partie 14</small><b>Méthode en 4 passes</b></button>
+</div>
+
+<style>
+  #sec-pronunciation .pronunciation-nav { margin: 1.25rem 0 1.75rem; }
+  #sec-pronunciation [id^="partie-"] { scroll-margin-top: 1.5rem; }
+</style>
+
+<script>
+(function () {
+  const nav = document.getElementById('pron-frh');
+  if (!nav || nav.dataset.ready === 'true') return;
+  nav.dataset.ready = 'true';
+  const buttons = Array.from(nav.querySelectorAll('button[data-target]'));
+
+  function activate(targetId) {
+    buttons.forEach((button) => {
+      const active = button.dataset.target === targetId;
+      button.classList.toggle('on', active);
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  buttons.forEach((button) => button.addEventListener('click', () => {
+    const target = document.getElementById(button.dataset.target);
+    if (!target) return;
+    activate(button.dataset.target);
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }));
+})();
+</script>
+
+<div class="gram-card" id="partie-1">
+
 <h3>1. Le principe : écrit ≠ prononcé</h3>
+
 <p>Le bulgare est assez phonétique, mais pas « une lettre = un son ». Ne lis jamais une romanisation (<i>molya, shte, zhiveya</i>) comme si c'était de l'anglais ou du français : elle crée de mauvaises habitudes. Travaille avec le <b>cyrillique + l'accent + l'API</b>.</p>
+
 <p><b>Ordre de priorité pour un francophone :</b></p>
+
 <ol>
+
 <li>р : arrêter le /ʁ/ français, faire un r de la pointe de la langue</li>
+
 <li>ъ /ɤ/ : apprendre la voyelle bulgare</li>
+
 <li>я / ю / й : comprendre leur vraie fonction</li>
+
 <li>accent tonique : toujours apprendre le mot <i>avec</i> son accent</li>
+
 <li>réduction des voyelles non accentuées</li>
+
 <li>palatalisation (н, л…)</li>
+
 <li>dévoisement final et assimilation</li>
+
 </ol>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-2">
+
 <h3>2. L'accent tonique : le plus important</h3>
+
 <p>L'accent est <b>libre</b> (il peut tomber sur n'importe quelle syllabe), <b>mobile</b> (il change selon les formes : <span class="bg-cell">вода́ → во́ди</span>) et <b>jamais écrit</b> dans l'orthographe courante.</p>
+
 <p>La voyelle accentuée est plus longue, plus forte et plus nette ; les autres sont plus faibles. Ne pense pas « syllabe égale, syllabe égale », mais : <b>FORTE – faible – faible – FORTE – faible</b>.</p>
+
 <div class="tip">Erreur française typique : prononcer chaque syllabe avec la même précision et la même énergie. Le mot est compris, mais « sonne étranger ».</div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-3">
+
 <h3>3. Les voyelles</h3>
+
 <div class="tbl-scroll"><table class="gtable">
+
 <tr><th>Lettre</th><th>API</th><th>Approximation</th><th>Piège</th></tr>
+
 <tr><td class="bg-cell">а</td><td class="ipa">/a/</td><td>a français</td><td>Non accentué : moins net, plutôt [ɐ]</td></tr>
+
 <tr><td class="bg-cell">е</td><td class="ipa">/ɛ/</td><td>è (« père »)</td><td>Pas un é fermé</td></tr>
+
 <tr><td class="bg-cell">и</td><td class="ipa">/i/</td><td>i (« si »)</td><td>Pas trop tendu ni fermé</td></tr>
+
 <tr><td class="bg-cell">о</td><td class="ipa">/ɔ/</td><td>o ouvert (« porte »)</td><td>Non accentué : tend vers [o]/[u]</td></tr>
+
 <tr><td class="bg-cell">у</td><td class="ipa">/u/</td><td>ou (« tout »)</td><td>Lèvres arrondies (≠ ъ)</td></tr>
+
 <tr><td class="bg-cell">ъ</td><td class="ipa">/ɤ/</td><td>voir ci-dessous</td><td>Ni « ou », ni « eu » français</td></tr>
+
 </table></div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-4">
+
 <h3>4. Le fameux ъ /ɤ/</h3>
-<p>Voyelle postérieure, bouche assez ouverte, langue reculée et <b>lèvres non arrondies</b>. C'est le son le plus caractéristique du bulgare.</p>
-<p><b>Exercice :</b> dis « ou » (lèvres rondes), puis « eu », puis relâche les lèvres en gardant la langue en arrière : <span class="ipa">u → ø → ɤ</span>.</p>
+
+<p>Le <b>ъ</b> représente la voyelle <span class="ipa">/ɤ/</span> lorsqu'elle est accentuée : une voyelle postérieure (la langue est reculée), mi-fermée à mi-ouverte, et <b>non arrondie</b> (les lèvres ne forment pas un « ou »). Elle n'a pas d'équivalent exact en français.</p>
+
+<p><b>Repère articulatoire :</b> garde la langue assez en arrière, mais déplie les lèvres. Ne prononce ni « ou », ni « o », ni le « eu » français. Le son doit rester une seule voyelle stable, sans glisser vers une autre voyelle.</p>
+
+<p><b>Exercice :</b> alterne lentement <span class="ipa">/u/ – /ɤ/ – /u/ – /ɤ/</span>. Pour <span class="ipa">/u/</span>, les lèvres sont arrondies (« ou ») ; pour <span class="ipa">/ɤ/</span>, elles sont détendues et non arrondies. Fais ensuite le son seul, puis dans des mots.</p>
+
+<p><b>Équivalent français approximatif :</b> aucun son français ne correspond exactement. « eu » peut servir de point de départ pour chercher la position, mais ce n'est pas la prononciation à conserver : le bulgare <span class="bg-cell">ъ</span> est plus postérieur et non arrondi.</p>
+
+<p><b>Attention à l'accent :</b> hors accent, <span class="bg-cell">ъ</span> peut être réduit et se rapprocher de <span class="ipa">[ɐ]</span>. C'est pourquoi tu peux entendre une différence entre le <span class="ipa">/ɤ/</span> accentué et le son réduit dans certains mots.</p>
+
 <p>À écouter et répéter :
-        <span class="say" data-say="път">път</span>
+
+        <span class="say" data-say="път">път</span>
+
 <span class="say" data-say="къща">къща</span>
+
 <span class="say" data-say="ръка">ръка</span>
+
 <span class="say" data-say="сърце">сърце</span>
+
 <span class="say" data-say="дъжд">дъжд</span>
+
 <span class="say" data-say="българин">българин</span>
+
 </p>
+
 <div class="tip">Les francophones le remplacent souvent par /u/, /o/, /ø/ ou /ə/ : cela donne immédiatement un accent étranger. Dans la terminaison de l'article <b>-ът</b> ou dans <b>-ят</b>, on entend surtout [ɐt] / [ʲɐt].</div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-5">
+
 <h3>5. я, ю, ьо, й : et pourquoi <i>моля</i> ≠ « molya »</h3>
+
 <div class="tbl-scroll"><table class="gtable">
+
 <tr><th>Graphie</th><th>Début de mot / après voyelle</th><th>Après consonne</th></tr>
+
 <tr><td class="bg-cell">я</td><td class="ipa">[ja]</td><td class="ipa">[ʲa]</td></tr>
+
 <tr><td class="bg-cell">ю</td><td class="ipa">[ju]</td><td class="ipa">[ʲu]</td></tr>
+
 <tr><td class="bg-cell">ьо</td><td>(rare)</td><td class="ipa">[ʲo]</td></tr>
+
 <tr><td class="bg-cell">й</td><td class="ipa">/j/ (y de « yeux »)</td><td>toujours consonne</td></tr>
+
 </table></div>
+
 <p><b>Après une consonne, я/ю ne sont pas « y + voyelle » :</b> elles <i>palatalisent</i> la consonne précédente (la langue monte vers le palais) et donnent la voyelle. Donc <span class="bg-cell">мо́ля</span> = [ˈmɔlʲɐ] : <b>2 syllabes</b> (мо-ля), pas <i>mo-li-ya</i>. Ton oreille entend « mola » parce que le я non accentué est une voyelle faible [ɐ] portée par un л « mouillé ». Tu avais donc raison : lire « ya » ne marche pas.</p>
+
 <p>Exemples : <span class="say" data-say="моля">мо́ля</span> <span class="say" data-say="любов">любо́в</span> <span class="say" data-say="бял">бя́л</span> <span class="say" data-say="юг">ю́г</span> <span class="say" data-say="приятел">прия́тел</span></p>
+
 <div class="tip">Le <b>ь</b> n'existe en bulgare que dans la séquence <b>ьо</b> (ex. <span class="bg-cell">синьо</span>). Ce n'est pas un son autonome.</div>
+
 <div class="tip">Alternance utile : <span class="bg-cell">бял → бели</span>, <span class="bg-cell">хляб → хлябове/хлебове</span> : я devient е quand l'accent change de place.</div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-6">
+
 <h3>6. Les consonnes</h3>
+
 <div class="tbl-scroll"><table class="gtable">
+
 <tr><th>Lettre</th><th>API</th><th>Comme…</th><th>Piège</th></tr>
+
 <tr><td class="bg-cell">г</td><td class="ipa">/ɡ/</td><td>« gare »</td><td>Toujours dur, même devant е/и</td></tr>
+
 <tr><td class="bg-cell">ж</td><td class="ipa">/ʒ/</td><td>« jour »</td><td>Pas le j anglais de <i>job</i> (= дж)</td></tr>
+
 <tr><td class="bg-cell">ш</td><td class="ipa">/ʃ/</td><td>« chat »</td><td>—</td></tr>
+
 <tr><td class="bg-cell">ч</td><td class="ipa">/tʃ/</td><td>« tchèque »</td><td>Il y a un /t/ avant le ch</td></tr>
+
 <tr><td class="bg-cell">щ</td><td class="ipa">/ʃt/</td><td>ш + т</td><td>Deux consonnes, pas un « ch » spécial</td></tr>
+
 <tr><td class="bg-cell">ц</td><td class="ipa">/ts/</td><td>« pizza »</td><td>—</td></tr>
+
 <tr><td class="bg-cell">х</td><td class="ipa">/x/</td><td>j espagnol, ch allemand (Bach)</td><td>Ni /k/, ni /ʁ/ : friction au fond de la gorge</td></tr>
+
 <tr><td class="bg-cell">в</td><td class="ipa">/v/</td><td>v français</td><td>Jamais le w anglais</td></tr>
+
 <tr><td class="bg-cell">к, п, т</td><td class="ipa">/k p t/</td><td>comme en français</td><td>Pas d'aspiration à l'anglaise</td></tr>
+
 <tr><td class="bg-cell">дж</td><td class="ipa">/dʒ/</td><td>« job » (anglais)</td><td>Se note avec deux lettres</td></tr>
+
 </table></div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-7">
+
 <h3>7. Р et Л</h3>
+
 <p><b>р</b> = /r/ battu ou roulé, <b>pointe de la langue contre les alvéoles</b> (derrière les dents du haut). Jamais le /ʁ/ de la gorge comme en français. Exercice : <span class="say" data-say="тра">тра</span> <span class="say" data-say="дра">дра</span> <span class="say" data-say="кра">кра</span> <span class="say" data-say="ра">ра</span> <span class="say" data-say="ре">ре</span> <span class="say" data-say="ри">ри</span> <span class="say" data-say="ро">ро</span> <span class="say" data-say="ру">ру</span> <span class="say" data-say="ръ">ръ</span></p>
-<p><b>л</b> : la pointe de la langue touche les alvéoles. Devant les voyelles postérieures (а, о, у, ъ) il est « épais » [ɫ] ; devant я, ю, ьо, е, и il est « mouillé » [lʲ]. Ne le transforme jamais en <i>w</i>. Exemples : <span class="say" data-say="влак">влак</span> <span class="say" data-say="любов">любов</span> <span class="say" data-say="лято">лято</span></p>
+
+<p><b>л : deux couleurs de L à distinguer.</b> La pointe de la langue touche la zone juste derrière les dents supérieures (les alvéoles). Avec les voyelles postérieures, le L bulgare est généralement <b>vélarisé</b>, donc plus sombre : <span class="ipa">[ɫ]</span>. Avec les voyelles antérieures et dans les séquences palatalisantes, il est plus clair ou palatalisé : <span class="ipa">[l]</span> ou <span class="ipa">[lʲ]</span>, selon le contexte et le locuteur. Ce n'est pas une opposition à appliquer mécaniquement à chaque lettre : observe le mot et écoute un locuteur natif.</p>
+
+<p><b>Л dur — repères pour un francophone :</b> la pointe de la langue reste en contact derrière les dents du haut, tandis que le dos de la langue se relève vers l'arrière de la bouche. Le son devient sombre, avec une résonance qui peut rappeler un peu « w » à l'oreille. Ainsi, <span class="bg-cell">ла</span>, <span class="bg-cell">ло</span>, <span class="bg-cell">лу</span> peuvent être perçus comme « la » coloré, « lo » coloré, « lou » coloré — parfois avec une impression de « wa/wo/wou ». <b>Ce ne sont toutefois pas des sons /w/ :</b> garde le contact de la pointe de la langue. Ne remplace jamais le L par W.</p>
+
+<p><b>Л clair ou mouillé — repères français :</b> pars du L français de « lit » ou « lune », puis relève légèrement le milieu de la langue vers le palais dur. Le L devient plus clair. Devant <span class="bg-cell">я</span> et <span class="bg-cell">ю</span>, cette palatalisation est particulièrement perceptible : <span class="bg-cell">ля</span> se rapproche de « lya » en une seule syllabe ; <span class="bg-cell">лю</span> se rapproche de « lu » avec un L palatalisé (pas nécessairement « li-ou »). Devant <span class="bg-cell">е</span>, <span class="bg-cell">ле</span> se rapproche de « lè » — parfois « lé » selon l'oreille — et surtout <b>pas de « lié »</b>. Devant <span class="bg-cell">и</span>, <span class="bg-cell">ли</span> se rapproche de « li ».</p>
+
+<p><b>Exemples à écouter :</b> <span class="say" data-say="влак">влак</span> (L sombre), <span class="say" data-say="лош">лош</span> (L sombre), <span class="say" data-say="лук">лук</span> (L sombre), <span class="say" data-say="лято">лято</span> (L palatalisé), <span class="say" data-say="любов">любов</span> (L palatalisé), <span class="say" data-say="лице">лице</span> (L clair).</p>
+
+<div class="tip"><b>À retenir :</b> les équivalents français ne sont que des aides-mémoire. « wa/wo/wou » décrit une impression auditive possible du L sombre, pas sa transcription. « lè » est une approximation de <span class="bg-cell">ле</span> ; « lié » introduirait un son /j/ qui n'est pas automatiquement présent.</div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-8">
+
 <h3>8. La palatalisation (consonnes « mouillées »)</h3>
-<p>Une consonne palatalisée n'est <b>pas</b> « consonne + y » : c'est une seule consonne articulée avec le milieu de la langue relevé vers le palais. <span class="ipa">н /n/ → нʲ /nʲ/</span>, <span class="ipa">л /ɫ/ → лʲ /lʲ/</span>, <span class="ipa">т /t/ → тʲ</span>…</p>
-<p>Elle est <b>nette</b> devant я, ю, ьо et <b>légère</b> devant е et и. Compare : <span class="say" data-say="бал">бал</span> [bal] (bal) / <span class="say" data-say="бял">бял</span> [bʲal] (blanc).</p>
+
+<p>Une consonne palatalisée n'est <b>pas</b> « consonne + y » : c'est une seule consonne articulée avec le milieu de la langue relevé vers le palais dur. Pour le L, on peut noter cette articulation <span class="ipa">[lʲ]</span>. Elle ne doit pas être transformée en une syllabe supplémentaire contenant « i ».</p>
+
+<p>Pour un francophone, le L de « lit » est un bon point de départ pour le L clair. Pour aller vers le L mouillé bulgare, garde le contact de la pointe de la langue et relève en plus le milieu de la langue. Le « lli » de « million » peut aider à sentir le mouvement vers le palais, mais ne le copie pas comme une séquence complète « li » : vise une seule consonne.</p>
+
+<p><b>Repères de lecture (approximatifs) :</b></p>
+<div class="tbl-scroll"><table class="gtable">
+<tr><th>Bulgare</th><th>Repère français</th><th>À éviter</th></tr>
+<tr><td class="bg-cell">ла</td><td>« la » avec un L sombre</td><td>un vrai « wa »</td></tr>
+<tr><td class="bg-cell">ло</td><td>« lo » avec un L sombre</td><td>un vrai « wo »</td></tr>
+<tr><td class="bg-cell">лу</td><td>« lou » avec un L sombre</td><td>un vrai « wou »</td></tr>
+<tr><td class="bg-cell">ле</td><td>« lè » (parfois entendu « lé »)</td><td>« lié » en deux éléments</td></tr>
+<tr><td class="bg-cell">ли</td><td>« li » avec un L clair</td><td>ajouter un y distinct</td></tr>
+<tr><td class="bg-cell">ля</td><td>« lya » en une syllabe, L palatalisé</td><td>« li-ya » en trois temps</td></tr>
+<tr><td class="bg-cell">лю</td><td>« lu » avec un L palatalisé</td><td>imposer « li-ou » en deux syllabes</td></tr>
+</table></div>
+
+<p>Compare les mots <span class="say" data-say="влак">влак</span> et <span class="say" data-say="лято">лято</span> : concentre-toi sur la couleur du L, pas sur l'ajout d'un son « w » ou « i ».</p>
+
 <div class="tip">Ce n'est pas l'oreille qu'il faut entraîner d'abord, mais la <b>sensation de la langue</b> : sens-la monter vers le palais.</div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-9">
+
 <h3>9. Voyelles non accentuées : réduction</h3>
+
 <p>C'est le deuxième grand chantier après l'accent. Hors accent :</p>
+
 <ul>
+
 <li><b>а</b> et <b>ъ</b> tendent à se rapprocher de [ɐ]</li>
+
 <li><b>о</b> se ferme vers [o], voire [u] (« о » non accentué peut ressembler à « у »)</li>
+
 <li><b>е</b> et <b>я</b> deviennent plus faibles (е tend vers [ɪ])</li>
+
 </ul>
+
 <p>Le degré varie selon les locuteurs et les régions : ne retiens donc pas « о devient toujours у », ce serait faux. Retiens plutôt : <b>voyelle accentuée claire, voyelle non accentuée relâchée</b>.</p>
+
 <div class="tip">Exemple : <span class="bg-cell">хо́ра</span> [ˈxɔrɐ] : le о est net, le а final est faible. Un Français dit « HO-RA » avec deux voyelles pleines.</div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-10">
+
 <h3>10. Dévoisement final et assimilation</h3>
+
 <p><b>En fin de mot</b>, une consonne voisée se prononce sourde :</p>
+
 <div class="tbl-scroll"><table class="gtable">
+
 <tr><th>Écrit</th><th>Prononcé</th><th>Exemple</th></tr>
+
 <tr><td class="bg-cell">б</td><td class="ipa">[p]</td><td class="bg-cell">зъб → [zɐp]</td></tr>
+
 <tr><td class="bg-cell">д</td><td class="ipa">[t]</td><td class="bg-cell">град → [ɡrat]</td></tr>
+
 <tr><td class="bg-cell">г</td><td class="ipa">[k]</td><td class="bg-cell">бряг → [brʲak]</td></tr>
+
 <tr><td class="bg-cell">в</td><td class="ipa">[f]</td><td class="bg-cell">кръв → [krɐf]</td></tr>
+
 <tr><td class="bg-cell">з</td><td class="ipa">[s]</td><td class="bg-cell">бриз → [bris]</td></tr>
+
 <tr><td class="bg-cell">ж</td><td class="ipa">[ʃ]</td><td class="bg-cell">нож → [nɔʃ]</td></tr>
+
 </table></div>
+
 <p><b>À l'intérieur d'un groupe de consonnes</b>, le voisement s'aligne sur la <i>dernière</i> consonne (assimilation régressive) :</p>
+
 <div class="tbl-scroll"><table class="gtable">
+
 <tr><td class="bg-cell">втори</td><td class="ipa">[ˈftɔri]</td><td>в → ф devant т</td></tr>
+
 <tr><td class="bg-cell">отговор</td><td class="ipa">[ˈɔdɡovor]</td><td>т → д devant г</td></tr>
+
 <tr><td class="bg-cell">сбогом</td><td class="ipa">[ˈzbɔɡɔm]</td><td>с → з devant б</td></tr>
+
 </table></div>
+
 <div class="tip">Si tu entends un son sourd là où tu lis une lettre « sonore », ce n'est pas une faute : c'est la règle. Écris <span class="bg-cell">град</span> comme tu l'as appris, dis [ɡrat].</div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-11">
+
 <h3>11. Rythme et enchaînement</h3>
+
 <ul>
+
 <li>Pas de <i>e</i> muet français entre les consonnes : <span class="say" data-say="България">Бълга́рия</span> se dit d'un trait, sans « bou-l-ga-ri-ya ».</li>
+
 <li>Les groupes de consonnes sont normaux : <span class="say" data-say="здравей">здраве́й</span>, <span class="say" data-say="влак">вла́к</span>, <span class="say" data-say="взимам">взи́мам</span>.</li>
+
 <li>Ne sur-articule pas : un Français lit trop « propre ». À l'oral, on réduit, on assimile, on enchaîne.</li>
+
 <li>La position de la langue pour une consonne influence déjà la voyelle suivante (coarticulation), surtout avec я, ю, и, е.</li>
+
 </ul>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-12">
+
 <h3>12. Paires minimales à s'entraîner à distinguer</h3>
+
 <div class="tbl-scroll"><table class="gtable">
+
 <tr><th>Contraste</th><th>Paire</th><th>Sens</th></tr>
+
 <tr><td>у / ъ</td><td class="bg-cell"><span class="say" data-say="лук">лук</span> / <span class="say" data-say="лък">лък</span></td><td>oignon / arc</td></tr>
+
 <tr><td>х / к</td><td class="bg-cell"><span class="say" data-say="хора">хора</span> / <span class="say" data-say="кора">кора</span></td><td>gens / écorce</td></tr>
+
 <tr><td>ц / ч</td><td class="bg-cell"><span class="say" data-say="цар">цар</span> / <span class="say" data-say="чар">чар</span></td><td>tsar / charme</td></tr>
+
 <tr><td>ж / ш</td><td class="bg-cell"><span class="say" data-say="жар">жар</span> / <span class="say" data-say="шар">шар</span></td><td>braise / boule</td></tr>
+
 <tr><td>р / л</td><td class="bg-cell"><span class="say" data-say="рак">рак</span> / <span class="say" data-say="лак">лак</span></td><td>cancer / vernis</td></tr>
+
 <tr><td>а / я (palatalisation)</td><td class="bg-cell"><span class="say" data-say="бал">бал</span> / <span class="say" data-say="бял">бял</span></td><td>bal / blanc</td></tr>
+
 </table></div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-13">
+
 <h3>13. 26 mots fréquents avec accent et prononciation</h3>
+
 <div class="tbl-scroll"><table class="gtable">
+
 <tr><th></th><th>Mot</th><th>API</th><th>Sens</th><th>À surveiller</th></tr>
+
 <tr><td><span class="say" data-say="моля"></span></td><td class="bg-cell">м<span class="st">о</span>ля</td><td class="ipa">[ˈmɔlʲɐ]</td><td>s'il vous plaît</td><td>2 syllabes, л mouillé</td></tr>
+
 <tr><td><span class="say" data-say="здравей"></span></td><td class="bg-cell">здрав<span class="st">е</span>й</td><td class="ipa">[zdraˈvɛj]</td><td>salut</td><td>groupe здр- d'un trait</td></tr>
+
 <tr><td><span class="say" data-say="благодаря"></span></td><td class="bg-cell">благодар<span class="st">я</span></td><td class="ipa">[blaɡodaˈrʲa]</td><td>merci</td><td>accent final, р battu</td></tr>
+
 <tr><td><span class="say" data-say="добър ден"></span></td><td class="bg-cell">д<span class="st">о</span>бър д<span class="st">е</span>н</td><td class="ipa">[ˈdɔbɐr ˈdɛn]</td><td>bonjour</td><td>ъ ≠ ou</td></tr>
+
 <tr><td><span class="say" data-say="довиждане"></span></td><td class="bg-cell">дов<span class="st">и</span>ждане</td><td class="ipa">[doˈviʒdanɛ]</td><td>au revoir</td><td>ж = j français</td></tr>
+
 <tr><td><span class="say" data-say="извинете"></span></td><td class="bg-cell">извин<span class="st">е</span>те</td><td class="ipa">[izviˈnɛtɛ]</td><td>excusez-moi</td><td>accent sur -не-</td></tr>
+
 <tr><td><span class="say" data-say="България"></span></td><td class="bg-cell">Бълг<span class="st">а</span>рия</td><td class="ipa">[bɐɫˈɡarijɐ]</td><td>Bulgarie</td><td>г dur, ъ, pas de schwa</td></tr>
+
 <tr><td><span class="say" data-say="български"></span></td><td class="bg-cell">б<span class="st">ъ</span>лгарски</td><td class="ipa">[ˈbɐɫɡarski]</td><td>bulgare (langue)</td><td>accent sur la 1re syllabe</td></tr>
+
 <tr><td><span class="say" data-say="къща"></span></td><td class="bg-cell">к<span class="st">ъ</span>ща</td><td class="ipa">[ˈkɐʃtɐ]</td><td>maison</td><td>щ = ш + т</td></tr>
+
 <tr><td><span class="say" data-say="път"></span></td><td class="bg-cell">п<span class="st">ъ</span>т</td><td class="ipa">[pɐt]</td><td>chemin</td><td>ъ pur</td></tr>
+
 <tr><td><span class="say" data-say="ръка"></span></td><td class="bg-cell">рък<span class="st">а</span></td><td class="ipa">[rɐˈka]</td><td>main / bras</td><td>р + ъ</td></tr>
+
 <tr><td><span class="say" data-say="сърце"></span></td><td class="bg-cell">сърц<span class="st">е</span></td><td class="ipa">[sɐrˈtsɛ]</td><td>cœur</td><td>ц = ts</td></tr>
+
 <tr><td><span class="say" data-say="хляб"></span></td><td class="bg-cell">хл<span class="st">я</span>б</td><td class="ipa">[ˈxlʲap]</td><td>pain</td><td>х, л mouillé, б → п</td></tr>
+
 <tr><td><span class="say" data-say="хора"></span></td><td class="bg-cell">х<span class="st">о</span>ра</td><td class="ipa">[ˈxɔrɐ]</td><td>les gens</td><td>х ≠ k</td></tr>
+
 <tr><td><span class="say" data-say="приятел"></span></td><td class="bg-cell">при<span class="st">я</span>тел</td><td class="ipa">[priˈjatɛɫ]</td><td>ami</td><td>accent sur -я-</td></tr>
+
 <tr><td><span class="say" data-say="говоря"></span></td><td class="bg-cell">гов<span class="st">о</span>ря</td><td class="ipa">[ɡoˈvɔrʲɐ]</td><td>je parle</td><td>г dur, р battu</td></tr>
+
 <tr><td><span class="say" data-say="ще"></span></td><td class="bg-cell">щ<span class="st">е</span></td><td class="ipa">[ʃtɛ]</td><td>futur (« je vais »)</td><td>щ = шт</td></tr>
+
 <tr><td><span class="say" data-say="нощ"></span></td><td class="bg-cell">н<span class="st">о</span>щ</td><td class="ipa">[nɔʃt]</td><td>nuit</td><td>щ final</td></tr>
+
 <tr><td><span class="say" data-say="дъжд"></span></td><td class="bg-cell">д<span class="st">ъ</span>жд</td><td class="ipa">[dɐʃt]</td><td>pluie</td><td>жд → шт</td></tr>
+
 <tr><td><span class="say" data-say="вода"></span></td><td class="bg-cell">вод<span class="st">а</span></td><td class="ipa">[voˈda]</td><td>eau</td><td>в = v, jamais w</td></tr>
+
 <tr><td><span class="say" data-say="хубаво"></span></td><td class="bg-cell">х<span class="st">у</span>баво</td><td class="ipa">[ˈxubɐvo]</td><td>bien / beau</td><td>х, voyelles finales faibles</td></tr>
+
 <tr><td><span class="say" data-say="кръв"></span></td><td class="bg-cell">кр<span class="st">ъ</span>в</td><td class="ipa">[krɐf]</td><td>sang</td><td>в → ф final</td></tr>
+
 <tr><td><span class="say" data-say="любов"></span></td><td class="bg-cell">люб<span class="st">о</span>в</td><td class="ipa">[lʲuˈbɔf]</td><td>amour</td><td>лю = [lʲu], в → ф</td></tr>
+
 <tr><td><span class="say" data-say="юг"></span></td><td class="bg-cell"><span class="st">ю</span>г</td><td class="ipa">[juk]</td><td>sud</td><td>г → к final</td></tr>
+
 <tr><td><span class="say" data-say="влак"></span></td><td class="bg-cell">вл<span class="st">а</span>к</td><td class="ipa">[vɫak]</td><td>train</td><td>groupe вл-, л épais</td></tr>
+
 <tr><td><span class="say" data-say="сбогом"></span></td><td class="bg-cell">сб<span class="st">о</span>гом</td><td class="ipa">[ˈzbɔɡɔm]</td><td>adieu</td><td>с → з devant б</td></tr>
+
 </table></div>
+
 </div>
-<div class="gram-card">
+
+<div class="gram-card" id="partie-14">
+
 <h3>14. Méthode d'entraînement en 4 passes</h3>
+
 <ol>
+
 <li><b>Lecture lente</b> : chaque phonème bien contrôlé.</li>
+
 <li><b>Vitesse normale</b> : tu gardes l'accent tonique.</li>
+
 <li><b>Parole naturelle</b> : tu laisses les voyelles non accentuées se réduire et les consonnes s'assimiler.</li>
+
 <li><b>Imitation</b> : tu écoutes un natif et tu copies le rythme et la mélodie, pas seulement les sons. C'est l'étape qui manque le plus souvent.</li>
+
 </ol>
+
 <div class="tip">Astuce : enregistre-toi, réécoute, compare avec la voix d'un locuteur natif, une phrase à la fois.</div>
+
 </div>
+
 </section>
 <!-- VOCAB -->
 <section id="sec-vocab">

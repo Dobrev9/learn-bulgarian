@@ -3822,6 +3822,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     { n:"Plovdiv antique", bg:"Старият Пловдив (антична част)", cat:"thrace", lat:42.1494, lng:24.7535, d:"Théâtre romain, stade romain et forum au cœur de Plovdiv." },
     { n:"Nicopolis ad Istrum", bg:"Никополис ад Иструм", cat:"thrace", lat:43.2306, lng:25.6265, d:"Grande cité romaine fondée sous l'empereur Trajan." },
     { n:"Serdica", bg:"Сердика", cat:"thrace", lat:42.6975, lng:23.3219, d:"Complexe antique romain mis au jour sous le centre-ville de Sofia." },
+    { n:"Hisarya (Diocletianopolis)", bg:"Хисаря", cat:"thrace", lat:42.5083, lng:24.7033, d:"Station thermale romaine entourée de remparts des IIIe-IVe siècles, parmi les mieux conservés du pays." },
     { n:"Pliska", bg:"Плиска", cat:"thrace", lat:43.3808, lng:27.1258, d:"Première capitale du Premier Empire bulgare." },
     { n:"Preslav", bg:"Преслав", cat:"thrace", lat:43.1667, lng:26.8167, d:"Deuxième capitale du Premier Empire, centre de l'Âge d'or culturel." },
     // Médiévale et orthodoxe
@@ -3839,6 +3840,9 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     { n:"Cherven", bg:"Крепост Червен", cat:"fortress", lat:43.6725, lng:25.9436, d:"Forteresse de la région de Ruse." },
     { n:"Peristera", bg:"Крепост Перистера", cat:"fortress", lat:41.9975, lng:24.2967, d:"Forteresse près de Peshtera." },
     { n:"Cap et forteresse de Kaliakra", bg:"Нос Калиакра", cat:"fortress", lat:43.3711, lng:28.4653, d:"Promontoire fortifié sur la côte de la mer Noire." },
+    { n:"Forteresse de Lovech (Hisar)", bg:"Ловешка крепост", cat:"fortress", lat:43.1306, lng:24.7170, d:"Citadelle médiévale sur la colline de Hisar ; Congrès révolutionnaire de Levski (1872) et mausolée." },
+    { n:"Forteresse et remparts de Nessebar", bg:"Несебърска крепостна стена", cat:"fortress", lat:42.6598, lng:27.7338, d:"Fortifications thraco-helléniques et byzantines de la vieille ville, avec la porte ouest (UNESCO)." },
+    { n:"Forteresse de Belogradchik", bg:"Белоградчишка крепост", cat:"fortress", lat:43.6240, lng:22.6770, d:"Forteresse romaine puis ottomane bâtie parmi les falaises de grès rouge des rochers de Belogradchik." },
     { n:"Porte de Trajan", bg:"Траянови врата", cat:"fortress", lat:42.2167, lng:23.9833, d:"Col fortifié entre Sofia et Plovdiv." },
     // Renaissance : villes-musées
     { n:"Koprivshtitsa", bg:"Копривщица", cat:"renaissance", lat:42.6167, lng:24.3500, d:"Ville-musée aux centaines de monuments de la Renaissance bulgare." },
@@ -3848,6 +3852,7 @@ document.getElementById("reset-all").addEventListener("click", ()=>{
     { n:"Arbanasi", bg:"Арбанаси", cat:"renaissance", lat:43.0967, lng:25.6672, d:"Grandes maisons fortifiées et églises, près de Veliko Tarnovo." },
     { n:"Bozhentsi", bg:"Боженци", cat:"renaissance", lat:42.8306, lng:25.3153, d:"Village de montagne exceptionnellement bien conservé." },
     { n:"Melnik", bg:"Мелник", cat:"renaissance", lat:41.5230, lng:23.3890, d:"Maisons historiques et célèbres pyramides de grès." },
+    { n:"Lovech et pont couvert", bg:"Ловеч — Покрития мост", cat:"renaissance", lat:43.1367, lng:24.7139, d:"Quartier Varosha et pont couvert de Kolyo Ficheto (1872, reconstruit en 1931)." },
     { n:"Shiroka Laka", bg:"Широка Лъка", cat:"renaissance", lat:41.6083, lng:24.7364, d:"Architecture traditionnelle des Rhodopes." },
     // Sofia (autres sites)
     { n:"Théâtre national Ivan Vazov", bg:"Народен театър „Иван Вазов”", cat:"sofia", lat:42.6939, lng:23.3286, d:"Grand théâtre national de Sofia." },
